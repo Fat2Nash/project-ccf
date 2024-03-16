@@ -25,7 +25,7 @@
 
 </head>
 <body class="text-gray-800 font-inter">
-    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform">
+    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform shadow-md">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
 
             <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
@@ -302,6 +302,13 @@
             <div id="map" class="h-[600px]"></div>
         </div>
     </section>
+
+    <footer class="absolute w-full p-4 bg-white inset-x-0 bottom-0">
+        <div class="text-center font-semibold text-black">
+            <p>© 2024 <span class=" text-orange-600">Thiriot-Locations</span> - Tous droits réservés.
+            </p>
+        </div>
+    </footer>
 
       <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
       <script>

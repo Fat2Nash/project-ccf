@@ -21,7 +21,7 @@
     </head>
 <body class="text-gray-800 font-inter">
     <!--sidenav -->
-    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform">
+    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform shadow-md">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
 
             <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
@@ -144,7 +144,7 @@
     <!-- end sidenav -->
 
 
-  <section class="py-1 bg-blueGray-50">
+  <section class="flex py-1 bg-blueGray-50">
     <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
@@ -444,8 +444,14 @@
             </div>
       </div>
     </div>
-
     </section>
+
+    <footer class="absolute w-full p-4 bg-white inset-x-0 bottom-0">
+        <div class="text-center font-semibold text-black">
+            <p>© 2024 <span class=" text-orange-600">Thiriot-Locations</span> - Tous droits réservés.
+            </p>
+        </div>
+    </footer>
 
 </body>
 </html>
