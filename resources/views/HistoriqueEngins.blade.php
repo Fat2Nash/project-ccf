@@ -12,11 +12,135 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="//unpkg.com/alpinejs"></script>
+
+        <title>Thiriot-Location | {{Auth::user()->name}}</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-<body >
-<div class="shadow-md 0 1px 1px 0 rgb(0 0 0 / 0.05)">
-    <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" class="ml-10"/>
-  </div>
+<body class="text-gray-800 font-inter">
+    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform">
+        <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
+
+            <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
+        </a>
+        <ul class="mt-4">
+            <span class="text-gray-400 font-bold uppercase">Commun</span>
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class="bx bx-home mr-3 text-lg"></i>
+                    <span class="text-sm">Accueil</span>
+                </a>
+            </li>
+
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-list-ul mr-3 text-lg'></i>
+                    <span class="text-sm">Liste engins</span>
+                </a>
+            </li>
+            <span class="text-gray-400 font-bold uppercase">Mécanicien / Chauffeur</span>
+            <li class="mb-1 group">
+                <a href="/MapsEngins" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-">
+                    <i class='bx bx-map-alt mr-3 text-lg'></i>
+                    <span class="text-sm">Carte</span>
+                    <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
+                </a>
+                <ul class="pl-7 mt-2 hidden group-[.selected]:block">
+                    <li class="mb-4">
+                        <a href="" class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">All</a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="" class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Categories</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-wrench mr-3 text-lg'></i>
+                    <span class="text-sm">Maintenance</span>
+                </a>
+            </li>
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-map-pin mr-3 text-lg'></i>
+                    <span class="text-sm">Livraisons</span>
+                </a>
+            </li>
+            <span class="text-gray-400 font-bold uppercase">Responsable</span>
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-face mr-3 text-lg'></i>
+                    <span class="text-sm">Fiches clients</span>
+
+                </a>
+            </li>
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-hard-hat mr-3 text-lg'></i>
+                    <span class="text-sm">Fiches engins</span>
+
+                </a>
+            </li>
+
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <span class="text-sm">Fiches locations</span>
+
+                </a>
+            </li>
+
+            <li class="mb-1 group">
+                <a href="/HistoriqueClients" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <span class="text-sm">Historique Clients</span>
+
+                </a>
+            </li>
+
+            <li class="mb-1 group">
+                <a href="/HistoriqueEngins" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <span class="text-sm">Historique Engins</span>
+
+                </a>
+            </li>
+
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-bell mr-3 text-lg'></i>
+                    <span class="text-sm">Notifications</span>
+
+                </a>
+            </li>
+            <span class="text-gray-400 font-bold uppercase">Paramètres</span>
+
+            <li class="mb-1 group">
+                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-cog mr-3 text-lg'></i>
+                    <span class="text-sm">Paramètres</span>
+
+                </a>
+            </li>
+            <li class="mb-1 group">
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 cursor-pointer" :href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        <i class='bx bx-exit mr-3 text-lg'></i>
+                        <span class="text-sm">Se déconnecter</span>
+                    </a>
+                </form>
+
+            </li>
+        </ul>
+    </div>
+    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
+    <!-- end sidenav -->
 
   <section class="py-1 bg-blueGray-50">
     <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
@@ -320,18 +444,6 @@
     </div>
 
     </section>
-    <footer class="absolute inset-x-0 bottom-0 pt-8 pb-6 mt-16 shadow-inner">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-wrap items-center md:justify-between justify-center">
-          <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-            <div class="text-sm text-blueGray-500 font-semibold py-1">
-              <h3 class="font-semibold text-base text-blueGray-700">Retour Acceuil</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
 
 </body>
 </html>

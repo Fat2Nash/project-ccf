@@ -12,8 +12,15 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="//unpkg.com/alpinejs"></script>
+
+        <title>Thiriot-Location | {{Auth::user()->name}}</title>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-<body >
+<body class="text-gray-800 font-inter">
+    <!--sidenav -->
     <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
 
@@ -36,7 +43,7 @@
             </li>
             <span class="text-gray-400 font-bold uppercase">Mécanicien / Chauffeur</span>
             <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-">
+                <a href="/MapsEngins" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-">
                     <i class='bx bx-map-alt mr-3 text-lg'></i>
                     <span class="text-sm">Carte</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
@@ -85,6 +92,23 @@
 
                 </a>
             </li>
+
+            <li class="mb-1 group">
+                <a href="/HistoriqueClients" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <span class="text-sm">Historique Clients</span>
+
+                </a>
+            </li>
+
+            <li class="mb-1 group">
+                <a href="/HistoriqueEngins" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <span class="text-sm">Historique Engins</span>
+
+                </a>
+            </li>
+
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='bx bx-bell mr-3 text-lg'></i>
@@ -116,6 +140,9 @@
             </li>
         </ul>
     </div>
+    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
+    <!-- end sidenav -->
+
 
   <section class="py-1 bg-blueGray-50">
     <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
@@ -419,18 +446,6 @@
     </div>
 
     </section>
-    <footer class="absolute inset-x-0 bottom-0 pt-8 pb-6 mt-16 shadow-inner">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-wrap items-center md:justify-between justify-center">
-          <div class="w-full md:w-6/12 px-4 mx-auto text-center">
-            <div class="text-sm text-blueGray-500 font-semibold py-1">
-              <button><h3 class="font-semibold text-base text-blueGray-700"><a href="">Retour Acceuil</a></h3></button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
 
 </body>
 </html>
