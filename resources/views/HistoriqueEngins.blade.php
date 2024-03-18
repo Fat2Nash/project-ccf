@@ -142,6 +142,30 @@
     <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
     <!-- end sidenav -->
 
+    <!-- navbar -->
+    <div class="py-2 px-6 bg-white flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
+        <button type="button" class="text-lg text-gray-900 font-semibold sidebar">
+            <i class="ri-menu-line"></i>
+        </button>
+
+        <ul class="ml-auto flex items-center">
+
+
+            <li class=" ml-3">
+                <p class=" flex items-center">
+                <div class="p-2 md:block text-left">
+                    <h2 class="text-sm font-semibold text-gray-800">{{Auth::user()->name}}</h2>
+                    <p class="text-xs text-gray-500">{{Auth::user()->email}}</p>
+                </div>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+
+    </div>
+    <!-- end navbar -->
+
   <section class="py-1 bg-blueGray-50">
     <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
