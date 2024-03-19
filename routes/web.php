@@ -14,9 +14,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::get('/HistoriqueClients', function () {
     return view('HistoriqueClients');
+});
+
+Route::get('/HistoriqueEngins', function () {
+    return view('HistoriqueEngins');
+});
+
+Route::get('/HistoriqueLocations', function () {
+    return view('HistoriqueLocations');
 });
 
 Route::get('/HistoriqueEngins', function () {

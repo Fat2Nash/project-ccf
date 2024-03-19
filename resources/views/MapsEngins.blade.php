@@ -321,7 +321,7 @@
           </div>
     </section>
 
-    <section class="relative flex justify-center items-center mb-10">
+    <section class="relative flex justify-center items-center mb-20">
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto max-h-46 w-[1280px] mt-5">
             <div id="map" class="h-[600px]"></div>
         </div>
