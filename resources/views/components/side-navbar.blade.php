@@ -119,22 +119,22 @@
     <!-- end sidenav -->
 
 
-            <!-- navbar -->
-            <div class="sticky top-0 left-0 z-30 flex items-center px-6 py-2 bg-white shadow-md shadow-black/5">
-                <button type="button" class="text-lg font-semibold text-gray-900 sidebar">
-                    <i class="ri-menu-line"></i>
-                </button>
+    <!-- navbar -->
+    <div class="sticky top-0 left-0 z-30 flex items-center px-6 py-2 bg-white shadow-md shadow-black/5">
+        <button type="button" class="text-lg font-semibold text-gray-900 sidebar">
+            <i class="ri-menu-line"></i>
+        </button>
 
-                <ul class="flex items-center ml-auto">
-                    <li class="ml-3 ">
-                        <p class="flex items-center ">
-                        <div class="p-2 text-left md:block">
-                            <h2 class="text-sm font-semibold text-gray-800">{{ Auth::user()->prenom }}
-                                {{ Auth::user()->nom }}</h2>
-                            <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
-                        </div>
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <!-- end navbar -->
+        <ul class="flex items-center ml-auto">
+            <li class="ml-3 ">
+                <p class="flex items-center ">
+                <div class="p-2 text-left md:block">
+                    <h2 class="text-sm font-semibold text-gray-800">{{ Auth::user()->prenom }}
+                        {{ Auth::user()->nom }}</h2>
+                    <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
+                </div>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <!-- end navbar -->
