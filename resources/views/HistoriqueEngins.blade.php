@@ -159,11 +159,10 @@
     <!-- end navbar -->
 
     <div class="relative flex ml-[350px] mt-10">
-        <h2 class="font-bold">Veuillez choisir le type d'historique : </h2>
-        <select id="selectHistorique" class="relative w-[180px]">
-            <option>Type d'historique</option>
-            <option value="./HistoriqueEngins">Engins</option>
-            <option value="./HistoriqueClients">Clients</option>
+        <h2 class="font-bold">Veuillez choisir le type d'historique : &nbsp;</h2>
+        <select id="selectHistorique" class="relative w-[220px] bg-white border-black border-2 rounded-md text-center">
+            <option disabled selected>Historique Engins</option>
+            <option value="./HistoriqueClients">Historique Clients</option>
         </select>
     </div>
 

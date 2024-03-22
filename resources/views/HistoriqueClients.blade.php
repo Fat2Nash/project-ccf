@@ -94,6 +94,14 @@
             </li>
 
             <li class="mb-1 group">
+                <a href="/HistoriqueLocations" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <span class="text-sm">Historique locations</span>
+
+                </a>
+            </li>
+
+            <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='bx bx-bell mr-3 text-lg'></i>
                     <span class="text-sm">Notifications</span>
@@ -152,11 +160,10 @@
     <!-- end navbar -->
 
     <div class="relative flex ml-[350px] mt-10">
-        <h2 class="font-bold">Veuillez choisir le type d'historique : </h2>
-        <select id="selectHistorique" class="relative w-[180px]">
-            <option>Type d'historique</option>
-            <option value="./HistoriqueEngins">Engins</option>
-            <option value="./HistoriqueClients">Clients</option>
+        <h2 class="font-bold">Veuillez choisir le type d'historique : &nbsp;</h2>
+        <select id="selectHistorique" class="relative w-[220px] bg-white border-black border-2 rounded-md text-center">
+            <option disabled selected>Historique Clients</option>
+            <option value="./HistoriqueEngins">Historique Engins</option>
         </select>
     </div>
 
@@ -285,13 +292,14 @@
                     </div>
                 </div>
 
+                @php
+                $clients = DB::table('clients')->get(); // Récupérer tous les clients de la base de données
+                @endphp
+
                 <div class="block w-full overflow-x-auto overflow-y-auto max-h-96">
                     <table class="items-center bg-transparent w-full border-collapse">
                 <thead>
                 <tr>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                ID
-                                </th>
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                 Nom
                                 </th>
@@ -320,141 +328,20 @@
                 </thead>
 
                 <tbody>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                    4,569
-                    </td>
-                    <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    340
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                    46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    3,985
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    319
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                    46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    3,513
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    294
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                    36,49%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    2,050
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    147
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                    50,87%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    1,795
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    190
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                    46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    1,795
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    190
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                    46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    1,795
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    190
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                    46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    1,795
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    190
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                    46,53%
-                    </td>
-                </tr>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700">
-                        ...
-                    </th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    1,795
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    190
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                    46,53%
-                    </td>
-                </tr>
+                    <@foreach($clients as $client)
+                    <tr>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{$client->nom }}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{ $client->prenom }}
+                        </td>
+                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{ $client->cree_le }}
+                        </td>
+                        <!-- Continuez ainsi pour chaque colonne que vous souhaitez afficher -->
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
             </div>
