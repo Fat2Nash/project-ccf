@@ -102,22 +102,6 @@
             </li>
 
             <li class="mb-1 group">
-                <a href="/HistoriqueClients" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
-                    <span class="text-sm">Historique Clients</span>
-
-                </a>
-            </li>
-
-            <li class="mb-1 group">
-                <a href="/HistoriqueEngins" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
-                    <span class="text-sm">Historique Engins</span>
-
-                </a>
-            </li>
-
-            <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='bx bx-bell mr-3 text-lg'></i>
                     <span class="text-sm">Notifications</span>
@@ -174,13 +158,14 @@
 
     </div>
     <!-- end navbar -->
+
     <div class="relative flex ml-[350px] mt-10">
         <h2 class="font-bold">Veuillez choisir le type d'historique : </h2>
-        <select class="relative w-[180px]">
+        <select id="selectHistorique" class="relative w-[180px]">
             <option>Type d'historique</option>
-            <option>Engins</option>
-            <option>Clients</option>
-          </select>
+            <option value="./HistoriqueEngins">Engins</option>
+            <option value="./HistoriqueClients">Clients</option>
+        </select>
     </div>
 
     <footer class="absolute w-full p-4 bg-white inset-x-0 bottom-0">
@@ -190,5 +175,13 @@
         </div>
     </footer>
 
+    <script>
+        document.getElementById("selectHistorique").addEventListener("change", function() {
+            var selectedOption = this.options[this.selectedIndex];
+            if (selectedOption.value !== "") {
+                window.location.href = selectedOption.value;
+            }
+        });
+    </script>
 </body>
 </html>
