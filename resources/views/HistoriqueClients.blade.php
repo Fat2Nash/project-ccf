@@ -293,13 +293,23 @@
                 </div>
 
                 @php
-                $clients = DB::table('clients')->get(); // Récupérer tous les clients de la base de données
+                    use App\Models\Client; // Importer le modèle Client
+                    $clients = Client::all(); // Récupérer tous les clients de la base de données
+
+                    use App\Models\Engin; // Importer le modèle Engin
+                    $engins = Engin::all(); // Récupérer tous les clients de la base de données
+
+                    use App\Models\Location; // Importer le modèle Location Engin
+                    $loc_engin = Location::all(); // Récupérer tous les clients de la base de données
                 @endphp
 
                 <div class="block w-full overflow-x-auto overflow-y-auto max-h-96">
                     <table class="items-center bg-transparent w-full border-collapse">
                 <thead>
                 <tr>
+                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+
+                                </th>
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                 Nom
                                 </th>
@@ -328,19 +338,43 @@
                 </thead>
 
                 <tbody>
-                    <@foreach($clients as $client)
-                    <tr>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            {{$client->nom }}
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            {{ $client->prenom }}
-                        </td>
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            {{ $client->cree_le }}
-                        </td>
-                        <!-- Continuez ainsi pour chaque colonne que vous souhaitez afficher -->
-                    </tr>
+                    @php
+                        $counter = 1;
+                    @endphp
+                    @foreach($clients as $key => $client)
+                        @if(isset($engins[$key]))
+                            @elseif(isset($loc_engin[$key]))
+                            <tr>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $counter }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $client->nom }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $client->prenom }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $client->cree_le }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $engins[$key]->marque }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $engins[$key]->modele }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $engins[$key]->categorie }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $location_engins[$key]->Louer_le }}
+                                </td>
+                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                    {{ $location_engins[$key]->Rendu_le }}
+                                </td>
+                                <!-- Continuez ainsi pour chaque colonne que vous souhaitez afficher -->
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
             </table>
