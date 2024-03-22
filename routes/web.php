@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecupererDonneesUtilisateurs;
 use Illuminate\Support\Facades\Route;
 
 
@@ -9,9 +10,12 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/clients', function () {
-    return view('client');
-})->middleware(['auth', 'verified'])->name('client');
+Route::get('/clients', [RecupererDonneesUtilisateurs::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('client');
+
+Route::view('/client', 'client')->name('client');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
