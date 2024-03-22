@@ -7,7 +7,7 @@
         <ul class="mt-4">
             <span class="font-bold text-gray-400 uppercase">Commun</span>
             <li class="mb-1 group">
-                <a href=""
+                <a href="/"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class="mr-3 text-lg bx bx-home"></i>
                     <span class="text-sm">Accueil</span>
@@ -18,7 +18,7 @@
                 <a href=""
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-list-ul'></i>
-                    <span class="text-sm">Liste engins</span>
+                    <span class="text-sm">Liste locations</span>
                 </a>
             </li>
             <span class="font-bold text-gray-400 uppercase">Mécanicien / Chauffeur</span>
@@ -56,7 +56,7 @@
             </li>
             <span class="font-bold text-gray-400 uppercase">Responsable</span>
             <li class="mb-1 group">
-                <a href=""
+                <a href="/clients"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-face'></i>
                     <span class="text-sm">Fiches clients</span>
