@@ -91,6 +91,6 @@ OU
   - [ ] Par engin
 - [ ] Visualiser les engins sur la carte
 <br />
-- [ ] Visualiser la liste des engin à :
+- [x] Visualiser la liste des engin à :
   - [ ] Livrer
   - [ ] Récupérer
