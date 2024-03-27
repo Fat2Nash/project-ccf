@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class RecupererDonneesUtilisateurs extends Controller
@@ -11,7 +11,7 @@ class RecupererDonneesUtilisateurs extends Controller
     {
         // Retrieve all products from the database
        // Importer le modèle Client
-        $clients = User::all();
+        $clients = Client::all();
         return view('/client', ['clients' => $clients]);
     }
 }

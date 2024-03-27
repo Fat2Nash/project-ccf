@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ajouterdonnees;
 use App\Http\Controllers\RecupererDonneesUtilisateurs;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,8 @@ Route::get('/', function () {
 Route::get('/clients', [RecupererDonneesUtilisateurs::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('client');
+
+Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouter']);
 
 Route::view('/client', 'client')->name('client');
 
