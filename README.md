@@ -29,7 +29,7 @@ Pour vérifier la bonne installation de NodeJS :
    git clone https://github.com/your_username_/Project-Name.git
    ```
 OU
-*Télécharger le projet*
+  *Télécharger le projet*
 
 2. Installer les packages Composer
    ```sh
