@@ -16,7 +16,7 @@ Pour vérifier la bonne installation de Comoser :
   ```sh
   composer
   ```
-  * NodeJS : [Installer Composer](https://nodejs.org/en/download) <br/>
+* NodeJS : [Installer Composer](https://nodejs.org/en/download) <br/>
 Pour vérifier la bonne installation de NodeJS : 
   ```sh
   npm -v
