@@ -41,19 +41,19 @@ OU
    ```
 4. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster ce qui suit :
 ```env
-DB_CONNECTION=sqlite    # mettre mysql si besoin de mysql 
+  DB_CONNECTION=sqlite    # mettre mysql si besoin de mysql 
 
-# DB_HOST=127.0.0.1
+  # DB_HOST=127.0.0.1
 
-# DB_PORT=3306
+  # DB_PORT=3306
 
-# DB_DATABASE=laravel
+  # DB_DATABASE=laravel
 
-# DB_USERNAME=root
+  # DB_USERNAME=root
 
-# DB_PASSWORD=
+  # DB_PASSWORD=
 
-# DB_COLLATION=utf8mb4_general_ci # pour mysql
+  # DB_COLLATION=utf8mb4_general_ci # pour mysql
 ```
 ## Base de donées
 
