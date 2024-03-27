@@ -60,9 +60,10 @@ OU
 ## Avancée
 
 ### Personnelle
-<div align="center">
+<p align="center">
+
 ![60%](https://progress-bar.dev/60)
-  </div>
+  </p>
 
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
