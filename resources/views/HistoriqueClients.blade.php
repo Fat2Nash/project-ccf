@@ -301,6 +301,12 @@
 
                     use App\Models\Location; // Importer le modèle Location Engin
                     $loc_engin = Location::all(); // Récupérer tous les clients de la base de données
+
+                    use App\Models\Position; // Importer le modèle Location Engin
+                    $position_engin = Position::all();
+
+                    use App\Models\Cycle; // Importer le modèle Location Engin
+                    $cycle_engin = Cycle::all();
                 @endphp
 
                 <div class="block w-full overflow-x-auto overflow-y-auto max-h-96">
@@ -341,41 +347,36 @@
                     @php
                         $counter = 1;
                     @endphp
-                    @foreach($clients as $key => $client)
-                        @if(isset($engins[$key]))
-                            @elseif(isset($loc_engin[$key]))
                             <tr>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                     {{ $counter }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $client->nom }}
+                                    {{ $clients->first()->nom }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $client->prenom }}
+                                    {{ $clients->first()->prenom }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $client->cree_le }}
+                                    {{ $clients->first()->cree_le }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $engins[$key]->marque }}
+                                    {{ $engins->first()->marque }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $engins[$key]->modele }}
+                                    {{ $engins->first()->modele }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $engins[$key]->categorie }}
+                                    {{ $engins->first()->categorie }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $location_engins[$key]->Louer_le }}
+                                    {{ $loc_engin->first()->Louer_le }}
                                 </td>
                                 <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                    {{ $location_engins[$key]->Rendu_le }}
+                                    {{ $loc_engin->first()->Rendu_le }}
                                 </td>
                                 <!-- Continuez ainsi pour chaque colonne que vous souhaitez afficher -->
                             </tr>
-                        @endif
-                    @endforeach
                 </tbody>
             </table>
             </div>

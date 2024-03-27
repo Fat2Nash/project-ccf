@@ -2,22 +2,43 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
     // Nom de la table associée au modèle
     protected $table = 'loc_engin';
+    protected $primaryKey = 'id_loc_engin';
 
     // Attributs que vous pouvez remplir massivement
     protected $fillable = [
-        'Louer_le', 'Rendu_le',
+        'client_id',
+        'id_engins',
+        'adresse',
+        'ville',
+        'code_postal',
+        'pays',
+        'Temps_fonct',
+        'Louer_le',
+        'Rendu_le',
     ];
 
-    // Si vous avez des relations avec d'autres modèles, vous pouvez les définir ici
-    // Par exemple, une relation One-to-Many avec une table de commandes
-    public function commandes()
+    // Types de données des colonnes
+    protected $casts = [
+        'Louer_le' => 'datetime',
+        'Rendu_le' => 'datetime',
+    ];
+
+    // Relation avec la table 'position_engin'
+    public function positionEngin()
     {
-        return $this->hasMany(Commande::class);
+        return $this->hasOne(PositionEngin::class, 'id_loc_engin', 'id_loc_engin');
+    }
+
+    // Relation avec la table 'cycle_engin'
+    public function cycleEngin()
+    {
+        return $this->hasOne(CycleEngin::class, 'id_loc_engin', 'id_loc_engin');
     }
 }

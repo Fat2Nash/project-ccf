@@ -2,22 +2,35 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    // Nom de la table associée au modèle
+    use HasFactory;
     protected $table = 'clients';
+    protected $primaryKey = 'id_client';
 
-    // Attributs que vous pouvez remplir massivement
     protected $fillable = [
-        'nom', 'prenom', 'cree_le',
+        'nom',
+        'prenom',
+        'mail',
+        'adresse',
+        'ville',
+        'code_postal',
+        'pays',
+        'telephone',
+        'notes',
+        'cree_le',
     ];
 
-    // Si vous avez des relations avec d'autres modèles, vous pouvez les définir ici
-    // Par exemple, une relation One-to-Many avec une table de commandes
-    public function commandes()
+    protected $casts = [
+        'cree_le' => 'datetime',
+    ];
+
+    public function LocationEngin()
     {
-        return $this->hasMany(Commande::class);
+        return $this->hasOne(LocationEngin::class, 'id_client', 'id_loc_engin');
     }
 }
+
