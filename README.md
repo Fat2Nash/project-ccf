@@ -60,8 +60,9 @@ OU
 ## Avancée
 
 ### Personnelle
-
+<div align="center">
 ![60%](https://progress-bar.dev/60)
+  </div>
 
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
@@ -78,7 +79,7 @@ OU
     - [x] localisation
     - [ ] Fonctionnement
 - [x] Déterminer les informations et les horodater
-#
+
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
     - [x] Client
