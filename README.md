@@ -39,14 +39,23 @@ OU
    ```sh
    npm install
    ```
+4. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster ce qui suit :
+```env
+DB_CONNECTION=sqlite    # mettre mysql si besoin de mysql 
+
+# DB_HOST=127.0.0.1
+
+# DB_PORT=3306
+
+# DB_DATABASE=laravel
+
+# DB_USERNAME=root
+
+# DB_PASSWORD=
+
+# DB_COLLATION=utf8mb4_general_ci # pour mysql
+```
 ## Base de donées
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## Avancée
 
