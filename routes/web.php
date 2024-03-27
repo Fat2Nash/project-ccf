@@ -17,7 +17,7 @@ Route::get('/clients', [RecupererDonneesUtilisateurs::class, 'index'])
 
 Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouter']);
 
-Route::view('/client', 'client')->name('client');
+// Route::view('/client', 'client')->name('client');
 
 
 Route::middleware('auth')->group(function () {
