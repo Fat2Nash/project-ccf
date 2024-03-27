@@ -127,8 +127,16 @@
                         <label>Pays : </label><input name="pays" type="text" placeholder="France">
                         <label>Téléphone : </label><input name="telephone" type="tel" placeholder="+33 1 23 45 67 89">
                         <label>Note : </label><textarea name="notes" type="text" placeholder="Eventuelles notes et/ou information supplémentaires"></textarea>
-                        <button type="submit"> Envoyer</button>
-                        <button @click="isOpen = false" class="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline" type="button"> Anuler</button>
+                        <button class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        Ajouter la fiche</button>
+                        <button @click="isOpen = false" class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-red-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-red-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rotate-45">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        Annuler</button>
                         </form>
                         </div>
                     </div>
