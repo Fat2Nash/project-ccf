@@ -11,12 +11,12 @@
 ### Prérequis
 
 Afin de pouvoir pleinement utiliser le projet, il y a quelques prérequis : 
-* Composer : [Installer Composer](https://getcomposer.org/)
+* Composer : [Installer Composer](https://getcomposer.org/) <br/>
 Pour vérifier la bonne installation de Comoser : 
   ```sh
   composer
   ```
-  * NodeJS : [Installer Composer](https://nodejs.org/en/download)
+  * NodeJS : [Installer Composer](https://nodejs.org/en/download) <br/>
 Pour vérifier la bonne installation de NodeJS : 
   ```sh
   npm -v
