@@ -78,19 +78,19 @@ OU
     - [x] localisation
     - [ ] Fonctionnement
 - [x] Déterminer les informations et les horodater
-<br />
+<br >
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
     - [x] Client
     - [ ] Engins
     - [ ] Location
 - [ ] Visualiser les engins disponibles
-<br />
+<br >
 - [x] Visualiser les historiques :
   - [x] Par client
   - [ ] Par engin
 - [ ] Visualiser les engins sur la carte
-<br />
+<br >
 - [x] Visualiser la liste des engin à :
   - [ ] Livrer
   - [ ] Récupérer
