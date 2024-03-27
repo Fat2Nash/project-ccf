@@ -61,7 +61,7 @@ OU
 
 ### Personnelle
 
-![50%](https://progress-bar.dev/99)
+![50%](https://progress-bar.dev/50)
 
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
@@ -71,3 +71,4 @@ OU
 - [ ] Visualiser les engins disponibles
 
 ### Globale
+![30%](https://progress-bar.dev/30)
