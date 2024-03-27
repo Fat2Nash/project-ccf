@@ -39,7 +39,7 @@ OU
    ```sh
    npm install
    ```
-4. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster ce qui suit :
+4. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster si besoin :
 ```env
   DB_CONNECTION=sqlite    # mettre mysql si besoin de mysql 
   
@@ -60,6 +60,9 @@ OU
 ## Avancée
 
 ### Personnelle
+
+![50%](https://progress-bar.dev/50)
+
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
     - [x] Client
