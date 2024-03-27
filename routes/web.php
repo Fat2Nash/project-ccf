@@ -18,4 +18,12 @@ Route::get('/LocationFiche', function () {
     return view('LocationFiche');
 });
 
+Route::get('/ListeEngin', function () {
+    return view('ListeEngin');
+});
+
+Route::get('/SuivieMaintenance', function () {
+    return view('SuivieMaintenance');
+});
+
 require __DIR__.'/auth.php';
