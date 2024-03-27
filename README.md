@@ -71,7 +71,7 @@ OU
 - [ ] Visualiser les engins disponibles
 
 ### Globale
-![30%](https://progress-bar.dev/30)
+![45%](https://progress-bar.dev/45)
 
 #### Quentin
 - [x] Stocker les données de localisation/de fonctionnement des engins
