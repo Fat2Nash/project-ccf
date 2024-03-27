@@ -13,16 +13,12 @@
 <!-- TABLE OF CONTENTS -->
 <!-- ABOUT THE PROJECT -->
 ## A propos du projet
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Projet de BTS SN-IR réalisé en 2024
 
 
 
 ### Built With
 
-
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Tailwind][Tailwindcss.com]][Tailwind-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
