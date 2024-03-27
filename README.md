@@ -61,7 +61,7 @@ OU
 
 ### Personnelle
 
-![50%](https://progress-bar.dev/50)
+![50%](https://progress-bar.dev/99)
 
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
