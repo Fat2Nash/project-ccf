@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiriot-Location | {{Auth::user()->name}}</title>
+    <title>Thiriot-Location | {{ Auth::user()->name }}</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -126,101 +126,116 @@
     <!-- end sidenav -->
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
-        <!-- navbar -->
-        <div class="py-2 px-6 bg-white flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
-            <button type="button" class="text-lg text-gray-900 font-semibold sidebar">
-                <i class="ri-menu-line"></i>
-            </button>
-
-            <ul class="ml-auto flex items-center">
-
-
-                <li class=" ml-3">
-                    <p class=" flex items-center">
-                    <div class="p-2 md:block text-left">
-                        <h2 class="text-sm font-semibold text-gray-800">{{Auth::user()->name}}</h2>
-                        <p class="text-xs text-gray-500">{{Auth::user()->email}}</p>
-                    </div>
-                    </p>
-                </li>
-            </ul>
-        </div>
-
-
-        </div>
-        <!-- end navbar -->
+        <x-side-navbar />
 
         <!-- Content -->
         <div class="p-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                <div class="p-6 relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-white  w-full shadow-lg rounded">
-                    <div class="rounded-t mb-0 px-0 border-0">
+            <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
+                <div
+                    class="relative flex flex-col w-full min-w-0 p-6 mb-4 break-words bg-white rounded shadow-lg lg:mb-0">
+                    <div class="px-0 mb-0 border-0 rounded-t">
                         <div class="flex flex-wrap items-center px-4 py-2">
-                            <div class="relative w-full max-w-full flex-grow flex-1">
-                                <h3 class="font-semibold text-base text-gray-900 ">Etat des engins</h3>
+                            <div class="relative flex-1 flex-grow w-full max-w-full">
+                                <h3 class="text-base font-semibold text-gray-900 ">Etat des engins</h3>
                             </div>
                         </div>
                         <div class="block w-full overflow-x-auto">
                             <table class="items-center w-full bg-transparent border-collapse">
                                 <thead>
                                     <tr>
-                                        <th class="px-4 bg-gray-100  text-gray-500  align-middle border border-solid border-gray-200  py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Etat</th>
-                                        <th class="px-4 bg-gray-100  text-gray-500  align-middle border border-solid border-gray-200  py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Quantité</th>
-                                        <th class="px-4 bg-gray-100  text-gray-500  align-middle border border-solid border-gray-200  py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left min-w-140-px"></th>
+                                        <th
+                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                            Etat</th>
+                                        <th
+                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                            Quantité</th>
+                                        <th
+                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap min-w-140-px">
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="text-gray-700 ">
-                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Loué</th>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">1</td>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <th
+                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            Loué</th>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            1</td>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <span class="mr-2">70%</span>
                                                 <div class="relative w-full">
-                                                    <div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
-                                                        <div style="width: 70%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-600"></div>
+                                                    <div class="flex h-2 overflow-hidden text-xs bg-blue-200 rounded">
+                                                        <div style="width: 70%"
+                                                            class="flex flex-col justify-center text-center text-white bg-blue-600 shadow-none whitespace-nowrap">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 ">
-                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Disponible</th>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">6</td>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <th
+                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            Disponible</th>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            6</td>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <span class="mr-2">40%</span>
                                                 <div class="relative w-full">
-                                                    <div class="overflow-hidden h-2 text-xs flex rounded bg-green-200">
-                                                        <div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
+                                                    <div class="flex h-2 overflow-hidden text-xs bg-green-200 rounded">
+                                                        <div style="width: 40%"
+                                                            class="flex flex-col justify-center text-center text-white bg-green-500 shadow-none whitespace-nowrap">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 ">
-                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">En maintenance</th>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">5</td>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <th
+                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            En maintenance</th>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            5</td>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <span class="mr-2">45%</span>
                                                 <div class="relative w-full">
-                                                    <div class="overflow-hidden h-2 text-xs flex rounded bg-yellow-200">
-                                                        <div style="width: 45%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-500"></div>
+                                                    <div
+                                                        class="flex h-2 overflow-hidden text-xs bg-yellow-200 rounded">
+                                                        <div style="width: 45%"
+                                                            class="flex flex-col justify-center text-center text-white bg-yellow-500 shadow-none whitespace-nowrap">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 ">
-                                        <th class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">Autre</th>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">4</td>
-                                        <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        <th
+                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            Autre</th>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            4</td>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
                                                 <span class="mr-2">60%</span>
                                                 <div class="relative w-full">
-                                                    <div class="overflow-hidden h-2 text-xs flex rounded bg-orange-200">
-                                                        <div style="width: 60%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-orange-500"></div>
+                                                    <div
+                                                        class="flex h-2 overflow-hidden text-xs bg-orange-200 rounded">
+                                                        <div style="width: 60%"
+                                                            class="flex flex-col justify-center text-center text-white bg-orange-500 shadow-none whitespace-nowrap">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -231,8 +246,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md">
-                    <div class="flex justify-between mb-4 items-start">
+                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
+                    <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Dernières maintenances</div>
 
                     </div>
@@ -240,29 +255,33 @@
                         <table class="w-full min-w-[540px]">
                             <tbody>
                                 <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-orange-600 ml-2 truncate">Engin 1</a>
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
+                                                1</a>
                                         </div>
                                     </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
                                     </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
                                     </td>
 
                                 </tr>
                                 <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-orange-600 ml-2 truncate">Engin 7</a>
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
+                                                7</a>
                                         </div>
                                     </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
                                     </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] font-medium text-gray-400">11 h 37</span>
                                     </td>
 
@@ -272,9 +291,9 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                <div class="bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md lg:col-span-1">
-                    <div class="justify-between mb-4 items-start">
+            <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
+                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
+                    <div class="items-start justify-between mb-4">
 
                         <div>
                             <div id="map" class="w-full h-full"></div>
@@ -294,8 +313,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-80 bg-white border border-gray-100 shadow-md shadow-black/5 p-6 rounded-md ">
-                    <div class="flex justify-between mb-4 items-start">
+                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5 ">
+                    <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Alertes</div>
 
                     </div>
@@ -303,29 +322,37 @@
                         <table class="w-full min-w-[460px]">
                             <thead>
                                 <tr>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Type</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Location</th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                                        Type</th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
+                                        Location</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-orange-600 ml-2 truncate">Boitier ouvert</a>
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
+                                                ouvert</a>
                                         </div>
                                     </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] font-medium text-red-500">21</span>
                                     </td>
 
                                 </tr>
                                 <tr>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="text-gray-600 text-sm font-medium hover:text-orange-600 ml-2 truncate">Boitier débranché</a>
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
+                                                débranché</a>
                                         </div>
                                     </td>
-                                    <td class="py-2 px-4 border-b border-b-gray-50">
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] font-medium text-rose-500">12</span>
                                     </td>
 
@@ -338,16 +365,13 @@
             </div>
         </div>
         <!-- End Content -->
-        <footer class="w-full p-4 bg-white">
 
 
-            <div class="text-center font-semibold text-black">
-                <p>© 2024 <span class=" text-orange-600">Thiriot-Locations</span> - Tous droits réservés.
-                </p>
-            </div>
-        </footer>
+        <x-footer />
+
     </main>
 
 </body>
 
 </html>
+

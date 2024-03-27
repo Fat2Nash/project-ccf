@@ -19,11 +19,11 @@ class EnginSeeder extends Seeder
                     'marque' => 'Caterpillar',
                     'modele' => '320',
                     'description' => 'Pelle hydraulique sur chenilles',
-                    'compteur_heures' => '1500',
+                    'compteur_heures' => 1500,
                     'statut' => 'Disponible',
-                    'maintenance' => '0',
-                    'cree_le' => 'now()',
-                    'mis_a_jours_le' => 'now()',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
                 ]);
                 // Créez un utilisateur de test
                 DB::table('engins')->insert([
@@ -31,11 +31,11 @@ class EnginSeeder extends Seeder
                     'marque' => 'Caterpillar',
                     'modele' => '123',
                     'description' => 'Mini pelle hydraulique sur chenilles',
-                    'compteur_heures' => '500',
+                    'compteur_heures' => 500,
                     'statut' => 'Louer',
-                    'maintenance' => '0',
-                    'cree_le' => 'now()',
-                    'mis_a_jours_le' => 'now()',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
                 ]);
     }
 }
