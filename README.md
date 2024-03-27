@@ -61,7 +61,7 @@ OU
 
 ### Personnelle
 
-![50%](https://progress-bar.dev/50)
+![60%](https://progress-bar.dev/60)
 
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
@@ -72,3 +72,25 @@ OU
 
 ### Globale
 ![30%](https://progress-bar.dev/30)
+
+- [x] Stocker les données de localisation/de fonctionnement des engins
+- [x] Publier les donées de : 
+    - [x] localisation
+    - [ ] Fonctionnement
+- [x] Déterminer les informations et les horodater
+
+- [x] S'authentifier
+- [x] Créer/modifier les fiches : 
+    - [x] Client
+    - [ ] Engins
+    - [ ] Location
+- [ ] Visualiser les engins disponibles
+
+- [x] Visualiser les historiques :
+  - [x] Par client
+  - [ ] Par engin
+- [ ] Visualiser les engins sur la carte
+
+- [ ] Visualiser la liste des engin à :
+  - [ ] Livrer
+  - [ ] Récupérer
