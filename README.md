@@ -78,7 +78,7 @@ OU
     - [x] localisation
     - [ ] Fonctionnement
 - [x] Déterminer les informations et les horodater
-##
+#
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
     - [x] Client
