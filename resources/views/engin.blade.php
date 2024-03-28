@@ -124,16 +124,16 @@
                         <!-- Overlay to darken the background -->
                         <div x-show="isOpen" class="overlay" @click="isOpen = false"></div>
 
-                        <div x-show="isOpen" class="fixed  left-1/2 transform -translate-x-[256px] -translate-y-1/2 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-50">
-                            <form action="/nouvel_engin" method="post">
+                        <div x-show="isOpen" class="fixed w-[50rem] left-1/2 transform -translate-x-[256px] -translate-y-1/2 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-50">
+                            <form action="/nouvel_engin" method="post"> 
                                 @csrf
-                                <div class="relative flex items-center py-5">
+                                <div class="relative flex items-center py-5 ">
                                     <div class="flex-grow border-t border-gray-600"></div>
                                     <span class="flex-shrink mx-4 text-gray-600">Nouvelle fiche engin</span>
                                     <div class="flex-grow border-t border-gray-600"></div>
                                 </div>
                                 <div class="container items-center p-2">
-                                    <h1 class="font-bold text-center">Hassoul</h1>
+                                    
                                     <label>Marque : </label><input name="marque" type="text" placeholder="Kubota">
                                     <label>Modèle : </label><input name="modele" type="text" placeholder="kx060-5">
                                     <label>Description : </label><input name="description" type="text" placeholder="bla bla">
