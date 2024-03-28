@@ -57,11 +57,11 @@
                                                 <div>
                                                     <h4 class="text-gray-700 ">
                                                         @if($engin->maintenance == 1)
-                                                            Oui
+                                                        Oui
                                                         @elseif($engin->maintenance == 0)
-                                                            Non
+                                                        Non
                                                         @else
-                                                            Etat inconnu
+                                                        Etat inconnu
                                                         @endif
 
                                                     </h4>
@@ -70,7 +70,14 @@
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
                                                     <h4 class="text-gray-700 ">{{ $engin -> statut}}</h4>
-                                                    <p class="text-gray-500 ">{{ $engin -> compteur_heures}}</p>
+                                                    <p class="text-gray-500 "><?php
+                                                                                // Convertir les secondes en heures et minutes
+                                                                                $secondes = $engin->compteur_heures;
+                                                                                $heures = floor($secondes / 3600);
+                                                                                $minutes = floor(($secondes % 3600) / 60);
+                                                                                ?>
+                                                        {{ $heures }} heures {{ $minutes }} minutes
+                                                    </p>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
@@ -129,16 +136,21 @@
                                     <h1 class="font-bold text-center">Hassoul</h1>
                                     <label>Marque : </label><input name="marque" type="text" placeholder="Kubota">
                                     <label>Modèle : </label><input name="modele" type="text" placeholder="kx060-5">
+                                    <label>Description : </label><input name="description" type="text" placeholder="bla bla">
                                 </div>
-                                <label>Catégorie : </label><select name="catégorie">
+                                <label>Catégorie : </label><select name="categorie">
                                     <option>Test</option>
                                 </select>
-                                <label>Nombre d'heures (En seconde) : </label><input name="nb_heures" type="number" placeholder="12587">
+                                <label>Nombre d'heures : </label><input name="nb_heures" type="text" placeholder="157:55">
                                 <label>Maintenance : </label><select name="maintenance">
-                                    <option>Oui</option>
-                                    <option>Non</option>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
                                 </select>
-                                <label>Statut : </label><input name="statut" type="text" placeholder="Loué">
+                                <label>Statut : </label><select name="statut" type="text">
+                                    <option>Loué</option>
+                                    <option>Disponible</option>
+                                    <option>Autre</option>
+                                </select>
 
                                 <button type="submit" class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
