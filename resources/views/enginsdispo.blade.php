@@ -11,150 +11,143 @@
 </head>
 
 <body class="text-gray-800 font-inter">
-
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
         <x-side-navbar />
         <div class="m-5"><!-- component -->
             <section class="container px-4 mx-auto">
-
                 <div class="flex flex-col mt-6">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                            <div class="overflow-hidden border border-gray-200 md:rounded-lg">
-                                <table class="min-w-full divide-y divide-gray-200 ">
+                            <div class="border border-gray-200  md:rounded-lg">
+                                <table class="relative min-w-full overflow-y-auto divide-y divide-gray-200 ">
                                     <thead class="bg-gray-50 ">
                                         <tr>
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                            <th scope="col"
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Identification
                                             </th>
-
-
-
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                            <th scope="col"
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Maintenance
                                             </th>
-
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">Information</th>
-
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">Description</th>
-
+                                            <th scope="col"
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                                Information</th>
+                                            <th scope="col"
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                                Description</th>
                                             <th scope="col" class="relative py-3.5 px-4">
                                                 <span class="sr-only">Modifier</span>
                                             </th>
                                         </tr>
                                     </thead>
+
                                     <tbody class="bg-white divide-y divide-gray-200 ">
+                                        @foreach ($enginsdispo as $engin)
                                         <tr>
-                                            @foreach($enginsdispo as $engin)
-                                            <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                                                <div>
-                                                    <h2 class="font-medium text-gray-800 ">{{ $engin -> modele}}</h2>
-                                                    <p class="text-sm font-normal text-gray-600 ">{{ $engin -> marque}}</p>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <div>
-                                                    <h4 class="text-gray-700 ">
-                                                        @if($engin->maintenance == 1)
-                                                        Oui
-                                                        @elseif($engin->maintenance == 0)
-                                                        Non
-                                                        @else
-                                                        Etat inconnu
-                                                        @endif
-
-                                                    </h4>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <div>
-                                                    <h4 class="text-gray-700 ">{{ $engin -> statut}}</h4>
-                                                    <p class="text-gray-500 "><?php
-                                                                                // Convertir les secondes en heures et minutes
-                                                                                $secondes = $engin->compteur_heures;
-                                                                                $heures = floor($secondes / 3600);
-                                                                                $minutes = floor(($secondes % 3600) / 60);
-                                                                                ?>
-                                                        {{ $heures }} heures {{ $minutes }} minutes
-                                                    </p>
-                                                </div>
-                                            </td>
-
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <div>
-                                                    <p class="text-gray-700 ">{{ $engin -> description}}</p>
-                                                </div>
-                                            </td>
-
-
-
-
-
-                                            
+                                                <td class="px-4 py-4 overflow-auto text-sm font-medium whitespace-nowrap">
+                                                    <div>
+                                                        <h2 class="font-medium text-gray-800 ">{{ $engin->modele }}
+                                                        </h2>
+                                                        <p class="text-sm font-normal text-gray-600 ">
+                                                            {{ $engin->marque }}</p>
+                                                    </div>
+                                                </td>
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <x-dropdown>
-                                                    <x-slot name="trigger">
-                                                        <button class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg " onclick="console.log('test')">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-                                                            </svg>
-                                                        </button>
-                                                    </x-slot>
-                                                </td></tr>
-
-                                                    <x-slot name="content">
-                                                        <!-- Dropdown content -->
-                                                        <div class="py-1 z-40 bg-red-500">
-                                                            <a href="{{$engin -> id_engins}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{$engin -> id_engin}}</a>
-                                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link 2</a>
-                                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link 3</a>
-                                                        </div>
-                                                    </x-slot>
-                                            </x-dropdown>
-                                            
-                                        
-
+                                                    <div>
+                                                        <h4 class="text-gray-700 ">
+                                                            @if ($engin->maintenance == 1)
+                                                                Oui
+                                                            @elseif($engin->maintenance == 0)
+                                                                Non
+                                                            @else
+                                                                Etat inconnu
+                                                            @endif
+                                                        </h4>
+                                                    </div>
+                                                </td>
+                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                    <div>
+                                                        <h4 class="text-gray-700 ">{{ $engin->statut }}</h4>
+                                                        <p class="text-gray-500 "><?php
+                                                        // Convertir les secondes en heures et minutes
+                                                        $secondes = $engin->compteur_heures;
+                                                        $heures = floor($secondes / 3600);
+                                                        $minutes = floor(($secondes % 3600) / 60);
+                                                        ?>
+                                                            {{ $heures }} heures {{ $minutes }} minutes
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                    <div>
+                                                        <p class="text-gray-700 ">{{ $engin->description }}</p>
+                                                    </div>
+                                                </td>
+                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                    <x-dropdown>
+                                                        <x-slot name="trigger">
+                                                            <button
+                                                                class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg "
+                                                                onclick="console.log('test')">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                    viewBox="0 0 24 24" stroke-width="1.5"
+                                                                    stroke="currentColor" class="w-6 h-6">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+                                                                </svg>
+                                                            </button>
+                                                        </x-slot>
+                                                </td>
+                                        </tr>
+                                        <x-slot name="content">
+                                            <!-- Dropdown content -->
+                                            <div class="top-0 left-0 w-48 overflow-auto bg-red-500 rounded-md shadow-md max-h-60">
+                                                <a href="{{ $engin->id_engins }}"
+                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ $engin->id_engin }}</a>
+                                                <a href="#"
+                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link
+                                                    2</a>
+                                                <a href="#"
+                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link
+                                                    3</a>
+                                            </div>
+                                        </x-slot>
+                                        </x-dropdown>
                                         <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
-                                        @endforeach
-
-
-
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-
                 <div class="mt-6 sm:flex sm:items-center sm:justify-between ">
                     <div class="text-sm text-gray-500 ">
-                        Page <span class="font-medium text-gray-700 ">1 </span>sur<span class="font-medium text-gray-700 "> 10</span>
+                        Page <span class="font-medium text-gray-700 ">1 </span>sur<span
+                            class="font-medium text-gray-700 "> 10</span>
                     </div>
-
-
-
-
                     <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
-                        <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        <a href="#"
+                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                             </svg>
-
                             <span>
                                 Précédent
                             </span>
                         </a>
-
-                        <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
+                        <a href="#"
+                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
                             <span>
                                 Suivant
                             </span>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                             </svg>
                         </a>
                     </div>
