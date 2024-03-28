@@ -12,7 +12,7 @@
 
         <script src="https://cdn.tailwindcss.com"></script>
 
-        <title>Thiriot-Location | {{Auth::user()->name}}</title>
+        <title>Thiriot-Location | {{Auth::user()->nom}}</title>
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -178,7 +178,7 @@
 
   <section class="py-1 bg-blueGray-50">
     <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-lg rounded ">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
                 <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -259,39 +259,61 @@
                 <tr>
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Marque
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Modèle
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Catégorie
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Engin Louer le
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Engin Rendu le
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Heure du dernier démarrage
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Heure du dernier arrêt
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Durée de fonctionnement
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Longitude
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Latitude
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                Date/Heure de la dernière position
-                                </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Marque
+                        <button class="sort-button" onclick="sortTable(1)">↑</button>
+                        <button class="sort-button" onclick="sortTable(1, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Modèle
+                        <button class="sort-button" onclick="sortTable(2)">↑</button>
+                        <button class="sort-button" onclick="sortTable(2, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Catégorie
+                        <button class="sort-button" onclick="sortTable(3)">↑</button>
+                        <button class="sort-button" onclick="sortTable(3, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Engin louer le
+                        <button class="sort-button" onclick="sortTable(4)">↑</button>
+                        <button class="sort-button" onclick="sortTable(4, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Engin rendu le
+                        <button class="sort-button" onclick="sortTable(5)">↑</button>
+                        <button class="sort-button" onclick="sortTable(5, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Dernier démarrage
+                        <button class="sort-button" onclick="sortTable(6)">↑</button>
+                        <button class="sort-button" onclick="sortTable(6, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Dernier arrêt
+                        <button class="sort-button" onclick="sortTable(7)">↑</button>
+                        <button class="sort-button" onclick="sortTable(7, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Durée de fonctionnement
+                        <button class="sort-button" onclick="sortTable(8)">↑</button>
+                        <button class="sort-button" onclick="sortTable(8, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Longitude
+                        <button class="sort-button" onclick="sortTable(9)">↑</button>
+                        <button class="sort-button" onclick="sortTable(9, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Latitude
+                        <button class="sort-button" onclick="sortTable(10)">↑</button>
+                        <button class="sort-button" onclick="sortTable(10, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Date/heure Dernière position
+                        <button class="sort-button" onclick="sortTable(11)">↑</button>
+                        <button class="sort-button" onclick="sortTable(11, false)">↓</button>
+                    </th>
                 </tr>
                 </thead>
 
@@ -408,50 +430,29 @@ document.getElementById("searchInput").addEventListener("input", function() {
     }
 });
 </script>
+
 <script>
-    document.getElementById("selectHistorique").addEventListener("change", function() {
-        var selectedOption = this.options[this.selectedIndex];
-        if (selectedOption.value !== "") {
-            window.location.href = selectedOption.value;
+    function sortTable(columnIndex, ascending = true) {
+        const table = document.getElementById("dataTable");
+        const rows = Array.from(table.getElementsByTagName("tr"));
+        const headerRow = rows.shift(); // Enlever l'en-tête du tableau
+
+        rows.sort((a, b) => {
+            const aValue = a.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+            const bValue = b.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+            return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+        });
+
+        // Vider le contenu du tableau
+        while (table.rows.length > 0) {
+            table.deleteRow(0);
         }
-    });
 
-    // Fonction pour trier la table en fonction du compteur
-    function sortTable(columnIndex, ascending) {
-        var table = document.getElementById("dataTable");
-        var rows = table.getElementsByTagName("tr");
-        var switching = true;
+        // Réinsérer l'en-tête du tableau
+        table.appendChild(headerRow);
 
-        // Boucle de tri
-        while (switching) {
-            switching = false;
-            var shouldSwitch = false;
-
-            // Parcours des lignes (à partir de la deuxième ligne)
-            for (var i = 1; i < (rows.length - 1); i++) {
-                var x = rows[i].getElementsByTagName("td")[columnIndex];
-                var y = rows[i + 1].getElementsByTagName("td")[columnIndex];
-
-                // Comparaison des valeurs de la colonne
-                if (ascending) {
-                    if (parseInt(x.textContent) > parseInt(y.textContent)) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else {
-                    if (parseInt(x.textContent) < parseInt(y.textContent)) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-            }
-
-            // Si un échange est nécessaire, effectuez le tri et marquez-le
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-            }
-        }
+        // Réinsérer les lignes triées
+        rows.forEach(row => table.appendChild(row));
     }
 
     // Écoute des événements de changement sur les cases à cocher pour le tri ascendant et descendant
@@ -476,28 +477,41 @@ document.getElementById("searchInput").addEventListener("input", function() {
     const sortAscendingCheckbox = document.getElementById("sortAscending");
     const sortDescendingCheckbox = document.getElementById("sortDescending");
 
-    // Ajout d'un écouteur d'événements sur les cases à cocher
+    // Ajout d'un écouteur d'événements sur les cases à cocher "Croissant"
     sortAscendingCheckbox.addEventListener("change", function() {
-        // Si la case à cocher "sortAscending" est cochée, décochez la case à cocher "sortDescending"
+        // Si la case à cocher "Croissant" est cochée
         if (this.checked) {
+            // Désélectionnez la case à cocher "Décroissant" et réactivez-la
             sortDescendingCheckbox.checked = false;
+            sortDescendingCheckbox.disabled = false;
+            // Désactivez temporairement la case à cocher "Croissant"
+            this.disabled = true;
+            // Effectuer le tri ascendant (appeler la fonction sortTable avec le paramètre "ascendant" à true)
+            sortTable(true);
         } else {
-            // Vérifie si les deux cases sont décochées, puis coche "sortAscending" si c'est le cas
-            if (!sortDescendingCheckbox.checked) {
-                this.checked = true;
-            }
+            // Si la case à cocher "Croissant" est désélectionnée, réactivez la case à cocher "Décroissant"
+            sortDescendingCheckbox.disabled = false;
+            // Effectuer le tri décroissant (appeler la fonction sortTable avec le paramètre "ascendant" à false)
+            sortTable(false);
         }
     });
 
+    // Ajout d'un écouteur d'événements sur les cases à cocher "Décroissant"
     sortDescendingCheckbox.addEventListener("change", function() {
-        // Si la case à cocher "sortDescending" est cochée, décochez la case à cocher "sortAscending"
+        // Si la case à cocher "Décroissant" est cochée
         if (this.checked) {
+            // Désélectionnez la case à cocher "Croissant" et réactivez-la
             sortAscendingCheckbox.checked = false;
+            sortAscendingCheckbox.disabled = false;
+            // Désactivez temporairement la case à cocher "Décroissant"
+            this.disabled = true;
+            // Effectuer le tri décroissant (appeler la fonction sortTable avec le paramètre "ascendant" à false)
+            sortTable(false);
         } else {
-            // Vérifie si les deux cases sont décochées, puis coche "sortDescending" si c'est le cas
-            if (!sortAscendingCheckbox.checked) {
-                this.checked = true;
-            }
+            // Si la case à cocher "Décroissant" est désélectionnée, réactivez la case à cocher "Croissant"
+            sortAscendingCheckbox.disabled = false;
+            // Effectuer le tri ascendant (appeler la fonction sortTable avec le paramètre "ascendant" à true)
+            sortTable(true);
         }
     });
 </script>

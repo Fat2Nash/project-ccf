@@ -17,6 +17,17 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script>
+            // Attendez que le DOM soit entièrement chargé
+            document.addEventListener("DOMContentLoaded", function() {
+                // Cochez la case à cocher "sortAscending" si elle est présente
+                var checkbox = document.getElementById("sortAscending");
+                if (checkbox) {
+                    checkbox.checked = true;
+                }
+            });
+        </script>
     </head>
 <body class="text-gray-800 font-inter">
     <!--sidenav -->
@@ -168,7 +179,7 @@
 
   <section class="flex py-1 bg-blueGray-50">
     <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-lg rounded ">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
                 <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -246,33 +257,49 @@
                     <table id="dataTable" class="items-center bg-transparent w-full border-collapse">
                 <thead>
                 <tr>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
 
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Nom">
-                                Nom
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Prenom">
-                                Prenom
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Compte">
-                                Date de création
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Marque">
-                                Marque de l'engin
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Modele">
-                                Modèle de l'engin
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Categorie">
-                                Catégorie de l'engin
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Louer">
-                                Engin Louer le
-                                </th>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-sort-by="Rendu">
-                                Engin Rendu le
-                                </th>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Nom
+                        <button class="sort-button" onclick="sortTable(1)">↑</button>
+                        <button class="sort-button" onclick="sortTable(1, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Prenom
+                        <button class="sort-button" onclick="sortTable(2)">↑</button>
+                        <button class="sort-button" onclick="sortTable(2, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Date de création
+                        <button class="sort-button" onclick="sortTable(3)">↑</button>
+                        <button class="sort-button" onclick="sortTable(3, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Marque de l'engin
+                        <button class="sort-button" onclick="sortTable(4)">↑</button>
+                        <button class="sort-button" onclick="sortTable(4, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Modele de l'engin
+                        <button class="sort-button" onclick="sortTable(5)">↑</button>
+                        <button class="sort-button" onclick="sortTable(5, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Catégorie de l'engin
+                        <button class="sort-button" onclick="sortTable(6)">↑</button>
+                        <button class="sort-button" onclick="sortTable(6, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Engin louer le
+                        <button class="sort-button" onclick="sortTable(7)">↑</button>
+                        <button class="sort-button" onclick="sortTable(7, false)">↓</button>
+                    </th>
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                        Engin rendu le
+                        <button class="sort-button" onclick="sortTable(8)">↑</button>
+                        <button class="sort-button" onclick="sortTable(8, false)">↓</button>
+                    </th>
                 </tr>
                 </thead>
 
@@ -280,47 +307,47 @@
                 $counter = 1;
             @endphp
 
-<tbody>
-    @foreach($clients as $client)
-        @foreach($engins as $engin)
-            @php
-                // Filtrer les locations correspondant au client et à l'engin actuel
-                $location = $loc_engin->where('client_id', $client->id_client)->where('id_engins', $engin->id_engins)->first();
-            @endphp
-            @if($location)
-                <tr>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $counter++ }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $client->nom }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $client->prenom }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $client->cree_le }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $engin->marque }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $engin->modele }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $engin->categorie }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $location->Louer_le }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $location->Rendu_le }}
-                    </td>
-                </tr>
-            @endif
-        @endforeach
-    @endforeach
-</tbody>
+                <tbody>
+                    @foreach($clients as $client)
+                        @foreach($engins as $engin)
+                            @php
+                                // Filtrer les locations correspondant au client et à l'engin actuel
+                                $location = $loc_engin->where('client_id', $client->id_client)->where('id_engins', $engin->id_engins)->first();
+                            @endphp
+                            @if($location)
+                                <tr>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $counter++ }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $client->nom }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $client->prenom }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $client->cree_le }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $engin->marque }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $engin->modele }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $engin->categorie }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $location->Louer_le }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $location->Rendu_le }}
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    @endforeach
+                </tbody>
             </table>
         </div>
       </div>
@@ -343,7 +370,7 @@
         });
     </script>
 
-<script>
+    <script>
     // Écoute des événements de saisie dans le champ de recherche
     document.getElementById("searchInput").addEventListener("input", function() {
         // Récupération de la valeur saisie dans le champ de recherche
@@ -374,58 +401,91 @@
             }
         }
     });
-</script>
+    </script>
 
-<script>
-    // Fonction pour trier la table en fonction du compteur
-    function sortTable(columnIndex, ascending) {
-        var table = document.getElementById("dataTable");
-        var rows = table.getElementsByTagName("tr");
-        var switching = true;
+    <script>
+        function sortTable(columnIndex, ascending = true) {
+            const table = document.getElementById("dataTable");
+            const rows = Array.from(table.getElementsByTagName("tr"));
+            const headerRow = rows.shift(); // Enlever l'en-tête du tableau
 
-        // Boucle de tri
-        while (switching) {
-            switching = false;
-            var shouldSwitch = false;
+            rows.sort((a, b) => {
+                const aValue = a.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+                const bValue = b.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+                return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+            });
 
-            // Parcours des lignes (à partir de la deuxième ligne)
-            for (var i = 1; i < (rows.length - 1); i++) {
-                var x = rows[i].getElementsByTagName("td")[columnIndex];
-                var y = rows[i + 1].getElementsByTagName("td")[columnIndex];
-
-                // Comparaison des valeurs de la colonne
-                if (ascending) {
-                    if (parseInt(x.textContent) > parseInt(y.textContent)) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else {
-                    if (parseInt(x.textContent) < parseInt(y.textContent)) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
+            // Vider le contenu du tableau
+            while (table.rows.length > 0) {
+                table.deleteRow(0);
             }
 
-            // Si un échange est nécessaire, effectuez le tri et marquez-le
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-            }
+            // Réinsérer l'en-tête du tableau
+            table.appendChild(headerRow);
+
+            // Réinsérer les lignes triées
+            rows.forEach(row => table.appendChild(row));
         }
-    }
 
-    // Écoute des événements de changement sur les cases à cocher pour le tri ascendant et descendant
-    document.getElementById("sortAscending").addEventListener("change", function() {
-        // Trie en fonction du compteur (première colonne) de manière ascendante
-        sortTable(0, this.checked);
-    });
+        // Écoute des événements de changement sur les cases à cocher pour le tri ascendant et descendant
+        document.getElementById("sortAscending").addEventListener("change", function() {
+            // Trie en fonction du compteur (première colonne) de manière ascendante
+            sortTable(0, this.checked);
+        });
 
-    document.getElementById("sortDescending").addEventListener("change", function() {
-        // Trie en fonction du compteur (première colonne) de manière descendante
-        sortTable(0, !this.checked);
-    });
-</script>
+        document.getElementById("sortDescending").addEventListener("change", function() {
+            // Trie en fonction du compteur (première colonne) de manière descendante
+            sortTable(0, !this.checked);
+        });
 
+        // Écoute des événements de saisie dans le champ de recherche
+        document.getElementById("searchInput").addEventListener("input", function() {
+            // Votre script pour filtrer les lignes de la table en fonction de la saisie dans le champ de recherche
+            // ...
+        });
+    </script>
+
+    <script>
+        const sortAscendingCheckbox = document.getElementById("sortAscending");
+        const sortDescendingCheckbox = document.getElementById("sortDescending");
+
+        // Ajout d'un écouteur d'événements sur les cases à cocher "Croissant"
+        sortAscendingCheckbox.addEventListener("change", function() {
+            // Si la case à cocher "Croissant" est cochée
+            if (this.checked) {
+                // Désélectionnez la case à cocher "Décroissant" et réactivez-la
+                sortDescendingCheckbox.checked = false;
+                sortDescendingCheckbox.disabled = false;
+                // Désactivez temporairement la case à cocher "Croissant"
+                this.disabled = true;
+                // Effectuer le tri ascendant (appeler la fonction sortTable avec le paramètre "ascendant" à true)
+                sortTable(true);
+            } else {
+                // Si la case à cocher "Croissant" est désélectionnée, réactivez la case à cocher "Décroissant"
+                sortDescendingCheckbox.disabled = false;
+                // Effectuer le tri décroissant (appeler la fonction sortTable avec le paramètre "ascendant" à false)
+                sortTable(false);
+            }
+        });
+
+        // Ajout d'un écouteur d'événements sur les cases à cocher "Décroissant"
+        sortDescendingCheckbox.addEventListener("change", function() {
+            // Si la case à cocher "Décroissant" est cochée
+            if (this.checked) {
+                // Désélectionnez la case à cocher "Croissant" et réactivez-la
+                sortAscendingCheckbox.checked = false;
+                sortAscendingCheckbox.disabled = false;
+                // Désactivez temporairement la case à cocher "Décroissant"
+                this.disabled = true;
+                // Effectuer le tri décroissant (appeler la fonction sortTable avec le paramètre "ascendant" à false)
+                sortTable(false);
+            } else {
+                // Si la case à cocher "Décroissant" est désélectionnée, réactivez la case à cocher "Croissant"
+                sortAscendingCheckbox.disabled = false;
+                // Effectuer le tri ascendant (appeler la fonction sortTable avec le paramètre "ascendant" à true)
+                sortTable(true);
+            }
+        });
+    </script>
 </body>
 </html>
