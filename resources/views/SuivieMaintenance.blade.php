@@ -11,6 +11,8 @@
 </head>
 <body>
 
+    
+
 <x-side-navbar />
 
 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
