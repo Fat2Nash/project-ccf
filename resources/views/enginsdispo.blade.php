@@ -67,6 +67,7 @@
                                                     </h4>
                                                 </div>
                                             </td>
+
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
                                                     <h4 class="text-gray-700 ">{{ $engin -> statut}}</h4>
@@ -80,20 +81,40 @@
                                                     </p>
                                                 </div>
                                             </td>
+
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
                                                     <p class="text-gray-700 ">{{ $engin -> description}}</p>
                                                 </div>
                                             </td>
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
 
-                                                <button class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg ">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-                                                    </svg>
-                                                </button>
-                                            </td>
-                                        </tr>
+
+
+
+
+                                            
+                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <x-dropdown>
+                                                    <x-slot name="trigger">
+                                                        <button class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg " onclick="console.log('test')">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
+                                                            </svg>
+                                                        </button>
+                                                    </x-slot>
+                                                </td></tr>
+
+                                                    <x-slot name="content">
+                                                        <!-- Dropdown content -->
+                                                        <div class="py-1 z-40 bg-red-500">
+                                                            <a href="{{$engin -> id_engins}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{$engin -> id_engin}}</a>
+                                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link 2</a>
+                                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link 3</a>
+                                                        </div>
+                                                    </x-slot>
+                                            </x-dropdown>
+                                            
+                                        
 
                                         <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
                                         @endforeach
@@ -106,6 +127,7 @@
                         </div>
                     </div>
                 </div>
+                
 
                 <div class="mt-6 sm:flex sm:items-center sm:justify-between ">
                     <div class="text-sm text-gray-500 ">
@@ -113,7 +135,7 @@
                     </div>
 
 
-                 
+
 
                     <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
                         <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
