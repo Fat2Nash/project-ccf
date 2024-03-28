@@ -55,7 +55,16 @@
 
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
-                                                    <h4 class="text-gray-700 ">{{ $engin -> maintenance}}</h4>
+                                                    <h4 class="text-gray-700 ">
+                                                        @if($engin->maintenance == 1)
+                                                            Oui
+                                                        @elseif($engin->maintenance == 0)
+                                                            Non
+                                                        @else
+                                                            Etat inconnu
+                                                        @endif
+
+                                                    </h4>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
@@ -117,17 +126,20 @@
                                     <div class="flex-grow border-t border-gray-600"></div>
                                 </div>
                                 <div class="container items-center p-2">
-                                    <h1 class="font-bold text-center">Identité</h1>
-                                    <label>Nom : </label><input name="nom" type="text" placeholder="DUPONT">
-                                    <label>Préom : </label><input name="prenom" type="text" placeholder="Jean-Luc">
+                                    <h1 class="font-bold text-center">Hassoul</h1>
+                                    <label>Marque : </label><input name="marque" type="text" placeholder="Kubota">
+                                    <label>Modèle : </label><input name="modele" type="text" placeholder="kx060-5">
                                 </div>
-                                <label>Email : </label><input name="mail" type="email" placeholder="test@exemple.com">
-                                <label>Adresse : </label><input name="adresse" type="text" placeholder="11 Rue de Mirecourt">
-                                <label>Ville : </label><input name="ville" type="text" placeholder="Ville-sur-Illon">
-                                <label>Code postal : </label><input name="code_postal" type="text" placeholder="88270">
-                                <label>Pays : </label><input name="pays" type="text" placeholder="France">
-                                <label>Téléphone : </label><input name="telephone" type="tel" placeholder="+33 1 23 45 67 89">
-                                <label>Note : </label><textarea name="notes" type="text" placeholder="Eventuelles notes et/ou information supplémentaires"></textarea>
+                                <label>Catégorie : </label><select name="catégorie">
+                                    <option>Test</option>
+                                </select>
+                                <label>Nombre d'heures (En seconde) : </label><input name="nb_heures" type="number" placeholder="12587">
+                                <label>Maintenance : </label><select name="maintenance">
+                                    <option>Oui</option>
+                                    <option>Non</option>
+                                </select>
+                                <label>Statut : </label><input name="statut" type="text" placeholder="Loué">
+
                                 <button type="submit" class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
