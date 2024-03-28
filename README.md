@@ -81,9 +81,13 @@ OU
 - [x] Déterminer les informations et les horodater
 #### Erwan
 - [x] S'authentifier
-- [x] Créer/modifier les fiches : 
+- [x] Créer les fiches : 
     - [x] Client
     - [x] Engins
+    - [ ] Location
+- [ ] Editer les fiches : 
+    - [ ] Client
+    - [ ] Engins
     - [ ] Location
 - [ ] Visualiser les engins disponibles
 #### Antony
