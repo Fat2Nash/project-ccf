@@ -6,9 +6,10 @@ use App\Http\Controllers\RecupererDonneesUtilisateurs;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
 
 Route::get('/engins-disponibles', [RecupererDonneesUtilisateurs::class, 'enginsdispo'])
     ->middleware(['auth', 'verified'])
