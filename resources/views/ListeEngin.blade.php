@@ -18,147 +18,111 @@
         <x-side-navbar />
 
         <!-- Content -->
+
+        <!-- 1ere case Liste Engin a Livrer -->
         <div class="p-6">
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
-                <div
-                    class="relative flex flex-col w-full min-w-0 p-6 mb-4 break-words bg-white rounded shadow-lg lg:mb-0">
-                    <div class="px-0 mb-0 border-0 rounded-t">
-                        <div class="flex flex-wrap items-center px-4 py-2">
-                            <div class="relative flex-1 flex-grow w-full max-w-full">
-                                <h3 class="text-base font-semibold text-gray-900 ">Liste des engins à récupérer</h3>
-                            </div>
-                        </div>
-                        <div class="block w-full overflow-x-auto">
-                            <table class="items-center w-full bg-transparent border-collapse">
-                                <thead>
-                                    <tr>
-                                        <th
-                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
-                                            Liste</th>
-                                        <th
-                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
-                                            Quantité</th>
-                                        <th
-                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap min-w-140-px">
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="text-gray-700 ">
-                                        <th
-                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            ID</th>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            1</td>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">70%</span>
-                                                <div class="relative w-full">
-                                                    <div class="flex h-2 overflow-hidden text-xs bg-blue-200 rounded">
-                                                        <div style="width: 70%"
-                                                            class="flex flex-col justify-center text-center text-white bg-blue-600 shadow-none whitespace-nowrap">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-gray-700 ">
-                                        <th
-                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            Disponible</th>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            6</td>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">40%</span>
-                                                <div class="relative w-full">
-                                                    <div class="flex h-2 overflow-hidden text-xs bg-green-200 rounded">
-                                                        <div style="width: 40%"
-                                                            class="flex flex-col justify-center text-center text-white bg-green-500 shadow-none whitespace-nowrap">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-gray-700 ">
-                                        <th
-                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            En maintenance</th>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            5</td>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">45%</span>
-                                                <div class="relative w-full">
-                                                    <div
-                                                        class="flex h-2 overflow-hidden text-xs bg-yellow-200 rounded">
-                                                        <div style="width: 45%"
-                                                            class="flex flex-col justify-center text-center text-white bg-yellow-500 shadow-none whitespace-nowrap">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-gray-700 ">
-                                        <th
-                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            Autre</th>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            4</td>
-                                        <td
-                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <span class="mr-2">60%</span>
-                                                <div class="relative w-full">
-                                                    <div
-                                                        class="flex h-2 overflow-hidden text-xs bg-orange-200 rounded">
-                                                        <div style="width: 60%"
-                                                            class="flex flex-col justify-center text-center text-white bg-orange-500 shadow-none whitespace-nowrap">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="font-medium">Dernières maintenances</div>
 
+
+               <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="font-medium">Liste des engins à Récupérer</div>
                     </div>
-                    <div class="overflow-hidden">
+                    <div class="overflow-auto max-h-[200px]"> <!-- Utilisation de overflow-auto pour activer le défilement -->
                         <table class="w-full min-w-[540px]">
                             <tbody>
-                                <tr>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
-                                                1</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                                    </td>
 
-                                </tr>
+                                <!-- 1er engin -->
+                        <tr>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <div class="flex items-center">
+                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 1</a>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                            </td>
+                        </tr>
+                        <!-- fin 1er engin -->
+                        <!-- 2eme engin -->
+                        <tr>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <div class="flex items-center">
+                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 2</a>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                            </td>
+                        </tr>
+                        <!-- fin 2eme engin -->
+                        <!-- 3eme engin -->
+                        <tr>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <div class="flex items-center">
+                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 3</a>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">11 h 37</span>
+                            </td>
+                        </tr>
+                        <!-- fin 3eme engin -->
+                        <!-- 4er engin -->
+                        <tr>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <div class="flex items-center">
+                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 4</a>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                            </td>
+                        </tr>
+                        <!-- fin 4eme engin -->
+                        <!-- 5eme engin -->
+                        <tr>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <div class="flex items-center">
+                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 5</a>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                            </td>
+                        </tr>
+                        <!-- fin 5eme engin -->
+                        <!-- 6eme engin -->
+                        <tr>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <div class="flex items-center">
+                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 6</a>
+                                </div>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                            </td>
+                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                            </td>
+                        </tr>
+                        <!-- fin 6eme engin -->
+                                <!-- 7eme engin -->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -171,15 +135,152 @@
                                         <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">11 h 37</span>
+                                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
                                     </td>
 
                                 </tr>
+                                <!-- fin 8eme engin-->
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!------ Debut deuxieme Case Liste Egin a recuperer ------------------------------------------------------------------------------------>
+                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="font-medium">Liste des engins à Récupérer</div>
+                    </div>
+                    <div class="overflow-auto max-h-[200px]"> <!-- Utilisation de overflow-auto pour activer le défilement -->
+                        <table class="w-full min-w-[540px]">
+                            <tbody>
+                                <!-- ENGIN 1 -->
+                <tr>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <div class="flex items-center">
+                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                Engin 1
+                            </a>
+                        </div>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                    </td>
+                </tr>
+                <!-- engin 2 -->
+                <tr>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <div class="flex items-center">
+                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                Engin 2
+                            </a>
+                        </div>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                    </td>
+                </tr>
+                <!-- engin 3 -->
+                <tr>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <div class="flex items-center">
+                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                Engin 3
+                            </a>
+                        </div>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                    </td>
+                </tr>
+                <!-- engin 4 -->
+                <tr>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <div class="flex items-center">
+                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                Engin 4
+                            </a>
+                        </div>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                    </td>
+                </tr>
+                <!-- engin 5 -->
+                <tr>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <div class="flex items-center">
+                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                Engin 5
+                            </a>
+                        </div>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                    </td>
+                </tr>
+                                <!-- engin 6 ----->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                                Engin 6
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                                    </td>
+                                </tr>
+                                <!-- engin 7 ----->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                                Engin 7
+                                            </a>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            <!------ Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
+            <!------ Debut 3eme Case (map) ------------------------------------------------------------------------------------>
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
                     <div class="items-start justify-between mb-4">
@@ -202,9 +303,12 @@
                         </div>
                     </div>
                 </div>
+                <!------ Fin 3eme Case (map) ------------------------------------------------------------------------------------>
+
+                <!------ Debut 4eme Case Infos Engin ------------------------------------------------------------------------------------>
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5 ">
                     <div class="flex items-start justify-between mb-4">
-                        <div class="font-medium">Alertes</div>
+                        <div class="font-medium">Infos Engin</div>
 
                     </div>
                     <div class="overflow-x-auto">
@@ -216,44 +320,71 @@
                                         Type</th>
                                     <th
                                         class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                                        Location</th>
+                                        Infos</th>
                                 </tr>
                             </thead>
                             <tbody>
+
+                                <!-- Lignes Categorie   ------------------------------------------------->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
                                             <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
-                                                ouvert</a>
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Categorie</a>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-red-500">21</span>
+                                        <span class="text-[13px] medium text-gray-600">Categorie Engin</span>
                                     </td>
 
                                 </tr>
+                                <!-- Lignes Marque   ------------------------------------------------->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
                                             <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
-                                                débranché</a>
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Marque</a>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-rose-500">12</span>
+                                        <span class="text-[13px] medium text-gray-600">MarqueEngin</span>
                                     </td>
 
                                 </tr>
+                                <!-- Lignes Modele   ------------------------------------------------->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Modele</a>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] medium text-gray-600">ModeleEngin</span>
+                                    </td>
 
+                                </tr>
+                                <!-- Lignes Description   ------------------------------------------------->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Description</a>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] medium text-gray-600">DescriptionEngin
+                                        </span>
+                                    </td>
+
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Content -->
+        <!-- Fin 4eme Case ----------------------------------------------->
 
 
         <x-footer />
