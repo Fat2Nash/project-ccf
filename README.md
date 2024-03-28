@@ -61,17 +61,21 @@ OU
 
 ### Personnelle
 
-![60%](https://progress-bar.dev/60)
+![50%](https://progress-bar.dev/50)
 
 - [x] S'authentifier
-- [x] Créer/modifier les fiches : 
+- [x] Créer les fiches : 
     - [x] Client
+    - [x] Engins
+    - [ ] Location
+- [ ] Editer les fiches : 
+    - [ ] Client
     - [ ] Engins
     - [ ] Location
 - [ ] Visualiser les engins disponibles
 
 ### Globale
-![45%](https://progress-bar.dev/45)
+![40%](https://progress-bar.dev/40)
 
 #### Quentin
 - [x] Stocker les données de localisation/de fonctionnement des engins
