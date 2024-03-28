@@ -104,3 +104,5 @@ OU
   - [ ] Livrer
   - [ ] Récupérer
 - [ ] Gérer les maintenance
+### Tous
+- [ ] Compatibilité téléphones
