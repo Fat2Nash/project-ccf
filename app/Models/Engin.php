@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Engin extends Model
 {
+    public $timestamps=false;
     // Nom de la table associée au modèle
     protected $table = 'engins';
     protected $primaryKey = 'id_engins';
