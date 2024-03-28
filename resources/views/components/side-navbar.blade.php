@@ -83,6 +83,14 @@
             <li class="mb-1 group">
                 <a href=""
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='mr-3 text-lg bx bx-check-square'></i>
+                    <span class="text-sm">Engins disponibles</span>
+
+                </a>
+            </li>
+            <li class="mb-1 group">
+                <a href=""
+                    class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-bell'></i>
                     <span class="text-sm">Notifications</span>
 
