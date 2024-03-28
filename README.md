@@ -78,9 +78,9 @@ OU
 ![40%](https://progress-bar.dev/40)
 
 #### Quentin
-- [x] Stocker les données de localisation/de fonctionnement des engins
+- [ ] Stocker les données de localisation/de fonctionnement des engins
 - [x] Publier les donées de : 
-    - [x] localisation
+    - [x] Localisation
     - [ ] Fonctionnement
 - [x] Déterminer les informations et les horodater
 #### Erwan
@@ -97,7 +97,7 @@ OU
 #### Antony
 - [x] Visualiser les historiques :
   - [x] Par client
-  - [ ] Par engin
+  - [x] Par engin
 - [ ] Visualiser les engins sur la carte
 #### Kasim
 - [ ] Visualiser la liste des engin à :
