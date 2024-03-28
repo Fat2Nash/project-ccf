@@ -23,4 +23,12 @@ class RecupererDonneesUtilisateurs extends Controller
         $enginsdispo = Engin::where('statut', 'Disponible')->get();
         return view('/enginsdispo', ['enginsdispo' => $enginsdispo]);
     }
+    public function stats(){
+        $total = Engin::all();
+        $loue = Engin::where('statut', 'Loué')->get();
+        $dispo = Engin::where('statut', 'Disponible')->get();
+        $autre = Engin::where('statut', 'Autre')->get();
+        $maintenance = Engin::where('maintenance', '1')->get();
+        return view('/welcome', ['loue' => $loue, 'dispo' => $dispo, 'autre'=> $autre, 'maintenance' => $maintenance, 'total' => $total]);
+    }
 }
