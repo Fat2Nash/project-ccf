@@ -83,7 +83,7 @@ OU
 - [x] S'authentifier
 - [x] Créer/modifier les fiches : 
     - [x] Client
-    - [ ] Engins
+    - [x] Engins
     - [ ] Location
 - [ ] Visualiser les engins disponibles
 #### Antony

@@ -11,11 +11,17 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/clients', [RecupererDonneesUtilisateurs::class, 'index'])
+Route::get('/clients', [RecupererDonneesUtilisateurs::class, 'client'])
     ->middleware(['auth', 'verified'])
     ->name('client');
 
-Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouter']);
+Route::get('/engins', [RecupererDonneesUtilisateurs::class, 'engin'])
+    ->middleware(['auth', 'verified'])
+    ->name('engin');
+
+
+Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouterclient']);
+Route::post('/nouvel_engin', [ajouterdonnees::class, 'ajouterengin']);
 
 // Route::view('/client', 'client')->name('client');
 

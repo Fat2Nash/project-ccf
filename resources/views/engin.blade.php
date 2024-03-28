@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiriot-Location | Clients</title>
+    <title>Thiriot-Location | engins</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -25,18 +25,18 @@
                                     <thead class="bg-gray-50 ">
                                         <tr>
                                             <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
-                                                Identité
+                                                Identification
                                             </th>
 
 
 
                                             <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
-                                                Adresse
+                                                Maintenance
                                             </th>
 
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">Contact</th>
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">Information</th>
 
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">Notes</th>
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">Description</th>
 
                                             <th scope="col" class="relative py-3.5 px-4">
                                                 <span class="sr-only">Modifier</span>
@@ -45,29 +45,28 @@
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200 ">
                                         <tr>
-                                            @foreach($clients as $client)
+                                            @foreach($engins as $engin)
                                             <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                 <div>
-                                                    <h2 class="font-medium text-gray-800 ">{{ $client -> nom}}</h2>
-                                                    <p class="text-sm font-normal text-gray-600 ">{{ $client -> prenom}}</p>
+                                                    <h2 class="font-medium text-gray-800 ">{{ $engin -> modele}}</h2>
+                                                    <p class="text-sm font-normal text-gray-600 ">{{ $engin -> marque}}</p>
                                                 </div>
                                             </td>
 
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
-                                                    <h4 class="text-gray-700 ">{{ $client -> adresse}}</h4>
-                                                    <p class="text-gray-500 ">{{ $client -> ville}}, {{ $client -> code_postal}}, {{ $client -> pays}}</p>
+                                                    <h4 class="text-gray-700 ">{{ $engin -> maintenance}}</h4>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
-                                                    <h4 class="text-gray-700 ">{{ $client -> mail}}</h4>
-                                                    <p class="text-gray-500 ">{{ $client -> telephone}}</p>
+                                                    <h4 class="text-gray-700 ">{{ $engin -> statut}}</h4>
+                                                    <p class="text-gray-500 ">{{ $engin -> compteur_heures}}</p>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div>
-                                                    <p class="text-gray-700 ">{{ $client -> notes}}</p>
+                                                    <p class="text-gray-700 ">{{ $engin -> description}}</p>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
@@ -103,18 +102,18 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span>Ajouter un client</span>
+                            <span>Ajouter un engin</span>
                         </button>
 
                         <!-- Overlay to darken the background -->
                         <div x-show="isOpen" class="overlay" @click="isOpen = false"></div>
 
                         <div x-show="isOpen" class="fixed  left-1/2 transform -translate-x-[256px] -translate-y-1/2 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-50">
-                            <form action="/nouveau_client" method="post">
+                            <form action="/nouvel_engin" method="post">
                                 @csrf
                                 <div class="relative flex items-center py-5">
                                     <div class="flex-grow border-t border-gray-600"></div>
-                                    <span class="flex-shrink mx-4 text-gray-600">Nouvelle fiche client</span>
+                                    <span class="flex-shrink mx-4 text-gray-600">Nouvelle fiche engin</span>
                                     <div class="flex-grow border-t border-gray-600"></div>
                                 </div>
                                 <div class="container items-center p-2">
