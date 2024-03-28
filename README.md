@@ -72,7 +72,7 @@ OU
     - [ ] Client
     - [ ] Engins
     - [ ] Location
-- [ ] Visualiser les engins disponibles
+- [x] Visualiser les engins disponibles
 
 ### Globale
 ![40%](https://progress-bar.dev/40)

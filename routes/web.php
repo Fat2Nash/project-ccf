@@ -10,6 +10,9 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/engins-disponibles', [RecupererDonneesUtilisateurs::class, 'enginsdispo'])
+    ->middleware(['auth', 'verified'])
+    ->name('enginsdispo');
 
 Route::get('/clients', [RecupererDonneesUtilisateurs::class, 'client'])
     ->middleware(['auth', 'verified'])
@@ -22,8 +25,6 @@ Route::get('/engins', [RecupererDonneesUtilisateurs::class, 'engin'])
 
 Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouterclient']);
 Route::post('/nouvel_engin', [ajouterdonnees::class, 'ajouterengin']);
-
-// Route::view('/client', 'client')->name('client');
 
 
 Route::middleware('auth')->group(function () {
