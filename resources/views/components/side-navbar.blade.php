@@ -1,5 +1,5 @@
     <!--sidenav -->
-    <div class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform bg-white sidebar-menu">
+    <div class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform bg-white sidebar-menu overflow-y-scroll">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
 
             <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
@@ -85,6 +85,14 @@
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-check-square'></i>
                     <span class="text-sm">Engins disponibles</span>
+
+                </a>
+            </li>
+            <li class="mb-1 group">
+                <a href="./HistoriqueLocations"
+                    class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='mr-3 text-lg bx bxs-hourglass-top'></i>
+                    <span class="text-sm">Historique Location</span>
 
                 </a>
             </li>
