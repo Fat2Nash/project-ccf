@@ -18,7 +18,7 @@
                 <div class="flex flex-col mt-6">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                            <div class="border border-gray-200 md:rounded-lg">
+                            <div class="border border-gray-200 ">
                                 <table class="relative min-w-full overflow-y-auto divide-y divide-gray-200 ">
                                     <thead class="bg-gray-50 ">
                                         <tr>
@@ -84,37 +84,11 @@
                                                         <p class="text-gray-700 ">{{ $engin->description }}</p>
                                                     </div>
                                                 </td>
-                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                    <x-dropdown>
-                                                        <x-slot name="trigger">
-                                                            <button
-                                                                class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg "
-                                                                onclick="console.log('test')">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                                    viewBox="0 0 24 24" stroke-width="1.5"
-                                                                    stroke="currentColor" class="w-6 h-6">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                                        d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-                                                                </svg>
-                                                            </button>
-                                                        </x-slot>
-                                                </td>
-                                        </tr>
-                                        <x-slot name="content">
-                                            <!-- Dropdown content -->
-                                            <div class="top-0 left-0 w-48 overflow-auto bg-red-500 rounded-md shadow-md max-h-60">
-                                                <a href="{{ $engin->id_engins }}"
-                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ $engin->id_engin }}</a>
-                                                <a href="#"
-                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link
-                                                    2</a>
-                                                <a href="#"
-                                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Link
-                                                    3</a>
-                                            </div>
-                                        </x-slot>
-                                        </x-dropdown>
-                                        <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
+                                                <td class="px-4 py-4 text-xl whitespace-nowrap" title="Modifier l'engin">
+                                                    <button>
+                                                <i class='bx bx-pencil'></i></button>
+                                                <button title="Supprimer l'engin"><i class='bx bx-trash text-red-500'></i> </button>
+                                                <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
                                     @endforeach
                                     </tbody>
                                 </table>
