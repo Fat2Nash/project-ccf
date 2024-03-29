@@ -47,7 +47,7 @@
                                         {{count($loue)}}</td>
                                         <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <span class="mr-2">{{count($loue) / count($total) *100}}%</span>
+                                                <span class="mr-2">{{round(count($loue) / count($total) *100)}}%</span>
                                                 <div class="relative w-full">
                                                     <div class="flex h-2 overflow-hidden text-xs bg-blue-200 rounded">
                                                         <div style="width: <?php echo(count($loue)/count($total)*100) ?>%" class="flex flex-col justify-center text-center text-white bg-blue-600 shadow-none whitespace-nowrap">
@@ -64,7 +64,7 @@
                                         {{count($dispo)}}</td>
                                         <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <span class="mr-2">{{count($dispo) / count($total) *100}}%</span>
+                                                <span class="mr-2">{{round(count($dispo) / count($total) *100)}}%</span>
                                                 <div class="relative w-full">
                                                     <div class="flex h-2 overflow-hidden text-xs bg-green-200 rounded">
                                                         <div style="width: <?php echo(count($dispo)/count($total)*100) ?>%" class="flex flex-col justify-center text-center text-white bg-green-500 shadow-none whitespace-nowrap">
@@ -74,7 +74,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    
+
                                     <tr class="text-gray-700 ">
                                         <th class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             Autre</th>
@@ -82,7 +82,7 @@
                                             {{count($autre)}}</td>
                                         <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <span class="mr-2">{{count($autre) / count($total) *100}}%</span>
+                                                <span class="mr-2">{{round(count($autre) / count($total) *100)}}%</span>
                                                 <div class="relative w-full">
                                                     <div class="flex h-2 overflow-hidden text-xs bg-orange-200 rounded">
                                                         <div style="width: <?php echo(count($autre)/count($total)*100) ?>%" class="flex flex-col justify-center text-center text-white bg-orange-500 shadow-none whitespace-nowrap">
