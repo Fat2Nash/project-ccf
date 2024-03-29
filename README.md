@@ -68,7 +68,7 @@ OU
     - [x] Client
     - [x] Engins
     - [ ] Location
-- [ ] Editer les fiches : 
+- [ ] Editer/Supprimer les fiches : 
     - [ ] Client
     - [ ] Engins
     - [ ] Location
@@ -89,7 +89,7 @@ OU
     - [x] Client
     - [x] Engins
     - [ ] Location
-- [ ] Editer les fiches : 
+- [ ] Editer/Supprimer les fiches : 
     - [ ] Client
     - [ ] Engins
     - [ ] Location
