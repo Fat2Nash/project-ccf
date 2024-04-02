@@ -298,7 +298,7 @@
                     </div>
                 </div>
             </div>
-            <!------ Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
+            <!------- Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
             <!------ Debut 3eme Case (map) ------------------------------------------------------------------------------------>
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
