@@ -33,7 +33,7 @@ class LocationSeeder extends Seeder
         DB::table('position_engin')->insert([
             'id_loc_engin' => '1',
             'Longitude' => '48.2146',
-            'Latitude' => '6.1743',
+            'Latitude' => '4.1743',
             'DateHeure' => '2024-03-22 15:22',
         ]);
 
@@ -60,8 +60,8 @@ class LocationSeeder extends Seeder
         // Insert position data into position_engin table
         DB::table('position_engin')->insert([
             'id_loc_engin' => '2',
-            'Longitude' => '482146',
-            'Latitude' => '61743',
+            'Longitude' => '48.2146',
+            'Latitude' => '3.1743',
             'DateHeure' => '2024-03-28 13:22',
         ]);
 

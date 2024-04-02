@@ -20,7 +20,7 @@ class EnginSeeder extends Seeder
                     'modele' => '320',
                     'description' => 'Pelle hydraulique sur chenilles',
                     'compteur_heures' => 1500,
-                    'statut' => 'Disponible',
+                    'statut' => 'Louer',
                     'maintenance' => 0,
                     'cree_le' => now(),
                     'mis_a_jours_le' => now(),

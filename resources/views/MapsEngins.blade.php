@@ -191,18 +191,17 @@
                     @foreach($engins as $engin)
                             @php
                                 // Récupérer la location associée à l'engin
-                                $location = $engin->locationEngin ?? null;
+                                $location = $engin->locationEngin;
                                 // Récupérer la position associée à la location
-                                $position = $location ? $location->position : null;
+                                $position = $location->position;
                             @endphp
-                        @endforeach
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->marque }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->modele }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->categorie }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->statut }}</td>
                             <td>
-                                <button class="position-btn" data-lat="{{ $position->Latitude ?? '' }}" data-lng="{{ $position->Longitude ?? '' }}">
+                                <button class="position-btn" data-lat="{{ $position->Latitude }}" data-lng="{{ $position->Longitude }}">
                                     <img class="m-2 h-9 w-9" src="https://cdn-icons-png.flaticon.com/512/902/902613.png" alt="Position">
                                 </button>
                                 <button>
@@ -210,7 +209,7 @@
                                 </button>
                             </td>
                         </tr>
-
+                    @endforeach
                 </tbody>
             </table>
           </div>
@@ -232,32 +231,35 @@
       <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13); // Centre la carte sur Ville-sur-Illon
+        var map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13); // Centre la carte sur Ville-sur-Illon
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-            }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            var marker;
+        var marker;
 
-            // Ajoutez un gestionnaire d'événements aux boutons de position
-            var positionBtns = document.querySelectorAll('.position-btn');
-            positionBtns.forEach(function(btn) {
-                btn.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    var lat = parseFloat(btn.dataset.lat);
-                    var lng = parseFloat(btn.dataset.lng);
+        // Ajoutez un gestionnaire d'événements aux boutons de position
+        var positionBtns = document.querySelectorAll('.position-btn');
+        positionBtns.forEach(function(btn) {
+            btn.addEventListener('click', function(event) {
+                event.preventDefault();
+                var lat = parseFloat(btn.dataset.lat);
+                var lng = parseFloat(btn.dataset.lng);
 
-                    if (marker && map.hasLayer(marker)) {
-                        map.removeLayer(marker);
-                    }
+                console.log('Latitude :', lat);
+                console.log('Longitude :', lng);
 
-                    marker = L.marker([lat, lng]).addTo(map);
-                    map.setView([lat, lng], 13);
-                });
+                if (marker && map.hasLayer(marker)) {
+                    map.removeLayer(marker);
+                }
+
+                marker = L.marker([lat, lng]).addTo(map);
+                map.setView([lat, lng], 13);
             });
         });
+    });
     </script>
 </body>
 </html>
