@@ -159,7 +159,6 @@
         </ul>
     </div>
 
-
     </div>
     <!-- end navbar -->
 
@@ -189,12 +188,12 @@
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
                     @foreach($engins as $engin)
-                            @php
-                                // Récupérer la location associée à l'engin
-                                $location = $engin->locationEngin;
-                                // Récupérer la position associée à la location
-                                $position = $location->position;
-                            @endphp
+                        @php
+                            // Récupérer la location associée à l'engin
+                            $location = $engin->locationEngin;
+                            // Récupérer la position associée à la location
+                            $position = $location->position;
+                        @endphp
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->marque }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->modele }}</td>
@@ -228,38 +227,71 @@
         </div>
     </footer>
 
-      <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        var map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13); // Centre la carte sur Ville-sur-Illon
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+            var map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13); // Centre la carte sur Ville-sur-Illon
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-        }).addTo(map);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            }).addTo(map);
 
-        var marker;
+            var markers = []; // Tableau pour stocker les marqueurs
 
-        // Ajoutez un gestionnaire d'événements aux boutons de position
-        var positionBtns = document.querySelectorAll('.position-btn');
-        positionBtns.forEach(function(btn) {
-            btn.addEventListener('click', function(event) {
-                event.preventDefault();
-                var lat = parseFloat(btn.dataset.lat);
-                var lng = parseFloat(btn.dataset.lng);
+            // Récupérez toutes les positions des engins et ajoutez un marqueur pour chaque position
+            @foreach($engins as $engin)
+                @php
+                    // Récupérer la location associée à l'engin
+                    $location = $engin->locationEngin;
+                    // Récupérer la position associée à la location
+                    $position = $location->position;
+                @endphp
 
-                console.log('Latitude :', lat);
-                console.log('Longitude :', lng);
+                // Créez un marqueur pour chaque position et ajoutez-le au tableau des marqueurs
+                var marker = L.marker([{{ $position->Latitude }}, {{ $position->Longitude }}]);
 
-                if (marker && map.hasLayer(marker)) {
-                    map.removeLayer(marker);
-                }
+                // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
+                marker.enginInfo = {
+                    marque: '{{ $engin->marque }}',
+                    modele: '{{ $engin->modele }}',
+                    categorie: '{{ $engin->categorie }}'
+                };
 
-                marker = L.marker([lat, lng]).addTo(map);
-                map.setView([lat, lng], 13);
+                // Ajoutez un gestionnaire d'événements pour afficher les informations d'engin lorsque survolé
+                marker.on('mouseover', function(e) {
+                    var info = e.target.enginInfo;
+                    e.target.bindPopup(`<b>Marque:</b> ${info.marque}<br><b>Modèle:</b> ${info.modele}<br><b>Catégorie:</b> ${info.categorie}`).openPopup();
+                });
+
+                // Ajoutez un gestionnaire d'événements pour fermer la popup lorsque la souris quitte le marqueur
+                marker.on('mouseout', function(e) {
+                    e.target.closePopup();
+                });
+
+                markers.push(marker);
+
+                // Ajoutez le marqueur à la carte
+                marker.addTo(map);
+            @endforeach
+
+            // Regroupez tous les marqueurs dans un groupe de couches pour les afficher sur la carte
+            var markersLayer = L.layerGroup(markers);
+            map.addLayer(markersLayer);
+
+            // Ajoutez un gestionnaire d'événements aux boutons de position
+            var positionBtns = document.querySelectorAll('.position-btn');
+            positionBtns.forEach(function(btn) {
+                btn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var lat = parseFloat(btn.dataset.lat);
+                    var lng = parseFloat(btn.dataset.lng);
+
+                    // Centrez la carte sur les coordonnées du marqueur et zoom
+                    map.setView([lat, lng], 13);
+                });
             });
         });
-    });
     </script>
 </body>
 </html>
