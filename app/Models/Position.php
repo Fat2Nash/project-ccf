@@ -24,9 +24,9 @@ class Position extends Model
         'DateHeure' => 'datetime',
     ];
 
-    // Relation avec la table 'position_engin'
-    public function LocationEngin()
+    // Relation avec la table 'loc_engin'
+    public function location()
     {
-        return $this->hasOne(LocationEngin::class, 'id_position', 'id_loc_engin');
+        return $this->belongsTo(Location::class, 'id_loc_engin', 'id_loc_engin');
     }
 }

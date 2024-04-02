@@ -21,10 +21,12 @@
         <script>
             // Attendez que le DOM soit entièrement chargé
             document.addEventListener("DOMContentLoaded", function() {
-                // Cochez la case à cocher "sortAscending" si elle est présente
-                var checkbox = document.getElementById("sortAscending");
+                // Cochez la case à cocher "sortDescending" si elle est présente
+                var checkbox = document.getElementById("sortDescending");
                 if (checkbox) {
                     checkbox.checked = true;
+                    // Simuler un événement de clic pour activer le tri descendant
+                    checkbox.dispatchEvent(new Event('change'));
                 }
             });
         </script>

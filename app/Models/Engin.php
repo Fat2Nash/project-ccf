@@ -29,10 +29,8 @@ class Engin extends Model
         'mis_a_jours_le' => 'datetime',
     ];
 
-    public function LocationEngin()
+    public function locationEngin()
     {
-        return $this->hasOne(LocationEngin::class, 'id_engins', 'id_loc_engin' );
+        return $this->hasOne(Location::class, 'id_engins', 'id_engins');
     }
 }
-
-

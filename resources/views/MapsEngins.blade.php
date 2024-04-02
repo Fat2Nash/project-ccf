@@ -98,6 +98,14 @@
             </li>
 
             <li class="mb-1 group">
+                <a href="./HistoriqueLocations" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <span class="text-sm">Historique Locations</span>
+
+                </a>
+            </li>
+
+            <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='bx bx-bell mr-3 text-lg'></i>
                     <span class="text-sm">Notifications</span>
@@ -143,7 +151,7 @@
             <li class=" ml-3">
                 <p class=" flex items-center">
                 <div class="p-2 md:block text-left">
-                    <h2 class="text-sm font-semibold text-gray-800">{{Auth::user()->name}}</h2>
+                    <h2 class="text-sm font-semibold text-gray-800">{{Auth::user()->nom}}</h2>
                     <p class="text-xs text-gray-500">{{Auth::user()->email}}</p>
                 </div>
                 </p>
@@ -156,151 +164,54 @@
     <!-- end navbar -->
 
     <section class="relative flex justify-center items-center">
+
+        @php
+            use App\Models\Engin; // Importer le modèle Engin
+            $engins = Engin::all(); // Récupérer tous les clients de la base de données
+
+            use App\Models\Location; // Importer le modèle Location Engin
+            $loc_engin = Location::all(); // Récupérer tous les clients de la base de données
+
+            use App\Models\Position; // Importer le modèle Location Engin
+            $position_engin = Position::all();
+        @endphp
+
         <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5 overflow-y-auto max-h-98 w-[1200px]">
-            <table class="w-full border-collapse bg-white text-left text-sm text-gray-500 ">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Nom de l'engin</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Marque</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Modèle</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Catégorie</th>
-                  <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-100 border-t border-gray-100">
-                <tr class="hover:bg-gray-50" data-lat="48.1872" data-lng="6.4564">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <a href="#" class="flex items-center gap-3 map-link" data-lat="48.8566" data-lng="2.3522">
-                        <div class="relative h-10 w-10">
-                          <img
-                            class="h-full w-full rounded-full object-cover object-center"
-                            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt=""
-                          />
-                          <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                        </div>
-                        <div class="text-sm">
-                          <div class="font-medium text-gray-700">Machine 1</div>
-                        </div>
-                      </a>
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="px-6 py-4">
-                      <span
-                        class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-gray-600"
-                      >
-                        <span class="h-1.5 w-1.5 rounded-full"></span>
-                        Louer ou non
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="hover:bg-gray-50">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <img
-                          class="h-full w-full rounded-full object-cover object-center"
-                          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                        <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-medium text-gray-700">Machine 2</div>
-                      </div>
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="px-6 py-4">
-                      <span
-                        class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-gray-600"
-                      >
-                        <span class="h-1.5 w-1.5 rounded-full"></span>
-                        Louer ou non
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="hover:bg-gray-50">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <img
-                          class="h-full w-full rounded-full object-cover object-center"
-                          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                        <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-medium text-gray-700">Machine 3</div>
-                      </div>
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="px-6 py-4">
-                      <span
-                        class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-gray-600"
-                      >
-                        <span class="h-1.5 w-1.5 rounded-full"></span>
-                        Louer ou non
-                      </span>
-                    </td>
-                  </tr>
-                  <tr class="hover:bg-gray-50">
-                    <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                      <div class="relative h-10 w-10">
-                        <img
-                          class="h-full w-full rounded-full object-cover object-center"
-                          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
-                        <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                      </div>
-                      <div class="text-sm">
-                        <div class="font-medium text-gray-700">Machine 4</div>
-                      </div>
-                    </th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td class="px-6 py-4">
-                      <span
-                        class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-gray-600"
-                      >
-                        <span class="h-1.5 w-1.5 rounded-full"></span>
-                        Louer ou non
-                      </span>
-                    </td>
-                  </tr>
-                <tr class="hover:bg-gray-50">
-                  <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
-                    <div class="relative h-10 w-10">
-                      <img
-                        class="h-full w-full rounded-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
-                      <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
-                    </div>
-                    <div class="text-sm">
-                      <div class="font-medium text-gray-700">Machine 5</div>
-                    </div>
-                  </th>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td class="px-6 py-4">
-                    <span
-                      class="inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold text-gray-600"
-                    >
-                      <span class="h-1.5 w-1.5 rounded-full"></span>
-                      Louer ou non
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
+            <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Marque de l'engin</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Modèle de l'engin</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Catégorie de l'engin</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status de l'engin</th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+                    @foreach($engins as $engin)
+                            @php
+                                // Récupérer la location associée à l'engin
+                                $location = $engin->locationEngin ?? null;
+                                // Récupérer la position associée à la location
+                                $position = $location ? $location->position : null;
+                            @endphp
+                        @endforeach
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->marque }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->modele }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->categorie }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->statut }}</td>
+                            <td>
+                                <button class="position-btn" data-lat="{{ $position->Latitude ?? '' }}" data-lng="{{ $position->Longitude ?? '' }}">
+                                    <img class="m-2 h-9 w-9" src="https://cdn-icons-png.flaticon.com/512/902/902613.png" alt="Position">
+                                </button>
+                                <button>
+                                    <img class="m-2 h-9 w-9" src="https://cdn-icons-png.flaticon.com/512/512/512798.png" alt="Trajet">
+                                </button>
+                            </td>
+                        </tr>
+
+                </tbody>
             </table>
           </div>
     </section>
@@ -320,30 +231,28 @@
 
       <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
       <script>
-                document.addEventListener('DOMContentLoaded', function () {
-            var map = L.map('map').setView([48.8566, 2.3522], 13); // Centre la carte sur Paris
+        document.addEventListener('DOMContentLoaded', function () {
+            var map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13); // Centre la carte sur Ville-sur-Illon
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            // Déclaration de la variable marker
             var marker;
 
-            // Ajouter un gestionnaire d'événements au lien de la carte
-            var mapLinks = document.querySelectorAll('.map-link');
-            mapLinks.forEach(function(link) {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault(); // Pour empêcher le comportement de lien par défaut
-                    var lat = Localisation.Latitude
-                    var lng = Localisation.Longitude
+            // Ajoutez un gestionnaire d'événements aux boutons de position
+            var positionBtns = document.querySelectorAll('.position-btn');
+            positionBtns.forEach(function(btn) {
+                btn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var lat = parseFloat(btn.dataset.lat);
+                    var lng = parseFloat(btn.dataset.lng);
 
-                    // Supprimer le marqueur précédent s'il existe
                     if (marker && map.hasLayer(marker)) {
                         map.removeLayer(marker);
                     }
-                    // Créer un nouveau marqueur aux coordonnées cliquées
+
                     marker = L.marker([lat, lng]).addTo(map);
                     map.setView([lat, lng], 13);
                 });

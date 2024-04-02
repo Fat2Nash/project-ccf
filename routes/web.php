@@ -27,10 +27,6 @@ Route::get('/HistoriqueLocations', function () {
     return view('HistoriqueLocations');
 });
 
-Route::get('/HistoriqueEngins', function () {
-    return view('HistoriqueEngins');
-});
-
 Route::get('/MapsEngins', function () {
     return view('MapsEngins');
 });
