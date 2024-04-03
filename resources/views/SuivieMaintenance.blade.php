@@ -33,74 +33,74 @@
                             <tbody>
 
                                 <!-- Debut Categorie engin --------------------------->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Categorie</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">Modele de l'engin</span>
-                            </td>
-                        </tr>
-                        <!-- fin Categorie engin ----------------------------------->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Categorie</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">Modele de l'engin</span>
+                                    </td>
+                                </tr>
+                                <!-- fin Categorie engin ----------------------------------->
 
-                        <!-- Debut Marque engin ------------------------------>
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Marque</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">marque de l'engin</span>
-                            </td>
-                        </tr>
-                        <!-- Fin Marque engin ------------------------->
+                                <!-- Debut Marque engin ------------------------------>
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Marque</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">marque de l'engin</span>
+                                    </td>
+                                </tr>
+                                <!-- Fin Marque engin ------------------------->
 
-                        <!-- Debut Modele ----------------------------->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Modele</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">Modele de l'engin</span>
-                            </td>
+                                <!-- Debut Modele ----------------------------->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Modele</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">Modele de l'engin</span>
+                                    </td>
+                                </tr>
+                                <!-- fin Modele engin --------------------------->
 
-                        </tr>
-                        <!-- fin Modele engin --------------------------->
+                                <!-- Debut compteur heure ----------------------------------->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">compteur heure</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">compteur_heure</span>
+                                    </td>
+                                </tr>
+                                <!-- fin compteur heure ---------------------------------->
 
-<!-- Debut compteur heure ----------------------------------->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">compteur heure</a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">compteur_heure</span>
-    </td>
-</tr>
-<!-- fin compteur heure ---------------------------------->
+                                <!-- Debut Status engin ---------------------------------------->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Status</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] font-medium text-gray-400">Louer ou non</span>
+                                    </td>
+                                </tr>
 
-<!-- Debut Status engin ---------------------------------------->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Status</a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">Louer ou non</span>
-    </td>
-</tr>
 <!-- fin Status engin ---------------------------------------->
 <tr>
     <td class="px-4 py-2 border-b border-b-gray-50">
         <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Description</a>
+            <span href="#" class="ml-2 text-sm font-medium text-gray-600 truncate">Description</span>
         </div>
     </td>
     <td class="px-4 py-2 border-b border-b-gray-50">
@@ -156,30 +156,6 @@
     </td>
 </tr>
 <!-- Fin 2eme Historique -->
-<!-- Remarque et defauts
-    <tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Remarque</a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">remarque sur l'appareil</span>
-    </td>
-</tr>
-
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Defauts</a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">Defauts de l'engin</span>
-    </td>
-</tr>
---->
-
                                 </tbody>
                             </table>
                         </div>
@@ -192,10 +168,64 @@
                     </div>
                 </div>
                 <!------ Fin 2eme Case HISTORIQUE ENGIN ------------------------------------------------------------------------------------>
+
+                <!------ Debut Case Remarque Defaut ------------------------------------------------------------------------------------>
+
+<!--- Debut Case Remarque ---->
+                <div class="p-6 shadow-black/5 mb-6">
+                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="font-medium">Remarque</div>
+                        </div>
+                        <div class="px-4 py-2">
+                            <textarea id="remarque" class="w-full h-24 border border-gray-200 rounded-md"></textarea>
+                        </div>
+                    </div>
+                                        <!--- Fin Case Remarque ---->
+
+                                        <!--- Debut Case Defaut ---->
+                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="font-medium">Défaut</div>
+                        </div>
+                        <div class="px-4 py-2">
+                            <textarea id="defaut" class="w-full h-24 border border-gray-200 rounded-md"></textarea>
+                        </div>
+                    </div>
                 </div>
+                                    <!--- Fin Case Defaut ---->
+
+<!------ Fin  Case Remarque Defaut ------------------------------------------------------------------------------------>
+<div class="max-w-screen-lg mx-auto">
+    <div class="p-4 bg-white border border-gray-300 rounded-md shadow-md mb-6">
+        <div class="font-medium">Choisir une date :</div>
+        <input id="date-picker" type="date" class="mt-2 border border-gray-300 rounded-md focus:outline-none">
+        <button id="valider-btn" class="px-3 py-1 mt-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600">Valider</button>
+    </div>
+</div>
+
+
+<script>
+    // Sélection de l'élément input pour la date
+    const datePicker = document.getElementById('date-picker');
+    // Sélection du bouton Valider
+    const validerBtn = document.getElementById('valider-btn');
+
+    // Ajout d'un écouteur d'événement au clic sur le bouton Valider
+    validerBtn.addEventListener('click', function() {
+        // Récupérer la valeur de la date sélectionnée
+        const selectedDate = datePicker.value;
+        // Afficher la date sélectionnée dans la console (vous pouvez la traiter comme vous le souhaitez ici)
+        console.log(selectedDate);
+    });
+</script>
 
 
 
+
+
+
+            </div>
                 <x-footer />
 
             </main>

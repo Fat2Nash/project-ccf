@@ -348,55 +348,47 @@
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Categorie</a>
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Categorie</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] medium text-gray-600">Categorie Engin</span>
                                     </td>
-
                                 </tr>
                                 <!-- Lignes Marque   ------------------------------------------------->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Marque</a>
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Marque</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] medium text-gray-600">MarqueEngin</span>
                                     </td>
-
                                 </tr>
                                 <!-- Lignes Modele   ------------------------------------------------->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Modele</a>
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Modele</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span class="text-[13px] medium text-gray-600">ModeleEngin</span>
                                     </td>
-
                                 </tr>
                                 <!-- Lignes Description   ------------------------------------------------->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Description</a>
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Description</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] medium text-gray-600">DescriptionEngin
-                                        </span>
+                                        <span class="text-[13px] medium text-gray-600">DescriptionEngin</span>
                                     </td>
-
                                 </tr>
+
                             </tbody>
                         </table>
                     </div>
