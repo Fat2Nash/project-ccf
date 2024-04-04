@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('loc_engin', function (Blueprint $table) {
             $table->id('id_loc_engin');
-            $table->foreignId('client_id')->references('client_id')->on('clients');
+            $table->foreignId('client_id')->references('id_client')->on('clients');
             $table->foreignId('id_engins')->references('id_engins')->on('engins');
             $table->string('adresse');
             $table->string('ville');
