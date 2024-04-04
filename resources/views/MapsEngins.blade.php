@@ -10,7 +10,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19"></script>
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"/>
@@ -175,35 +175,63 @@
             $position_engin = Position::all();
         @endphp
 
-        <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5 overflow-y-auto max-h-98 w-[1200px]">
-            <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+        <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5 overflow-y-auto max-h-98 w-[1300px]">
+            <table id="dataTable" class="w-full border-collapse bg-white text-left text-sm text-gray-500">
                 <thead class="bg-gray-50">
                     <tr>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Marque de l'engin</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Modèle de l'engin</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Catégorie de l'engin</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status de l'engin</th>
-                        <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Marque de l'engin
+                            <button class="sort-button" onclick="sortTable(0)">↑</button>
+                            <button class="sort-button" onclick="sortTable(0, false)">↓</button>
+                        </th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Modèle de l'engin
+                            <button class="sort-button" onclick="sortTable(1)">↑</button>
+                            <button class="sort-button" onclick="sortTable(1, false)">↓</button>
+                        </th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Catégorie de l'engin
+                            <button class="sort-button" onclick="sortTable(2)">↑</button>
+                            <button class="sort-button" onclick="sortTable(2, false)">↓</button>
+                        </th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Status de l'engin
+                            <button class="sort-button" onclick="sortTable(3)">↑</button>
+                            <button class="sort-button" onclick="sortTable(3, false)">↓</button>
+                        </th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Dernière date de position
+                            <button class="sort-button" onclick="sortTable(4)">↑</button>
+                            <button class="sort-button" onclick="sortTable(4, false)">↓</button>
+                        </th>
+                        <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+                            <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
+                                <input class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" id="searchInput" placeholder="Rechercher...">
+                                <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+                                    <svg class="text-orange-500 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
+                                        <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100 border-t border-gray-100">
                     @foreach($engins as $engin)
+                        @foreach($position_engin as $position)
                         @php
                             // Récupérer la location associée à l'engin
                             $location = $engin->locationEngin;
                             // Récupérer la position associée à la location
                             $position = $location->position;
                         @endphp
+                        @endforeach
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->marque }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->modele }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->categorie }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $engin->statut }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900">{{ $position->DateHeure }}<br></td>
                             <td>
                                 <button class="position-btn" data-lat="{{ $position->Latitude }}" data-lng="{{ $position->Longitude }}">
                                     <img class="m-2 h-9 w-9" src="https://cdn-icons-png.flaticon.com/512/902/902613.png" alt="Position">
                                 </button>
-                                <button class="trajet-btn" data-adresse="{{ $location->adresse }}">
+                                <button class="trajet-btn" data-adresse="{{ $location->adresse }}" data-ville="{{ $location->ville }}">
                                     <img class="m-2 h-9 w-9" src="https://cdn-icons-png.flaticon.com/512/512/512798.png" alt="Trajet">
                                 </button>
                             </td>
@@ -295,23 +323,33 @@
     </script>
 
 <script>
-        new Vue({
-            el: '#app',
-            data: {
-                map: null,
-                route: null
-            },
-            mounted() {
-                this.initMap();
-            },
-            methods: {
-                initMap() {
-                    this.map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13); // Centre la carte sur Ville-sur-Illon
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    }).addTo(this.map);
-                },
-                showRoute(destination) {
+    document.addEventListener('DOMContentLoaded', function () {
+
+    // Ajoutez un gestionnaire d'événements aux boutons de trajet
+    var trajetBtns = document.querySelectorAll('.trajet-btn');
+    trajetBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            var adresse = btn.dataset.adresse;
+            var ville = btn.dataset.ville;
+
+            // Concaténer l'adresse et le nom de la ville
+            var adresseDestination = adresse + ', ' + ville;
+
+            // URL complète de l'endpoint
+            var endpoint = 'http://127.0.0.1:8000/MapsEngins/get-coordinates?adresse=' + encodeURIComponent(adresseDestination);
+
+            // Envoyer une requête AJAX au backend pour obtenir les coordonnées de l'adresse
+            fetch(endpoint)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    var destination = [data.latitude, data.longitude];
+
                     // Afficher le trajet sur la carte
                     var directions = L.Routing.control({
                         waypoints: [
@@ -320,16 +358,90 @@
                         ],
                         routeWhileDragging: true,
                         show: false
-                    }).addTo(this.map);
+                    }).addTo(map);
 
-                    if (this.route) {
-                        this.map.removeLayer(this.route);
-                    }
+                    directions.hide();
+                    directions.show();
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+});
+</script>
 
-                    this.route = directions.getPlan().setWaypoints(destination).route;
+<script>
+    function sortTable(columnIndex, ascending = true) {
+        const table = document.getElementById("dataTable");
+        const rows = Array.from(table.getElementsByTagName("tr"));
+        const headerRow = rows.shift(); // Enlever l'en-tête du tableau
+
+        rows.sort((a, b) => {
+            const aValue = a.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+            const bValue = b.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+            return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+        });
+
+        // Vider le contenu du tableau
+        while (table.rows.length > 0) {
+            table.deleteRow(0);
+        }
+
+        // Réinsérer l'en-tête du tableau
+        table.appendChild(headerRow);
+
+        // Réinsérer les lignes triées
+        rows.forEach(row => table.appendChild(row));
+    }
+
+    // Écoute des événements de changement sur les cases à cocher pour le tri ascendant et descendant
+    document.getElementById("sortAscending").addEventListener("change", function() {
+        // Trie en fonction du compteur (première colonne) de manière ascendante
+        sortTable(0, this.checked);
+    });
+
+    document.getElementById("sortDescending").addEventListener("change", function() {
+        // Trie en fonction du compteur (première colonne) de manière descendante
+        sortTable(0, !this.checked);
+    });
+
+    // Écoute des événements de saisie dans le champ de recherche
+    document.getElementById("searchInput").addEventListener("input", function() {
+        // Votre script pour filtrer les lignes de la table en fonction de la saisie dans le champ de recherche
+        // ...
+    });
+</script>
+
+<script>
+    // Écoute des événements de saisie dans le champ de recherche
+    document.getElementById("searchInput").addEventListener("input", function() {
+        // Récupération de la valeur saisie dans le champ de recherche
+        var searchValue = this.value.toLowerCase();
+
+        // Récupération des lignes de la table
+        var rows = document.getElementById("dataTable").querySelectorAll("tr");
+
+        // Parcours de chaque ligne de la table (en commençant par l'indice 1 pour ignorer l'en-tête)
+        for (var i = 1; i < rows.length; i++) {
+            var row = rows[i];
+            var cells = row.querySelectorAll("td"); // Sélectionne toutes les cellules de la ligne
+
+            // Réinitialisation de l'affichage de la ligne
+            row.style.display = "none";
+
+            // Parcours de chaque cellule de la ligne
+            for (var j = 0; j < cells.length; j++) {
+                // Récupération du texte dans la cellule
+                var cellData = cells[j].textContent.toLowerCase();
+
+                // Vérification si le texte de la cellule contient la valeur de recherche
+                if (cellData.includes(searchValue)) {
+                    // Affichage de la ligne si une correspondance est trouvée dans n'importe quelle cellule
+                    row.style.display = "";
+                    break; // Sortie de la boucle dès qu'une correspondance est trouvée
                 }
             }
-        });
-</script>
+        }
+    });
+    </script>
 </body>
 </html>

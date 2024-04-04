@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Location; // Assurez-vous d'importer le modèle Client
+use App\Models\Position;
 
 class LocationController extends Controller
 {
     public function index()
     {
-        // Récupérer tous les clients de la base de données
-        $loc_engin = Location::all();
+        // Récupérer toutes les positions pour chaque engin
+        $positions = Position::all();
 
-        // Passer les clients récupérés à la vue pour les afficher
-        return view('votre_vue', ['loc_engin' => $loc_engin]);
+        // Grouper les positions par engin et par date
+        $positionsGroupedByEnginAndDate = $positions->groupBy(function ($position) {
+            return $position->engin_id . '_' . $position->created_at->toDateString();
+        });
+
+        // Filtrer pour obtenir la dernière position de chaque engin pour chaque jour
+        $latestPositions = $positionsGroupedByEnginAndDate->map(function ($positionsPerEngin) {
+            return $positionsPerEngin->last();
+        });
+
+        // Passer les positions récupérées à la vue pour les afficher
+        return view('your_view', ['latestPositions' => $position_engin]);
     }
 }
