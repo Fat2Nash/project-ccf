@@ -16,9 +16,9 @@ class ClientSeeder extends Seeder
     {
         // Créez un utilisateur de test
         DB::table('clients')->insert([
-            'nom' => 'LeBricoleur',
-            'prenom' => 'Bob',
-            'mail' => 'boblebrocileur@gmail.com',
+            'nom' => 'Lexploratrice',
+            'prenom' => 'Dora',
+            'mail' => 'dora.exploratrice@gmail.com',
             'adresse' => '1 rue de la Paix',
             'code_postal' => '75000',
             'ville' => 'Paris',

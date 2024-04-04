@@ -12,18 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         //
-        Schema::create('alerte', function (Blueprint $table) {
-            $table->id('id_alerte');
-            $table->foreignId('id_engin')->references('id_engins')->on('engins');
-            $table->foreignId('type_alerte')->references('id_type')->on('typealerte');
-            $table->dateTime('date_alerte');
-        });
 
         Schema::create('typealerte', function (Blueprint $table) {
             $table->id('id_typeAlerte');
             $table->string('nom_alerte');
             $table->string('description');
         });
+
+        Schema::create('alerte', function (Blueprint $table) {
+            $table->id('id_alerte');
+            $table->foreignId('id_engin')->references('id_engins')->on('engins');
+            $table->foreignId('id_typeAlerte')->references('id_type')->on('typealerte');
+            $table->dateTime('date_alerte');
+        });
+
+
     }
 
     /**
