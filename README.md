@@ -44,7 +44,7 @@ OU
 php artisan key:generate
 ```
 5. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster si besoin :
-```env
+  ```env
   DB_CONNECTION=mysql    # mettre mysql si besoin de mysql 
   
   # DB_HOST=127.0.0.1 ##mettre l'ip du serveur SQL
@@ -58,19 +58,18 @@ php artisan key:generate
   # DB_PASSWORD= #mettre le mot de passe pour se connecter
   
   # DB_COLLATION=utf8mb4_general_ci # pour mysql
-```
+  ```
 ## Base de donées
 
-```bash
-php artisan migrate     |  Créer la BDD 
-      
-```
+  ```bash
+  php artisan migrate     |  Créer la BDD       
+  ```
 
 ## Pré-remplir la base de données
 
-```
-    php artisan db:seed
-```
+  ```
+  php artisan db:seed
+  ```
 
 
 ## Avancée
