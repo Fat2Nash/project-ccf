@@ -80,17 +80,17 @@ php artisan db:seed
 
 - [x] S'authentifier
 - [x] Créer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [ ] Editer les fiches : 
- - [ ] Client
- - [ ] Engins
- - [ ] Location
+   - [ ] Client
+   - [ ] Engins
+   - [ ] Location
 - Supprimer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [x] Visualiser les engins disponibles
 
 ### Globale
@@ -99,33 +99,33 @@ php artisan db:seed
 #### Quentin
 - [ ] Stocker les données de localisation/de fonctionnement des engins
 - [x] Publier les donées de : 
- - [x] Localisation
- - [ ] Fonctionnement
+   - [x] Localisation
+   - [ ] Fonctionnement
 - [x] Déterminer les informations et les horodater
 #### Erwan
 - [x] S'authentifier
 - [x] Créer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [ ] Editer les fiches : 
- - [ ] Client
- - [ ] Engins
- - [ ] Location
+   - [ ] Client
+   - [ ] Engins
+   - [ ] Location
 - Supprimer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [ ] Visualiser les engins disponibles
 #### Antony
 - [x] Visualiser les historiques :
-  - [x] Par client
-  - [x] Par engin
+   - [x] Par client
+   - [x] Par engin
 - [ ] Visualiser les engins sur la carte
 #### Kasim
 - [ ] Visualiser la liste des engin à :
-  - [ ] Livrer
-  - [ ] Récupérer
+   - [ ] Livrer
+   - [ ] Récupérer
 - [ ] Gérer les maintenance
 ### Tous
 - [ ] Compatibilité téléphones
