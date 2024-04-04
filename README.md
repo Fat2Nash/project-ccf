@@ -1,99 +1,131 @@
-<h1 align="center" >Thiriot Location</h1>
-## Installation :
-- installer php ( v8.2 )
+<a name="readme-top"></a>
+<br />
+<div align="center">
+ <img src="https://thiriot-locations.com/charte/logo.png" alt="Logo">
 
-- installer [Composer](https://getcomposer.org/)
+  <p align="center">
+ Panel de gestion Thiriot-Location
+  </p>
+</div>
 
-- vérifier que `extension=fileinfo` dans C:\tools\php82\php.ini ( si windows ) est bien décommenté ( enlever le ; )
+### Prérequis
 
-- pareil pour `extension=pdo_mysql` ( si vous êtes sur Ubuntu, à s'assurer que le driver php_mysql est bien installé )
+Afin de pouvoir pleinement utiliser le projet, il y a quelques prérequis : 
+* Composer : [Installer Composer](https://getcomposer.org/) <br/>
+Pour vérifier la bonne installation de Comoser : 
+  ```sh
+  composer
+  ```
+* NodeJS : [Installer Composer](https://nodejs.org/en/download) <br/>
+Pour vérifier la bonne installation de NodeJS : 
+  ```sh
+  npm -v
+  ```
 
-- même manipulation pour `extension=zip`.
+### Installation
 
-( NOTE: essayez de le lancer à chaque pull d'ailleurs)
-
-  
-
-### A faire lors d'un clone github :
-
-```bash
-
-composer install                          | Installe tout les packages laravel
-
-
-composer update                           | A faire si besoin
-  
-
-yarn / npm install                        | Installe tout les packages nodes
-
+1. Cloner le projet
+```sh
+git clone https://github.com/your_username_/Project-Name.git
 ```
+OU
+  *Télécharger le projet*
 
-Créé le ```.env```  a partire de ```.env.exemple```- installer php ( v8 )
-
-- installer [Composer](https://getcomposer.org/)
-
-- vérifier que `extension=fileinfo` dans C:\tools\php82\php.ini ( si windows ) est bien décommenté ( enlever le ; )
-
-- pareil pour `extension=pdo_mysql` ( si vous êtes sur Ubuntu, à s'assurer que le driver php_mysql est bien installé )
-
-- même manipulation pour `extension=zip`.
-
-- Lancer le script d'installation dans le dossier vroomeco:
-
-( NOTE: essayez de le lancer à chaque pull d'ailleurs)
-
-  
-
-### A faire lors d'un clone github :
-
-```bash
-
-composer install                          | Installe tout les packages laravel
-
-  
-
-yarn / npm install                        | Installe tout les packages nodes
-
+2. Installer les packages Composer
+```sh
+composer install
 ```
-
-Créé le ```.env```  a partir de ```.env.exemple``` (part default laravel 11 utilise SQLite)
-
+3. Installer les packages NodeJS
+```sh
+npm install
+```
+4. Créer une clé d'application 
+```bash
+php artisan key:generate
+```
+5. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster si besoin :
 ```env
-DB_CONNECTION=sqlite    # mettre mysql si besoin de mysql 
+DB_CONNECTION=mysql # mettre mysql si besoin de mysql 
+  
+# DB_HOST=127.0.0.1 ##mettre l'ip du serveur SQL
+  
+# DB_PORT=3306 #mettre le port d'écoute du serveur SQL
 
-# DB_HOST=127.0.0.1
-
-# DB_PORT=3306
-
-# DB_DATABASE=laravel
-
-# DB_USERNAME=root
-
-# DB_PASSWORD=
-
+# DB_DATABASE=projet #mettre le nom de la base de donnée souhaité
+  
+# DB_USERNAME=root #mettre le nom d'utilisateur souhaité
+  
+# DB_PASSWORD= #mettre le mot de passe pour se connecter
+  
 # DB_COLLATION=utf8mb4_general_ci # pour mysql
 ```
-
-Commande a faire : 
+## Base de donées
 
 ```bash
-php artisan migrate        |  Crée le env et migres tout sur la Base de Donner 
-
-php artisan key:generate   | génére une clé d\'application 
-
-php artisan serve          |   lance le server laravel 
-
-npm run dev                |   lance le server node             
+php artisan migrate  |  Créer la BDD 
 ```
 
-## Ajouts des Seeder dans la base de donner 
+## Pré-remplir la base de données
 
-Seeder Client : 
 ```
-    php artisan db:seed --class=ClientSeeder
+php artisan db:seed
 ```
 
-Seeder Engins : 
-```
-    php artisan db:seed --class=EnginSeeder
-```
+
+## Avancée
+
+### Personnelle
+
+![50%](https://progress-bar.dev/50)
+
+- [x] S'authentifier
+- [x] Créer les fiches : 
+ - [x] Client
+ - [x] Engins
+ - [ ] Location
+- [ ] Editer les fiches : 
+ - [ ] Client
+ - [ ] Engins
+ - [ ] Location
+- Supprimer les fiches : 
+ - [x] Client
+ - [x] Engins
+ - [ ] Location
+- [x] Visualiser les engins disponibles
+
+### Globale
+![40%](https://progress-bar.dev/40)
+
+#### Quentin
+- [ ] Stocker les données de localisation/de fonctionnement des engins
+- [x] Publier les donées de : 
+ - [x] Localisation
+ - [ ] Fonctionnement
+- [x] Déterminer les informations et les horodater
+#### Erwan
+- [x] S'authentifier
+- [x] Créer les fiches : 
+ - [x] Client
+ - [x] Engins
+ - [ ] Location
+- [ ] Editer les fiches : 
+ - [ ] Client
+ - [ ] Engins
+ - [ ] Location
+- Supprimer les fiches : 
+ - [x] Client
+ - [x] Engins
+ - [ ] Location
+- [ ] Visualiser les engins disponibles
+#### Antony
+- [x] Visualiser les historiques :
+  - [x] Par client
+  - [x] Par engin
+- [ ] Visualiser les engins sur la carte
+#### Kasim
+- [ ] Visualiser la liste des engin à :
+  - [ ] Livrer
+  - [ ] Récupérer
+- [ ] Gérer les maintenance
+### Tous
+- [ ] Compatibilité téléphones
