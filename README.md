@@ -76,7 +76,7 @@ php artisan db:seed
 
 ### Personnelle
 
-![50%](https://progress-bar.dev/50)
+![70%](https://progress-bar.dev/70)
 
 - [x] S'authentifier
 - [x] Créer les fiches : 
@@ -94,7 +94,7 @@ php artisan db:seed
 - [x] Visualiser les engins disponibles
 
 ### Globale
-![40%](https://progress-bar.dev/40)
+![60%](https://progress-bar.dev/60)
 
 #### Quentin
 - [ ] Stocker les données de localisation/de fonctionnement des engins
