@@ -39,23 +39,39 @@ OU
    ```sh
    npm install
    ```
-4. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster si besoin :
+4. Créer une clé d'application 
+```bash
+php artisan key:generate
+```
+5. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster si besoin :
 ```env
-  DB_CONNECTION=sqlite    # mettre mysql si besoin de mysql 
+  DB_CONNECTION=mysql    # mettre mysql si besoin de mysql 
   
-  # DB_HOST=127.0.0.1
+  # DB_HOST=127.0.0.1 ##mettre l'ip du serveur SQL
   
-  # DB_PORT=3306
+  # DB_PORT=3306 #mettre le port d'écoute du serveur SQL
+   
+  # DB_DATABASE=projet #mettre le nom de la base de donnée souhaité
   
-  # DB_DATABASE=laravel
+  # DB_USERNAME=root #mettre le nom d'utilisateur souhaité
   
-  # DB_USERNAME=root
-  
-  # DB_PASSWORD=
+  # DB_PASSWORD= #mettre le mot de passe pour se connecter
   
   # DB_COLLATION=utf8mb4_general_ci # pour mysql
 ```
 ## Base de donées
+
+```bash
+php artisan migrate     |  Créer la BDD 
+      
+```
+
+## Pré-remplir la base de données
+
+```
+    php artisan db:seed
+```
+
 
 ## Avancée
 
