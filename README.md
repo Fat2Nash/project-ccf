@@ -87,7 +87,7 @@ php artisan db:seed
    - [ ] Client
    - [ ] Engins
    - [ ] Location
-- Supprimer les fiches : 
+- [ ] Supprimer les fiches : 
    - [x] Client
    - [x] Engins
    - [ ] Location
@@ -112,7 +112,7 @@ php artisan db:seed
    - [ ] Client
    - [ ] Engins
    - [ ] Location
-- Supprimer les fiches : 
+- [ ] Supprimer les fiches : 
    - [x] Client
    - [x] Engins
    - [ ] Location
