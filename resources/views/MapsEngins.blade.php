@@ -203,7 +203,7 @@
                                 <button class="position-btn" data-lat="{{ $position->Latitude }}" data-lng="{{ $position->Longitude }}">
                                     <img class="m-2 h-9 w-9" src="https://cdn-icons-png.flaticon.com/512/902/902613.png" alt="Position">
                                 </button>
-                                <button>
+                                <button class="trajet-btn" data-adresse="{{ $location->adresse }}">
                                     <img class="m-2 h-9 w-9" src="https://cdn-icons-png.flaticon.com/512/512/512798.png" alt="Trajet">
                                 </button>
                             </td>
@@ -249,7 +249,7 @@
                 @endphp
 
                 // Créez un marqueur pour chaque position et ajoutez-le au tableau des marqueurs
-                var marker = L.marker([{{ $position->Latitude }}, {{ $position->Longitude }}]);
+                var marker = L.marker([{{ $position->Longitude }}, {{ $position->Latitude }}]);
 
                 // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
                 marker.enginInfo = {
@@ -288,10 +288,48 @@
                     var lng = parseFloat(btn.dataset.lng);
 
                     // Centrez la carte sur les coordonnées du marqueur et zoom
-                    map.setView([lat, lng], 13);
+                    map.setView([lng, lat], 13);
                 });
             });
         });
     </script>
+
+<script>
+        new Vue({
+            el: '#app',
+            data: {
+                map: null,
+                route: null
+            },
+            mounted() {
+                this.initMap();
+            },
+            methods: {
+                initMap() {
+                    this.map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13); // Centre la carte sur Ville-sur-Illon
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(this.map);
+                },
+                showRoute(destination) {
+                    // Afficher le trajet sur la carte
+                    var directions = L.Routing.control({
+                        waypoints: [
+                            L.latLng(48.1814101770421, 6.208779881654873), // Départ à Ville-sur-Illon
+                            L.latLng(destination[0], destination[1]) // Destination
+                        ],
+                        routeWhileDragging: true,
+                        show: false
+                    }).addTo(this.map);
+
+                    if (this.route) {
+                        this.map.removeLayer(this.route);
+                    }
+
+                    this.route = directions.getPlan().setWaypoints(destination).route;
+                }
+            }
+        });
+</script>
 </body>
 </html>
