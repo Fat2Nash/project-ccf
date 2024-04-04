@@ -23,135 +23,48 @@
         <div class="p-6">
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
 
-   <!--------------------------------------- 1ere case Liste Engin a Livrer ---------------------------------------------------------------------->
-               <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
+                <!--------------------------------------- 1ere case Liste Engin a Livrer ---------------------------------------------------------------------->
+                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                     <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Liste des engins à Livrer</div>
                     </div>
-                    <div class="overflow-auto max-h-[200px]"> <!-- Utilisation de overflow-auto pour activer le défilement -->
+                    <div class="overflow-auto max-h-[200px]">
+                        <!-- Utilisation de overflow-auto pour activer le défilement -->
                         <table class="w-full min-w-[540px]">
                             <tbody>
-
-                                <!-- 1er engin -->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 1</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                            </td>
-                        </tr>
-                        <!-- fin 1er engin -->
-
-                        <!-- 2eme engin -->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 2</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                            </td>
-                        </tr>
-                        <!-- fin 2eme engin -->
-
-                        <!-- 3eme engin -->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 3</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">11 h 37</span>
-                            </td>
-                        </tr>
-                        <!-- fin 3eme engin -->
-
-                        <!-- 4er engin -->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 4</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                            </td>
-                        </tr>
-                        <!-- fin 4eme engin -->
-
-                        <!-- 5eme engin -->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 5</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                            </td>
-                        </tr>
-                        <!-- fin 5eme engin -->
-
-                        <!-- 6eme engin -->
-                        <tr>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <div class="flex items-center">
-                                    <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin 6</a>
-                                </div>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                            </td>
-                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                            </td>
-                        </tr>
-                        <!-- fin 6eme engin -->
-
-                                <!-- 7eme engin -->
-                                <tr>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
-                                                7</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                                    </td>
-                                </tr>
-                                <!-- fin 7eme engin-->
-
+                                @php
+                                    use App\Models\Engin; // Importer le modèle Engin
+                                    use App\Models\Location; // Importer le modèle Engin
+                                    $engins = Engin::all(); // Récupérer tous les clients de la base de données
+                                    $Locations = Location::all(); // Récupérer toutes les locations de la base de données
+                                @endphp
+                                @foreach ($Locations as $Location)
+                                    @foreach ($engins as $engin)
+                                        <!-- 1er engin -->
+                                        <tr>
+                                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                                <div class="flex items-center">
+                                                    <a href="#"
+                                                        class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">{{ $Location->id_engins }}</a>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                                <span
+                                                    class="text-[13px] font-medium text-gray-400">{{ $Locations->Louer_le }}</span>
+                                            </td>
+                                            <!-- <td class="px-4 py-2 border-b border-b-gray-50">
+                                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
+                                            </td>-->
+                                        </tr>
+                                        <!-- fin 1er engin -->
+                                    @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
 
- <!------------------------------------- Debut deuxieme Case Liste Egin a recuperer --------------------------------------------------------------------------->
+                <!------------------------------------- Debut deuxieme Case Liste Egin a recuperer --------------------------------------------------------------------------->
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                     <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Liste des engins à Récupérer</div>
@@ -160,132 +73,28 @@
                         <table class="w-full min-w-[540px]">
                             <tbody>
 
-                               <!-- ENGIN 1 -->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                Engin 1
-            </a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-    </td>
-</tr>
-<!-- Fin 1er engin -->
-
-<!-- engin 2 -->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                Engin 2
-            </a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-    </td>
-</tr>
-<!-- Fin 2eme engin -->
-
-<!-- engin 3 -->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                Engin 3
-            </a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-    </td>
-</tr>
-<!-- Fin 3eme engin -->
-
-<!-- engin 4 -->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                Engin 4
-            </a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-    </td>
-</tr>
-<!-- Fin 4eme engin -->
-
-<!-- engin 5 -->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                Engin 5
-            </a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-    </td>
-</tr>
-<!-- Fin 5eme engin -->
-
-<!-- engin 6 -->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                Engin 6
-            </a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-    </td>
-</tr>
-<!-- Fin 6eme engin -->
-
-<!-- engin 7 -->
-<tr>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <div class="flex items-center">
-            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                Engin 7
-            </a>
-        </div>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-    </td>
-    <td class="px-4 py-2 border-b border-b-gray-50">
-        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-    </td>
-</tr>
-<!-- Fin 7eme engin -->
-
+                                <!-- ENGIN Recuperer -->
+                                @foreach ($Locations as $Location)
+                                    <tr>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <div class="flex items-center">
+                                                <a href="#"
+                                                    class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                                    Engin 1
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <span
+                                                class="text-[13px] font-medium text-gray-400">{{ $Location->id_engins }}</span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <span
+                                                class="text-[13px] font-medium text-gray-400">{{ $Locations->Rendu_le }}</span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <!-- Fin engin Recuperer-->
 
                             </tbody>
                         </table>
@@ -293,66 +102,68 @@
                 </div>
 
 
-                            </tbody>
-                        </table>
+                </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+        <!------- Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
+        <!------ Debut 3eme Case (map) ------------------------------------------------------------------------------------>
+        <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
+            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
+                <div class="items-start justify-between mb-4">
+
+                    <div>
+                        <div id="map" class="w-full h-full"></div>
+                        <script>
+                            // Créer une carte
+                            let map = L.map('map').setView([48.19559121773711, 6.214228801562298], 13); // Vue initiale centrée sur Paris
+
+                            // Ajouter le layer OpenStreetMap à la carte
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                            }).addTo(map);
+
+                            // Ajouter un point de localisation
+                            let marker = L.marker([48.1814101770421, 6.208779881654873]).addTo(map);
+                            marker.bindPopup("<b>Dépôt</b>");
+                        </script>
                     </div>
                 </div>
             </div>
-            <!------- Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
-            <!------ Debut 3eme Case (map) ------------------------------------------------------------------------------------>
-            <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
-                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
-                    <div class="items-start justify-between mb-4">
+            <!------ Fin 3eme Case (map) ------------------------------------------------------------------------------------>
 
-                        <div>
-                            <div id="map" class="w-full h-full"></div>
-                            <script>
-                                // Créer une carte
-                                let map = L.map('map').setView([48.19559121773711, 6.214228801562298], 13); // Vue initiale centrée sur Paris
+            <!------ Debut 4eme Case Infos Engin ------------------------------------------------------------------------------------>
+            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5 ">
+                <div class="flex items-start justify-between mb-4">
+                    <div class="font-medium">Infos Engin</div>
 
-                                // Ajouter le layer OpenStreetMap à la carte
-                                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                    maxZoom: 19,
-                                }).addTo(map);
-
-                                // Ajouter un point de localisation
-                                let marker = L.marker([48.1814101770421, 6.208779881654873]).addTo(map);
-                                marker.bindPopup("<b>Dépôt</b>");
-                            </script>
-                        </div>
-                    </div>
                 </div>
-                <!------ Fin 3eme Case (map) ------------------------------------------------------------------------------------>
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[460px]">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                                    Type</th>
+                                <th
+                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
+                                    Infos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                <!------ Debut 4eme Case Infos Engin ------------------------------------------------------------------------------------>
-                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5 ">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="font-medium">Infos Engin</div>
-
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full min-w-[460px]">
-                            <thead>
-                                <tr>
-                                    <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
-                                        Type</th>
-                                    <th
-                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                                        Infos</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <!-- Lignes Categorie   ------------------------------------------------->
+                            <!-- Lignes Categorie   ------------------------------------------------->
+                            @foreach ($engins as $engin)
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Categorie</span>
+                                            <span
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate">Categorie</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] medium text-gray-600">Categorie Engin</span>
+                                        <span class="text-[13px] medium text-gray-600">{{ $engin->categorie }}</span>
                                     </td>
                                 </tr>
                                 <!-- Lignes Marque   ------------------------------------------------->
@@ -363,7 +174,7 @@
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] medium text-gray-600">MarqueEngin</span>
+                                        <span class="text-[13px] medium text-gray-600">{{ $engin->marque }}</span>
                                     </td>
                                 </tr>
                                 <!-- Lignes Modele   ------------------------------------------------->
@@ -374,26 +185,27 @@
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] medium text-gray-600">ModeleEngin</span>
+                                        <span class="text-[13px] medium text-gray-600">{{ $engin->modele }}</span>
                                     </td>
                                 </tr>
                                 <!-- Lignes Description   ------------------------------------------------->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Description</span>
+                                            <span
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate">Description</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] medium text-gray-600">DescriptionEngin</span>
+                                        <span class="text-[13px] medium text-gray-600">{{ $engin->description }}</span>
                                     </td>
                                 </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
         </div>
         <!-- Fin 4eme Case ----------------------------------------------->
 
