@@ -22,19 +22,15 @@
                                 <table class="relative min-w-full overflow-y-auto divide-y divide-gray-200 ">
                                     <thead class="bg-gray-50 ">
                                         <tr>
-                                            <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Identification
                                             </th>
-                                            <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Maintenance
                                             </th>
-                                            <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Information</th>
-                                            <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Description</th>
                                             <th scope="col" class="relative py-3.5 px-4">
                                                 <span class="sr-only">Modifier</span>
@@ -45,51 +41,52 @@
                                     <tbody class="bg-white divide-y divide-gray-200 ">
                                         @foreach ($enginsdispo as $engin)
                                         <tr>
-                                                <td class="px-4 py-4 overflow-auto text-sm font-medium whitespace-nowrap">
-                                                    <div>
-                                                        <h2 class="font-medium text-gray-800 ">{{ $engin->modele }}
-                                                        </h2>
-                                                        <p class="text-sm font-normal text-gray-600 ">
-                                                            {{ $engin->marque }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                    <div>
-                                                        <h4 class="text-gray-700 ">
-                                                            @if ($engin->maintenance == 1)
-                                                                Oui
-                                                            @elseif($engin->maintenance == 0)
-                                                                Non
-                                                            @else
-                                                                Etat inconnu
-                                                            @endif
-                                                        </h4>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                    <div>
-                                                        <h4 class="text-gray-700 ">{{ $engin->statut }}</h4>
-                                                        <p class="text-gray-500 "><?php
-                                                        // Convertir les secondes en heures et minutes
-                                                        $secondes = $engin->compteur_heures;
-                                                        $heures = floor($secondes / 3600);
-                                                        $minutes = floor(($secondes % 3600) / 60);
-                                                        ?>
-                                                            {{ $heures }} heures {{ $minutes }} minutes
-                                                        </p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                    <div>
-                                                        <p class="text-gray-700 ">{{ $engin->description }}</p>
-                                                    </div>
-                                                </td>
-                                                <td class="px-4 py-4 text-xl whitespace-nowrap" title="Modifier l'engin">
-                                                    <button>
-                                                <i class='bx bx-pencil'></i></button>
+                                            <td class="px-4 py-4 overflow-auto text-sm font-medium whitespace-nowrap">
+                                                <div>
+                                                    <h2 class="font-medium text-gray-800 ">{{ $engin->modele }}
+                                                    </h2>
+                                                    <p class="text-sm font-normal text-gray-600 ">
+                                                        {{ $engin->marque }}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <div>
+                                                    <h4 class="text-gray-700 ">
+                                                        @if ($engin->maintenance == 1)
+                                                        Oui
+                                                        @elseif($engin->maintenance == 0)
+                                                        Non
+                                                        @else
+                                                        Etat inconnu
+                                                        @endif
+                                                    </h4>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <div>
+                                                    <h4 class="text-gray-700 ">{{ $engin->statut }}</h4>
+                                                    <p class="text-gray-500 "><?php
+                                                                                // Convertir les secondes en heures et minutes
+                                                                                $secondes = $engin->compteur_heures;
+                                                                                $heures = floor($secondes / 3600);
+                                                                                $minutes = floor(($secondes % 3600) / 60);
+                                                                                ?>
+                                                        {{ $heures }} heures {{ $minutes }} minutes
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <div>
+                                                    <p class="text-gray-700 ">{{ $engin->description }}</p>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-4 text-xl whitespace-nowrap">
+                                                <button title="Modifier l'engin">
+                                                    <i class='bx bx-pencil'></i></button>
                                                 <button title="Supprimer l'engin"><i class='bx bx-trash text-red-500'></i> </button>
                                                 <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
-                                    @endforeach
+                                                @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -98,30 +95,23 @@
                 </div>
                 <div class="mt-6 sm:flex sm:items-center sm:justify-between ">
                     <div class="text-sm text-gray-500 ">
-                        Page <span class="font-medium text-gray-700 ">1 </span>sur<span
-                            class="font-medium text-gray-700 "> 10</span>
+                        Page <span class="font-medium text-gray-700 ">1 </span>sur<span class="font-medium text-gray-700 "> 10</span>
                     </div>
                     <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
-                        <a href="#"
-                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                             </svg>
                             <span>
                                 Précédent
                             </span>
                         </a>
-                        <a href="#"
-                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
+                        <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
                             <span>
                                 Suivant
                             </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                             </svg>
                         </a>
                     </div>

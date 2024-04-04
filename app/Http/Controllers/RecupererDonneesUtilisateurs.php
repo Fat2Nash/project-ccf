@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Engin;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RecupererDonneesUtilisateurs extends Controller
@@ -30,5 +31,9 @@ class RecupererDonneesUtilisateurs extends Controller
         $autre = Engin::where('statut', 'Autre')->get();
         $maintenance = Engin::where('maintenance', '1')->get();
         return view('/welcome', ['loue' => $loue, 'dispo' => $dispo, 'autre'=> $autre, 'maintenance' => $maintenance, 'total' => $total]);
+    }
+    public function parametres(){
+        $parametres = User::all();
+        return view('/parametres', ['parametres' => $parametres]);
     }
 }
