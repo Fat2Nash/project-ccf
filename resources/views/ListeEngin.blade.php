@@ -41,22 +41,22 @@
                                 @foreach ($Locations as $Location)
                                     @foreach ($engins as $engin)
                                         <!-- 1er engin -->
-                                        <tr>
+
+                                        <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
                                             <td class="px-4 py-2 border-b border-b-gray-50">
                                                 <div class="flex items-center">
                                                     <a href="#"
-                                                        class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">{{ $Location->id_engins }}</a>
+                                                        class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                                        {{ $Location->id_engins }}
+                                                        <!-- Utilisation de l'ID de l'engin de la table Location -->
+                                                    </a>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-2 border-b border-b-gray-50">
                                                 <span
-                                                    class="text-[13px] font-medium text-gray-400">{{ $Locations->Louer_le }}</span>
+                                                    class="text-[13px] font-medium text-gray-400">{{ $Location->Louer_le }}</span>
                                             </td>
-                                            <!-- <td class="px-4 py-2 border-b border-b-gray-50">
-                                                <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                                            </td>-->
                                         </tr>
-                                        <!-- fin 1er engin -->
                                     @endforeach
                                 @endforeach
                             </tbody>
@@ -75,22 +75,19 @@
 
                                 <!-- ENGIN Recuperer -->
                                 @foreach ($Locations as $Location)
-                                    <tr>
+                                    <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
                                         <td class="px-4 py-2 border-b border-b-gray-50">
                                             <div class="flex items-center">
                                                 <a href="#"
                                                     class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                                                    Engin 1
+                                                    {{ $Location->id_engins }}
+                                                    <!-- Utilisation de l'ID de l'engin de la table Location -->
                                                 </a>
                                             </div>
                                         </td>
                                         <td class="px-4 py-2 border-b border-b-gray-50">
                                             <span
-                                                class="text-[13px] font-medium text-gray-400">{{ $Location->id_engins }}</span>
-                                        </td>
-                                        <td class="px-4 py-2 border-b border-b-gray-50">
-                                            <span
-                                                class="text-[13px] font-medium text-gray-400">{{ $Locations->Rendu_le }}</span>
+                                                class="text-[13px] font-medium text-gray-400">{{ $Location->Rendu_le }}</span>
                                         </td>
                                     </tr>
                                 @endforeach
