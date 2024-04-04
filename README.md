@@ -68,9 +68,13 @@ OU
     - [x] Client
     - [x] Engins
     - [ ] Location
-- [ ] Editer/Supprimer les fiches : 
+- [ ] Editer les fiches : 
     - [ ] Client
     - [ ] Engins
+    - [ ] Location
+- Supprimer les fiches : 
+    - [x] Client
+    - [x] Engins
     - [ ] Location
 - [x] Visualiser les engins disponibles
 
@@ -89,9 +93,13 @@ OU
     - [x] Client
     - [x] Engins
     - [ ] Location
-- [ ] Editer/Supprimer les fiches : 
+- [ ] Editer les fiches : 
     - [ ] Client
     - [ ] Engins
+    - [ ] Location
+- Supprimer les fiches : 
+    - [x] Client
+    - [x] Engins
     - [ ] Location
 - [ ] Visualiser les engins disponibles
 #### Antony
