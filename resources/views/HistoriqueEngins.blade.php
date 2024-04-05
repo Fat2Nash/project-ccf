@@ -467,12 +467,6 @@ document.getElementById("searchInput").addEventListener("input", function() {
         // Trie en fonction du compteur (première colonne) de manière descendante
         sortTable(0, !this.checked);
     });
-
-    // Écoute des événements de saisie dans le champ de recherche
-    document.getElementById("searchInput").addEventListener("input", function() {
-        // Votre script pour filtrer les lignes de la table en fonction de la saisie dans le champ de recherche
-        // ...
-    });
 </script>
 
 <script>
