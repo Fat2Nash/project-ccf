@@ -22,7 +22,7 @@ return new class extends Migration
         Schema::create('alerte', function (Blueprint $table) {
             $table->id('id_alerte');
             $table->foreignId('id_engin')->references('id_engins')->on('engins');
-            $table->foreignId('id_typeAlerte')->references('id_type')->on('typealerte');
+            $table->foreignId('id_type')->references(' id_typeAlerte')->on('typealerte');
             $table->dateTime('date_alerte');
         });
 
