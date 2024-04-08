@@ -123,9 +123,9 @@ php artisan db:seed
   - [x] Par engin
 - [ ] Visualiser les engins sur la carte
 #### Kasim
-- [ ] Visualiser la liste des engin à :
-  - [ ] Livrer
-  - [ ] Récupérer
+- [x] Visualiser la liste des engin à :
+  - [x] Livrer
+  - [x] Récupérer
 - [ ] Gérer les maintenance
 ### Tous
 - [ ] Compatibilité téléphones
