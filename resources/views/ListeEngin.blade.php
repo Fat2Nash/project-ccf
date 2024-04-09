@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiriot-Location | {{ Auth::user()->name }}</title>
+    <title>Thiriot-Location | {{ Auth::user()->nom }}</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -34,31 +34,35 @@
                             <tbody>
                                 @php
                                     use App\Models\Engin; // Importer le modèle Engin
-                                    use App\Models\Location; // Importer le modèle Engin
-                                    $engins = Engin::all(); // Récupérer tous les clients de la base de données
-                                    $Locations = Location::all(); // Récupérer toutes les locations de la base de données
+                                    use App\Models\Location; // Importer le modèle locztion
+                                    $engins = Engin::all(); // Récupérer toute les donnée des engin
+                                    $Locations = Location::all(); // Récupérer toutes les donnée de locations
                                 @endphp
-                                @foreach ($Locations as $Location)
-                                    @foreach ($engins as $engin)
-                                        <!-- 1er engin -->
-
+                                @foreach ($Locations->sortBy('Louer_le') as $Location)
+                                    @php
+                                        $engin = App\Models\Engin::find($Location->id_engins);
+                                    @endphp
+                                    @if ($engin)
                                         <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
                                             <td class="px-4 py-2 border-b border-b-gray-50">
                                                 <div class="flex items-center">
-                                                    <a href="#"
-                                                        class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                                                        {{ $Location->id_engins }}
-                                                        <!-- Utilisation de l'ID de l'engin de la table Location -->
-                                                    </a>
+                                                    <span class="ml-2 text-sm font-medium text-gray-600 truncate">
+                                                        {{ $engin->categorie }}
+                                                    </span>
                                                 </div>
                                             </td>
                                             <td class="px-4 py-2 border-b border-b-gray-50">
                                                 <span
                                                     class="text-[13px] font-medium text-gray-400">{{ $Location->Louer_le }}</span>
                                             </td>
+                                            <td class="px-4 py-2 border-b border-b-gray-50">
+                                                <span
+                                                    class="text-[13px] font-medium text-gray-400">{{ $Location->ville }}</span>
+                                            </td>
                                         </tr>
-                                    @endforeach
+                                    @endif
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -74,7 +78,7 @@
                             <tbody>
 
                                 <!-- ENGIN Recuperer -->
-                                @foreach ($Locations as $Location)
+                                @foreach ($Locations->sortBy('Rendu_le') as $Location)
                                     <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
                                         <td class="px-4 py-2 border-b border-b-gray-50">
                                             <div class="flex items-center">
@@ -89,9 +93,14 @@
                                             <span
                                                 class="text-[13px] font-medium text-gray-400">{{ $Location->Rendu_le }}</span>
                                         </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <span
+                                                class="text-[13px] font-medium text-gray-400">{{ $Location->ville }}</span>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 <!-- Fin engin Recuperer-->
+
 
                             </tbody>
                         </table>
@@ -130,13 +139,14 @@
             </div>
             <!------ Fin 3eme Case (map) ------------------------------------------------------------------------------------>
 
-            <!------ Debut 4eme Case Infos Engin ------------------------------------------------------------------------------------>
-            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5 ">
+            <!-- Debut 4eme Case Infos Engin -->
+            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5">
                 <div class="flex items-start justify-between mb-4">
                     <div class="font-medium">Infos Engin</div>
-
+                    <button id="toggleInfosButton"
+                        class="text-sm font-medium text-gray-600 bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-md">Afficher/Masquer</button>
                 </div>
-                <div class="overflow-x-auto">
+                <div class="overflow-x-auto" id="infosEnginTable" style="display: none;">
                     <table class="w-full min-w-[460px]">
                         <thead>
                             <tr>
@@ -149,9 +159,8 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            <!-- Lignes Categorie   ------------------------------------------------->
                             @foreach ($engins as $engin)
+                                <!-- Lignes Categorie -->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -163,7 +172,7 @@
                                         <span class="text-[13px] medium text-gray-600">{{ $engin->categorie }}</span>
                                     </td>
                                 </tr>
-                                <!-- Lignes Marque   ------------------------------------------------->
+                                <!-- Lignes Marque -->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -174,7 +183,7 @@
                                         <span class="text-[13px] medium text-gray-600">{{ $engin->marque }}</span>
                                     </td>
                                 </tr>
-                                <!-- Lignes Modele   ------------------------------------------------->
+                                <!-- Lignes Modele -->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -185,7 +194,7 @@
                                         <span class="text-[13px] medium text-gray-600">{{ $engin->modele }}</span>
                                     </td>
                                 </tr>
-                                <!-- Lignes Description   ------------------------------------------------->
+                                <!-- Lignes Description -->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -202,12 +211,23 @@
                     </table>
                 </div>
             </div>
+            <!-- Fin 4eme Case Infos Engin -->
         </div>
         </div>
-        <!-- Fin 4eme Case ----------------------------------------------->
-
-
         <x-footer />
+
+        <script>
+            const toggleInfosButton = document.getElementById('toggleInfosButton');
+            const infosEnginTable = document.getElementById('infosEnginTable');
+
+            toggleInfosButton.addEventListener('click', () => {
+                if (infosEnginTable.style.display === 'none') {
+                    infosEnginTable.style.display = 'block';
+                } else {
+                    infosEnginTable.style.display = 'none';
+                }
+            });
+        </script>
 
     </main>
 

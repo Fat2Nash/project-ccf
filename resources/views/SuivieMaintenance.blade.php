@@ -24,12 +24,12 @@
         <div class="p-6">
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
 
-                <!--------------------------------------- 1ere case Liste Engin a Livrer ---------------------------------------------------------------------->
+                <!--------------------------------------- 1ere case Infos Engin  ---------------------------------------------------------------------->
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                     <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Infos de l'engin</div>
                     </div>
-                    <!-- <div class="overflow-auto max-h-[540px]">  Utilisation de overflow-auto pour activer le défilement -->
+
                     <table class="w-full min-w-[540px]">
                         <tbody>
 
@@ -61,7 +61,7 @@
                             </tr>
                             <!-- Fin Marque engin ------------------------->
 
-                            <!-- Debut Modele ----------------------------->
+                            <!-- Debut Modele engin ----------------------------->
                             <tr>
                                 <td class="px-4 py-2 border-b border-b-gray-50">
                                     <div class="flex items-center">
@@ -103,6 +103,7 @@
                             </tr>
 
                             <!-- fin Status engin ---------------------------------------->
+                            <!-- Debut description Engin ---------------------------------------->
                             <tr>
                                 <td class="px-4 py-2 border-b border-b-gray-50">
                                     <div class="flex items-center">
@@ -115,11 +116,12 @@
                                         l'appareil</span>
                                 </td>
                             </tr>
-
+                            <!-- fin Description engin ---------------------------------------->
                         </tbody>
                     </table>
                 </div>
                 <!------ Fin 1er Case Infos ENGIN ------------------------------------------------------------------------------------>
+                <!------ Debut 2eme Case historique maintenance ------------------------------------------------------------------------------------>
 
 
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
@@ -148,7 +150,7 @@
                                         <span class="text-[13px] font-medium text-gray-400">Heure?</span>
                                     </td>
                                 </tr>
-                                <!-- Fin 1er Historique -->
+                                <!-- Fin  Historique Maintenance-->
                                 <!-- Debut Historique 2 -->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
@@ -207,6 +209,7 @@
         <!--- Fin Case Defaut ---->
 
         <!------ Fin  Case Remarque Defaut ------------------------------------------------------------------------------------>
+        <!------ Debut case date/valider ------------------------------------------------------------------------------------>
         <div class="max-w-screen-lg mx-auto">
             <div class="p-4 bg-white border border-gray-300 rounded-md shadow-md mb-6">
                 <div class="font-medium">Choisir une date :</div>
@@ -216,7 +219,7 @@
                     class="px-3 py-1 mt-4 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600">Valider</button>
             </div>
         </div>
-
+        <!------ Fin case date/valider ------------------------------------------------------------------------------------>
 
         <script>
             // Sélection de l'élément input pour la date
