@@ -32,7 +32,12 @@
 
                     <table class="w-full min-w-[540px]">
                         <tbody>
-
+                            @php
+                                use App\Models\Engin; // Importer le modèle Engin
+                                use App\Models\Location; // Importer le modèle locztion
+                                $engins = Engin::all(); // Récupérer toute les donnée des engin
+                                $Locations = Location::all(); // Récupérer toutes les donnée de locations
+                            @endphp
                             <!-- Debut Categorie engin --------------------------->
                             <tr>
                                 <td class="px-4 py-2 border-b border-b-gray-50">
@@ -46,6 +51,7 @@
                                 </td>
                             </tr>
                             <!-- fin Categorie engin ----------------------------------->
+
 
                             <!-- Debut Marque engin ------------------------------>
                             <tr>

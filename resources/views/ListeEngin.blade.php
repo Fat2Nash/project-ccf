@@ -28,7 +28,7 @@
                     <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Liste des engins à Livrer</div>
                     </div>
-                    <!-- Utilisation de overflow-auto pour activer le défilement -->
+                    <!--  overflow-auto pour  le défilement -->
                     <div class="overflow-auto max-h-[200px]">
                         <table class="w-full min-w-[540px]">
                             <tbody>
@@ -38,7 +38,9 @@
                                     $engins = Engin::all(); // Récupérer toute les donnée des engin
                                     $Locations = Location::all(); // Récupérer toutes les donnée de locations
                                 @endphp
-                                @foreach ($Locations->sortBy('Louer_le') as $Location)
+
+                                <!--trier par date de livraison-->
+                                @foreach ($Locations->where('Status', 'Livrer')->sortBy('Louer_le') as $Location)
                                     @php
                                         $engin = App\Models\Engin::find($Location->id_engins);
                                     @endphp
@@ -84,7 +86,7 @@
                             <tbody>
 
                                 <!-- ENGIN Recuperer -->
-                                @foreach ($Locations->sortBy('Louer_le') as $Location)
+                                @foreach ($Locations->where('Status', 'Recuperer')->sortBy('Louer_le') as $Location)
                                     @php
                                         $engin = App\Models\Engin::find($Location->id_engins);
                                     @endphp
@@ -92,39 +94,39 @@
                                         <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
                                             <td class="px-4 py-2 border-b border-b-gray-50">
                                                 <div class="flex items-center">
-                                                    <button name="PB_Livre"
-                                                        class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                                    <button id="PB_Recup_{{ $Location->id_loc_engin }}" name="PB_Recup"
+                                                        class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600"
+                                                        onclick="toggleAfficherMasquer('{{ $Location->id_loc_engin }}')">
                                                         {{ $Location->id_loc_engin }}
                                                     </button>
                                                 </div>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                                <span
-                                                    class="text-[13px] font-medium text-gray-400">{{ $Location->Rendu_le }}</span>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                                <span
-                                                    class="text-[13px] font-medium text-gray-400">{{ $Location->ville }}</span>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50">
-                                                <span
-                                                    class="text-[13px] font-medium text-gray-400">{{ $engin->categorie }}</span>
-                                            </td>
-                                        </tr>
-                                    @endif
-                                @endforeach
-                                <!-- Fin engin Recuperer-->
 
-
-                            </tbody>
-                        </table>
                     </div>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">{{ $Location->Rendu_le }}</span>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">{{ $Location->ville }}</span>
+                    </td>
+                    <td class="px-4 py-2 border-b border-b-gray-50">
+                        <span class="text-[13px] font-medium text-gray-400">{{ $engin->categorie }}</span>
+                    </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                    <!-- Fin engin Recuperer-->
+
+
+                    </tbody>
+                    </table>
                 </div>
-
-
-                </tbody>
-                </table>
             </div>
+
+
+            </tbody>
+            </table>
+        </div>
         </div>
         </div>
         <!------- Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
@@ -154,15 +156,15 @@
             <!------ Fin 3eme Case (map) ------------------------------------------------------------------------------------>
 
             <!-- Debut 4eme Case Infos Engin -->
-            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5">
+            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                 <div class="flex items-start justify-between mb-4">
                     <div class="font-medium">Infos Engin</div>
-                    <button id="toggleInfosButton"
-                        class="text-sm font-medium text-gray-600 bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-md">Afficher/Masquer</button>
                 </div>
-                <div class="overflow-x-auto" id="infosEnginTable" style="display: none;">
-                    <table class="w-full min-w-[460px]">
-                        <thead>
+                <div class="overflow-auto max-h-[200px]"> <!--  overflow-auto pour  le défilement -->
+                    <table class="w-full min-w-[540px]">
+                        <tbody>
+
+
                             <tr>
                                 <th
                                     class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
@@ -171,9 +173,13 @@
                                     class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
                                     Infos</th>
                             </tr>
-                        </thead>
+
                         <tbody>
-                            @foreach ($engins as $engin)
+                            <!-- Recuperer les infos de l'engin 1 -->
+                            @foreach ($engins->where('id_engins', 1) as $engin)
+                                @php
+                                    $engin = App\Models\Engin::find($Location->id_engins);
+                                @endphp
                                 <!-- Lignes Categorie -->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
@@ -220,31 +226,93 @@
                                         <span class="text-[13px] medium text-gray-600">{{ $engin->description }}</span>
                                     </td>
                                 </tr>
+                                <!-- DEBUT Lignes ADRESSE -->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Adresse</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] medium text-gray-600">{{ $Location->adresse }}</span>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span
+                                            class="text-[13px] font-medium text-gray-400">{{ $Location->ville }}</span>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span
+                                            class="text-[13px] font-medium text-gray-400">{{ $Location->code_postal }}</span>
+                                    </td>
+                                </tr>
+                                <!-- FIN Lignes ADRESSE -->
+                                <!-- DEBUT  Lignes DATE LIVRAISON -->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Date
+                                                livraison</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] medium text-gray-600">{{ $Location->Louer_le }}</span>
+                                    </td>
+                                </tr>
+                                <!-- FIN  Lignes DATE LIVRAISON -->
+                                <!-- DEBUT  Lignes DATE RECUPERATION -->
+                                <tr>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <div class="flex items-center">
+                                            <span class="ml-2 text-sm font-medium text-gray-600 truncate">Date
+                                                Recuperation</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-2 border-b border-b-gray-50">
+                                        <span class="text-[13px] medium text-gray-600">{{ $Location->Rendu_le }}</span>
+                                    </td>
+                                </tr>
+                                <!-- FIN  Lignes DATE RECUPERATION -->
                             @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
             <!-- Fin 4eme Case Infos Engin -->
+            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
+                <div class="font-medium mb-4">Modifier le statut d'une location</div>
+
+                <form action="{{ route('update_Status') }}" method="POST">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="location_id" class="block text-sm font-medium text-gray-700">ID de la location
+                            :</label>
+                        <input type="text" name="location_id" id="location_id"
+                            class="mt-1 p-2 w-full border rounded-md">
+                    </div>
+                    <div class="mb-4">
+                        <label for="new_status" class="block text-sm font-medium text-gray-700">Nouveau statut
+                            :</label>
+                        <select name="new_status" id="new_status" class="mt-1 p-2 w-full border rounded-md">
+                            <option value="Livrer">Livrer</option>
+                            <option value="Recuperer">Recuperer</option>
+                            <option value="Fini">Fini</option>
+                            <!-- Ajoutez d'autres options si nécessaire -->
+                        </select>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit"
+                            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Valider</button>
+                    </div>
+                </form>
+            </div>
         </div>
         </div>
         <x-footer />
 
 
 
-        <!-- JavaScript pour afficher les informations de l'engin -->
-        <script>
-            const toggleInfosButton = document.getElementById('toggleInfosButton');
-            const infosEnginTable = document.getElementById('infosEnginTable');
 
-            toggleInfosButton.addEventListener('click', () => {
-                if (infosEnginTable.style.display === 'none') {
-                    infosEnginTable.style.display = 'block';
-                } else {
-                    infosEnginTable.style.display = 'none';
-                }
-            });
-        </script>
+
     </main>
 </body>
 

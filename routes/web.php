@@ -51,5 +51,16 @@ Route::get('/ListeEngin', function () {
 Route::get('/SuivieMaintenance', function () {
     return view('SuivieMaintenance');
 });
+Route::post('/update-status', function (Illuminate\Http\Request $request) {
+    // Récupérer l'ID de la location et le nouveau statut depuis la requête POST
+    $locationId = $request->input('location_id');
+    $newStatus = $request->input('new_status');
+
+    // Mettre à jour le statut de la location dans la base de données
+    App\Models\Location::where('id_loc_engin', $locationId)->update(['Status' => $newStatus]);
+
+    // Rediriger vers une page de confirmation ou une autre page appropriée
+    return back()->with('success', 'Statut de la location mis à jour avec succès.');
+})->name('update_Status');
 
 require __DIR__.'/auth.php';
