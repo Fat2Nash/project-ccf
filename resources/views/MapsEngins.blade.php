@@ -58,7 +58,7 @@
             <input type="date" id="endDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
             <br><br>
             <div class="flex items-center">
-            <span class="mr-2">Voir le trajet : &nbsp; </span>
+            <span class="mr-2">Voir l'éventuel trajet emprunté : &nbsp; </span>
                 <button id="trajet-btn">
                     <img class="m-2 h-12 w-12" src="https://cdn-icons-png.flaticon.com/128/1257/1257396.png" alt="Trajet">
                 </button>
@@ -83,9 +83,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var trajetBtn = document.getElementById('trajet-btn');
-            var trajetAujourdhuiBtn = document.querySelector('#trajet_Aujoudhui-btn');
-            var map = L.map('map').setView([48.1814101770421, 6.208779881654873], 13);
+            var map = L.map('map', {
+                attributionControl: false // Désactiver l'affichage des informations d'attribution
+            }).setView([48.1814101770421, 6.208779881654873], 13);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
@@ -96,9 +96,15 @@
             // Récupérer les positions associées à l'engin sélectionné
             var positions = {!! json_encode($position_engin) !!};
 
+            var trajetBtn = document.getElementById('trajet-btn');
             trajetBtn.addEventListener('click', function() {
                 var enginSelect = document.getElementById('enginSelect');
+                var startDatePicker = document.getElementById('startDatePicker');
+                var endDatePicker = document.getElementById('endDatePicker');
+
                 var enginId = enginSelect.value;
+                var startDate = startDatePicker.value;
+                var endDate = endDatePicker.value;
 
                 // Vérifiez si un engin est sélectionné
                 if (!enginId) {
@@ -114,13 +120,12 @@
                     }
                 });
 
-                // Filtrer les positions en fonction de l'engin sélectionné
+                // Filtrer les positions en fonction de l'engin sélectionné et de la plage de dates
                 var filteredPositions = positions.filter(function(position) {
-                    return position.id_loc_engin == enginId;
+                    return position.id_loc_engin == enginId &&
+                        new Date(position.DateHeure) >= new Date(startDate) &&
+                        new Date(position.DateHeure) <= new Date(endDate);
                 });
-
-                // Filtrer les positions en fonction des dates sélectionnées
-                filteredPositions = filterPositionsByDate(filteredPositions);
 
                 // Créer un tableau de points pour l'itinéraire
                 var latlngs = [];
@@ -135,8 +140,13 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-                // Créer l'itinéraire
-                var route = L.polyline(latlngs, myStyle).addTo(map);
+               // Utiliser Leaflet Routing Machine pour générer l'itinéraire
+                L.Routing.control({
+                    waypoints: latlngs,
+                    routeWhileDragging: true,
+                    instructions: false // Omettre la configuration des instructions
+                }).addTo(map);
+
 
                 // Ajouter des marqueurs pour chaque position sur la carte
                 filteredPositions.forEach(function(position) {
