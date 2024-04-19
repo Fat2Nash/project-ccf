@@ -14,6 +14,7 @@ class Engin extends Model
     // Attributs que vous pouvez remplir massivement
     protected $fillable = [
         'categorie',
+        'Num_Machine',
         'marque',
         'modele',
         'description',

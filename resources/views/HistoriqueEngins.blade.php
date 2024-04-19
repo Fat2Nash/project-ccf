@@ -262,59 +262,49 @@
                 <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Marque
+                        Machine N°
                         <button class="sort-button" onclick="sortTable(1)">↑</button>
                         <button class="sort-button" onclick="sortTable(1, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Modèle
+                        Marque
                         <button class="sort-button" onclick="sortTable(2)">↑</button>
                         <button class="sort-button" onclick="sortTable(2, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Catégorie
+                        Modèle
                         <button class="sort-button" onclick="sortTable(3)">↑</button>
                         <button class="sort-button" onclick="sortTable(3, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Engin louer le
+                        Catégorie
                         <button class="sort-button" onclick="sortTable(4)">↑</button>
                         <button class="sort-button" onclick="sortTable(4, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Engin rendu le
+                        Engin louer le
                         <button class="sort-button" onclick="sortTable(5)">↑</button>
                         <button class="sort-button" onclick="sortTable(5, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Dernier démarrage
+                        Engin rendu le
                         <button class="sort-button" onclick="sortTable(6)">↑</button>
                         <button class="sort-button" onclick="sortTable(6, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Dernier arrêt
+                        Dernier démarrage
                         <button class="sort-button" onclick="sortTable(7)">↑</button>
                         <button class="sort-button" onclick="sortTable(7, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Durée de fonctionnement
+                        Dernier arrêt
                         <button class="sort-button" onclick="sortTable(8)">↑</button>
                         <button class="sort-button" onclick="sortTable(8, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Longitude
+                        Durée de fonctionnement
                         <button class="sort-button" onclick="sortTable(9)">↑</button>
                         <button class="sort-button" onclick="sortTable(9, false)">↓</button>
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Latitude
-                        <button class="sort-button" onclick="sortTable(10)">↑</button>
-                        <button class="sort-button" onclick="sortTable(10, false)">↓</button>
-                    </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Date/heure Dernière position
-                        <button class="sort-button" onclick="sortTable(11)">↑</button>
-                        <button class="sort-button" onclick="sortTable(11, false)">↓</button>
                     </th>
                 </tr>
                 </thead>
@@ -341,6 +331,9 @@
                         {{ $counter++ }}
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                        {{ $engin->Num_Machine }}
+                    </td>
+                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {{ $engin->marque }}
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -363,15 +356,6 @@
                     </td>
                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         {{ $location->Temps_fonct }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $position->Longitude }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $position->Latitude }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $position->DateHeure }}
                     </td>
                 </tr>
             @endif

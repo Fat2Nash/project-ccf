@@ -273,7 +273,7 @@
                         <button class="sort-button" onclick="sortTable(2, false)">↓</button>
                     </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Date de création
+                        Machine N°
                         <button class="sort-button" onclick="sortTable(3)">↑</button>
                         <button class="sort-button" onclick="sortTable(3, false)">↓</button>
                     </th>
@@ -328,7 +328,7 @@
                                         {{ $client->prenom }}
                                     </td>
                                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                        {{ $client->cree_le }}
+                                        {{ $engin->Num_Machine }}
                                     </td>
                                     <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                         {{ $engin->marque }}
