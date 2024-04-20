@@ -92,7 +92,7 @@ class LocationSeeder extends Seeder
             'id_loc_engin' => '2',
             'Longitude' => '48.1814101770421',
             'Latitude' => '6.208779881654873',
-            'DateHeure' => '2024-04-19 08:22',
+            'DateHeure' => '2024-04-20 08:22',
         ]);
 
         // Insert position data into position_engin table
@@ -100,7 +100,7 @@ class LocationSeeder extends Seeder
             'id_loc_engin' => '2',
             'Longitude' => '48.15',
             'Latitude' => '6.25',
-            'DateHeure' => '2024-04-19 09:22',
+            'DateHeure' => '2024-04-20 09:22',
         ]);
 
         // Insert position data into position_engin table
@@ -108,7 +108,7 @@ class LocationSeeder extends Seeder
             'id_loc_engin' => '2',
             'Longitude' => '48.1667',
             'Latitude' => '6.3167',
-            'DateHeure' => '2024-04-19 10:22',
+            'DateHeure' => '2024-04-20 10:22',
         ]);
 
         // Insert position data into position_engin table
@@ -116,7 +116,7 @@ class LocationSeeder extends Seeder
             'id_loc_engin' => '2',
             'Longitude' => '48.183331',
             'Latitude' => '6.38333',
-            'DateHeure' => '2024-04-19 11:22',
+            'DateHeure' => '2024-04-20 11:22',
         ]);
 
         // Insert cycle data into cycle_engin table

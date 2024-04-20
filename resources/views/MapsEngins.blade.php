@@ -25,6 +25,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
 </head>
 <body class="text-gray-800 font-inter">
     <x-side-navbar />
@@ -60,15 +63,15 @@
             <div class="flex items-center">
             <span class="mr-2">Voir l'éventuel trajet emprunté : &nbsp; </span>
                 <button id="trajet-btn">
-                    <img class="m-2 h-12 w-12" src="https://cdn-icons-png.flaticon.com/128/1257/1257396.png" alt="Trajet">
+                    <img class="m-2 h-12 w-12" src="https://cdn-icons-png.flaticon.com/128/1257/1257396.png" alt="Trajet de l'engin">
                 </button>
             </div>
             <div class="flex items-center">
             <span class="mr-2"> Ou voir le trajet effectué aujourd'hui : &nbsp; </span>
             <button id="trajet_Aujoudhui-btn">
-                <img class="m-2 h-12 w-12" src="https://cdn-icons-png.flaticon.com/128/455/455859.png" alt="Trajet">
+                <img class="m-2 h-12 w-12" src="https://cdn-icons-png.flaticon.com/128/455/455859.png" alt="Trajet effectué aujourd'hui">
             </button>
-        </div>
+            </div>
         </h2>
     </div>
 
@@ -79,7 +82,8 @@
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -97,6 +101,8 @@
             var positions = {!! json_encode($position_engin) !!};
 
             var trajetBtn = document.getElementById('trajet-btn');
+            var trajetAujourdhuiBtn = document.getElementById('trajet_Aujoudhui-btn');
+
             trajetBtn.addEventListener('click', function() {
                 var enginSelect = document.getElementById('enginSelect');
                 var startDatePicker = document.getElementById('startDatePicker');
@@ -140,11 +146,10 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-               // Utiliser Leaflet Routing Machine pour générer l'itinéraire
+                // Utiliser Leaflet Routing Machine pour générer l'itinéraire
                 L.Routing.control({
                     waypoints: latlngs,
                     routeWhileDragging: true,
-                    instructions: false // Omettre la configuration des instructions
                 }).addTo(map);
 
 
@@ -208,6 +213,7 @@
                 return filteredPositions;
             }
 
+            // Ajoutez un écouteur d'événements pour le clic sur le bouton "Aujourd'hui"
             trajetAujourdhuiBtn.addEventListener('click', function() {
                 var enginSelect = document.getElementById('enginSelect');
                 var enginId = enginSelect.value;
@@ -247,8 +253,11 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-                // Créer l'itinéraire
-                var route = L.polyline(latlngs, myStyle).addTo(map);
+                // Utiliser Leaflet Routing Machine pour générer l'itinéraire
+                L.Routing.control({
+                    waypoints: latlngs,
+                    routeWhileDragging: true,
+                }).addTo(map);
 
                 // Ajouter des marqueurs pour chaque position sur la carte
                 filteredPositions.forEach(function(position) {
