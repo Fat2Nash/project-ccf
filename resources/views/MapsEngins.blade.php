@@ -253,10 +253,11 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-                // Utiliser Leaflet Routing Machine pour générer l'itinéraire
+                // Utiliser Leaflet Routing Machine pour générer l'itinéraire avec des instructions en français
                 L.Routing.control({
                     waypoints: latlngs,
                     routeWhileDragging: true,
+                    language: 'fr', // Spécifiez la langue des instructions
                 }).addTo(map);
 
                 // Ajouter des marqueurs pour chaque position sur la carte
