@@ -15,7 +15,7 @@
             </li>
 
             <li class="mb-1 group">
-                <a href="./ListeEngin"
+                <a href="/liste-engin"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-list-ul'></i>
                     <span class="text-sm">Liste locations</span>
@@ -41,14 +41,15 @@
                 </ul>
             </li>
             <li class="mb-1 group">
-                <a href="./SuivieMaintenance"
+                <a href="/maintenances"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='mr-3 text-lg bx bx-wrench'></i>
-                    <span class="text-sm">Maintenance</span>
+                    <i class='mr-3 text-lg bx bx-map-pin'></i>
+                    <span class="text-sm">Maintenances</span>
                 </a>
             </li>
+
             <li class="mb-1 group">
-                <a href=""
+                <a href="/livraisons"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-map-pin'></i>
                     <span class="text-sm">Livraisons</span>
@@ -73,7 +74,7 @@
             </li>
 
             <li class="mb-1 group">
-                <a href=""
+                <a href="/fiche-location"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-spreadsheet'></i>
                     <span class="text-sm">Fiches locations</span>
@@ -89,7 +90,7 @@
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href="./HistoriqueLocations"
+                <a href="/historique-locations"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bxs-hourglass-top'></i>
                     <span class="text-sm">Historique Location</span>
@@ -97,7 +98,7 @@
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href=""
+                <a href="/notifications"
                     class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
                     <i class='mr-3 text-lg bx bx-bell'></i>
                     <span class="text-sm">Notifications</span>

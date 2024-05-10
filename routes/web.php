@@ -40,17 +40,32 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/LocationFiche', function () {
-    return view('LocationFiche');
+Route::get('/location-fiche', function () {
+    return view('locationFiche');
 });
 
-Route::get('/ListeEngin', function () {
-    return view('ListeEngin');
+Route::get('/livraisons/{id?}', function ($id = null) {
+    return view('livraisons',[$id]);
 });
 
-Route::get('/SuivieMaintenance', function () {
-    return view('SuivieMaintenance');
+// Routes Maintenances
+Route::get('/maintenances', function () {
+    return view('maintenances');
 });
+
+Route::get('/maintenances/{idMaintenance?}', function ($idMaintenance = null) {
+    return view('maintenance-details',[$idMaintenance]);
+});
+
+Route::get('/nouvelle-maintenance/{idEngin?}', function ($idEngin = null) {
+    return view('maintenance-nouvelle',[$idEngin]);
+});
+
+// Routes Notifications
+Route::get('/notifications', function () {
+    return view('notifications');
+});
+
 Route::post('/update-status', function (Illuminate\Http\Request $request) {
     // Récupérer l'ID de la location et le nouveau statut depuis la requête POST
     $locationId = $request->input('location_id');
@@ -62,5 +77,26 @@ Route::post('/update-status', function (Illuminate\Http\Request $request) {
     // Rediriger vers une page de confirmation ou une autre page appropriée
     return back()->with('success', 'Statut de la location mis à jour avec succès.');
 })->name('update_Status');
+
+Route::post('/creer-maintenance', function (Illuminate\Http\Request $request) {
+    // Récupérer les données de la maintenance depuis la requête POST
+    $id_engin = $request->input('id_engin');
+    $remarque = $request->input('remarque');
+    $defauts = $request->input('defaut');
+    $date_maintenance = $request->input('date');
+    $id_mecaniciens = $request->input('mecanicien');
+
+    // Enregistrer la maintenance dans la bdd
+    $maintenance = new App\Models\Maintenance();
+    $maintenance->id_engin = $id_engin;
+    $maintenance->remarque = $remarque;
+    $maintenance->defauts = $defauts;
+    $maintenance->date_maintenance = $date_maintenance;
+    $maintenance->id_mecaniciens = $id_mecaniciens;
+    $maintenance->save();
+
+    // Rediriger vers la liste des maintenances
+    return redirect('/maintenances');
+})->name('creer_maintenance');
 
 require __DIR__.'/auth.php';

@@ -65,8 +65,7 @@
                                         <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
                                             <td class="px-4 py-2 border-b border-b-gray-50 text-center">
                                                 <div class="flex items-center">
-                                                    <a name="PB_Livrer"
-                                                        href="/liste-engin/{{ $Location->id_loc_engin }}"
+                                                    <a name="PB_Livrer" href="/livraisons/{{ $Location->id_loc_engin }}"
                                                         class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
                                                         {{ $Location->id_loc_engin }}
                                                     </a>
@@ -117,8 +116,7 @@
                                             <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
                                                 <div class="flex items-center">
                                                     <a id="PB_Recup_{{ $Location->id_engins }}"
-                                                        href="/liste-engin/{{ $Location->id_loc_engin }}"
-                                                        name="PB_Recup"
+                                                        href="/livraisons/{{ $Location->id_loc_engin }}" name="PB_Recup"
                                                         class="ml-2 text-sm font-medium truncate hover:text-orange-600">
                                                         {{ $Location->id_loc_engin }}
                                                     </a>
@@ -161,7 +159,7 @@
         </div>
         <!------- Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
         <!------ Debut 3eme Case (map) ------------------------------------------------------------------------------------>
-        <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
+        <div class="p-6 grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
             <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
                 <div class="items-start justify-between mb-4">
 
