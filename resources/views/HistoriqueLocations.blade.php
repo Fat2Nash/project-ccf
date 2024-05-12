@@ -159,8 +159,11 @@
     </div>
     <!-- end navbar -->
 
+    <!-- Division contenant le menu déroulant pour sélectionner le type d'historique -->
     <div class="relative flex ml-[350px] mt-10">
+        <!-- En-tête indiquant à l'utilisateur de choisir le type d'historique -->
         <h2 class="font-bold">Veuillez choisir le type d'historique : &nbsp;</h2>
+        <!-- Menu déroulant permettant de choisir entre différents types d'historique -->
         <select id="selectHistorique" class="relative w-[220px] bg-white border-black border-2 rounded-md text-center font-semibold">
             <option>Type d'historique</option>
             <option value="./HistoriqueEngins">Historique Engins</option>
@@ -176,9 +179,13 @@
     </footer>
 
     <script>
+        // Script JavaScript pour gérer le changement de sélection dans le menu déroulant
         document.getElementById("selectHistorique").addEventListener("change", function() {
+            // Récupération de l'option sélectionnée
             var selectedOption = this.options[this.selectedIndex];
+            // Vérification si une option valide a été sélectionnée
             if (selectedOption.value !== "") {
+                // Redirection vers l'URL correspondante à l'option sélectionnée
                 window.location.href = selectedOption.value;
             }
         });

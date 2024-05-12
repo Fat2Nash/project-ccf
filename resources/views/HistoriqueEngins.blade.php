@@ -186,82 +186,120 @@
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                         <h3 class="font-semibold text-base text-blueGray-700">Historique Engins</h3>
                     </div>
-                <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                    <div class="flex justify-end items-center">
-                        <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
-                            <input class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" id="searchInput" placeholder="Rechercher...">
-                            <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-                                <svg class="text-orange-500 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
-                                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                                </svg>
-                            </button>
-                        </div>
+                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                        <!-- Champ de recherche -->
+                        <div class="flex justify-end items-center">
+                            <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
+                                <!-- Input de recherche -->
+                                <input class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                                        type="text" id="searchInput" placeholder="Rechercher...">
+                                <!-- Bouton de recherche -->
+                                <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+                                    <!-- Icone de recherche -->
+                                    <svg class="text-orange-500 h-4 w-4 fill-current"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+                                    x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                                    xml:space="preserve" width="512px" height="512px">
 
-                        <div class="inline-flex items-center">
-                            <label class="relative flex cursor-pointer items-center rounded-full p-3" for="ripple-on">
-                                <input id="sortAscending" type="checkbox" class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500 hover:before:opacity-10" />
-                                <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
+                                            s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
+                                            c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z
+                                            M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
+                                            s-17-7.626-17-17S14.61,6,23.984,6z" />
                                     </svg>
-                                </div>
-                            </label>
-                            <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-on">
+                                </button>
+                            </div>
+                            <!-- Options de tri -->
+                            <div class="inline-flex items-center">
+                                <!-- Bouton de tri ascendant -->
+                                <label class="relative flex cursor-pointer items-center rounded-full p-3" for="sortAscending">
+                                    <!-- Checkbox pour tri ascendant -->
+                                    <input id="sortAscending" type="checkbox"
+                                    class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none
+                                    rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block
+                                    before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500
+                                    before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500
+                                    hover:before:opacity-10" />
+                                    <!-- Icone de tri ascendant -->
+                                    <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4
+                                                -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
+                                        viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1
+                                            1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1
+                                            1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                </label>
+                                <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-on">
                                 <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/alphabetical_classification_4279.png" alt="logo" class="h-5 w-5">
-                            </label>
-                        </div>
-                        <div class="inline-flex items-center">
-                            <label class="relative flex cursor-pointer items-center rounded-full p-3" for="ripple-off">
-                                <input id="sortDescending" type="checkbox" class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500 hover:before:opacity-10" />
-                                <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </label>
-                            <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-off">
+                                </label>
+                                <!-- Bouton de tri descendant -->
+                                <label class="relative flex cursor-pointer items-center rounded-full p-3" for="sortDescending">
+                                    <!-- Checkbox pour tri descendant -->
+                                    <input id="sortDescending" type="checkbox"
+                                    class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none
+                                    rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block
+                                    before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500
+                                    before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500
+                                    hover:before:opacity-10" />
+                                    <!-- Icone de tri descendant -->
+                                    <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4
+                                                -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
+                                        viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1
+                                            1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1
+                                            1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                </label>
+                                <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-off">
                                 <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/alphabetical_classification_3357.png" alt="logo" class="h-5 w-5">
-                            </label>
-                        </div>
-                        <script>
-                            const checkboxes = document.querySelectorAll('.check-input');
-                            checkboxes.forEach((checkbox) => {
-                                checkbox.addEventListener('click', function() {
-                                    checkboxes.forEach((otherCheckbox) => {
-                                        if (otherCheckbox !== checkbox) {
-                                            otherCheckbox.checked = false;
-                                        }
+                                </label>
+                                <!-- Script pour désactiver les autres cases de tri lorsqu'une est sélectionnée -->
+                                <script>
+                                    const checkboxes = document.querySelectorAll('.check-input');
+                                    checkboxes.forEach((checkbox) => {
+                                        checkbox.addEventListener('click', function() {
+                                            checkboxes.forEach((otherCheckbox) => {
+                                                if (otherCheckbox !== checkbox) {
+                                                    otherCheckbox.checked = false;
+                                                }
+                                            });
+                                        });
                                     });
-                                });
-                            });
-                        </script>
+                                </script>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
                 @php
                 use App\Models\Client; // Importer le modèle Client
                 $clients = Client::all(); // Récupérer tous les clients de la base de données
 
                 use App\Models\Engin; // Importer le modèle Engin
-                $engins = Engin::all(); // Récupérer tous les clients de la base de données
+                $engins = Engin::all(); // Récupérer tous les engins de la base de données
 
                 use App\Models\Location; // Importer le modèle Location Engin
-                $loc_engin = Location::all(); // Récupérer tous les clients de la base de données
+                $loc_engin = Location::all(); // Récupérer toutes les locations de la base de données
 
-                use App\Models\Position; // Importer le modèle Location Engin
-                $position_engin = Position::all();
+                use App\Models\Position; // Importer le modèle Position Engin
+                $position_engin = Position::all(); // Récupérer toutes les positions de la base de données
 
-                use App\Models\Cycle; // Importer le modèle Location Engin
-                $cycle_engin = Cycle::all();
+                use App\Models\Cycle; // Importer le modèle cycle Engin
+                $cycle_engin = Cycle::all(); // Récupérer tous les cycles de la base de données
                 @endphp
 
                 <div class="block w-full overflow-x-auto overflow-y-auto max-h-96">
                     <table id="dataTable" class="items-center bg-transparent w-full border-collapse">
                 <thead>
                 <tr>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid
+                border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                     </th>
-                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid
+                    border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                         Machine N°
                         <button class="sort-button" onclick="sortTable(1)">↑</button>
                         <button class="sort-button" onclick="sortTable(1, false)">↓</button>
@@ -311,7 +349,7 @@
 
                 @php
                 $counter = 1;
-            @endphp
+                @endphp
 
 <tbody>
     @foreach($clients as $client)
