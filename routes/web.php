@@ -14,7 +14,6 @@ Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
 Route::get('supprimer_client/{id}', [supprimer_fiche::class, 'supprimerclient']);
 Route::get('supprimer_engin/{id}', [supprimer_fiche::class, 'supprimerengin']);
 
-
 Route::get('/engins-disponibles', [RecupererDonneesUtilisateurs::class, 'enginsdispo'])
     ->middleware(['auth', 'verified'])
     ->name('enginsdispo');
