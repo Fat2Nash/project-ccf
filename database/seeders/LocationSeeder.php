@@ -125,5 +125,140 @@ class LocationSeeder extends Seeder
             'HeureMoteurON' => '11:00',
             'HeureMoteurOFF' => '13:22',
         ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 3,
+            'id_engins' => 3,
+            'adresse' => '1 rue du vin',
+            'ville' => 'Epinal',
+            'code_postal' => '88000',
+            'pays' => 'France',
+            'Temps_fonct' => 600,
+            'Louer_le' => '2024-03-27',
+            'Rendu_le' => '2024-03-28',
+        ]);
+
+        // Insert position data into position_engin table
+        DB::table('position_engin')->insert([
+            'id_loc_engin' => '2',
+            'Longitude' => '48.1814101770421',
+            'Latitude' => '6.208779881654873',
+            'DateHeure' => '2024-04-20 08:22',
+        ]);
+
+        // Insert cycle data into cycle_engin table
+        DB::table('cycle_engin')->insert([
+            'id_loc_engin' => '2',
+            'HeureMoteurON' => '11:00',
+            'HeureMoteurOFF' => '13:22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 4,
+            'id_engins' => 4,
+            'adresse' => '1 rue du vin',
+            'ville' => 'Epinal',
+            'code_postal' => '88000',
+            'pays' => 'France',
+            'Temps_fonct' => 600,
+            'Louer_le' => '2024-03-27',
+            'Rendu_le' => '2024-03-28',
+        ]);
+
+        // Insert position data into position_engin table
+        DB::table('position_engin')->insert([
+            'id_loc_engin' => '2',
+            'Longitude' => '48.1814101770421',
+            'Latitude' => '6.208779881654873',
+            'DateHeure' => '2024-04-20 08:22',
+        ]);
+
+        // Insert cycle data into cycle_engin table
+        DB::table('cycle_engin')->insert([
+            'id_loc_engin' => '2',
+            'HeureMoteurON' => '11:00',
+            'HeureMoteurOFF' => '13:22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 5,
+            'id_engins' => 5,
+            'adresse' => '1 rue du vin',
+            'ville' => 'Epinal',
+            'code_postal' => '88000',
+            'pays' => 'France',
+            'Temps_fonct' => 600,
+            'Louer_le' => '2024-03-27',
+            'Rendu_le' => '2024-03-28',
+        ]);
+
+        // Insert position data into position_engin table
+        DB::table('position_engin')->insert([
+            'id_loc_engin' => '2',
+            'Longitude' => '48.1814101770421',
+            'Latitude' => '6.208779881654873',
+            'DateHeure' => '2024-04-20 08:22',
+        ]);
+
+        // Insert cycle data into cycle_engin table
+        DB::table('cycle_engin')->insert([
+            'id_loc_engin' => '2',
+            'HeureMoteurON' => '11:00',
+            'HeureMoteurOFF' => '13:22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 6,
+            'id_engins' => 6,
+            'adresse' => '1 rue du vin',
+            'ville' => 'Epinal',
+            'code_postal' => '88000',
+            'pays' => 'France',
+            'Temps_fonct' => 600,
+            'Louer_le' => '2024-03-27',
+            'Rendu_le' => '2024-03-28',
+        ]);
+
+        // Insert position data into position_engin table
+        DB::table('position_engin')->insert([
+            'id_loc_engin' => '2',
+            'Longitude' => '48.1814101770421',
+            'Latitude' => '6.208779881654873',
+            'DateHeure' => '2024-04-20 08:22',
+        ]);
+
+        // Insert cycle data into cycle_engin table
+        DB::table('cycle_engin')->insert([
+            'id_loc_engin' => '2',
+            'HeureMoteurON' => '11:00',
+            'HeureMoteurOFF' => '13:22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 7,
+            'id_engins' => 7,
+            'adresse' => '1 rue du vin',
+            'ville' => 'Epinal',
+            'code_postal' => '88000',
+            'pays' => 'France',
+            'Temps_fonct' => 600,
+            'Louer_le' => '2024-03-27',
+            'Rendu_le' => '2024-03-28',
+        ]);
+
+        // Insert position data into position_engin table
+        DB::table('position_engin')->insert([
+            'id_loc_engin' => '2',
+            'Longitude' => '48.1814101770421',
+            'Latitude' => '6.208779881654873',
+            'DateHeure' => '2024-04-20 08:22',
+        ]);
+
+        // Insert cycle data into cycle_engin table
+        DB::table('cycle_engin')->insert([
+            'id_loc_engin' => '2',
+            'HeureMoteurON' => '11:00',
+            'HeureMoteurOFF' => '13:22',
+        ]);
     }
 }

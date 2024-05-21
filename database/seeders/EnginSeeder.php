@@ -40,5 +40,75 @@ class EnginSeeder extends Seeder
                     'cree_le' => now(),
                     'mis_a_jours_le' => now(),
                 ]);
+
+                // Créez un utilisateur de test
+                DB::table('engins')->insert([
+                    'categorie' => 'Mini Pelle2',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '123',
+                    'description' => 'Mini pelle hydraulique sur chenilles',
+                    'compteur_heures' => 500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                // Créez un utilisateur de test
+                DB::table('engins')->insert([
+                    'categorie' => 'Mini Pelle3',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '123',
+                    'description' => 'Mini pelle hydraulique sur chenilles',
+                    'compteur_heures' => 500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                // Créez un utilisateur de test
+                DB::table('engins')->insert([
+                    'categorie' => 'Mini Pelle4',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '123',
+                    'description' => 'Mini pelle hydraulique sur chenilles',
+                    'compteur_heures' => 500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                // Créez un utilisateur de test
+                DB::table('engins')->insert([
+                    'categorie' => 'Mini Pelle5',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '123',
+                    'description' => 'Mini pelle hydraulique sur chenilles',
+                    'compteur_heures' => 500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                // Créez un utilisateur de test
+                DB::table('engins')->insert([
+                    'categorie' => 'Mini Pelle6',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '123',
+                    'description' => 'Mini pelle hydraulique sur chenilles',
+                    'compteur_heures' => 500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
     }
 }

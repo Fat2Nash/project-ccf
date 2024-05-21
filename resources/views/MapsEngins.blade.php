@@ -49,7 +49,8 @@
             <select id="enginSelect" class="w-[300px] relative bg-white border-black border-2 rounded-md text-center font-semibold">
                 <option value="">Choisir l'engin</option>
                 @foreach($engins as $engin)
-                    <option value="{{ $engin->id_engins }}" date-numMachine="{{ $engin->Num_Machine }}" data-marque="{{ $engin->marque }}" data-modele="{{ $engin->modele }}" data-categorie="{{ $engin->categorie }}">
+                    <option value="{{ $engin->id_engins }}" date-numMachine="{{ $engin->Num_Machine }}"
+                    data-marque="{{ $engin->marque }}" data-modele="{{ $engin->modele }}" data-categorie="{{ $engin->categorie }}">
                         {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}
                     </option>
                 @endforeach
@@ -177,7 +178,9 @@
                     // Ajoutez un gestionnaire d'événements pour afficher les informations d'engin lorsque survolé
                     marker.on('mouseover', function(e) {
                         var info = e.target.enginInfo;
-                        e.target.bindPopup(`<b>Marque:</b> ${info.marque}<br><b>Modèle:</b> ${info.modele}<br><b>Catégorie:</b> ${info.categorie}<br><b>Date/Heure:</b> ${info.dateHeure}`).openPopup();
+                        e.target.bindPopup(`<b>Marque:</b> ${info.marque}<br><b>Modèle:</b>
+                        ${info.modele}<br><b>Catégorie:</b> ${info.categorie}<br><b>Date/Heure:</b>
+                        ${info.dateHeure}`).openPopup();
                     });
 
                     // Ajoutez un gestionnaire d'événements pour fermer la popup lorsque la souris quitte le marqueur
@@ -284,7 +287,9 @@
                     // Ajoutez un gestionnaire d'événements pour afficher les informations d'engin lorsque survolé
                     marker.on('mouseover', function(e) {
                         var info = e.target.enginInfo;
-                        e.target.bindPopup(`<b>Marque:</b> ${info.marque}<br><b>Modèle:</b> ${info.modele}<br><b>Catégorie:</b> ${info.categorie}<br><b>Date/Heure:</b> ${info.dateHeure}`).openPopup();
+                        e.target.bindPopup(`<b>Marque:</b> ${info.marque}<br><b>Modèle:</b>
+                        ${info.modele}<br><b>Catégorie:</b> ${info.categorie}<br><b>Date/Heure:</b>
+                        ${info.dateHeure}`).openPopup();
                     });
 
                     // Ajoutez un gestionnaire d'événements pour fermer la popup lorsque la souris quitte le marqueur

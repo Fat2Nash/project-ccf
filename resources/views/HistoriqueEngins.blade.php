@@ -17,158 +17,9 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-        <script>
-            // Attendez que le DOM soit entièrement chargé
-            document.addEventListener("DOMContentLoaded", function() {
-                // Cochez la case à cocher "sortDescending" si elle est présente
-                var checkbox = document.getElementById("sortDescending");
-                if (checkbox) {
-                    checkbox.checked = true;
-                    // Simuler un événement de clic pour activer le tri descendant
-                    checkbox.dispatchEvent(new Event('change'));
-                }
-            });
-        </script>
     </head>
 <body class="text-gray-800 font-inter">
-    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform shadow-md">
-        <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
-
-            <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
-        </a>
-        <ul class="mt-4">
-            <span class="text-gray-400 font-bold uppercase">Commun</span>
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="bx bx-home mr-3 text-lg"></i>
-                    <span class="text-sm">Accueil</span>
-                </a>
-            </li>
-
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-list-ul mr-3 text-lg'></i>
-                    <span class="text-sm">Liste engins</span>
-                </a>
-            </li>
-            <span class="text-gray-400 font-bold uppercase">Mécanicien / Chauffeur</span>
-            <li class="mb-1 group">
-                <a href="/MapsEngins" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-">
-                    <i class='bx bx-map-alt mr-3 text-lg'></i>
-                    <span class="text-sm">Carte</span>
-                    <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
-                </a>
-                <ul class="pl-7 mt-2 hidden group-[.selected]:block">
-                    <li class="mb-4">
-                        <a href="" class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">All</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="" class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Categories</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-wrench mr-3 text-lg'></i>
-                    <span class="text-sm">Maintenance</span>
-                </a>
-            </li>
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-map-pin mr-3 text-lg'></i>
-                    <span class="text-sm">Livraisons</span>
-                </a>
-            </li>
-            <span class="text-gray-400 font-bold uppercase">Responsable</span>
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-face mr-3 text-lg'></i>
-                    <span class="text-sm">Fiches clients</span>
-
-                </a>
-            </li>
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-hard-hat mr-3 text-lg'></i>
-                    <span class="text-sm">Fiches engins</span>
-
-                </a>
-            </li>
-
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
-                    <span class="text-sm">Fiches locations</span>
-
-                </a>
-            </li>
-
-            <li class="mb-1 group">
-                <a href="/HistoriqueLocations" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
-                    <span class="text-sm">Historique locations</span>
-
-                </a>
-            </li>
-
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-bell mr-3 text-lg'></i>
-                    <span class="text-sm">Notifications</span>
-
-                </a>
-            </li>
-            <span class="text-gray-400 font-bold uppercase">Paramètres</span>
-
-            <li class="mb-1 group">
-                <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-cog mr-3 text-lg'></i>
-                    <span class="text-sm">Paramètres</span>
-
-                </a>
-            </li>
-            <li class="mb-1 group">
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <a class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 cursor-pointer" :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        <i class='bx bx-exit mr-3 text-lg'></i>
-                        <span class="text-sm">Se déconnecter</span>
-                    </a>
-                </form>
-
-            </li>
-        </ul>
-    </div>
-    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
-    <!-- end sidenav -->
-
-    <!-- navbar -->
-    <div class="py-2 px-6 bg-white flex items-center shadow-md shadow-black/5 sticky top-0 left-0 z-30">
-        <button type="button" class="text-lg text-gray-900 font-semibold sidebar">
-            <i class="ri-menu-line"></i>
-        </button>
-
-        <ul class="ml-auto flex items-center">
-
-
-            <li class=" ml-3">
-                <p class=" flex items-center">
-                <div class="p-2 md:block text-left">
-                    <h2 class="text-sm font-semibold text-gray-800">{{Auth::user()->name}}</h2>
-                    <p class="text-xs text-gray-500">{{Auth::user()->email}}</p>
-                </div>
-                </p>
-            </li>
-        </ul>
-    </div>
-
-
-    </div>
-    <!-- end navbar -->
+    <x-side-navbar />
 
     <div class="relative flex ml-[350px] mt-10">
         <h2 class="font-bold">Veuillez choisir le type d'historique : &nbsp;</h2>
@@ -178,101 +29,53 @@
         </select>
     </div>
 
-  <section class="py-1 bg-blueGray-50">
-    <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
-        <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-lg rounded ">
-            <div class="rounded-t mb-0 px-4 py-3 border-0">
-                <div class="flex flex-wrap items-center">
-                    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                        <h3 class="font-semibold text-base text-blueGray-700">Historique Engins</h3>
-                    </div>
-                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                        <!-- Champ de recherche -->
-                        <div class="flex justify-end items-center">
-                            <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
-                                <!-- Input de recherche -->
-                                <input class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                                        type="text" id="searchInput" placeholder="Rechercher...">
-                                <!-- Bouton de recherche -->
-                                <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-                                    <!-- Icone de recherche -->
-                                    <svg class="text-orange-500 h-4 w-4 fill-current"
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
-                                    x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                                    xml:space="preserve" width="512px" height="512px">
-
-                                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
-                                            s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
-                                            c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z
-                                            M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
-                                            s-17-7.626-17-17S14.61,6,23.984,6z" />
+    <section class="flex py-1 bg-blueGray-50">
+        <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-lg rounded">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                            <h3 class="font-semibold text-base text-blueGray-700">Historique Engins</h3>
+                        </div>
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                            <div class="flex justify-end items-center">
+                                <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
+                                    <input class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" id="searchInput" placeholder="Rechercher...">
+                                    <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+                                        <svg class="text-orange-500 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
+                                            <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="inline-flex items-center">
+                                    <label class="relative flex cursor-pointer items-center rounded-full p-3" for="ripple-on">
+                                        <input id="sortAscending" type="checkbox" class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500 hover:before:opacity-10" />
+                                        <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+                                    </label>
+                                    <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-on">
+                                        <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/alphabetical_classification_4279.png" alt="logo" class="h-5 w-5">
+                                    </label>
+                                </div>
+                                <div class="inline-flex items-center">
+                            <label class="relative flex cursor-pointer items-center rounded-full p-3" for="ripple-off">
+                                <input id="sortDescending" type="checkbox" class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500 hover:before:opacity-10" />
+                                <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                     </svg>
-                                </button>
-                            </div>
-                            <!-- Options de tri -->
-                            <div class="inline-flex items-center">
-                                <!-- Bouton de tri ascendant -->
-                                <label class="relative flex cursor-pointer items-center rounded-full p-3" for="sortAscending">
-                                    <!-- Checkbox pour tri ascendant -->
-                                    <input id="sortAscending" type="checkbox"
-                                    class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none
-                                    rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block
-                                    before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500
-                                    before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500
-                                    hover:before:opacity-10" />
-                                    <!-- Icone de tri ascendant -->
-                                    <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4
-                                                -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
-                                        viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1
-                                            1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1
-                                            1 0 011.414 0z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </label>
-                                <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-on">
-                                <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/alphabetical_classification_4279.png" alt="logo" class="h-5 w-5">
-                                </label>
-                                <!-- Bouton de tri descendant -->
-                                <label class="relative flex cursor-pointer items-center rounded-full p-3" for="sortDescending">
-                                    <!-- Checkbox pour tri descendant -->
-                                    <input id="sortDescending" type="checkbox"
-                                    class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none
-                                    rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block
-                                    before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500
-                                    before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500
-                                    hover:before:opacity-10" />
-                                    <!-- Icone de tri descendant -->
-                                    <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4
-                                                -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5"
-                                        viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
-                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1
-                                            1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1
-                                            1 0 011.414 0z" clip-rule="evenodd"></path>
-                                        </svg>
-                                    </div>
-                                </label>
-                                <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-off">
+                                </div>
+                            </label>
+                            <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-off">
                                 <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/alphabetical_classification_3357.png" alt="logo" class="h-5 w-5">
-                                </label>
-                                <!-- Script pour désactiver les autres cases de tri lorsqu'une est sélectionnée -->
-                                <script>
-                                    const checkboxes = document.querySelectorAll('.check-input');
-                                    checkboxes.forEach((checkbox) => {
-                                        checkbox.addEventListener('click', function() {
-                                            checkboxes.forEach((otherCheckbox) => {
-                                                if (otherCheckbox !== checkbox) {
-                                                    otherCheckbox.checked = false;
-                                                }
-                                            });
-                                        });
-                                    });
-                                </script>
+                            </label>
                             </div>
                         </div>
                     </div>
+                </div>
 
                 @php
                 use App\Models\Client; // Importer le modèle Client
@@ -284,9 +87,6 @@
                 use App\Models\Location; // Importer le modèle Location Engin
                 $loc_engin = Location::all(); // Récupérer toutes les locations de la base de données
 
-                use App\Models\Position; // Importer le modèle Position Engin
-                $position_engin = Position::all(); // Récupérer toutes les positions de la base de données
-
                 use App\Models\Cycle; // Importer le modèle cycle Engin
                 $cycle_engin = Cycle::all(); // Récupérer tous les cycles de la base de données
                 @endphp
@@ -295,9 +95,6 @@
                     <table id="dataTable" class="items-center bg-transparent w-full border-collapse">
                 <thead>
                 <tr>
-                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid
-                border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                    </th>
                     <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid
                     border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                         Machine N°
@@ -347,59 +144,50 @@
                 </tr>
                 </thead>
 
-                @php
-                $counter = 1;
-                @endphp
+                <tbody>
+                    @foreach($clients as $client)
+                        @foreach($engins as $engin)
+                            @foreach ($cycle_engin as $cycle)
 
-<tbody>
-    @foreach($clients as $client)
-        @foreach($engins as $engin)
-            @foreach ($cycle_engin as $cycle)
-                @foreach ($position_engin as $position)
-
-                @endforeach
-            @endforeach
-            @php
-                // Filtrer les locations correspondant au client et à l'engin actuel
-                $location = $loc_engin->where('client_id', $client->id_client)->where('id_engins', $engin->id_engins)->first();
-            @endphp
-            @if($location)
-                <tr>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $counter++ }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $engin->Num_Machine }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $engin->marque }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $engin->modele }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $engin->categorie }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $location->Louer_le }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $location->Rendu_le }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $cycle->HeureMoteurON }}
-                    </td>
-                    <td class="border-t-0 px$cycle-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $cycle->HeureMoteurOFF }}
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{ $location->Temps_fonct }}
-                    </td>
-                </tr>
-            @endif
-        @endforeach
-    @endforeach
-</tbody>
+                            @endforeach
+                            @php
+                                // Filtrer les locations correspondant au client et à l'engin actuel
+                                $location = $loc_engin->where('client_id', $client->id_client)->where('id_engins', $engin->id_engins)->first();
+                            @endphp
+                            @if($location)
+                                <tr>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $engin->Num_Machine }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $engin->marque }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $engin->modele }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $engin->categorie }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $location->Louer_le }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $location->Rendu_le }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $cycle->HeureMoteurON }}
+                                    </td>
+                                    <td class="border-t-0 px$cycle-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $cycle->HeureMoteurOFF }}
+                                    </td>
+                                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                        {{ $location->Temps_fonct }}
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    @endforeach
+                </tbody>
             </table>
             </div>
       </div>
@@ -414,124 +202,151 @@
     </footer>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var sortAscendingCheckbox = document.getElementById("sortAscending");
+            if (sortAscendingCheckbox) {
+                sortAscendingCheckbox.checked = true;
+                sortAscendingCheckbox.dispatchEvent(new Event('change'));
+            }
+        });
+
+        let currentPage = 1;
+        const rowsPerPage = 7; // Nombre de lignes par page
+        const tableBody = document.querySelector('#dataTable tbody');
+        const rows = Array.from(tableBody.querySelectorAll('tr'));
+        const pageIndicator = document.getElementById('pageIndicator');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        let filteredRows = rows.slice(); // Copie des lignes initiales
+
+        function renderTable() {
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            tableBody.innerHTML = '';
+            const displayedRows = filteredRows.slice(start, end);
+            displayedRows.forEach(row => tableBody.appendChild(row));
+            pageIndicator.textContent = `Page ${currentPage} of ${Math.ceil(filteredRows.length / rowsPerPage)}`;
+            btnPrev.disabled = currentPage === 1;
+            btnNext.disabled = currentPage === Math.ceil(filteredRows.length / rowsPerPage);
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderTable();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < Math.ceil(filteredRows.length / rowsPerPage)) {
+                currentPage++;
+                renderTable();
+            }
+        }
+
+        // Fonction de tri des données
+        function sortTable(ascending = true) {
+            const columnIndex = 0; // Indice de la colonne à trier
+            filteredRows.sort((a, b) => {
+                const aValue = a.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+                const bValue = b.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
+                return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+            });
+
+            currentPage = 1; // Réinitialiser à la première page après le tri
+            renderTable();
+        }
+
+        document.getElementById("sortAscending").addEventListener("change", function() {
+            if (this.checked) {
+                sortTable(true);
+            }
+        });
+
+        document.getElementById("sortDescending").addEventListener("change", function() {
+            if (this.checked) {
+                sortTable(false);
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            sortTable(); // Appliquer le tri initial lors du chargement initial de la page
+            renderTable();
+        });
+
         document.getElementById("selectHistorique").addEventListener("change", function() {
             var selectedOption = this.options[this.selectedIndex];
             if (selectedOption.value !== "") {
                 window.location.href = selectedOption.value;
             }
         });
-    </script>
 
-<script>
-// Écoute des événements de saisie dans le champ de recherche
-document.getElementById("searchInput").addEventListener("input", function() {
-    // Récupération de la valeur saisie dans le champ de recherche
-    var searchValue = this.value.toLowerCase();
-
-    // Récupération des lignes de la table
-    var rows = document.getElementById("dataTable").querySelectorAll("tr");
-
-    // Parcours de chaque ligne de la table (en commençant par l'indice 1 pour ignorer l'en-tête)
-    for (var i = 1; i < rows.length; i++) {
-        var row = rows[i];
-        var cells = row.querySelectorAll("td"); // Sélectionne toutes les cellules de la ligne
-
-        // Réinitialisation de l'affichage de la ligne
-        row.style.display = "none";
-
-        // Parcours de chaque cellule de la ligne
-        for (var j = 0; j < cells.length; j++) {
-            // Récupération du texte dans la cellule
-            var cellData = cells[j].textContent.toLowerCase();
-
-            // Vérification si le texte de la cellule contient la valeur de recherche
-            if (cellData.includes(searchValue)) {
-                // Affichage de la ligne si une correspondance est trouvée dans n'importe quelle cellule
-                row.style.display = "";
-                break; // Sortie de la boucle dès qu'une correspondance est trouvée
-            }
-        }
-    }
-});
-</script>
-
-<script>
-    function sortTable(columnIndex, ascending = true) {
-        const table = document.getElementById("dataTable");
-        const rows = Array.from(table.getElementsByTagName("tr"));
-        const headerRow = rows.shift(); // Enlever l'en-tête du tableau
-
-        rows.sort((a, b) => {
-            const aValue = a.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
-            const bValue = b.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
-            return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+        // Écoute des événements de saisie dans le champ de recherche
+        document.getElementById("searchInput").addEventListener("input", function() {
+            filterAndPaginateTable();
         });
 
-        // Vider le contenu du tableau
-        while (table.rows.length > 0) {
-            table.deleteRow(0);
+        // Fonction pour filtrer les lignes en fonction de la recherche et paginer les résultats
+        function filterAndPaginateTable() {
+            var searchValue = document.getElementById("searchInput").value.toLowerCase();
+            filteredRows = rows.filter(row => {
+                const cells = Array.from(row.getElementsByTagName("td"));
+                return cells.some(cell => cell.textContent.toLowerCase().includes(searchValue));
+            });
+
+            currentPage = 1; // Réinitialiser la pagination à la page 1
+            renderTable();
         }
 
-        // Réinsérer l'en-tête du tableau
-        table.appendChild(headerRow);
+        document.addEventListener("DOMContentLoaded", function() {
+        var sortAscendingCheckbox = document.getElementById("sortAscending");
+        var sortDescendingCheckbox = document.getElementById("sortDescending");
 
-        // Réinsérer les lignes triées
-        rows.forEach(row => table.appendChild(row));
-    }
-
-    // Écoute des événements de changement sur les cases à cocher pour le tri ascendant et descendant
-    document.getElementById("sortAscending").addEventListener("change", function() {
-        // Trie en fonction du compteur (première colonne) de manière ascendante
-        sortTable(0, this.checked);
-    });
-
-    document.getElementById("sortDescending").addEventListener("change", function() {
-        // Trie en fonction du compteur (première colonne) de manière descendante
-        sortTable(0, !this.checked);
-    });
-</script>
-
-<script>
-    const sortAscendingCheckbox = document.getElementById("sortAscending");
-    const sortDescendingCheckbox = document.getElementById("sortDescending");
-
-    // Ajout d'un écouteur d'événements sur les cases à cocher "Croissant"
-    sortAscendingCheckbox.addEventListener("change", function() {
-        // Si la case à cocher "Croissant" est cochée
-        if (this.checked) {
-            // Désélectionnez la case à cocher "Décroissant" et réactivez-la
-            sortDescendingCheckbox.checked = false;
-            sortDescendingCheckbox.disabled = false;
-            // Désactivez temporairement la case à cocher "Croissant"
-            this.disabled = true;
-            // Effectuer le tri ascendant (appeler la fonction sortTable avec le paramètre "ascendant" à true)
-            sortTable(true);
-        } else {
-            // Si la case à cocher "Croissant" est désélectionnée, réactivez la case à cocher "Décroissant"
-            sortDescendingCheckbox.disabled = false;
-            // Effectuer le tri décroissant (appeler la fonction sortTable avec le paramètre "ascendant" à false)
-            sortTable(false);
+        // Cochez automatiquement la case "Ascendant" au chargement de la page
+        if (sortAscendingCheckbox && sortDescendingCheckbox) {
+            sortAscendingCheckbox.checked = true;
         }
     });
 
-    // Ajout d'un écouteur d'événements sur les cases à cocher "Décroissant"
-    sortDescendingCheckbox.addEventListener("change", function() {
-        // Si la case à cocher "Décroissant" est cochée
-        if (this.checked) {
-            // Désélectionnez la case à cocher "Croissant" et réactivez-la
-            sortAscendingCheckbox.checked = false;
-            sortAscendingCheckbox.disabled = false;
-            // Désactivez temporairement la case à cocher "Décroissant"
-            this.disabled = true;
-            // Effectuer le tri décroissant (appeler la fonction sortTable avec le paramètre "ascendant" à false)
-            sortTable(false);
-        } else {
-            // Si la case à cocher "Décroissant" est désélectionnée, réactivez la case à cocher "Croissant"
-            sortAscendingCheckbox.disabled = false;
-            // Effectuer le tri ascendant (appeler la fonction sortTable avec le paramètre "ascendant" à true)
-            sortTable(true);
+   // Fonction de gestion de la logique de basculement entre "Ascendant" et "Descendant"
+   function handleSortCheckboxChange(checkbox) {
+            var sortAscendingCheckbox = document.getElementById("sortAscending");
+            var sortDescendingCheckbox = document.getElementById("sortDescending");
+
+            // Si la case "Ascendant" est cochée, désactivez la case "Descendant"
+            if (checkbox.id === "sortAscending" && checkbox.checked) {
+                sortDescendingCheckbox.checked = false;
+            }
+
+            // Si la case "Descendant" est cochée, désactivez la case "Ascendant"
+            if (checkbox.id === "sortDescending" && checkbox.checked) {
+                sortAscendingCheckbox.checked = false;
+            }
+
+            // Assurez-vous qu'il y a toujours au moins une checkbox cochée
+            if (!sortAscendingCheckbox.checked && !sortDescendingCheckbox.checked) {
+                checkbox.checked = true;
+            }
         }
-    });
-</script>
+
+        // Écoute des événements de changement sur la case "Ascendant"
+        document.getElementById("sortAscending").addEventListener("change", function() {
+            handleSortCheckboxChange(this);
+        });
+
+        // Écoute des événements de changement sur la case "Descendant"
+        document.getElementById("sortDescending").addEventListener("change", function() {
+            handleSortCheckboxChange(this);
+        });
+
+        // Assurez-vous que la case "Ascendant" est cochée lors du chargement de la page
+        document.addEventListener("DOMContentLoaded", function() {
+            var sortAscendingCheckbox = document.getElementById("sortAscending");
+            if (sortAscendingCheckbox) {
+                sortAscendingCheckbox.checked = true;
+                sortAscendingCheckbox.dispatchEvent(new Event('change'));
+            }
+        });
+    </script>
 </body>
 </html>
