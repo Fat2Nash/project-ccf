@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Historique Clients</title>
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <script src="https://cdn.tailwindcss.com"></script>
-        <title>Thiriot-Location | {{Auth::user()->nom}}</title>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
 
-    <body class="text-gray-800 font-inter">
-        <x-side-navbar />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Historique Clients</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Thiriot-Location | {{ Auth::user()->nom }}</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 
-    <div class="relative flex ml-[350px] mt-10">
-        <h2 class="font-bold">Veuillez choisir le type d'historique : &nbsp;</h2>
-        <select id="selectHistorique" class="relative w-[220px] bg-white border-black border-2 rounded-md text-center">
-            <option disabled selected>Historique Clients</option>
-            <option value="./HistoriqueEngins">Historique Engins</option>
-        </select>
+<body class="text-gray-800 font-inter">
+    <x-side-navbar />
+
+    <div id="selectHistorique" class="flex items-center justify-center mt-10">
+        <a href="./HistoriqueClients"><button
+                class="font-semibold border border-orange-500 rounded-l-md px-4 py-2 bg-white text-orange-500 mr-2 w-[300px]">Historique
+                par client</button></a>
+        <span class="mx-24"></span> <!-- Séparation supplémentaire -->
+        <a href="./HistoriqueEngins"><button
+                class="font-semibold border border-green-600 rounded-r-md px-4 py-2 bg-white text-green-600 ml-2 w-[300px]">Historique
+                par engin</button></a>
     </div>
 
     <section class="flex py-1 bg-blueGray-50">
-        <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
+        <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-12">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-lg rounded">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
@@ -36,38 +39,21 @@
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                             <div class="flex justify-end items-center">
                                 <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
-                                    <input class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" id="searchInput" placeholder="Rechercher...">
+                                    <input
+                                        class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                                        type="text" id="searchInput" placeholder="Rechercher...">
                                     <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-                                        <svg class="text-orange-500 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
-                                            <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                                        <svg class="text-orange-500 h-4 w-4 fill-current"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+                                            x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                                            style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                                            width="512px" height="512px">
+                                            <path
+                                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
                                         </svg>
                                     </button>
                                 </div>
-                                <div class="inline-flex items-center">
-                                    <label class="relative flex cursor-pointer items-center rounded-full p-3" for="ripple-on">
-                                        <input id="sortAscending" type="checkbox" class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500 hover:before:opacity-10" />
-                                        <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
-                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 011.414 0z" clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                    </label>
-                                    <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-on">
-                                        <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/alphabetical_classification_4279.png" alt="logo" class="h-5 w-5">
-                                    </label>
-                                </div>
-                                <div class="inline-flex items-center">
-                            <label class="relative flex cursor-pointer items-center rounded-full p-3" for="ripple-off">
-                                <input id="sortDescending" type="checkbox" class="check-input before:content[''] peer relative h-5 w-5 cursor-pointer appearance-none rounded-md border border-black transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-green-500 checked:bg-green-500 checked:before:bg-green-500 hover:before:opacity-10" />
-                                <div class="pointer-events-none absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 text-white opacity-0 transition-opacity peer-checked:opacity-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
-                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                            </label>
-                            <label class="mt-px cursor-pointer select-none font-light text-gray-700" for="ripple-off">
-                                <img src="https://cdn.icon-icons.com/icons2/37/PNG/512/alphabetical_classification_3357.png" alt="logo" class="h-5 w-5">
-                            </label>
                             </div>
                         </div>
                     </div>
@@ -86,32 +72,83 @@
                     <table id="dataTable" class="items-center w-full bg-transparent border-collapse">
                         <thead class="thead-light">
                             <tr>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="nom">Nom</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="prenom">Prenom</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="numero_machine">Machine N°</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="marque">Marque de l'engin</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="modele">Modele de l'engin</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="categorie">Catégorie de l'engin</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="louer">Engin louer le</th>
-                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left" data-column="rendu">Engin rendu le</th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="nom">Nom
+                                    <button class="sort-button" onclick="sortTable(0)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(0, false)">↓</button>
+                                </th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="prenom">Prenom
+                                    <button class="sort-button" onclick="sortTable(1)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(1, false)">↓</button>
+                                </th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="numero_machine">Machine N°
+                                    <button class="sort-button" onclick="sortTable(2)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(2, false)">↓</button>
+                                </th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="marque">Marque de l'engin
+                                    <button class="sort-button" onclick="sortTable(3)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(3, false)">↓</button>
+                                </th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="modele">Modele de l'engin
+                                    <button class="sort-button" onclick="sortTable(4)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(4, false)">↓</button>
+                                </th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="categorie">Catégorie de l'engin
+                                    <button class="sort-button" onclick="sortTable(5)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(5, false)">↓</button>
+                                </th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="louer">Engin louer le
+                                    <button class="sort-button" onclick="sortTable(6)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(6, false)">↓</button>
+                                </th>
+                                <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                                    data-column="rendu">Engin rendu le
+                                    <button class="sort-button" onclick="sortTable(7)">↑</button>
+                                    <button class="sort-button" onclick="sortTable(7, false)">↓</button>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($clients as $client)
-                                @foreach($engins as $engin)
+                            @foreach ($clients as $client)
+                                @foreach ($engins as $engin)
                                     @php
-                                        $location = $loc_engin->where('client_id', $client->id_client)->where('id_engins', $engin->id_engins)->first();
+                                        $location = $loc_engin
+                                            ->where('client_id', $client->id_client)
+                                            ->where('id_engins', $engin->id_engins)
+                                            ->first();
                                     @endphp
-                                    @if($location)
+                                    @if ($location)
                                         <tr>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $client->nom }}</td>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $client->prenom }}</td>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $engin->Num_Machine }}</td>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $engin->marque }}</td>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $engin->modele }}</td>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $engin->categorie }}</td>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $location->Louer_le }}</td>
-                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{ $location->Rendu_le }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $client->nom }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $client->prenom }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->Num_Machine }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->marque }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->modele }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->categorie }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $location->Louer_le }}</td>
+                                            <td
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $location->Rendu_le }}</td>
                                         </tr>
                                     @endif
                                 @endforeach
@@ -120,24 +157,21 @@
                     </table>
                 </div>
                 <div class="flex justify-between items-center px-4 py-3">
-                    <button id="btnPrev" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded" onclick="prevPage()">Previous</button>
-                    <span id="pageIndicator" class="font-semibold text-gray-600 flex justify-center items-center">Page 1 of X</span>
-                    <button id="btnNext" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded" onclick="nextPage()">Next</button>
+                    <button id="btnPrev" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded"
+                        onclick="prevPage()">Previous</button>
+                    <span id="pageIndicator" class="font-semibold text-gray-600 flex justify-center items-center">Page
+                        1 of X</span>
+                    <button id="btnNext" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded"
+                        onclick="nextPage()">Next</button>
                 </div>
-        </div>
+            </div>
     </section>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var sortAscendingCheckbox = document.getElementById("sortAscending");
-            if (sortAscendingCheckbox) {
-                sortAscendingCheckbox.checked = true;
-                sortAscendingCheckbox.dispatchEvent(new Event('change'));
-            }
-        });
+    <x-footer />
 
+    <script>
         let currentPage = 1;
-        const rowsPerPage = 7; // Nombre de lignes par page
+        const rowsPerPage = 9; // Nombre de lignes par page
         const tableBody = document.querySelector('#dataTable tbody');
         const rows = Array.from(tableBody.querySelectorAll('tr'));
         const pageIndicator = document.getElementById('pageIndicator');
@@ -171,8 +205,7 @@
         }
 
         // Fonction de tri des données
-        function sortTable(ascending = true) {
-            const columnIndex = 0; // Indice de la colonne à trier
+        function sortTable(columnIndex, ascending = true) {
             filteredRows.sort((a, b) => {
                 const aValue = a.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
                 const bValue = b.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
@@ -182,23 +215,6 @@
             currentPage = 1; // Réinitialiser à la première page après le tri
             renderTable();
         }
-
-        document.getElementById("sortAscending").addEventListener("change", function() {
-            if (this.checked) {
-                sortTable(true);
-            }
-        });
-
-        document.getElementById("sortDescending").addEventListener("change", function() {
-            if (this.checked) {
-                sortTable(false);
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            sortTable(); // Appliquer le tri initial lors du chargement initial de la page
-            renderTable();
-        });
 
         document.getElementById("selectHistorique").addEventListener("change", function() {
             var selectedOption = this.options[this.selectedIndex];
@@ -212,7 +228,6 @@
             filterAndPaginateTable();
         });
 
-        // Fonction pour filtrer les lignes en fonction de la recherche et paginer les résultats
         function filterAndPaginateTable() {
             var searchValue = document.getElementById("searchInput").value.toLowerCase();
             filteredRows = rows.filter(row => {
@@ -220,59 +235,17 @@
                 return cells.some(cell => cell.textContent.toLowerCase().includes(searchValue));
             });
 
+            // Mise à jour de la pagination
             currentPage = 1; // Réinitialiser la pagination à la page 1
             renderTable();
         }
 
+        // Appel à la fonction renderTable() une fois que la page est chargée
         document.addEventListener("DOMContentLoaded", function() {
-        var sortAscendingCheckbox = document.getElementById("sortAscending");
-        var sortDescendingCheckbox = document.getElementById("sortDescending");
-
-        // Cochez automatiquement la case "Ascendant" au chargement de la page
-        if (sortAscendingCheckbox && sortDescendingCheckbox) {
-            sortAscendingCheckbox.checked = true;
-        }
-    });
-
-   // Fonction de gestion de la logique de basculement entre "Ascendant" et "Descendant"
-   function handleSortCheckboxChange(checkbox) {
-            var sortAscendingCheckbox = document.getElementById("sortAscending");
-            var sortDescendingCheckbox = document.getElementById("sortDescending");
-
-            // Si la case "Ascendant" est cochée, désactivez la case "Descendant"
-            if (checkbox.id === "sortAscending" && checkbox.checked) {
-                sortDescendingCheckbox.checked = false;
-            }
-
-            // Si la case "Descendant" est cochée, désactivez la case "Ascendant"
-            if (checkbox.id === "sortDescending" && checkbox.checked) {
-                sortAscendingCheckbox.checked = false;
-            }
-
-            // Assurez-vous qu'il y a toujours au moins une checkbox cochée
-            if (!sortAscendingCheckbox.checked && !sortDescendingCheckbox.checked) {
-                checkbox.checked = true;
-            }
-        }
-
-        // Écoute des événements de changement sur la case "Ascendant"
-        document.getElementById("sortAscending").addEventListener("change", function() {
-            handleSortCheckboxChange(this);
-        });
-
-        // Écoute des événements de changement sur la case "Descendant"
-        document.getElementById("sortDescending").addEventListener("change", function() {
-            handleSortCheckboxChange(this);
-        });
-
-        // Assurez-vous que la case "Ascendant" est cochée lors du chargement de la page
-        document.addEventListener("DOMContentLoaded", function() {
-            var sortAscendingCheckbox = document.getElementById("sortAscending");
-            if (sortAscendingCheckbox) {
-                sortAscendingCheckbox.checked = true;
-                sortAscendingCheckbox.dispatchEvent(new Event('change'));
-            }
+            renderTable();
         });
     </script>
+
 </body>
+
 </html>

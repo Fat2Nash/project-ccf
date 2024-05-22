@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,11 +14,11 @@
     <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19"></script>
 
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>Thiriot-Location | {{Auth::user()->name}}</title>
+    <title>Thiriot-Location | {{ Auth::user()->name }}</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -29,6 +30,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
 </head>
+
 <body class="text-gray-800 font-inter">
     <x-side-navbar />
 
@@ -46,40 +48,40 @@
 
     <div class="relative flex ml-[350px] mt-10">
         <h2 class="font-bold">Veuillez choisir l'engin : &nbsp;
-            <select id="enginSelect" class="w-[300px] relative bg-white border-black border-2 rounded-md text-center font-semibold">
+            <select id="enginSelect"
+                class="w-[300px] relative bg-white border-black border-2 rounded-md text-center font-semibold">
                 <option value="">Choisir l'engin</option>
-                @foreach($engins as $engin)
+                @foreach ($engins as $engin)
                     <option value="{{ $engin->id_engins }}" date-numMachine="{{ $engin->Num_Machine }}"
-                    data-marque="{{ $engin->marque }}" data-modele="{{ $engin->modele }}" data-categorie="{{ $engin->categorie }}">
-                        {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}
+                        data-marque="{{ $engin->marque }}" data-modele="{{ $engin->modele }}"
+                        data-categorie="{{ $engin->categorie }}">
+                        {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} -
+                        {{ $engin->categorie }}
                     </option>
                 @endforeach
             </select>
-            <br><br>
-            Veuillez choisir la date entre : &nbsp;
+            <div class="flex items-center mt-5 mb-5">
+                <button id="trajet_Aujoudhui-btn"
+                    class="font-semibold border border-green-600 rounded-md px-4 py-2 bg-white text-green-600 w-[300px]">Voir
+                    le trajet effectué aujourd'hui</button>
+            </div>
+            <span>Veuillez choisir la date entre : &nbsp;</span>
             <input type="date" id="startDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
             &nbsp; et &nbsp;
             <input type="date" id="endDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
-            <br><br>
-            <div class="flex items-center">
-            <span class="mr-2">Voir l'éventuel trajet emprunté : &nbsp; </span>
-                <button id="trajet-btn">
-                    <img class="m-2 h-12 w-12" src="https://cdn-icons-png.flaticon.com/128/1257/1257396.png" alt="Trajet de l'engin">
-                </button>
-            </div>
-            <div class="flex items-center">
-            <span class="mr-2"> Ou voir le trajet effectué aujourd'hui : &nbsp; </span>
-            <button id="trajet_Aujoudhui-btn">
-                <img class="m-2 h-12 w-12" src="https://cdn-icons-png.flaticon.com/128/455/455859.png" alt="Trajet effectué aujourd'hui">
-            </button>
+            <div class="flex items-center mt-5">
+                <button id="trajet-btn"
+                    class="font-semibold border border-orange-500 rounded-md px-4 py-2 bg-white text-orange-500 w-[300px]">Voir
+                    l'éventuel trajet emprunté</button>
             </div>
         </h2>
     </div>
 
 
-    <section class="relative flex justify-center items-center mb-10 mt-10">
-        <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto max-h-46 w-[1280px] mt-5">
-            <div id="map" class="h-[600px]"></div>
+    <section class="relative flex justify-center items-center mb-5 mt-5">
+        <div
+            class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto h-[522px] w-[1280px] mt-5">
+            <div id="map" class="h-[520px]"></div>
         </div>
     </section>
 
@@ -87,7 +89,7 @@
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             var map = L.map('map', {
                 attributionControl: false // Désactiver l'affichage des informations d'attribution
             }).setView([48.1814101770421, 6.208779881654873], 13);
@@ -121,7 +123,7 @@
 
                 // Supprimer les marqueurs précédents et l'itinéraire de la carte
                 markersLayer.clearLayers();
-                map.eachLayer(function (layer) {
+                map.eachLayer(function(layer) {
                     if (layer instanceof L.Polyline) {
                         map.removeLayer(layer);
                     }
@@ -147,11 +149,12 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-                // Utiliser Leaflet Routing Machine pour générer l'itinéraire
-                L.Routing.control({
-                    waypoints: latlngs,
-                    routeWhileDragging: true,
+                var control = L.Routing.control({
+                    waypoints: latlngs
                 }).addTo(map);
+
+                // Pour cacher les instructions
+                control.hide();
 
 
                 // Ajouter des marqueurs pour chaque position sur la carte
@@ -162,16 +165,21 @@
                     var dateHeure = new Date(position.DateHeure);
 
                     // Ajuster le fuseau horaire (par exemple, en utilisant UTC)
-                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure.getTimezoneOffset() * 60000);
+                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure
+                        .getTimezoneOffset() * 60000);
 
                     // Formater la date et l'heure
-                    var formattedDateHeure = dateHeureUTC.toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
+                    var formattedDateHeure = dateHeureUTC
+                        .toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
 
                     // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
                     marker.enginInfo = {
-                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-marque'),
-                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-modele'),
-                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-categorie'),
+                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute(
+                            'data-marque'),
+                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute(
+                            'data-modele'),
+                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute(
+                            'data-categorie'),
                         dateHeure: formattedDateHeure // Utilisez la date/heure formatée
                     };
 
@@ -229,7 +237,7 @@
 
                 // Supprimer les marqueurs précédents et l'itinéraire de la carte
                 markersLayer.clearLayers();
-                map.eachLayer(function (layer) {
+                map.eachLayer(function(layer) {
                     if (layer instanceof L.Polyline) {
                         map.removeLayer(layer);
                     }
@@ -256,12 +264,12 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-                // Utiliser Leaflet Routing Machine pour générer l'itinéraire avec des instructions en français
-                L.Routing.control({
-                    waypoints: latlngs,
-                    routeWhileDragging: true,
-                    language: 'fr', // Spécifiez la langue des instructions
+                var control = L.Routing.control({
+                    waypoints: latlngs
                 }).addTo(map);
+
+                // Pour cacher les instructions
+                control.hide();
 
                 // Ajouter des marqueurs pour chaque position sur la carte
                 filteredPositions.forEach(function(position) {
@@ -271,16 +279,21 @@
                     var dateHeure = new Date(position.DateHeure);
 
                     // Ajuster le fuseau horaire (par exemple, en utilisant UTC)
-                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure.getTimezoneOffset() * 60000);
+                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure
+                        .getTimezoneOffset() * 60000);
 
                     // Formater la date et l'heure
-                    var formattedDateHeure = dateHeureUTC.toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
+                    var formattedDateHeure = dateHeureUTC
+                        .toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
 
                     // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
                     marker.enginInfo = {
-                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-marque'),
-                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-modele'),
-                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-categorie'),
+                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute(
+                            'data-marque'),
+                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute(
+                            'data-modele'),
+                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute(
+                            'data-categorie'),
                         dateHeure: formattedDateHeure // Utilisez la date/heure formatée
                     };
 
@@ -319,7 +332,6 @@
                 return filteredPositions;
             }
         });
-
     </script>
 
     <script>
@@ -345,4 +357,5 @@
     </script>
 
 </body>
+
 </html>

@@ -1,5 +1,5 @@
     <!--sidenav -->
-    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform">
+    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform shadow-inner">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
 
             <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
