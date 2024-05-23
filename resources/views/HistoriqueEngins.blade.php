@@ -18,19 +18,25 @@
 <body class="text-gray-800 font-inter">
     <x-side-navbar />
 
-    <div id="selectHistorique" class="flex items-center justify-center mt-10">
-        <a href="./HistoriqueClients"><button
-                class="border border-orange-500 rounded-l-md px-4 py-2 bg-white text-orange-500 font-medium mr-2 w-[300px]">Historique
-                par client</button></a>
-        <span class="mx-12"></span> <!-- Séparation supplémentaire -->
-        <a href="./HistoriqueEngins"><button
-                class=" border border-green-600 rounded-r-md px-4 py-2 bg-white text-green-600 font-medium ml-2 w-[300px]">Historique
-                par engin</button></a>
+    <div id="selectHistorique" class="flex items-center justify-center mt-10 ml-32">
+        <a href="./HistoriqueClients" class="relative inline-block mr-2 w-[300px]">
+            <button class="relative font-semibold border border-orange-500 px-4 py-2 w-full bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+                <span class="absolute inset-0 bg-orange-500 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                <span class="relative z-10">Historique par client</span>
+            </button>
+        </a>
+        <span class="mx-32"></span> <!-- Séparation supplémentaire -->
+        <a href="./HistoriqueEngins" class="relative inline-block ml-2 w-[300px]">
+            <button class="relative font-semibold border border-green-600 px-4 py-2 w-full bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+                <span class="absolute inset-0 bg-green-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                <span class="relative z-10">Historique par engin</span>
+            </button>
+        </a>
     </div>
 
     <section class="flex py-1 bg-blueGray-50">
         <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-12">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-lg rounded">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-inner rounded">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
@@ -73,7 +79,7 @@
                     $cycle_engin = Cycle::all(); // Récupérer tous les cycles de la base de données
                 @endphp
 
-                <div class="block w-full overflow-x-auto overflow-y-auto max-h-96">
+                <div class="block w-full overflow-x-auto">
                     <table id="dataTable" class="items-center bg-transparent w-full border-collapse">
                         <thead>
                             <tr>

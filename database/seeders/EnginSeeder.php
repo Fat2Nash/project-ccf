@@ -110,5 +110,70 @@ class EnginSeeder extends Seeder
                     'cree_le' => now(),
                     'mis_a_jours_le' => now(),
                 ]);
+
+                DB::table('engins')->insert([
+                    'categorie' => 'Pelle2',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '320',
+                    'description' => 'Pelle hydraulique sur chenilles',
+                    'compteur_heures' => 1500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                DB::table('engins')->insert([
+                    'categorie' => 'Pelle3',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '320',
+                    'description' => 'Pelle hydraulique sur chenilles',
+                    'compteur_heures' => 1500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                DB::table('engins')->insert([
+                    'categorie' => 'Pelle4',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '320',
+                    'description' => 'Pelle hydraulique sur chenilles',
+                    'compteur_heures' => 1500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                DB::table('engins')->insert([
+                    'categorie' => 'Pelle5',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '320',
+                    'description' => 'Pelle hydraulique sur chenilles',
+                    'compteur_heures' => 1500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+
+                DB::table('engins')->insert([
+                    'categorie' => 'Pelle6',
+                    'Num_Machine' => '1',
+                    'marque' => 'Caterpillar',
+                    'modele' => '320',
+                    'description' => 'Pelle hydraulique sur chenilles',
+                    'compteur_heures' => 1500,
+                    'statut' => 'Louer',
+                    'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
     }
 }

@@ -260,5 +260,65 @@ class LocationSeeder extends Seeder
             'HeureMoteurON' => '11:00',
             'HeureMoteurOFF' => '13:22',
         ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 8,
+            'id_engins' => 8,
+            'adresse' => '21 rue du grand chêne',
+            'ville' => 'Charmes',
+            'code_postal' => '88130',
+            'pays' => 'France',
+            'Temps_fonct' => 250,
+            'Louer_le' => '2024-03-21',
+            'Rendu_le' => '2024-03-22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 9,
+            'id_engins' => 9,
+            'adresse' => '21 rue du grand chêne',
+            'ville' => 'Charmes',
+            'code_postal' => '88130',
+            'pays' => 'France',
+            'Temps_fonct' => 250,
+            'Louer_le' => '2024-03-21',
+            'Rendu_le' => '2024-03-22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 10,
+            'id_engins' => 10,
+            'adresse' => '21 rue du grand chêne',
+            'ville' => 'Charmes',
+            'code_postal' => '88130',
+            'pays' => 'France',
+            'Temps_fonct' => 250,
+            'Louer_le' => '2024-03-21',
+            'Rendu_le' => '2024-03-22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 11,
+            'id_engins' => 11,
+            'adresse' => '21 rue du grand chêne',
+            'ville' => 'Charmes',
+            'code_postal' => '88130',
+            'pays' => 'France',
+            'Temps_fonct' => 250,
+            'Louer_le' => '2024-03-21',
+            'Rendu_le' => '2024-03-22',
+        ]);
+
+        DB::table('loc_engin')->insert([
+            'client_id' => 12,
+            'id_engins' => 12,
+            'adresse' => '21 rue du grand chêne',
+            'ville' => 'Charmes',
+            'code_postal' => '88130',
+            'pays' => 'France',
+            'Temps_fonct' => 250,
+            'Louer_le' => '2024-03-21',
+            'Rendu_le' => '2024-03-22',
+        ]);
     }
 }

@@ -105,5 +105,70 @@ class ClientSeeder extends Seeder
             'notes' => 'Client fidèle depuis 2010',
             'cree_le' => now(),
         ]);
+
+        DB::table('clients')->insert([
+            'nom' => 'Bernard',
+            'prenom' => 'Eric2',
+            'mail' => 'eric.derendinger@gmail.com',
+            'adresse' => '1 rue de la Paix',
+            'code_postal' => '75000',
+            'ville' => 'Paris',
+            'pays' => 'France',
+            'telephone' => '+33 6 12 34 56 78',
+            'notes' => 'Client fidèle depuis 2015',
+            'cree_le' => now(),
+        ]);
+
+        DB::table('clients')->insert([
+            'nom' => 'Bernard',
+            'prenom' => 'Eric3',
+            'mail' => 'eric.derendinger@gmail.com',
+            'adresse' => '1 rue de la Paix',
+            'code_postal' => '75000',
+            'ville' => 'Paris',
+            'pays' => 'France',
+            'telephone' => '+33 6 12 34 56 78',
+            'notes' => 'Client fidèle depuis 2015',
+            'cree_le' => now(),
+        ]);
+
+        DB::table('clients')->insert([
+            'nom' => 'Bernard',
+            'prenom' => 'Eric4',
+            'mail' => 'eric.derendinger@gmail.com',
+            'adresse' => '1 rue de la Paix',
+            'code_postal' => '75000',
+            'ville' => 'Paris',
+            'pays' => 'France',
+            'telephone' => '+33 6 12 34 56 78',
+            'notes' => 'Client fidèle depuis 2015',
+            'cree_le' => now(),
+        ]);
+
+        DB::table('clients')->insert([
+            'nom' => 'Bernard',
+            'prenom' => 'Eric5',
+            'mail' => 'eric.derendinger@gmail.com',
+            'adresse' => '1 rue de la Paix',
+            'code_postal' => '75000',
+            'ville' => 'Paris',
+            'pays' => 'France',
+            'telephone' => '+33 6 12 34 56 78',
+            'notes' => 'Client fidèle depuis 2015',
+            'cree_le' => now(),
+        ]);
+
+        DB::table('clients')->insert([
+            'nom' => 'Bernard',
+            'prenom' => 'Eric6',
+            'mail' => 'eric.derendinger@gmail.com',
+            'adresse' => '1 rue de la Paix',
+            'code_postal' => '75000',
+            'ville' => 'Paris',
+            'pays' => 'France',
+            'telephone' => '+33 6 12 34 56 78',
+            'notes' => 'Client fidèle depuis 2015',
+            'cree_le' => now(),
+        ]);
     }
 }
