@@ -32,7 +32,7 @@
 
                                 <div class="flex items-center justify-between mb-6">
                                     <h2 class="font-semibold text-4xl"> Suivie Maintenance</h2>
-
+                                    {{-- ---bouton nouvelle maintenance --------------------------------------------------------------- --}}
                                     <a href="/nouvelle-maintenance">
                                         <button
                                             class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
@@ -40,6 +40,8 @@
                                             <span>Nouvelle Maintenance</span>
                                         </button>
                                     </a>
+                                    {{-- ---bouton nouvelle maintenance --------------------------------------------------------------- --}}
+
                                 </div>
 
                                 <table class="min-w-full divide-y divide-gray-200 ">
@@ -55,14 +57,10 @@
                                                 Engin
                                             </th>
 
-
-
                                             <th scope="col"
                                                 class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Date
                                             </th>
-
-
 
                                             <th scope="col"
                                                 class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
@@ -84,7 +82,6 @@
                                                         {{ $maintenance->id_maintenance }}
                                                     </p>
 
-
                                                 </td>
 
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
@@ -92,12 +89,10 @@
                                                         $engin = $maintenance->engin;
                                                     @endphp
                                                     <p class="text-gray-800 font-medium">
-                                                        {{ $maintenance->id_engin }}
+                                                        N° {{ $maintenance->id_engin }}
                                                     </p>
                                                     <p class=" text-gray-800 ">{{ $engin->categorie }} /
                                                         {{ $engin->marque }}
-
-
                                                     </p>
 
                                                 </td>
@@ -120,15 +115,14 @@
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                     <a href="/maintenances/{{ $maintenance->id_maintenance }}">
                                                         <button
-                                                            class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
+                                                            class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200
+                                                             bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
 
                                                             <span>Détails</span>
                                                         </button>
                                                     </a>
                                                 </td>
                                         </tr>
-
-                                        <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
                                         @endforeach
 
 
@@ -140,45 +134,6 @@
                     </div>
                 </div>
                 {{-- ------------------------------------------------------------------------------------------------------------ --}}
-
-                {{-- <div class="mt-6 sm:flex sm:items-center sm:justify-between ">
-                    <div class="text-sm text-gray-500 ">
-                        Page <span class="font-medium text-gray-700 ">1 </span>sur<span
-                            class="font-medium text-gray-700 "> 10</span>
-                    </div> --}}
-
-
-
-                {{-- <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
-                        <a href="#"
-                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                            </svg>
-
-                            <span>
-                                Précédent
-                            </span>
-                        </a>
-
-                        <a href="#"
-                            class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
-                            <span>
-                                Suivant
-                            </span>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                            </svg>
-                        </a>
-                    </div> --}}
-                {{-- </div> --}}
-                {{-- ------------------------------------------------------------------------------------------------------------ --}}
-
             </section>
         </div>
 

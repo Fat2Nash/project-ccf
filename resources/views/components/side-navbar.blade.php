@@ -4,7 +4,7 @@
 
             <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
         </a>
-        <ul class="mt-4">
+        <ul class="mt-4" id="sidebar-menu">
             <span class="font-bold text-gray-400 uppercase">Commun</span>
             <li class="mb-1 group">
                 <a href="/"
@@ -155,3 +155,35 @@
         </ul>
     </div>
     <!-- end navbar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('#sidebar-menu a[data-link]');
+
+            // Highlight the active link on page load based on localStorage
+            const activeLink = localStorage.getItem('activeLink');
+            if (activeLink) {
+                const linkElement = document.querySelector(`#sidebar-menu a[data-link="${activeLink}"]`);
+                if (linkElement) {
+                    linkElement.classList.add('bg-orange-600', 'text-white');
+                }
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Prevent the default action for links that do not have href set
+                    if (!this.getAttribute('href') || this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                    }
+
+                    // Remove active state from all links
+                    links.forEach(l => l.classList.remove('bg-orange-600', 'text-white'));
+
+                    // Add active state to the clicked link
+                    this.classList.add('bg-orange-600', 'text-white');
+
+                    // Save the active link in localStorage
+                    localStorage.setItem('activeLink', this.getAttribute('data-link'));
+                });
+            });
+        });
+    </script>

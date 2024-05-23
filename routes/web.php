@@ -79,11 +79,12 @@ Route::post('/update-status', function (Illuminate\Http\Request $request) {
 })->name('update_Status');
 
 Route::post('/creer-maintenance', function (Illuminate\Http\Request $request) {
+
     // Récupérer les données de la maintenance depuis la requête POST
     $id_engin = $request->input('id_engin');
     $remarque = $request->input('remarque');
     $defauts = $request->input('defaut');
-    $date_maintenance = $request->input('date');
+    $date_maintenance = $request->input('date_heure_maintenance');
     $id_mecaniciens = $request->input('mecanicien');
 
     // Enregistrer la maintenance dans la bdd

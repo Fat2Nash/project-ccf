@@ -16,7 +16,7 @@
     @php
         use App\Models\Engin; // Importer le modèle Engin
         use App\Models\Location; // Importer le modèle Location
-        $engins = Engin::all(); // Récupérer toutes les données des engins
+        $engins = Engin::all(); // Récupérer tout les engins
         $Locations = Location::all(); // Récupérer toutes les données de locations
 
         $parametreIdLocation = Request::route('id');
@@ -35,24 +35,25 @@
         <div class="p-6">
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
 
-                <!--------------------------------------- 1ere case Liste Engin a Livrer ---------------------------------------------------------------------->
+                <!--------------------------------------- 1ere onglet Liste Engin a Livrer ---------------------------------------------------------------------->
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                     <div class="flex items-start justify-center mb-4">
                         <div class="font-medium text-lg">Liste des engins à Livrer</div>
                     </div>
                     <!-- overflow-auto pour le défilement -->
-                    <div class="overflow-auto max-h-[200px]">
-                        <table class="w-full min-w-[540px]">
+                    <div class="overflow-auto max-h-">
+                        <table class="w-full min-w-">
                             <!-- Modèles à inclure une seule fois -->
                             <tbody>
 
                             </tbody>
                             <thead>
                                 <tr>
-                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">ID</th>
-                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">Date</th>
+                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">N°Location</th>
+                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">Date de livraison</th>
                                     <th class="px-4 py-2 border-b border-b-gray-50 text-center">Ville</th>
                                     <th class="px-4 py-2 border-b border-b-gray-50 text-center">Type d'engin</th>
+                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">Détails</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,28 +62,41 @@
                                     @php
                                         $engin = App\Models\Engin::find($Location->id_engins);
                                     @endphp
-                                    @if ($engin)
-                                        <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center">
-                                                <div class="flex items-center">
-                                                    <a name="PB_Livrer" href="/livraisons/{{ $Location->id_loc_engin }}"
-                                                        class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
-                                                        {{ $Location->id_loc_engin }}
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
-                                                <span class="text-[13px] font-medium">{{ $Location->Louer_le }}</span>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
-                                                <span class="text-[13px] font-medium">{{ $Location->ville }}</span>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
-                                                <span class="text-[13px] font-medium">{{ $engin->categorie }}</span>
-                                            </td>
-                                        </tr>
-                                    @endif
+                                    <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center">
+                                            <div class="flex items-center">
+                                                <a name="PB_Livrer" href="/livraisons/{{ $Location->id_loc_engin }}"
+                                                    class="ml-2 text-base font-bold truncate hover:text-orange-600">
+                                                    {{ $Location->id_loc_engin }}
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <span class="text-[13px] font-medium">{{ $Location->Louer_le }}</span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <span class="text-[13px] font-medium">{{ $Location->ville }}</span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <span class="text-[13px] font-medium">{{ $engin->categorie }}</span>
+                                        </td>
+
+
+
+
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <a name="PB_Livrer" href="/livraisons/{{ $Location->id_loc_engin }}">
+                                                <button
+                                                    class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200
+                                                     bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
+
+                                                    <span>Détails</span>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -93,16 +107,17 @@
                     <div class="flex items-start justify-center mb-4">
                         <div class="font-medium text-lg">Liste des engins à Récupérer</div>
                     </div>
-                    <div class="overflow-auto max-h-[200px]"> <!-- overflow-auto pour le défilement -->
-                        <table class="w-full min-w-[540px]">
+                    <div class="overflow-auto max-h-"> <!-- overflow-auto pour le défilement -->
+                        <table class="w-full min-w-">
                             <thead>
                                 <tr>
-                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">ID</th>
+                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">N°Location</th>
                                     <th class="px-4 py-2 border-b border-b-gray-50 text-center">Date de
                                         Récupération</th>
                                     <th class="px-4 py-2 border-b border-b-gray-50 text-center">Ville</th>
                                     <th class="px-4 py-2 border-b border-b-gray-50 text-center">Type
                                         d'engin</th>
+                                    <th class="px-4 py-2 border-b border-b-gray-50 text-center">Détails</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -111,31 +126,36 @@
                                     @php
                                         $engin = App\Models\Engin::find($Location->id_engins);
                                     @endphp
-                                    @if ($engin)
-                                        <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
-                                                <div class="flex items-center">
-                                                    <a id="PB_Recup_{{ $Location->id_engins }}"
-                                                        href="/livraisons/{{ $Location->id_loc_engin }}" name="PB_Recup"
-                                                        class="ml-2 text-sm font-medium truncate hover:text-orange-600">
-                                                        {{ $Location->id_loc_engin }}
-                                                    </a>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
-                                                <span class="text-[13px] font-medium">{{ $Location->Rendu_le }}</span>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
-                                                <span class="text-[13px] font-medium">{{ $Location->ville }}</span>
-                                            </td>
-                                            <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
-                                                <span class="text-[13px] font-medium">{{ $engin->categorie }}</span>
-                                            </td>
-                                            <td>
+                                    <tr class="engin-row" data-id-engin="{{ $Location->id_engins }}">
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <div class="flex items-center">
+                                                <a id="PB_Recup_{{ $Location->id_engins }}"
+                                                    href="/livraisons/{{ $Location->id_loc_engin }}" name="PB_Recup"
+                                                    class="ml-2 text-base font-bold truncate hover:text-orange-600">
+                                                    {{ $Location->id_loc_engin }}
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <span class="text-[13px] font-medium">{{ $Location->Rendu_le }}</span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <span class="text-[13px] font-medium">{{ $Location->ville }}</span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <span class="text-[13px] font-medium">{{ $engin->categorie }}</span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50 text-center text-gray-600">
+                                            <a name="PB_Livrer" href="/livraisons/{{ $Location->id_loc_engin }}">
+                                                <button
+                                                    class="flex justify-start w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200
+                                                     bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
 
-                                            </td>
-                                        </tr>
-                                    @endif
+                                                    <span>Détails</span>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -144,49 +164,19 @@
 
 
                 <!-- Fin engin Recuperer-->
-
-
                 </tbody>
                 </table>
             </div>
         </div>
-
-
-        </tbody>
-        </table>
-        </div>
-        </div>
         </div>
         <!------- Fin 2eme Case Liste engin a recuperer ------------------------------------------------------------------------------------>
-        <!------ Debut 3eme Case (map) ------------------------------------------------------------------------------------>
+
+
         <div class="p-6 grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
+            <!------ Debut 3eme infos engin ------------------------------------------------------------------------------------>
             <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
-                <div class="items-start justify-between mb-4">
-
-                    <div>
-                        <div id="map" class="w-full h-full"></div>
-                        <script>
-                            // Créer une carte
-                            let map = L.map('map').setView([48.19559121773711, 6.214228801562298], 13); // Vue initiale centrée sur Paris
-
-                            // Ajouter le layer OpenStreetMap à la carte
-                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19,
-                            }).addTo(map);
-
-                            // Ajouter un point de localisation
-                            let marker = L.marker([48.1814101770421, 6.208779881654873]).addTo(map);
-                            marker.bindPopup("<b>Dépôt</b>");
-                        </script>
-                    </div>
-                </div>
-            </div>
-            <!------ Fin 3eme Case (map) ------------------------------------------------------------------------------------>
-
-            <!-- Debut 4eme Case Infos Engin -->
-            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                 <div class="flex items-start justify-between mb-4">
-                    <div class="font-medium">Infos Engin</div>
+                    <div class="font-medium">Information supplementaire </div>
                 </div>
                 <div class="overflow-auto max-h-[200px]"> <!--  overflow-auto pour  le défilement -->
                     <table class="w-full min-w-[540px]">
@@ -306,7 +296,7 @@
                             @else
                                 <tr>
                                     <td colspan='2' class="px-4 py-2 border-b border-b-gray-50">
-                                        Aucune Livraison Selectionner
+                                        Aucune Location Selectionner
 
                                     </td>
                                 </tr>
@@ -316,12 +306,13 @@
                     </table>
                 </div>
             </div>
-            <!-- Fin 4eme Case Infos Engin -->
+            <!------ Fin 3eme Infos Engin ------------------------------------------------------------------------------------>
 
-            <!-- Debut 5eme Modifier status   -->
+            <!-- Debut 4eme onglet Modifier status   -->
             <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
-                <div class="font-medium mb-4">Modifier le statut d'une location</div>
-
+                <div class="flex items-start justify-between mb-4">
+                    <div class="font-medium">Modifier le status d'une Location</div>
+                </div>
                 <form action="{{ route('update_Status') }}" method="POST">
                     @csrf
                     <div class="mb-4">
@@ -337,7 +328,7 @@
                         <select name="new_status" id="new_status" class="mt-1 p-2 w-full border rounded-md">
                             <option value="Recuperer">a été Livrer</option>
                             <option value="Fini">a été Recuperer</option>
-                            <option value="Livrer">remettre engin dans livrer</option>
+                            <option value="Livrer">a Livrer</option>
 
                         </select>
                     </div>
@@ -347,52 +338,13 @@
                     </div>
                 </form>
             </div>
-            <!-- Fin 5eme modifier status -->
+            <!-- Fin eme onglet Modifier status   -->
+
+
         </div>
         </div>
         <x-footer />
-        <!-- Intégration du code JavaScript -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                // Fonction pour récupérer les informations de l'engin et les afficher
-                function afficherInfosEngin(idLocation) {
-                    // Effectuez une requête AJAX pour récupérer les informations de l'engin correspondant à l'ID de livraison
-                    $.ajax({
-                        url: '/recuperer_infos_engin', // Remplacez cette URL par l'URL de votre route qui récupère les infos de l'engin
-                        method: 'GET',
-                        data: {
-                            idLocation: idLocation
-                        },
-                        success: function(response) {
-                            // Mettez à jour les éléments HTML de la case "Infos Engin" avec les nouvelles informations
-                            $('#infosEnginBody').html(response);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(error);
-                        }
-                    });
-                }
-
-                // Attachez un gestionnaire d'événement à chaque bouton d'ID de livraison
-                $('.engin-row').on('click', function() {
-                    var idLocation = $(this).data('id-engin');
-                    afficherInfosEngin(idLocation);
-                });
-            });
-        </script>
-
-
-
-
     </main>
-</body>
-
-</html>
-
-
-</main>
-
 </body>
 
 </html>

@@ -69,7 +69,6 @@
                                     </td>
                                 </tr>
 
-
                                 <!-- fin Categorie engin ----------------------------------->
 
 
@@ -114,19 +113,7 @@
                                 </tr>
                                 <!-- fin compteur heure ---------------------------------->
 
-                                <!-- Debut Status engin ---------------------------------------->
-                                <tr>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <span class="ml-2 text-m font-medium text-gray-600 truncate">Status</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-500">{{ $engin->statut }}</span>
-                                    </td>
-                                </tr>
 
-                                <!-- fin Status engin ---------------------------------------->
                                 <!-- Debut description Engin ---------------------------------------->
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
@@ -229,10 +216,10 @@
                     <!------ Debut case date/valider ------------------------------------------------------------------------------------>
                     <div class="p-6 border bg-white rounded-md shadow-md mb-6">
                         <div class="flex items-start justify-between mb-4">
-                            <div class="font-medium">Choisir une date :</div>
+                            <div class="font-medium">Choisir une date et une heure :</div>
                         </div>
                         <div class="px-4 py-2">
-                            <input id="date" name="date" type="date"
+                            <input id="date_heure_maintenance" name="date_heure_maintenance" type="datetime-local"
                                 class="mt-2 border border-gray-300 rounded-md focus:outline-none" required>
                         </div>
                     </div>
@@ -305,17 +292,18 @@
     </main>
 
     <script>
-        // Sélection de l'élément input pour la date
-        const datePicker = document.getElementById('date');
+        // Sélection de l'élément input pour la date et l'heure
+        const dateTimePicker = document.getElementById('datetime');
+
         // Sélection du bouton Valider
         const validerBtn = document.getElementById('valider-btn');
 
         // Ajout d'un écouteur d'événement au clic sur le bouton Valider
         validerBtn.addEventListener('click', function() {
-            // Récupérer la valeur de la date sélectionnée
-            const selectedDate = datePicker.value;
-            // Afficher la date sélectionnée dans la console (vous pouvez la traiter comme vous le souhaitez ici)
-            console.log(selectedDate);
+            // Récupérer la valeur de la date et de l'heure sélectionnées
+            const selectedDateTime = dateTimePicker.value;
+            // Afficher la date et l'heure sélectionnées dans la console (vous pouvez la traiter comme vous le souhaitez ici)
+            console.log(selectedDateTime);
         });
     </script>
 </body>

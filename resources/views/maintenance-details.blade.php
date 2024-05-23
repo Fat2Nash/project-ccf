@@ -119,19 +119,6 @@
                             </tr>
                             <!-- fin compteur heure ---------------------------------->
 
-                            <!-- Debut Status engin ---------------------------------------->
-                            <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <span class="ml-2 text-m font-medium text-gray-600 truncate">Status</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-500">{{ $engin->statut }}</span>
-                                </td>
-                            </tr>
-
-                            <!-- fin Status engin ---------------------------------------->
                             <!-- Debut description Engin ---------------------------------------->
                             <tr>
                                 <td class="px-4 py-2 border-b border-b-gray-50">
@@ -149,8 +136,8 @@
                         </tbody>
                     </table>
                 </div>
-
                 <!------ Fin 1er Case Infos ENGIN ------------------------------------------------------------------------------------>
+
                 <!------ Debut 2eme Case historique maintenance ------------------------------------------------------------------------------------>
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                     <div class="flex items-start justify-between mb-4">
@@ -190,7 +177,10 @@
                                             <a href="/maintenances/{{ $historique->id_maintenance }}">
                                                 <button
                                                     {{ $historique->id_maintenance == $idMaintenance ? 'disabled' : '' }}
-                                                    class="px-4 py-2 text-sm text-white transition-colors duration-200 rounded-lg {{ $historique->id_maintenance == $idMaintenance ? 'bg-gray-500 hover:bg-gray-600' : 'bg-orange-500 hover:bg-orange-600' }} ">
+                                                    class="px-4 py-2 text-sm text-white transition-colors duration-200 rounded-lg
+                                                    {{ $historique->id_maintenance == $idMaintenance
+                                                        ? 'bg-gray-500 hover:bg-gray-600'
+                                                        : 'bg-orange-500 hover:bg-orange-600' }} ">
                                                     Détails
                                                 </button>
                                             </a>
@@ -203,6 +193,7 @@
                     </div>
                 </div>
                 <!------ Fin 2eme Case HISTORIQUE ENGIN ------------------------------------------------------------------------------------>
+
             </div>
         </div>
 
