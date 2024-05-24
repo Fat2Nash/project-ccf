@@ -65,6 +65,18 @@ Route::get('/nouvelle-maintenance/{idEngin?}', function ($idEngin = null) {
 Route::get('/notifications', function () {
     return view('notifications');
 });
+Route::post('/update_status_alerte', function (Illuminate\Http\Request $request) {
+    // Récupérer l'ID de l'alerte depuis la requête POST
+    $alerteId = $request->input('alerte_id');
+
+    // Mettre à jour le statut de l'alerte dans la base de données
+    App\Models\Alerte::where('id_alerte', $alerteId)->update(['status' => 'Maintenance effectuer']);
+
+    // Rediriger vers une page de confirmation ou une autre page appropriée
+    return back()->with('success', 'Statut de l\'alerte mis à jour avec succès.');
+})->name('update_status_alerte');
+
+
 
 Route::post('/update-status', function (Illuminate\Http\Request $request) {
     // Récupérer l'ID de la location et le nouveau statut depuis la requête POST
