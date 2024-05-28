@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ClientSeeder::class,
             EnginSeeder::class,
             UserSeeder::class,
+            LocationSeeder::class,
 
         ]);
     }
