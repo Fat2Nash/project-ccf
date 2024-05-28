@@ -5,8 +5,7 @@ use App\Http\Controllers\ajouterdonnees;
 use App\Http\Controllers\RecupererDonneesUtilisateurs;
 use App\Http\Controllers\supprimer_fiche;
 use Illuminate\Support\Facades\Route;
-
-
+use Illuminate\Http\Request;
 
 
 Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
@@ -69,6 +68,5 @@ Route::get('/get-coordinates', function(Request $request) {
 
     return response()->json(['latitude' => $latitude, 'longitude' => $longitude]);
 });
-
 
 require __DIR__.'/auth.php';
