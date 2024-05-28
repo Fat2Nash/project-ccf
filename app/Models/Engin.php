@@ -15,6 +15,7 @@ class Engin extends Model
 
     // Attributs que vous pouvez remplir massivement
     protected $fillable = [
+        'Num_Machine',
         'categorie',
         'marque',
         'modele',
@@ -36,5 +37,3 @@ class Engin extends Model
         return $this->hasOne(Location::class, 'id_engins', 'id_loc_engin' );
     }
 }
-
-

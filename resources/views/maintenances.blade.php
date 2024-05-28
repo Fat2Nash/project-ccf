@@ -31,7 +31,7 @@
                             <div class="overflow-hidden border border-gray-200 md:rounded-lg">
 
                                 <div class="flex items-center justify-between mb-6">
-                                    <h2 class="font-semibold text-4xl"> Suivie Maintenance</h2>
+                                    <h2 class="text-4xl font-semibold"> Suivie Maintenance</h2>
                                     {{-- ---bouton nouvelle maintenance --------------------------------------------------------------- --}}
                                     <a href="/nouvelle-maintenance">
                                         <button
@@ -44,10 +44,10 @@
 
                                     {{-- ---RECHERCHE  --------------------------------------------------------------- --}}
                                     <input
-                                        class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+                                        class="h-10 px-5 pr-16 text-sm bg-white border-2 border-orange-500 rounded-lg focus:outline-none"
                                         type="text" id="searchInput" placeholder="Rechercher...">
-                                    <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-                                        <svg class="text-orange-500 h-4 w-4 fill-current"
+                                    <button type="submit" class="absolute top-0 right-0 mt-5 mr-4">
+                                        <svg class="w-4 h-4 text-orange-500 fill-current"
                                             xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
                                             x="0px" y="0px" viewBox="0 0 56.966 56.966"
@@ -106,11 +106,12 @@
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                     @php
                                                         $engin = $maintenance->engin;
+
                                                     @endphp
-                                                    <p class="text-gray-800 font-medium">
+                                                    <p class="font-medium text-gray-800">
                                                         N° {{ $maintenance->id_engin }}
                                                     </p>
-                                                    <p class=" text-gray-800 ">{{ $engin->categorie }} /
+                                                    <p class="text-gray-800 ">{{ $engin->categorie }} /
                                                         {{ $engin->marque }}
                                                     </p>
 
@@ -134,8 +135,7 @@
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                     <a href="/maintenances/{{ $maintenance->id_maintenance }}">
                                                         <button
-                                                            class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200
-                                                             bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
+                                                            class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
 
                                                             <span>Détails</span>
                                                         </button>
