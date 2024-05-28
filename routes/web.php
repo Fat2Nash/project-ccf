@@ -5,8 +5,8 @@ use App\Http\Controllers\ajouterdonnees;
 use App\Http\Controllers\RecupererDonneesUtilisateurs;
 use App\Http\Controllers\supprimer_fiche;
 use Illuminate\Support\Facades\Route;
-
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\HelloMail;
 Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
@@ -44,8 +44,8 @@ Route::get('/location-fiche', function () {
     return view('locationFiche');
 });
 
-Route::get('/livraisons/{id?}', function ($id = null) {
-    return view('livraisons',[$id]);
+Route::get('/livraisons/{id?}', function () {
+    return view('livraisons');
 });
 
 // Routes Maintenances
@@ -53,12 +53,12 @@ Route::get('/maintenances', function () {
     return view('maintenances');
 });
 
-Route::get('/maintenances/{idMaintenance?}', function ($idMaintenance = null) {
-    return view('maintenance-details',[$idMaintenance]);
+Route::get('/maintenances/{idMaintenance?}', function () {
+    return view('maintenance-details');
 });
 
-Route::get('/nouvelle-maintenance/{idEngin?}', function ($idEngin = null) {
-    return view('maintenance-nouvelle',[$idEngin]);
+Route::get('/nouvelle-maintenance/{idEngin?}', function () {
+    return view('maintenance-nouvelle');
 });
 
 // Routes Notifications
@@ -76,7 +76,10 @@ Route::post('/update_status_alerte', function (Illuminate\Http\Request $request)
     return back()->with('success', 'Statut de l\'alerte mis à jour avec succès.');
 })->name('update_status_alerte');
 
-
+// Route::get('/', function () {
+//    Mail::to('demomailtrap.com')
+//    ->send(new HelloMail())
+// });
 
 Route::post('/update-status', function (Illuminate\Http\Request $request) {
     // Récupérer l'ID de la location et le nouveau statut depuis la requête POST
