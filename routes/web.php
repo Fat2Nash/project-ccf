@@ -31,17 +31,4 @@ Route::get('/MapsEngins', function () {
     return view('MapsEngins');
 });
 
-Route::get('/get-coordinates', function(Request $request) {
-    $adresse = $request->input('adresse');
-
-    // Utilisez $adresse pour récupérer les coordonnées depuis la base de données ou un service de géocodage
-
-    // Exemple fictif
-    $latitude = 48.12345;
-    $longitude = 6.54321;
-
-    return response()->json(['latitude' => $latitude, 'longitude' => $longitude]);
-});
-
-
 require __DIR__.'/auth.php';
