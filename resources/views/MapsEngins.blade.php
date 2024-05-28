@@ -38,6 +38,27 @@
         .rotate-0 {
             transform: rotate(0deg);
             transition: transform 0.3s;
+        }    .button-hover:hover {
+        background-color: #d3d3d3;
+        border-radius: 6px; /* gris clair */
+        }
+
+            /* Custom scrollbar styles */    /* Custom scrollbar styles */
+        #customDiv .overflow-y-auto::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        #customDiv .overflow-y-auto::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #customDiv .overflow-y-auto::-webkit-scrollbar-thumb {
+            background: #000;
+            border-radius: 3px;
+        }
+
+        #customDiv .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
     </style>
 
@@ -45,7 +66,6 @@
 
 <body class="text-gray-800 font-inter">
     <x-side-navbar />
-
 
     @php
         use App\Models\Engin; // Importer le modèle Engin
@@ -61,14 +81,14 @@
 <div class="ml-[350px] mt-10">
     <div class="relative flex items-center space-x-2">
         <h2 class="font-bold">Veuillez choisir l'engin :</h2>
-        <button id="toggleButton" class="text-black border-black font-bold border-2 px-4 pl-[20px] rounded-md relative flex items-center">
+        <button id="toggleButton" class="text-black border-2 border-black font-bold px-4 pl-[20px] relative flex items-center">
             <span id="buttonText">Choisir l'engin</span>
             <div class="ml-2">
                 <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4">
             </div>
         </button>
     </div>
-    <div id="customDiv" class="absolute justify-center items-center text-black border-black bg-white border-2 rounded-md flex flex-col ml-[184px] hidden" style="width: 360px; z-index: 999;">
+    <div id="customDiv" class="absolute justify-center items-center text-black border-black bg-white border-2 flex flex-col ml-[185px] hidden" style="width: 360px; z-index: 999;">
         <div class="pt-2 pb-2 relative text-black mr-4" style="width: 350px;">
             <input class="border-2 border-orange-500 bg-white h-10 ml-2 rounded-lg text-sm focus:outline-none w-full" type="text" id="searchInput" placeholder="Rechercher...">
             <button type="submit" class="absolute top-0 mt-5 right-2">
@@ -82,10 +102,11 @@
                 </svg>
             </button>
         </div>
-        <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto">
+        <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto px-2">
             @foreach ($engins as $engin)
-                <button id="enginSelect" class="block w-full py-2 border border-gray-300 text-center h-10" value="{{ $engin->id_engins }}">
-                    {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</button>
+                <button id="enginSelect" class="block w-full py-2 text-center h-10 button-hover" value="{{ $engin->id_engins }}">
+                    {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}
+                </button>
             @endforeach
         </div>
     </div>
