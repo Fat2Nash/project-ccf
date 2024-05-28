@@ -58,62 +58,80 @@
         $position_engin = Position::all(); // Récupérer toutes les positions de la base de données
     @endphp
 
-    <div class="relative flex ml-[350px] mt-10">
-        <h2 class="font-bold">Veuillez choisir l'engin : &nbsp;
-                <button id="toggleButton" class="text-black border-black font-bold border-2 px-4 pl-[20px] rounded-md relative w-auto flex items-center">
-                    <span id="buttonText">Choisir l'engin</span>
-                    <div class="ml-2"> <!-- Ajoute une marge de 2px à gauche -->
-                        <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4">
-                    </div>
-                </button>
-                <div id="customDiv" class="absolute hidden justify-center items-center text-black border-black bg-white border-2 rounded-md flex flex-col" style="width: 360px; z-index: 999;">
-                    <div class="pt-2 pb-2 relative text-black mr-4" style="width: 350px;">
-                        <input
-                            class="border-2 border-orange-500 bg-white h-10 ml-2 rounded-lg text-sm focus:outline-none w-full"
-                            type="text" id="searchInput" placeholder="Rechercher...">
-                        <button type="submit" class="absolute top-0 mt-5 right-2">
-                            <svg class="text-orange-500 h-4 w-4 fill-current"
-                                xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
-                                x="0px" y="0px" viewBox="0 0 56.966 56.966"
-                                style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-                                width="512px" height="512px">
-                                <path
-                                    d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto">
-                        <!-- Contenu pour afficher les boutons de chaque engin -->
-                        @foreach ($engins as $engin)
-                            <button id="enginSelect" class="block w-full py-2 border border-gray-300 text-center h-10" value="{{ $engin->id_engins }}" >{{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</button>
-                        @endforeach
-                    </div>
-                </div>
-            <div class="flex items-center mt-5 mb-5">
-                <button id="trajet_Aujoudhui-btn" class="relative font-semibold border border-green-600 px-4 py-2 w-[320px] bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
-                    <span class="absolute inset-0 bg-green-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-                    <span class="relative z-10">Voir le trajet effectué aujourd'hui</span>
-                </button>
+<div class="ml-[350px] mt-10">
+    <div class="relative flex items-center space-x-2">
+        <h2 class="font-bold">Veuillez choisir l'engin :</h2>
+        <button id="toggleButton" class="text-black border-black font-bold border-2 px-4 pl-[20px] rounded-md relative flex items-center">
+            <span id="buttonText">Choisir l'engin</span>
+            <div class="ml-2">
+                <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4">
             </div>
-            <span>Veuillez choisir la date entre : &nbsp;</span>
-            <input type="date" id="startDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
-            &nbsp; et &nbsp;
-            <input type="date" id="endDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
-            <div class="flex items-center mt-5">
-                <button id="trajet-btn" class="relative font-semibold border border-orange-500 px-4 py-2 w-[320px] bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
-                    <span class="absolute inset-0 bg-orange-500 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-                    <span class="relative z-10">Voir l'éventuel trajet emprunté</span>
-                </button>
-            </div>
-        </h2>
+        </button>
     </div>
+    <div id="customDiv" class="absolute justify-center items-center text-black border-black bg-white border-2 rounded-md flex flex-col ml-[184px] hidden" style="width: 360px; z-index: 999;">
+        <div class="pt-2 pb-2 relative text-black mr-4" style="width: 350px;">
+            <input class="border-2 border-orange-500 bg-white h-10 ml-2 rounded-lg text-sm focus:outline-none w-full" type="text" id="searchInput" placeholder="Rechercher...">
+            <button type="submit" class="absolute top-0 mt-5 right-2">
+                <svg class="text-orange-500 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                        xml:space="preserve" width="512px" height="512px">
+                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
+                        s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
+                        c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
+                        s-17-7.626-17-17S14.61,6,23.984,6z" />
+                </svg>
+            </button>
+        </div>
+        <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto">
+            @foreach ($engins as $engin)
+                <button id="enginSelect" class="block w-full py-2 border border-gray-300 text-center h-10" value="{{ $engin->id_engins }}">
+                    {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</button>
+            @endforeach
+        </div>
+    </div>
+    <div class="flex items-center mt-5 mb-5">
+        <button id="trajet_Aujoudhui-btn" class="relative font-semibold border border-green-600 px-4 py-2 w-[320px] bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+            <span class="absolute inset-0 bg-green-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            <span class="relative z-10">Voir le trajet effectué aujourd'hui</span>
+        </button>
+    </div>
+    <div class="flex items-center mb-5">
+        <h2 class="font-bold">Veuillez choisir la date entre : &nbsp;</h2>
+        <input type="date" id="startDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
+        <h2 class="font-bold">&nbsp; et &nbsp;</h2>
+        <input type="date" id="endDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
+    </div>
+    <div class="flex items-center justify-between">
+        <button id="trajet-btn" class="relative font-semibold border border-orange-500 px-4 py-2 w-[320px] bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+            <span class="absolute inset-0 bg-orange-500 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            <span class="relative z-10">Voir l'éventuel trajet emprunté</span>
+        </button>
+        <button id="reset-btn" class="relative mr-[320px] font-semibold border border-gray-600 px-4 py-2 w-[320px] bg-white text-gray-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white ml-auto">
+            <span class="absolute inset-0 bg-gray-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            <span class="relative z-10">Réinitialiser</span>
+        </button>
+    </div>
+</div>
+
+    <section class="relative flex justify-center items-center mb-5 mt-2">
+        <div
+            class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto h-[502px] w-[1280px] mt-5">
+            <div id="map" class="h-[500px]"></div>
+        </div>
+    </section>
+
+    <x-footer />
+
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            // Engin selection dropdown toggle
             const toggleButton = document.getElementById("toggleButton");
             const customDiv = document.getElementById("customDiv");
             let arrowImage = null;
+            let isProcessing = false;
 
             toggleButton.addEventListener("click", function(event) {
                 customDiv.classList.toggle("hidden");
@@ -121,74 +139,75 @@
                 if (arrowImage) {
                     arrowImage.classList.toggle("rotate-90");
                 }
-                event.stopPropagation(); // Prevents the click from propagating to the document
+                event.stopPropagation(); // Prevents the click from propagating to the document listener
             });
 
             document.addEventListener("click", function(event) {
                 if (!customDiv.contains(event.target) && !toggleButton.contains(event.target)) {
                     customDiv.classList.add("hidden");
                     if (arrowImage) {
-                        arrowImage.style.transition = "transform 0.3s ease"; // Ajoute une transition de 0,3 seconde à la rotation
                         arrowImage.classList.remove("rotate-90");
-                        setTimeout(() => {
-                            arrowImage.style.transition = ""; // Réinitialise la transition après 0,3 seconde
-                        }, 300);
                     }
                 }
             });
 
-            const buttons = document.querySelectorAll("#customDiv button");
-                buttons.forEach(button => {
-                    button.addEventListener("click", function() {
-                        const buttonText = button.textContent.trim();
-                        toggleButton.innerHTML = buttonText +
-                            `<div class="ml-2"> <!-- Ajoute une marge de 2px à gauche -->
-                                <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4 rotate-90">
-                            </div>`; // Met à jour le contenu HTML du bouton toggleButton
-                        customDiv.classList.add("hidden");
-                        arrowImage = document.querySelector("#toggleButton img");
-                        arrowImage.classList.add("rotate-90");
-                        console.log("Texte du bouton cliqué :", buttonText);
-
-                        // Simuler un clic à côté de la fenêtre
-                        const fakeClickEvent = new MouseEvent("click", {
-                            bubbles: true,
-                            cancelable: true,
-                            view: window,
-                        });
-                        document.dispatchEvent(fakeClickEvent);
-                    });
-                });
-
             const searchInput = document.getElementById("searchInput");
-            searchInput.addEventListener("input", function() {
-                filterButtons();
-            });
 
-            function filterButtons() {
-                const searchValue = searchInput.value.trim().toLowerCase();
-                buttons.forEach(button => {
-                    const buttonText = button.textContent.trim().toLowerCase();
-                    if (buttonText.includes(searchValue)) {
-                        button.style.display = "block";
+            searchInput.addEventListener("input", function() {
+                const filter = searchInput.value.toLowerCase();
+                const buttons = customDiv.querySelectorAll("button");
+                buttons.forEach(function(button) {
+                    if (button.textContent.toLowerCase().includes(filter)) {
+                        button.style.display = "";
                     } else {
                         button.style.display = "none";
                     }
                 });
-            }
+            });
+
+            // Engin selection buttons
+            const enginSelectButtons = customDiv.querySelectorAll("#enginSelect");
+
+            enginSelectButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    const selectedEngin = button.textContent;
+                    document.getElementById("buttonText").textContent = selectedEngin;
+                    customDiv.classList.add("hidden");
+                    if (arrowImage) {
+                        arrowImage.classList.remove("rotate-90");
+                    }
+                });
+            });
+
+            // Reset button
+            document.getElementById("reset-btn").addEventListener("click", function() {
+                location.reload();
+            });
         });
     </script>
 
 
-    <section class="relative flex justify-center items-center mb-5 mt-5">
-        <div
-            class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto h-[522px] w-[1280px] mt-5">
-            <div id="map" class="h-[520px]"></div>
-        </div>
-    </section>
+<script>
+    // Obtenez l'élément du sélecteur de date
+    var datePicker = document.getElementById('startDatePicker');
 
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    // Obtenez la date actuelle au format YYYY-MM-DD
+    var today = new Date().toISOString().split('T')[0];
+
+    // Définissez la valeur maximale du sélecteur de date sur la date actuelle
+    datePicker.setAttribute('max', today);
+</script>
+
+<script>
+    // Obtenez l'élément du sélecteur de date
+    var datePicker = document.getElementById('endDatePicker');
+
+    // Obtenez la date actuelle au format YYYY-MM-DD
+    var today = new Date().toISOString().split('T')[0];
+
+    // Définissez la valeur maximale du sélecteur de date sur la date actuelle
+    datePicker.setAttribute('max', today);
+</script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -251,14 +270,11 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-                L.Routing.control({
+                var control = L.Routing.control({
                     waypoints: latlngs,
-                    routeWhileDragging: true,
-                    line: {
-                        show: false // Ne pas afficher la boîte de dialogue automatiquement
-                    }
                 }).addTo(map);
 
+                control.hide();
 
                 // Ajouter des marqueurs pour chaque position sur la carte
                 filteredPositions.forEach(function(position) {
@@ -362,10 +378,9 @@
                 };
 
                 var control = L.Routing.control({
-                    waypoints: latlngs
+                    waypoints: latlngs,
                 }).addTo(map);
 
-                // Pour cacher les instructions
                 control.hide();
 
                 // Ajouter des marqueurs pour chaque position sur la carte
@@ -430,29 +445,6 @@
             }
         });
     </script>
-
-    <script>
-        // Obtenez l'élément du sélecteur de date
-        var datePicker = document.getElementById('startDatePicker');
-
-        // Obtenez la date actuelle au format YYYY-MM-DD
-        var today = new Date().toISOString().split('T')[0];
-
-        // Définissez la valeur maximale du sélecteur de date sur la date actuelle
-        datePicker.setAttribute('max', today);
-    </script>
-
-    <script>
-        // Obtenez l'élément du sélecteur de date
-        var datePicker = document.getElementById('endDatePicker');
-
-        // Obtenez la date actuelle au format YYYY-MM-DD
-        var today = new Date().toISOString().split('T')[0];
-
-        // Définissez la valeur maximale du sélecteur de date sur la date actuelle
-        datePicker.setAttribute('max', today);
-    </script>
-
 </body>
 
 </html>

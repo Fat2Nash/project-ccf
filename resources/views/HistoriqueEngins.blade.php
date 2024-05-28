@@ -40,7 +40,7 @@
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-base text-blueGray-700">Historique Clients</h3>
+                            <h3 class="font-semibold text-base text-blueGray-700">Historique Engins</h3>
                         </div>
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                             <div class="flex justify-end items-center">
@@ -121,13 +121,13 @@
                                 </th>
                                 <th
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                    Dernier démarrage
+                                    Adresse de la location
                                     <button class="sort-button" onclick="sortTable(7)">↑</button>
                                     <button class="sort-button" onclick="sortTable(7, false)">↓</button>
                                 </th>
                                 <th
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                                    Dernier arrêt
+                                    Ville de la location
                                     <button class="sort-button" onclick="sortTable(8)">↑</button>
                                     <button class="sort-button" onclick="sortTable(8, false)">↓</button>
                                 </th>
@@ -147,10 +147,9 @@
                                     @endforeach
                                     @php
                                         // Filtrer les locations correspondant au client et à l'engin actuel
-$location = $loc_engin
-    ->where('client_id', $client->id_client)
-    ->where('id_engins', $engin->id_engins)
-                                            ->first();
+                                        $location = $loc_engin
+                                            ->where('client_id', $client->id_client)
+                                            ->where('id_engins', $engin->id_engins)->first();
                                     @endphp
                                     @if ($location)
                                         <tr>
@@ -180,11 +179,11 @@ $location = $loc_engin
                                             </td>
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $cycle->HeureMoteurON }}
+                                                {{ $location->adresse }}
                                             </td>
                                             <td
                                                 class="border-t-0 px$cycle-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $cycle->HeureMoteurOFF }}
+                                                {{ $location->ville }}
                                             </td>
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -211,26 +210,41 @@ $location = $loc_engin
     <x-footer />
 
     <script>
+        // Déclare et initialise la variable pour la page actuelle
         let currentPage = 1;
-        const rowsPerPage = 9; // Nombre de lignes par page
+        // Nombre de lignes à afficher par page
+        const rowsPerPage = 9;
+        // Sélectionne le corps de la table où les données seront affichées
         const tableBody = document.querySelector('#dataTable tbody');
+        // Récupère toutes les lignes (tr) de la table et les convertit en un tableau
         const rows = Array.from(tableBody.querySelectorAll('tr'));
+        // Sélectionne l'élément qui affichera l'indicateur de page
         const pageIndicator = document.getElementById('pageIndicator');
+        // Sélectionne les boutons de navigation (précédent et suivant)
         const btnPrev = document.getElementById('btnPrev');
         const btnNext = document.getElementById('btnNext');
-        let filteredRows = rows.slice(); // Copie des lignes initiales
+        // Crée une copie des lignes initiales pour les filtrer plus tard
+        let filteredRows = rows.slice();
 
+        // Fonction pour rendre (afficher) la table en fonction de la page actuelle
         function renderTable() {
+            // Calcule les indices de début et de fin pour les lignes à afficher
             const start = (currentPage - 1) * rowsPerPage;
             const end = start + rowsPerPage;
+            // Vide le contenu actuel du corps de la table
             tableBody.innerHTML = '';
+            // Extrait les lignes à afficher pour la page actuelle
             const displayedRows = filteredRows.slice(start, end);
+            // Ajoute les lignes sélectionnées au corps de la table
             displayedRows.forEach(row => tableBody.appendChild(row));
+            // Met à jour l'indicateur de page
             pageIndicator.textContent = `Page ${currentPage} of ${Math.ceil(filteredRows.length / rowsPerPage)}`;
+            // Active ou désactive les boutons de navigation en fonction de la page actuelle
             btnPrev.disabled = currentPage === 1;
             btnNext.disabled = currentPage === Math.ceil(filteredRows.length / rowsPerPage);
         }
 
+        // Fonction pour passer à la page précédente
         function prevPage() {
             if (currentPage > 1) {
                 currentPage--;
@@ -238,6 +252,7 @@ $location = $loc_engin
             }
         }
 
+        // Fonction pour passer à la page suivante
         function nextPage() {
             if (currentPage < Math.ceil(filteredRows.length / rowsPerPage)) {
                 currentPage++;
@@ -245,7 +260,7 @@ $location = $loc_engin
             }
         }
 
-        // Fonction de tri des données
+        // Fonction pour trier les données de la table
         function sortTable(columnIndex, ascending = true) {
             filteredRows.sort((a, b) => {
                 const aValue = a.getElementsByTagName("td")[columnIndex].innerText.trim().toLowerCase();
@@ -253,10 +268,12 @@ $location = $loc_engin
                 return ascending ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
             });
 
-            currentPage = 1; // Réinitialiser à la première page après le tri
+            // Réinitialise à la première page après le tri
+            currentPage = 1;
             renderTable();
         }
 
+        // Ajoute un écouteur d'événement pour détecter les changements dans la sélection de l'historique
         document.getElementById("selectHistorique").addEventListener("change", function() {
             var selectedOption = this.options[this.selectedIndex];
             if (selectedOption.value !== "") {
@@ -264,11 +281,12 @@ $location = $loc_engin
             }
         });
 
-        // Écoute des événements de saisie dans le champ de recherche
+        // Ajoute un écouteur d'événement pour détecter les saisies dans le champ de recherche
         document.getElementById("searchInput").addEventListener("input", function() {
             filterAndPaginateTable();
         });
 
+        // Fonction pour filtrer et paginer la table en fonction de la saisie de recherche
         function filterAndPaginateTable() {
             var searchValue = document.getElementById("searchInput").value.toLowerCase();
             filteredRows = rows.filter(row => {
@@ -276,12 +294,12 @@ $location = $loc_engin
                 return cells.some(cell => cell.textContent.toLowerCase().includes(searchValue));
             });
 
-            // Mise à jour de la pagination
-            currentPage = 1; // Réinitialiser la pagination à la page 1
+            // Réinitialise la pagination à la première page
+            currentPage = 1;
             renderTable();
         }
 
-        // Appel à la fonction renderTable() une fois que la page est chargée
+        // Appelle la fonction renderTable() une fois que la page est complètement chargée
         document.addEventListener("DOMContentLoaded", function() {
             renderTable();
         });
