@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    public $timestamps = false;
     use HasFactory;
     protected $table = 'clients';
     protected $primaryKey = 'id_client';
@@ -28,4 +27,10 @@ class Client extends Model
     protected $casts = [
         'cree_le' => 'datetime',
     ];
+
+    public function LocationEngin()
+    {
+        return $this->hasOne(LocationEngin::class, 'id_client', 'id_loc_engin');
+    }
 }
+
