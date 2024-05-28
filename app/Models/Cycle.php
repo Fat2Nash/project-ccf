@@ -26,4 +26,8 @@ class Cycle extends Model
     {
         return $this->hasOne(Location::class, 'id_loc_engin', 'id_loc_engin');
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Kasim_
 }

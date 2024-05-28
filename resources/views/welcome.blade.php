@@ -131,7 +131,8 @@
         <!-- Content -->
         <div class="p-6">
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
-                <div class="relative flex flex-col w-full min-w-0 p-6 mb-4 break-words bg-white rounded shadow-lg lg:mb-0">
+                <div
+                    class="relative flex flex-col w-full min-w-0 p-6 mb-4 break-words bg-white rounded shadow-lg lg:mb-0">
                     <div class="px-0 mb-0 border-0 rounded-t">
                         <div class="flex flex-wrap items-center px-4 py-2">
                             <div class="relative flex-1 flex-grow w-full max-w-full">
@@ -142,26 +143,34 @@
                             <table class="items-center w-full bg-transparent border-collapse">
                                 <thead>
                                     <tr>
-                                        <th class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                        <th
+                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
                                             Etat</th>
-                                        <th class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                        <th
+                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
                                             Quantité</th>
-                                        <th class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap min-w-140-px">
+                                        <th
+                                            class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap min-w-140-px">
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="text-gray-700 ">
-                                        <th class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                        <th
+                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             Loué</th>
-                                        <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                        {{count($loue)}}</td>
-                                        <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            {{ count($loue) }}</td>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <span class="mr-2">{{round(count($loue) / count($total) *100)}}%</span>
+                                                <span
+                                                    class="mr-2">{{ round((count($loue) / count($total)) * 100) }}%</span>
                                                 <div class="relative w-full">
                                                     <div class="flex h-2 overflow-hidden text-xs bg-blue-200 rounded">
-                                                        <div style="width: <?php echo(count($loue)/count($total)*100) ?>%" class="flex flex-col justify-center text-center text-white bg-blue-600 shadow-none whitespace-nowrap">
+                                                        <div style="width: <?php echo (count($loue) / count($total)) * 100; ?>%"
+                                                            class="flex flex-col justify-center text-center text-white bg-blue-600 shadow-none whitespace-nowrap">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -169,16 +178,21 @@
                                         </td>
                                     </tr>
                                     <tr class="text-gray-700 ">
-                                        <th class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                        <th
+                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             Disponible</th>
-                                        <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                        {{count($dispo)}}</td>
-                                        <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            {{ count($dispo) }}</td>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <span class="mr-2">{{round(count($dispo) / count($total) *100)}}%</span>
+                                                <span
+                                                    class="mr-2">{{ round((count($dispo) / count($total)) * 100) }}%</span>
                                                 <div class="relative w-full">
                                                     <div class="flex h-2 overflow-hidden text-xs bg-green-200 rounded">
-                                                        <div style="width: <?php echo(count($dispo)/count($total)*100) ?>%" class="flex flex-col justify-center text-center text-white bg-green-500 shadow-none whitespace-nowrap">
+                                                        <div style="width: <?php echo (count($dispo) / count($total)) * 100; ?>%"
+                                                            class="flex flex-col justify-center text-center text-white bg-green-500 shadow-none whitespace-nowrap">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -187,16 +201,21 @@
                                     </tr>
 
                                     <tr class="text-gray-700 ">
-                                        <th class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                        <th
+                                            class="p-4 px-4 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             Autre</th>
-                                        <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
-                                            {{count($autre)}}</td>
-                                        <td class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
+                                            {{ count($autre) }}</td>
+                                        <td
+                                            class="p-4 px-4 text-xs align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap">
                                             <div class="flex items-center">
-                                                <span class="mr-2">{{round(count($autre) / count($total) *100)}}%</span>
+                                                <span
+                                                    class="mr-2">{{ round((count($autre) / count($total)) * 100) }}%</span>
                                                 <div class="relative w-full">
                                                     <div class="flex h-2 overflow-hidden text-xs bg-orange-200 rounded">
-                                                        <div style="width: <?php echo(count($autre)/count($total)*100) ?>%" class="flex flex-col justify-center text-center text-white bg-orange-500 shadow-none whitespace-nowrap">
+                                                        <div style="width: <?php echo (count($autre) / count($total)) * 100; ?>%"
+                                                            class="flex flex-col justify-center text-center text-white bg-orange-500 shadow-none whitespace-nowrap">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -219,7 +238,8 @@
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
                                                 1</a>
                                         </div>
                                     </td>
@@ -234,7 +254,8 @@
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
                                                 7</a>
                                         </div>
                                     </td>
@@ -282,9 +303,11 @@
                         <table class="w-full min-w-[460px]">
                             <thead>
                                 <tr>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
                                         Type</th>
-                                    <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
                                         Location</th>
                                 </tr>
                             </thead>
@@ -292,7 +315,8 @@
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
                                                 ouvert</a>
                                         </div>
                                     </td>
@@ -304,7 +328,8 @@
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
-                                            <a href="#" class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
+                                            <a href="#"
+                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
                                                 débranché</a>
                                         </div>
                                     </td>

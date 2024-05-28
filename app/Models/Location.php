@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Location extends Model
 {
     // Nom de la table associée au modèle
     protected $table = 'loc_engin';
     protected $primaryKey = 'id_loc_engin';
+    public $timestamps = false;
 
     // Attributs que vous pouvez remplir massivement
     protected $fillable = [
@@ -22,6 +24,8 @@ class Location extends Model
         'Temps_fonct',
         'Louer_le',
         'Rendu_le',
+        'Status'
+
     ];
 
     // Types de données des colonnes
