@@ -29,6 +29,18 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
+    <style>
+        .rotate-90 {
+            transform: rotate(90deg);
+            transition: transform 0.3s;
+        }
+
+        .rotate-0 {
+            transform: rotate(0deg);
+            transition: transform 0.3s;
+        }
+    </style>
+
 </head>
 
 <body class="text-gray-800 font-inter">
@@ -48,18 +60,36 @@
 
     <div class="relative flex ml-[350px] mt-10">
         <h2 class="font-bold">Veuillez choisir l'engin : &nbsp;
-            <select id="enginSelect"
-                class="w-[300px] relative bg-white border-black border-2 rounded-md text-center font-semibold">
-                <option value="">Choisir l'engin</option>
-                @foreach ($engins as $engin)
-                    <option value="{{ $engin->id_engins }}" date-numMachine="{{ $engin->Num_Machine }}"
-                        data-marque="{{ $engin->marque }}" data-modele="{{ $engin->modele }}"
-                        data-categorie="{{ $engin->categorie }}">
-                        {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} -
-                        {{ $engin->categorie }}
-                    </option>
-                @endforeach
-            </select>
+                <button id="toggleButton" class="text-black border-black font-bold border-2 px-4 pl-[20px] rounded-md relative w-auto flex items-center">
+                    <span id="buttonText">Choisir l'engin</span>
+                    <div class="ml-2"> <!-- Ajoute une marge de 2px à gauche -->
+                        <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4">
+                    </div>
+                </button>
+                <div id="customDiv" class="absolute hidden justify-center items-center text-black border-black bg-white border-2 rounded-md flex flex-col" style="width: 360px; z-index: 999;">
+                    <div class="pt-2 pb-2 relative text-black mr-4" style="width: 350px;">
+                        <input
+                            class="border-2 border-orange-500 bg-white h-10 ml-2 rounded-lg text-sm focus:outline-none w-full"
+                            type="text" id="searchInput" placeholder="Rechercher...">
+                        <button type="submit" class="absolute top-0 mt-5 right-2">
+                            <svg class="text-orange-500 h-4 w-4 fill-current"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+                                x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                                style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                                width="512px" height="512px">
+                                <path
+                                    d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto">
+                        <!-- Contenu pour afficher les boutons de chaque engin -->
+                        @foreach ($engins as $engin)
+                            <button id="enginSelect" class="block w-full py-2 border border-gray-300 text-center h-10" value="{{ $engin->id_engins }}" >{{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</button>
+                        @endforeach
+                    </div>
+                </div>
             <div class="flex items-center mt-5 mb-5">
                 <button id="trajet_Aujoudhui-btn" class="relative font-semibold border border-green-600 px-4 py-2 w-[320px] bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
                     <span class="absolute inset-0 bg-green-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
@@ -77,74 +107,66 @@
                 </button>
             </div>
         </h2>
-        <div class="relative">
-            <button id="toggleButton" class="text-black border-black font-bold border-2 px-4 pl-[20px] rounded-md relative w-auto flex items-center">
-                <span id="buttonText">Choisir l'engin</span>
-                <div class="ml-2"> <!-- Ajoute une marge de 2px à gauche -->
-                    <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4">
-                </div>
-            </button>
-            <div id="customDiv" class="absolute hidden justify-center items-center text-black border-black bg-white border-2 rounded-md flex flex-col" style="width: 360px; z-index: 999;">
-                <div class="pt-2 pb-2 relative text-black mr-4" style="width: 350px;">
-                    <input
-                        class="border-2 border-orange-500 bg-white h-10 ml-2 rounded-lg text-sm focus:outline-none w-full"
-                        type="text" id="searchInput" placeholder="Rechercher...">
-                    <button type="submit" class="absolute top-0 mt-5 right-2">
-                        <svg class="text-orange-500 h-4 w-4 fill-current"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
-                            x="0px" y="0px" viewBox="0 0 56.966 56.966"
-                            style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-                            width="512px" height="512px">
-                            <path
-                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto">
-                    <!-- Contenu pour afficher les boutons de chaque engin -->
-                    @foreach ($engins as $engin)
-                        <button class="block w-full py-2 border border-gray-300 text-center h-10">{{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</button>
-                    @endforeach
-                </div>
-            </div>
-        </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const toggleButton = document.getElementById("toggleButton");
             const customDiv = document.getElementById("customDiv");
-            const arrowImage = document.getElementById("arrowImage");
-            const buttons = document.querySelectorAll("#customDiv button");
+            let arrowImage = null;
 
-            toggleButton.addEventListener("click", function() {
+            toggleButton.addEventListener("click", function(event) {
                 customDiv.classList.toggle("hidden");
-                arrowImage.classList.toggle("rotate-90");
+                arrowImage = document.querySelector("#toggleButton img");
+                if (arrowImage) {
+                    arrowImage.classList.toggle("rotate-90");
+                }
+                event.stopPropagation(); // Prevents the click from propagating to the document
             });
 
-            buttons.forEach(button => {
-                button.addEventListener("click", function() {
-                    const buttonText = button.textContent.trim();
-                    toggleButton.textContent = buttonText; // Met à jour le texte du bouton toggleButton
-                    console.log("Texte du bouton cliqué :", buttonText);
-                    // Vous pouvez maintenant utiliser le texte du bouton comme vous le souhaitez
-                });
+            document.addEventListener("click", function(event) {
+                if (!customDiv.contains(event.target) && !toggleButton.contains(event.target)) {
+                    customDiv.classList.add("hidden");
+                    if (arrowImage) {
+                        arrowImage.style.transition = "transform 0.3s ease"; // Ajoute une transition de 0,3 seconde à la rotation
+                        arrowImage.classList.remove("rotate-90");
+                        setTimeout(() => {
+                            arrowImage.style.transition = ""; // Réinitialise la transition après 0,3 seconde
+                        }, 300);
+                    }
+                }
             });
-        });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const searchInput = document.getElementById("searchInput");
             const buttons = document.querySelectorAll("#customDiv button");
+                buttons.forEach(button => {
+                    button.addEventListener("click", function() {
+                        const buttonText = button.textContent.trim();
+                        toggleButton.innerHTML = buttonText +
+                            `<div class="ml-2"> <!-- Ajoute une marge de 2px à gauche -->
+                                <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4 rotate-90">
+                            </div>`; // Met à jour le contenu HTML du bouton toggleButton
+                        customDiv.classList.add("hidden");
+                        arrowImage = document.querySelector("#toggleButton img");
+                        arrowImage.classList.add("rotate-90");
+                        console.log("Texte du bouton cliqué :", buttonText);
 
-            // Écoute des événements de saisie dans le champ de recherche
+                        // Simuler un clic à côté de la fenêtre
+                        const fakeClickEvent = new MouseEvent("click", {
+                            bubbles: true,
+                            cancelable: true,
+                            view: window,
+                        });
+                        document.dispatchEvent(fakeClickEvent);
+                    });
+                });
+
+            const searchInput = document.getElementById("searchInput");
             searchInput.addEventListener("input", function() {
                 filterButtons();
             });
 
             function filterButtons() {
                 const searchValue = searchInput.value.trim().toLowerCase();
-
                 buttons.forEach(button => {
                     const buttonText = button.textContent.trim().toLowerCase();
                     if (buttonText.includes(searchValue)) {
@@ -169,7 +191,7 @@
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var map = L.map('map', {
                 attributionControl: false // Désactiver l'affichage des informations d'attribution
             }).setView([48.1814101770421, 6.208779881654873], 13);
@@ -203,7 +225,7 @@
 
                 // Supprimer les marqueurs précédents et l'itinéraire de la carte
                 markersLayer.clearLayers();
-                map.eachLayer(function(layer) {
+                map.eachLayer(function (layer) {
                     if (layer instanceof L.Polyline) {
                         map.removeLayer(layer);
                     }
@@ -229,12 +251,13 @@
                     opacity: 0.7 // Opacité du trait
                 };
 
-                var control = L.Routing.control({
-                    waypoints: latlngs
+                L.Routing.control({
+                    waypoints: latlngs,
+                    routeWhileDragging: true,
+                    line: {
+                        show: false // Ne pas afficher la boîte de dialogue automatiquement
+                    }
                 }).addTo(map);
-
-                // Pour cacher les instructions
-                control.hide();
 
 
                 // Ajouter des marqueurs pour chaque position sur la carte
@@ -245,21 +268,16 @@
                     var dateHeure = new Date(position.DateHeure);
 
                     // Ajuster le fuseau horaire (par exemple, en utilisant UTC)
-                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure
-                        .getTimezoneOffset() * 60000);
+                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure.getTimezoneOffset() * 60000);
 
                     // Formater la date et l'heure
-                    var formattedDateHeure = dateHeureUTC
-                        .toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
+                    var formattedDateHeure = dateHeureUTC.toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
 
                     // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
                     marker.enginInfo = {
-                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-marque'),
-                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-modele'),
-                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-categorie'),
+                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-marque'),
+                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-modele'),
+                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute('data-categorie'),
                         dateHeure: formattedDateHeure // Utilisez la date/heure formatée
                     };
 
@@ -282,7 +300,6 @@
                 // Centrer la carte sur les marqueurs et ajuster le zoom
                 map.fitBounds(markersLayer.getBounds());
             });
-
 
             function filterPositionsByDate(positions) {
                 var startDatePicker = document.getElementById('startDatePicker');
