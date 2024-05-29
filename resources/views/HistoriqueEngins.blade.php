@@ -2,52 +2,76 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <!-- Balises meta pour l'encodage des caractères et la vue -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Titre de la page -->
     <title>Historique Clients</title>
+    <!-- Lien vers la police de caractères externe -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <!-- Lien vers Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Titre pour l'onglet du navigateur -->
     <title>Thiriot-Location | {{ Auth::user()->nom }}</title>
+    <!-- Lien vers Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Lien vers Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Lien vers Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Importation des fichiers CSS et JS avec Vite -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="text-gray-800 font-inter">
+    <!-- Inclure la barre de navigation latérale -->
     <x-side-navbar />
 
+    <!-- Section pour sélectionner le type d'historique (par client ou par équipement) -->
     <div id="selectHistorique" class="flex items-center justify-center mt-10 ml-32">
+        <!-- Bouton pour afficher l'historique par client -->
         <a href="./HistoriqueClients" class="relative inline-block mr-2 w-[300px]">
-            <button class="relative font-semibold border border-orange-500 px-4 py-2 w-full bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
-                <span class="absolute inset-0 bg-orange-500 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            <button
+                class="relative font-semibold border border-orange-500 px-4 py-2 w-full bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+                <span
+                    class="absolute inset-0 bg-orange-500 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 <span class="relative z-10">Historique par client</span>
             </button>
         </a>
-        <span class="mx-32"></span> <!-- Séparation supplémentaire -->
+        <span class="mx-32"></span> <!-- Espacement supplémentaire entre les boutons -->
+        <!-- Bouton pour afficher l'historique par équipement -->
         <a href="./HistoriqueEngins" class="relative inline-block ml-2 w-[300px]">
-            <button class="relative font-semibold border border-green-600 px-4 py-2 w-full bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
-                <span class="absolute inset-0 bg-green-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            <button
+                class="relative font-semibold border border-green-600 px-4 py-2 w-full bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+                <span
+                    class="absolute inset-0 bg-green-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
                 <span class="relative z-10">Historique par engin</span>
             </button>
         </a>
     </div>
 
+    <!-- Section pour afficher l'historique des équipements -->
     <section class="flex py-1 bg-blueGray-50">
         <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-12">
+            <!-- Conteneur pour le tableau d'historique -->
             <div class="relative flex flex-col min-w-0 break-words bg-white w-[1500px] mb-6 shadow-inner rounded">
+                <!-- En-tête du tableau -->
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
+                        <!-- Titre -->
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                             <h3 class="font-semibold text-base text-blueGray-700">Historique Engins</h3>
                         </div>
+                        <!-- Champ de recherche et bouton -->
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                             <div class="flex justify-end items-center">
                                 <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
+                                    <!-- Champ de saisie pour la recherche -->
                                     <input
                                         class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
                                         type="text" id="searchInput" placeholder="Rechercher...">
+                                    <!-- Bouton de recherche -->
                                     <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
                                         <svg class="text-orange-500 h-4 w-4 fill-current"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +89,7 @@
                     </div>
                 </div>
 
+                <!-- Code PHP pour récupérer les données -->
                 @php
                     use App\Models\Client; // Importer le modèle Client
                     $clients = Client::all(); // Récupérer tous les clients de la base de données
@@ -79,9 +104,11 @@
                     $cycle_engin = Cycle::all(); // Récupérer tous les cycles de la base de données
                 @endphp
 
+                <!-- Conteneur pour le tableau de données -->
                 <div class="block w-full overflow-x-auto">
                     <table id="dataTable" class="items-center bg-transparent w-full border-collapse">
                         <thead>
+                            <!-- En-têtes de colonne -->
                             <tr>
                                 <th
                                     class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
@@ -141,18 +168,21 @@
                         </thead>
 
                         <tbody>
+                            <!-- Boucle pour afficher les données -->
                             @foreach ($clients as $client)
                                 @foreach ($engins as $engin)
                                     @foreach ($cycle_engin as $cycle)
                                     @endforeach
                                     @php
                                         // Filtrer les locations correspondant au client et à l'engin actuel
-                                        $location = $loc_engin
-                                            ->where('client_id', $client->id_client)
-                                            ->where('id_engins', $engin->id_engins)->first();
+$location = $loc_engin
+    ->where('client_id', $client->id_client)
+    ->where('id_engins', $engin->id_engins)
+                                            ->first();
                                     @endphp
                                     @if ($location)
                                         <tr>
+                                            <!-- Données à afficher dans chaque colonne -->
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 {{ $engin->Num_Machine }}
@@ -182,7 +212,7 @@
                                                 {{ $location->adresse }}
                                             </td>
                                             <td
-                                                class="border-t-0 px$cycle-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 {{ $location->ville }}
                                             </td>
                                             <td
@@ -196,6 +226,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Pagination -->
                 <div class="flex justify-between items-center px-4 py-3">
                     <button id="btnPrev" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded"
                         onclick="prevPage()">Previous</button>
@@ -207,7 +238,10 @@
             </div>
     </section>
 
+    <!-- Pied de page -->
     <x-footer />
+
+    <!-- Script JavaScript -->
 
     <script>
         // Déclare et initialise la variable pour la page actuelle
