@@ -48,7 +48,7 @@
                                             @foreach($clients as $client)
                                             <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                 <div>
-                                                    <h2 class="font-medium text-gray-800 ">{{ $client -> nom}}</h2>
+                                                    <h2 class="font-medium text-gray-800 " >{{ $client -> nom}}</h2>
                                                     <p class="text-sm font-normal text-gray-600 ">{{ $client -> prenom}}</p>
                                                 </div>
                                             </td>
@@ -112,7 +112,7 @@
                                 @csrf
                                 <div class="relative flex items-center py-5">
                                     <div class="flex-grow border-t border-gray-600"></div>
-                                    <span class="flex-shrink mx-4 text-gray-600">Nouvelle fiche client</span>
+                                    <span class="flex-shrink mx-4 text-gray-600">Fiche client</span>
                                     <div class="flex-grow border-t border-gray-600"></div>
                                 </div>
                                 <div class="container items-center p-2">

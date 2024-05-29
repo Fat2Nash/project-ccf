@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Engin;
-use App\Models\User;
-use Illuminate\Http\Request;
+
 
 class supprimer_fiche extends Controller
 {

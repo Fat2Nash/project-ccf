@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -13,14 +14,15 @@
 <body class="text-gray-800 font-inter">
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
         <x-side-navbar />
-        <div class="m-5"><!-- component -->
+        <div class="m-5">
+            <!-- component -->
             <section class="container px-4 mx-auto">
                 <div class="flex flex-col mt-6">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                            <div class="border border-gray-200 ">
-                                <table class="relative min-w-full overflow-y-auto divide-y divide-gray-200 ">
-                                    <thead class="bg-gray-50 ">
+                            <div class="border border-gray-200">
+                                <table class="relative min-w-full overflow-y-auto divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col"
                                                 class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
@@ -30,19 +32,19 @@
                                                 class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Maintenance
                                             </th>
-                                            <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
-                                                Information</th>
-                                            <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
-                                                Description</th>
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                                                Information
+                                            </th>
+                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                                                Description
+                                            </th>
                                             <th scope="col" class="relative py-3.5 px-4">
                                                 <span class="sr-only">Modifier</span>
                                             </th>
                                         </tr>
                                     </thead>
 
-                                    <tbody class="bg-white divide-y divide-gray-200 ">
+                                    <tbody class="bg-white divide-y divide-gray-200">
                                         @foreach ($enginsdispo as $engin)
                                             <tr>
                                                 <td
@@ -90,7 +92,9 @@
                                                     <button title="Modifier l'engin">
                                                         <i class='bx bx-pencil'></i></button>
                                                     <button title="Supprimer l'engin"><i
-                                                            class='bx bx-trash text-red-500'></i> </button>
+                                                            class='bx bx-trash text-red-500'></i>
+                                                    </button>
+                                                </td>
                                                     <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
                                         @endforeach
                                     </tbody>
@@ -99,10 +103,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-6 sm:flex sm:items-center sm:justify-between ">
-                    <div class="text-sm text-gray-500 ">
-                        Page <span class="font-medium text-gray-700 ">1 </span>sur<span
-                            class="font-medium text-gray-700 "> 10</span>
+                <div class="mt-6 sm:flex sm:items-center sm:justify-between">
+                    <div class="text-sm text-gray-500">
+                        Page <span class="font-medium text-gray-700">1</span> sur <span class="font-medium text-gray-700">10</span>
                     </div>
                     <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
                         <a href="#"
@@ -112,9 +115,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
                             </svg>
-                            <span>
-                                Précédent
-                            </span>
+                            <span>Précédent</span>
                         </a>
                         <a href="#"
                             class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
@@ -131,5 +132,7 @@
                 </div>
             </section>
         </div>
-
     </main>
+</body>
+
+</html>

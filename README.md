@@ -76,51 +76,51 @@ php artisan db:seed
 
 ### Personnelle
 
-![50%](https://progress-bar.dev/50)
+![70%](https://progress-bar.dev/70)
 
 - [x] S'authentifier
 - [x] Créer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [ ] Editer les fiches : 
- - [ ] Client
- - [ ] Engins
- - [ ] Location
-- Supprimer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [ ] Client
+   - [ ] Engins
+   - [ ] Location
+- [ ] Supprimer les fiches : 
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [x] Visualiser les engins disponibles
 
 ### Globale
-![40%](https://progress-bar.dev/40)
+![60%](https://progress-bar.dev/60)
 
 #### Quentin
 - [ ] Stocker les données de localisation/de fonctionnement des engins
 - [x] Publier les donées de : 
- - [x] Localisation
- - [ ] Fonctionnement
+   - [x] Localisation
+   - [ ] Fonctionnement
 - [x] Déterminer les informations et les horodater
 #### Erwan
 - [x] S'authentifier
 - [x] Créer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [ ] Editer les fiches : 
- - [ ] Client
- - [ ] Engins
- - [ ] Location
-- Supprimer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [ ] Client
+   - [ ] Engins
+   - [ ] Location
+- [ ] Supprimer les fiches : 
+   - [x] Client
+   - [x] Engins
+   - [ ] Location
 - [ ] Visualiser les engins disponibles
 #### Antony
 - [x] Visualiser les historiques :
-  - [x] Par client
-  - [x] Par engin
+   - [x] Par client
+   - [x] Par engin
 - [ ] Visualiser les engins sur la carte
 #### Kasim
 - [x] Visualiser la liste des engin à :

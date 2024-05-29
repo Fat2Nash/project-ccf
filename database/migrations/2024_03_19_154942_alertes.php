@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('typealerte', function (Blueprint $table) {
+            $table->id('id_typeAlerte');
+            $table->string('nom_alerte');
+            $table->string('description');
+        });
         //
 
         Schema::create('typealerte', function (Blueprint $table) {
