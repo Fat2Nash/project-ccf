@@ -230,11 +230,12 @@
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                     <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Dernières maintenances</div>
-
                     </div>
                     <div class="overflow-hidden">
                         <table class="w-full min-w-[540px]">
                             <tbody>
+                                {{-- Ajouts de la section des derniere maintenance d'engin --}}
+                                @foreach ($maintenances as $maintenance)
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -251,22 +252,8 @@
                                     </td>
 
                                 </tr>
-                                <tr>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
-                                                7</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">11 h 37</span>
-                                    </td>
+                                @endforeach
 
-                                </tr>
                             </tbody>
                         </table>
                     </div>
