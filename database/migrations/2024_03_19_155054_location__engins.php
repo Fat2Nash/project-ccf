@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('code_postal');
             $table->string('pays');
             $table->float('Temps_fonct');
+            $table->string('Status');
             $table->dateTime('Louer_le');
             $table->dateTime('Rendu_le')->nullable();
         });

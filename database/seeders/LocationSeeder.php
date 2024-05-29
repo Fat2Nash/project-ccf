@@ -23,6 +23,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88130',
             'pays' => 'France',
             'Temps_fonct' => 250,
+            'Status' => 'Recuperer', // Ajout de la colonne Status
             'Louer_le' => '2024-03-21',
             'Rendu_le' => '2024-03-22',
         ]);
@@ -83,6 +84,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88000',
             'pays' => 'France',
             'Temps_fonct' => 600,
+            'Status' => 'Fini',
             'Louer_le' => '2024-03-27',
             'Rendu_le' => '2024-03-28',
         ]);
@@ -134,6 +136,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88000',
             'pays' => 'France',
             'Temps_fonct' => 600,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-27',
             'Rendu_le' => '2024-03-28',
         ]);
@@ -161,6 +164,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88000',
             'pays' => 'France',
             'Temps_fonct' => 600,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-27',
             'Rendu_le' => '2024-03-28',
         ]);
@@ -188,6 +192,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88000',
             'pays' => 'France',
             'Temps_fonct' => 600,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-27',
             'Rendu_le' => '2024-03-28',
         ]);
@@ -215,6 +220,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88000',
             'pays' => 'France',
             'Temps_fonct' => 600,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-27',
             'Rendu_le' => '2024-03-28',
         ]);
@@ -242,6 +248,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88000',
             'pays' => 'France',
             'Temps_fonct' => 600,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-27',
             'Rendu_le' => '2024-03-28',
         ]);
@@ -269,6 +276,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88130',
             'pays' => 'France',
             'Temps_fonct' => 250,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-21',
             'Rendu_le' => '2024-03-22',
         ]);
@@ -281,6 +289,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88130',
             'pays' => 'France',
             'Temps_fonct' => 250,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-21',
             'Rendu_le' => '2024-03-22',
         ]);
@@ -293,6 +302,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88130',
             'pays' => 'France',
             'Temps_fonct' => 250,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-21',
             'Rendu_le' => '2024-03-22',
         ]);
@@ -305,6 +315,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88130',
             'pays' => 'France',
             'Temps_fonct' => 250,
+            'Status' => 'Livrer',
             'Louer_le' => '2024-03-21',
             'Rendu_le' => '2024-03-22',
         ]);
@@ -317,6 +328,7 @@ class LocationSeeder extends Seeder
             'code_postal' => '88130',
             'pays' => 'France',
             'Temps_fonct' => 250,
+            'Status' => 'Fini',
             'Louer_le' => '2024-03-21',
             'Rendu_le' => '2024-03-22',
         ]);
