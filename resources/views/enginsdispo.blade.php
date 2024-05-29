@@ -32,10 +32,12 @@
                                                 class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                                                 Maintenance
                                             </th>
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                                            <th scope="col"
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
                                                 Information
                                             </th>
-                                            <th scope="col" class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
+                                            <th scope="col"
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
                                                 Description
                                             </th>
                                             <th scope="col" class="relative py-3.5 px-4">
@@ -92,10 +94,10 @@
                                                     <button title="Modifier l'engin">
                                                         <i class='bx bx-pencil'></i></button>
                                                     <button title="Supprimer l'engin"><i
-                                                            class='bx bx-trash text-red-500'></i>
+                                                            class='text-red-500 bx bx-trash'></i>
                                                     </button>
                                                 </td>
-                                                    <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
+                                                <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -105,7 +107,8 @@
                 </div>
                 <div class="mt-6 sm:flex sm:items-center sm:justify-between">
                     <div class="text-sm text-gray-500">
-                        Page <span class="font-medium text-gray-700">1</span> sur <span class="font-medium text-gray-700">10</span>
+                        Page <span class="font-medium text-gray-700">1</span> sur <span
+                            class="font-medium text-gray-700">10</span>
                     </div>
                     <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
                         <a href="#"

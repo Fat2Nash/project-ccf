@@ -12,10 +12,23 @@ use App\Mail\HelloMail;
 # ======================
 # Route Communes
 # ======================
-
 Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+
+
+# ======================
+# Route Erwan
+# ======================
+
 
     Route::get('supprimer_client/{id}', [supprimer_fiche::class, 'supprimerclient']);
     Route::get('supprimer_engin/{id}', [supprimer_fiche::class, 'supprimerengin']);
@@ -40,11 +53,7 @@ Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
     Route::post('/nouvel_engin', [ajouterdonnees::class, 'ajouterengin']);
 
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    });
+
 
     Route::get('/location-fiche', function () {
         return view('locationFiche');

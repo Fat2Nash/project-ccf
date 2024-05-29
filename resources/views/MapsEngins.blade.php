@@ -117,15 +117,15 @@
         class="absolute justify-center items-center text-black border-black bg-white border-2 flex flex-col ml-[185px] hidden"
         style="width: 360px; z-index: 999;">
         <!-- Menu déroulant caché par défaut -->
-        <div class="pt-2 pb-2 relative text-black mr-4" style="width: 350px;">
+        <div class="relative pt-2 pb-2 mr-4 text-black" style="width: 350px;">
             <!-- Conteneur pour le champ de recherche -->
             <input
-                class="border-2 border-orange-500 bg-white h-10 ml-2 rounded-lg text-sm focus:outline-none w-full"
+                class="w-full h-10 ml-2 text-sm bg-white border-2 border-orange-500 rounded-lg focus:outline-none"
                 type="text" id="searchInput" placeholder="Rechercher...">
             <!-- Champ de recherche pour filtrer les engins -->
             <button type="submit" class="absolute top-0 mt-5 right-2">
                 <!-- Bouton de soumission de recherche -->
-                <svg class="text-orange-500 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                <svg class="w-4 h-4 text-orange-500 fill-current" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
                     viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
                     xml:space="preserve" width="512px" height="512px">
@@ -139,7 +139,7 @@
         <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto px-2">
             <!-- Conteneur pour la liste des boutons des engins -->
             @foreach ($engins as $engin)
-                <button id="enginSelect" class="block w-full py-2 text-center h-10 button-hover"
+                <button id="enginSelect" class="block w-full h-10 py-2 text-center button-hover"
                     value="{{ $engin->id_engins }}">
                     <!-- Bouton pour sélectionner un engin spécifique -->
                     {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} -
@@ -153,7 +153,7 @@
         <button id="trajet_Aujoudhui-btn"
             class="relative font-semibold border border-green-600 px-4 py-2 w-[320px] bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
             <span
-                class="absolute inset-0 bg-green-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-green-600 group-hover:w-full"></span>
             <span class="relative z-10">Voir le trajet effectué aujourd'hui</span>
         </button>
     </div>
@@ -173,19 +173,19 @@
         <button id="trajet-btn"
             class="relative font-semibold border border-orange-500 px-4 py-2 w-[320px] bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
             <span
-                class="absolute inset-0 bg-orange-500 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-orange-500 group-hover:w-full"></span>
             <span class="relative z-10">Voir l'éventuel trajet emprunté</span>
         </button>
         <button id="reset-btn"
             class="relative mr-[320px] font-semibold border border-gray-600 px-4 py-2 w-[320px] bg-white text-gray-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white ml-auto">
             <span
-                class="absolute inset-0 bg-gray-600 w-0 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-gray-600 group-hover:w-full"></span>
             <span class="relative z-10">Réinitialiser</span>
         </button>
     </div>
 </div>
 
-<section class="relative flex justify-center items-center mb-5 mt-2">
+<section class="relative flex items-center justify-center mt-2 mb-5">
     <!-- Section pour la carte -->
     <div
         class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto h-[502px] w-[1280px] mt-5">

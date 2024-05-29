@@ -12,30 +12,30 @@
 
 <body class="text-gray-800 font-inter">
     <!--sidenav -->
-    <div class="fixed left-0 top-0 w-64 h-full bg-white p-4 z-50 sidebar-menu transition-transform">
+    <div class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform bg-white sidebar-menu">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
 
             <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
         </a>
         <ul class="mt-4">
-            <span class="text-gray-400 font-bold uppercase">Commun</span>
+            <span class="font-bold text-gray-400 uppercase">Commun</span>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class="bx bx-home mr-3 text-lg"></i>
+                    <i class="mr-3 text-lg bx bx-home"></i>
                     <span class="text-sm">Accueil</span>
                 </a>
             </li>
 
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-list-ul mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-list-ul'></i>
                     <span class="text-sm">Liste engins</span>
                 </a>
             </li>
-            <span class="text-gray-400 font-bold uppercase">Mécanicien / Chauffeur</span>
+            <span class="font-bold text-gray-400 uppercase">Mécanicien / Chauffeur</span>
             <li class="mb-1 group">
                 <a href="/MapsEngins" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 sidebar-">
-                    <i class='bx bx-map-alt mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-map-alt'></i>
                     <span class="text-sm">Carte</span>
                     <i class="ri-arrow-right-s-line ml-auto group-[.selected]:rotate-90"></i>
                 </a>
@@ -50,27 +50,27 @@
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-wrench mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-wrench'></i>
                     <span class="text-sm">Maintenance</span>
                 </a>
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-map-pin mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-map-pin'></i>
                     <span class="text-sm">Livraisons</span>
                 </a>
             </li>
-            <span class="text-gray-400 font-bold uppercase">Responsable</span>
+            <span class="font-bold text-gray-400 uppercase">Responsable</span>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-face mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-face'></i>
                     <span class="text-sm">Fiches clients</span>
 
                 </a>
             </li>
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-hard-hat mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-hard-hat'></i>
                     <span class="text-sm">Fiches engins</span>
 
                 </a>
@@ -78,7 +78,7 @@
 
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-spreadsheet'></i>
                     <span class="text-sm">Fiches locations</span>
 
                 </a>
@@ -86,23 +86,23 @@
 
             <li class="mb-1 group">
                 <a href="/HistoriqueLocations" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-spreadsheet mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-spreadsheet'></i>
                     <span class="text-sm">Historique locations</span>
                 </a>
             </li>
 
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-bell mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-bell'></i>
                     <span class="text-sm">Notifications</span>
 
                 </a>
             </li>
-            <span class="text-gray-400 font-bold uppercase">Paramètres</span>
+            <span class="font-bold text-gray-400 uppercase">Paramètres</span>
 
             <li class="mb-1 group">
                 <a href="" class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                    <i class='bx bx-cog mr-3 text-lg'></i>
+                    <i class='mr-3 text-lg bx bx-cog'></i>
                     <span class="text-sm">Paramètres</span>
 
                 </a>
@@ -114,7 +114,7 @@
 
                     <a class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-red-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 cursor-pointer" :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        <i class='bx bx-exit mr-3 text-lg'></i>
+                        <i class='mr-3 text-lg bx bx-exit'></i>
                         <span class="text-sm">Se déconnecter</span>
                     </a>
                 </form>
@@ -122,7 +122,7 @@
             </li>
         </ul>
     </div>
-    <div class="fixed top-0 left-0 w-full h-full bg-black/50 z-40 md:hidden sidebar-overlay"></div>
+    <div class="fixed top-0 left-0 z-40 w-full h-full bg-black/50 md:hidden sidebar-overlay"></div>
     <!-- end sidenav -->
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
@@ -235,7 +235,7 @@
                         <table class="w-full min-w-[540px]">
                             <tbody>
                                 {{-- Ajouts de la section des derniere maintenance d'engin --}}
-                                @foreach ($maintenances as $maintenance)
+                                {{-- @foreach ($maintenances as $maintenance) --}}
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -252,7 +252,7 @@
                                     </td>
 
                                 </tr>
-                                @endforeach
+                                {{-- @endforeach --}}
 
                             </tbody>
                         </table>
