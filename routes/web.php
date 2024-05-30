@@ -7,6 +7,9 @@ use App\Http\Controllers\supprimer_fiche;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\HelloMail;
+use App\Http\Controllers\TestController;
+
+
 Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
