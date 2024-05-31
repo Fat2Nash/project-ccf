@@ -127,12 +127,10 @@
                 </button>
             </div>
             <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto px-2">
-                @foreach ($engins as $engin)
-                    <button id="enginSelect" class="block w-full h-10 py-2 text-center button-hover"
-                        value="{{ $engin->id_engins }}">
-                        {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} -
-                        {{ $engin->categorie }}
-                    </button>
+                @foreach($engins as $engin)
+                <button id="enginSelect" class="block w-full h-10 py-2 text-center button-hover" value="{{ $engin->id_engins }}">
+                    {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}
+                </button>
                 @endforeach
             </div>
         </div>
@@ -183,95 +181,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialisation des éléments du DOM
-            const toggleButton = document.getElementById("toggleButton"); // Bouton pour afficher/masquer le menu
-            const customDiv = document.getElementById("customDiv"); // Menu déroulant à afficher/masquer
-            const searchInput = document.getElementById(
-                "searchInput"); // Champ de recherche pour filtrer les éléments du menu
-            const resetButton = document.getElementById("reset-btn"); // Bouton pour réinitialiser la page
-            const enginSelectButtons = customDiv.querySelectorAll(
-                "#enginSelect"); // Boutons pour sélectionner un engin dans le menu
-            const arrowImage = document.querySelector(
-                "#toggleButton img"); // Image de flèche pour indiquer l'état du menu
-
-            // Fonction pour afficher/masquer le menu déroulant et faire tourner l'image de flèche
-            toggleButton.addEventListener("click", function(event) {
-                customDiv.classList.toggle("hidden"); // Affiche/masque le menu
-                if (arrowImage) {
-                    arrowImage.classList.toggle("rotate-90"); // Fait tourner l'image de flèche de 90 degrés
-                }
-                event.stopPropagation(); // Empêche la propagation de l'événement de clic au document
-            });
-
-            // Fonction pour masquer le menu déroulant si un clic est détecté en dehors de celui-ci
-            document.addEventListener("click", function(event) {
-                if (!customDiv.contains(event.target) && !toggleButton.contains(event.target)) {
-                    customDiv.classList.add("hidden"); // Masque le menu
-                    if (arrowImage) {
-                        arrowImage.classList.remove(
-                            "rotate-90"); // Remet l'image de flèche à l'état initial
-                    }
-                }
-            });
-
-            // Fonction pour filtrer les boutons dans le menu déroulant en fonction de l'entrée de recherche
-            searchInput.addEventListener("input", function() {
-                const filter = searchInput.value
-                    .toLowerCase(); // Convertit le texte de recherche en minuscules
-                const buttons = customDiv.querySelectorAll(
-                    "button"); // Récupère tous les boutons dans le menu
-                buttons.forEach(function(button) {
-                    // Affiche le bouton s'il correspond au filtre, sinon le masque
-                    button.style.display = button.textContent.toLowerCase().includes(filter) ? "" :
-                        "none";
-                });
-            });
-
-            // Fonction pour mettre à jour le texte du bouton principal avec l'engin sélectionné et masquer le menu
-            enginSelectButtons.forEach(function(button) {
-                button.addEventListener("click", function() {
-                    const selectedEngin = button.textContent; // Récupère le texte du bouton cliqué
-                    document.getElementById("buttonText").textContent =
-                        selectedEngin; // Met à jour le texte du bouton principal
-                    customDiv.classList.add("hidden"); // Masque le menu
-                    if (arrowImage) {
-                        arrowImage.classList.remove(
-                            "rotate-90"); // Remet l'image de flèche à l'état initial
-                    }
-                });
-            });
-
-            // Fonction pour réinitialiser la page lorsque le bouton de réinitialisation est cliqué
-            resetButton.addEventListener("click", function() {
-                location.reload(); // Recharge la page, réinitialisant ainsi tous les états
-            });
-        });
-    </script>
-
-    <script>
-        // Obtenez l'élément du sélecteur de date
-        var datePicker = document.getElementById('startDatePicker');
-
-        // Obtenez la date actuelle au format YYYY-MM-DD
-        var today = new Date().toISOString().split('T')[0];
-
-        // Définissez la valeur maximale du sélecteur de date sur la date actuelle
-        datePicker.setAttribute('max', today);
-    </script>
-
-    <script>
-        // Obtenez l'élément du sélecteur de date
-        var datePicker = document.getElementById('endDatePicker');
-
-        // Obtenez la date actuelle au format YYYY-MM-DD
-        var today = new Date().toISOString().split('T')[0];
-
-        // Définissez la valeur maximale du sélecteur de date sur la date actuelle
-        datePicker.setAttribute('max', today);
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
             var map = L.map('map', {
                 attributionControl: false // Désactiver l'affichage des informations d'attribution
             }).setView([48.1814101770421, 6.208779881654873], 13);
@@ -284,7 +193,8 @@
 
             // Récupérer les positions associées à l'engin sélectionné
             var positions = {!! json_encode($position_engin) !!};
-            console.log(positions)
+            var engins = {!! json_encode($engins) !!};
+            var location = {!! json_encode($loc_engin) !!};
 
             var trajetBtn = document.getElementById('trajet-btn');
             var trajetAujourdhuiBtn = document.getElementById('trajet_Aujoudhui-btn');
@@ -304,7 +214,6 @@
                     return;
                 }
 
-
                 // Supprimer les marqueurs précédents et l'itinéraire de la carte
                 markersLayer.clearLayers();
                 map.eachLayer(function(layer) {
@@ -320,18 +229,13 @@
                         new Date(position.DateHeure) <= new Date(endDate);
                 });
 
+                console.log("Id de l'engin récuperer :" + enginId);
+
                 // Créer un tableau de points pour l'itinéraire
                 var latlngs = [];
                 filteredPositions.forEach(function(position) {
                     latlngs.push([position.Longitude, position.Latitude]);
                 });
-
-                // Créer un objet de style pour l'itinéraire
-                var myStyle = {
-                    color: '#3388ff', // Couleur bleue
-                    weight: 5, // Épaisseur du trait
-                    opacity: 0.7 // Opacité du trait
-                };
 
                 var control = L.Routing.control({
                     waypoints: latlngs,
@@ -342,42 +246,6 @@
                 // Ajouter des marqueurs pour chaque position sur la carte
                 filteredPositions.forEach(function(position) {
                     var marker = L.marker([position.Longitude, position.Latitude]);
-
-                    // Convertir la date et l'heure en objet Date
-                    var dateHeure = new Date(position.DateHeure);
-
-                    // Ajuster le fuseau horaire (par exemple, en utilisant UTC)
-                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure
-                        .getTimezoneOffset() * 60000);
-
-                    // Formater la date et l'heure
-                    var formattedDateHeure = dateHeureUTC
-                        .toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
-
-                    // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
-                    marker.enginInfo = {
-                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-marque'),
-                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-modele'),
-                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-categorie'),
-                        dateHeure: formattedDateHeure // Utilisez la date/heure formatée
-                    };
-
-                    // Ajoutez un gestionnaire d'événements pour afficher les informations d'engin lorsque survolé
-                    marker.on('mouseover', function(e) {
-                        var info = e.target.enginInfo;
-                        e.target.bindPopup(
-                            `<b>Marque:</b> ${info.marque}<br><b>Modèle:</b> ${info.modele}<br><b>Catégorie:</b> ${info.categorie}<br><b>Date/Heure:</b> ${info.dateHeure}`
-                        ).openPopup();
-                    });
-
-                    // Ajoutez un gestionnaire d'événements pour fermer la popup lorsque la souris quitte le marqueur
-                    marker.on('mouseout', function(e) {
-                        e.target.closePopup();
-                    });
-
                     markersLayer.addLayer(marker);
                 });
 
@@ -491,6 +359,73 @@
 
                 return filteredPositions;
             }
+        });
+    </script>
+
+    <script>
+        // Set max date for start date picker
+        var startDatePicker = document.getElementById('startDatePicker');
+        var today = new Date().toISOString().split('T')[0];
+        startDatePicker.setAttribute('max', today);
+    </script>
+
+    <script>
+        // Set max date for end date picker
+        var endDatePicker = document.getElementById('endDatePicker');
+        var today = new Date().toISOString().split('T')[0];
+        endDatePicker.setAttribute('max', today);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById("toggleButton");
+            const customDiv = document.getElementById("customDiv");
+            const searchInput = document.getElementById("searchInput");
+            const resetButton = document.getElementById("reset-btn");
+            const enginSelectButtons = customDiv.querySelectorAll("#enginSelect");
+            const arrowImage = document.querySelector("#toggleButton img");
+
+            toggleButton.addEventListener("click", function(event) {
+                customDiv.classList.toggle("hidden");
+                if (arrowImage) {
+                    arrowImage.classList.toggle("rotate-90");
+                }
+                event.stopPropagation();
+            });
+
+            document.addEventListener("click", function(event) {
+                if (!customDiv.contains(event.target) && !toggleButton.contains(event.target)) {
+                    customDiv.classList.add("hidden");
+                    if (arrowImage) {
+                        arrowImage.classList.remove("rotate-90");
+                    }
+                }
+            });
+
+            searchInput.addEventListener("input", function() {
+                const filter = searchInput.value.toLowerCase();
+                const buttons = customDiv.querySelectorAll("button");
+                buttons.forEach(function(button) {
+                    button.style.display = button.textContent.toLowerCase().includes(filter) ? "" : "none";
+                });
+            });
+
+            enginSelectButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    const selectedEnginId = button.value; // Récupérer l'ID de l'engin sélectionné
+                    const selectedEnginText = button.textContent; // Récupérer le texte du bouton sélectionné
+                    console.log('ID de l\'engin sélectionné : ' + selectedEnginId); // Afficher l'ID de l'engin sélectionné
+                    document.getElementById("buttonText").textContent = selectedEnginText; // Mettre à jour le texte du bouton principal
+                    customDiv.classList.add("hidden");
+                    if (arrowImage) {
+                        arrowImage.classList.remove("rotate-90");
+                    }
+                });
+            });
+
+            resetButton.addEventListener("click", function() {
+                location.reload();
+            });
         });
     </script>
 </body>

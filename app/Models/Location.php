@@ -45,4 +45,10 @@ class Location extends Model
     {
         return $this->hasOne(Cycle::class, 'id_loc_engin', 'id_loc_engin');
     }
+
+    // Dans le modèle Location.php
+    public function engin()
+    {
+        return $this->belongsTo(Engin::class, 'id_engins');
+    }
 }

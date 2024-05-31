@@ -53,9 +53,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouterclient']);
     Route::post('/nouvel_engin', [ajouterdonnees::class, 'ajouterengin']);
 
-
-
-
     Route::get('/location-fiche', function () {
         return view('locationFiche');
     });

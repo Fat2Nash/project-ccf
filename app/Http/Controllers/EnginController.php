@@ -14,13 +14,13 @@ class EnginController extends Controller
         // Récupérer tous les engins
         $engins = Engin::all();
 
-        // Récupérer toutes les locations
-        $loc_engin = Location::all();
+        // Récupérer les locations associées à chaque engin
+        $loc_engins = Location::with('engin')->get();
 
-        // Récupérer toutes les positions
+        // Récupérer les positions associées à chaque location
         $position_engin = Position::all();
 
         // Passer les données à la vue
-        return view('MapsEngins', compact('engins', 'loc_engin', 'position_engin'));
+        return view('MapsEngins', compact('engins', 'loc_engins', 'position_engin'));
     }
 }
