@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Engin;
+use App\Models\Location;
+use App\Models\Position;
 use Illuminate\Http\Request;
-use App\Models\Engin; // Assurez-vous d'importer le modèle Client
 
-class ClientController extends Controller
+class EnginController extends Controller
 {
     public function index()
     {
-        // Récupérer tous les clients de la base de données
+        // Récupérer tous les engins
         $engins = Engin::all();
 
-        // Passer les clients récupérés à la vue pour les afficher
-        return view('votre_vue', ['engins' => $engins]);
+        // Récupérer toutes les locations
+        $loc_engin = Location::all();
+
+        // Récupérer toutes les positions
+        $position_engin = Position::all();
+
+        // Passer les données à la vue
+        return view('MapsEngins', compact('engins', 'loc_engin', 'position_engin'));
     }
 }

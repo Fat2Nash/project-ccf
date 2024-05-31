@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\HelloMail;
+use App\Http\Controllers\EnginController;
 
 # ======================
 # Route Communes
@@ -76,9 +77,7 @@ Route::get('/HistoriqueLocations', function () {
     return view('HistoriqueLocations');
 });
 
-Route::get('/MapsEngins', function () {
-    return view('MapsEngins');
-});
+Route::get('/MapsEngins', [EnginController::class, 'index']);
 
 # ======================
 # Route Kasim

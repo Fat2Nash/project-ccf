@@ -96,105 +96,63 @@
         $position_engin = Position::all(); // Récupérer toutes les positions de la base de données
     @endphp
 
-    <div class="ml-[350px] mt-10">
-        <!-- Conteneur principal avec marges -->
-        <div class="relative flex items-center space-x-2">
-            <!-- Conteneur pour le texte et le bouton de sélection -->
-            <h2 class="font-bold">Veuillez choisir l'engin :</h2>
-            <!-- Texte d'invite pour choisir l'engin -->
-            <button id="toggleButton"
-                class="text-black border-2 border-black font-bold px-4 pl-[20px] relative flex items-center">
-                <!-- Bouton pour afficher/masquer le menu déroulant -->
-                <span id="buttonText">Choisir l'engin</span>
-                <!-- Texte du bouton -->
-                <div class="ml-2">
-                    <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png"
-                        alt="Flèche droite" class="w-4 h-4">
-                    <!-- Image de flèche pour indiquer l'état du menu -->
-                </div>
+<div class="ml-[350px] mt-10">
+    <!-- Conteneur principal avec marges -->
+    <div class="relative flex items-center space-x-2">
+        <h2 class="font-bold">Veuillez choisir l'engin :</h2>
+        <button id="toggleButton" class="text-black border-2 border-black font-bold px-4 pl-[20px] relative flex items-center">
+            <span id="buttonText">Choisir l'engin</span>
+            <div class="ml-2">
+                <img id="arrowImage" src="https://cdn-icons-png.flaticon.com/512/6327/6327824.png" alt="Flèche droite" class="w-4 h-4">
+            </div>
+        </button>
+    </div>
+    <div id="customDiv" class="absolute justify-center items-center text-black border-black bg-white border-2 flex flex-col ml-[185px] hidden" style="width: 360px; z-index: 999;">
+        <div class="relative pt-2 pb-2 mr-4 text-black" style="width: 350px;">
+            <input class="w-full h-10 ml-2 text-sm bg-white border-2 border-orange-500 rounded-lg focus:outline-none" type="text" id="searchInput" placeholder="Rechercher...">
+            <button type="submit" class="absolute top-0 mt-5 right-2">
+                <svg class="w-4 h-4 text-orange-500 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
+                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17s-17-7.626-17-17S14.61,6,23.984,6z" />
+                </svg>
             </button>
         </div>
-        <div id="customDiv"
-            class="absolute justify-center items-center text-black border-black bg-white border-2 flex flex-col ml-[185px] hidden"
-            style="width: 360px; z-index: 999;">
-            <!-- Menu déroulant caché par défaut -->
-            <div class="relative pt-2 pb-2 mr-4 text-black" style="width: 350px;">
-                <!-- Conteneur pour le champ de recherche -->
-                <input
-                    class="w-full h-10 ml-2 text-sm bg-white border-2 border-orange-500 rounded-lg focus:outline-none"
-                    type="text" id="searchInput" placeholder="Rechercher...">
-                <!-- Champ de recherche pour filtrer les engins -->
-                <button type="submit" class="absolute top-0 mt-5 right-2">
-                    <!-- Bouton de soumission de recherche -->
-                    <svg class="w-4 h-4 text-orange-500 fill-current" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                        viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                        xml:space="preserve" width="512px" height="512px">
-                        <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23
-                    s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92
-                    c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17
-                    s-17-7.626-17-17S14.61,6,23.984,6z" />
-                    </svg>
+        <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto px-2">
+            @foreach ($engins as $engin)
+                <button id="enginSelect" class="block w-full h-10 py-2 text-center button-hover" value="{{ $engin->id_engins }}">
+                    {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}
                 </button>
-            </div>
-            <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto px-2">
-                <!-- Conteneur pour la liste des boutons des engins -->
-                @foreach ($engins as $engin)
-                    <button id="enginSelect" class="block w-full h-10 py-2 text-center button-hover"
-                        value="{{ $engin->id_engins }}">
-                        <!-- Bouton pour sélectionner un engin spécifique -->
-                        {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} -
-                        {{ $engin->categorie }}
-                    </button>
-                @endforeach
-            </div>
-        </div>
-        <div class="flex items-center mt-5 mb-5">
-            <!-- Conteneur pour le bouton "Voir le trajet effectué aujourd'hui" -->
-            <button id="trajet_Aujoudhui-btn"
-                class="relative font-semibold border border-green-600 px-4 py-2 w-[320px] bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
-                <span
-                    class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-green-600 group-hover:w-full"></span>
-                <span class="relative z-10">Voir le trajet effectué aujourd'hui</span>
-            </button>
-        </div>
-        <div class="flex items-center mb-5">
-            <!-- Conteneur pour la sélection de la date -->
-            <h2 class="font-bold">Veuillez choisir la date entre : &nbsp;</h2>
-            <!-- Texte d'invite pour la sélection de date -->
-            <input type="date" id="startDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
-            <!-- Sélecteur de date de début -->
-            <h2 class="font-bold">&nbsp; et &nbsp;</h2>
-            <!-- Texte d'invite pour la sélection de date -->
-            <input type="date" id="endDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
-            <!-- Sélecteur de date de fin -->
-        </div>
-        <div class="flex items-center justify-between">
-            <!-- Conteneur pour les boutons -->
-            <button id="trajet-btn"
-                class="relative font-semibold border border-orange-500 px-4 py-2 w-[320px] bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
-                <span
-                    class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-orange-500 group-hover:w-full"></span>
-                <span class="relative z-10">Voir l'éventuel trajet emprunté</span>
-            </button>
-            <button id="reset-btn"
-                class="relative mr-[320px] font-semibold border border-gray-600 px-4 py-2 w-[320px] bg-white text-gray-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white ml-auto">
-                <span
-                    class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-gray-600 group-hover:w-full"></span>
-                <span class="relative z-10">Réinitialiser</span>
-            </button>
+            @endforeach
         </div>
     </div>
+    <div class="flex items-center mt-5 mb-5">
+        <button id="trajet_Aujoudhui-btn" class="relative font-semibold border border-green-600 px-4 py-2 w-[320px] bg-white text-green-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+            <span class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-green-600 group-hover:w-full"></span>
+            <span class="relative z-10">Voir le trajet effectué aujourd'hui</span>
+        </button>
+    </div>
+    <div class="flex items-center mb-5">
+        <h2 class="font-bold">Veuillez choisir la date entre : &nbsp;</h2>
+        <input type="date" id="startDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
+        <h2 class="font-bold">&nbsp; et &nbsp;</h2>
+        <input type="date" id="endDatePicker" class="w-[200px] border-black border-2 rounded-md px-2 py-1">
+    </div>
+    <div class="flex items-center justify-between">
+        <button id="trajet-btn" class="relative font-semibold border border-orange-500 px-4 py-2 w-[320px] bg-white text-orange-500 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white">
+            <span class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-orange-500 group-hover:w-full"></span>
+            <span class="relative z-10">Voir l'éventuel trajet emprunté</span>
+        </button>
+        <button id="reset-btn" class="relative mr-[320px] font-semibold border border-gray-600 px-4 py-2 w-[320px] bg-white text-gray-600 rounded-lg overflow-hidden transition-all duration-300 group hover:text-white ml-auto">
+            <span class="absolute inset-0 w-0 transition-all duration-300 ease-in-out bg-gray-600 group-hover:w-full"></span>
+            <span class="relative z-10">Réinitialiser</span>
+        </button>
+    </div>
+</div>
 
-    <section class="relative flex items-center justify-center mt-2 mb-5">
-        <!-- Section pour la carte -->
-        <div
-            class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto h-[502px] w-[1280px] mt-5">
-            <!-- Conteneur pour la carte avec barre de défilement verticale -->
-            <div id="map" class="h-[500px]"></div>
-            <!-- Div pour la carte -->
-        </div>
-    </section>
+<section class="relative flex items-center justify-center mt-2 mb-5">
+    <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto h-[502px] w-[1280px] mt-5">
+        <div id="map" class="h-[500px]"></div>
+    </div>
+</section>
 
     <x-footer />
     <!-- Inclusion du composant de pied de page -->
@@ -206,24 +164,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialisation des éléments du DOM
-            const toggleButton = document.getElementById("toggleButton"); // Bouton pour afficher/masquer le menu
-            const customDiv = document.getElementById("customDiv"); // Menu déroulant à afficher/masquer
-            const searchInput = document.getElementById(
-                "searchInput"); // Champ de recherche pour filtrer les éléments du menu
-            const resetButton = document.getElementById("reset-btn"); // Bouton pour réinitialiser la page
-            const enginSelectButtons = customDiv.querySelectorAll(
-                "#enginSelect"); // Boutons pour sélectionner un engin dans le menu
-            const arrowImage = document.querySelector(
-                "#toggleButton img"); // Image de flèche pour indiquer l'état du menu
+            const toggleButton = document.getElementById("toggleButton");
+            const customDiv = document.getElementById("customDiv");
+            const searchInput = document.getElementById("searchInput");
+            const resetButton = document.getElementById("reset-btn");
+            const enginSelectButtons = customDiv.querySelectorAll("#enginSelect");
+            const arrowImage = document.querySelector("#toggleButton img");
 
-            // Fonction pour afficher/masquer le menu déroulant et faire tourner l'image de flèche
             toggleButton.addEventListener("click", function(event) {
-                customDiv.classList.toggle("hidden"); // Affiche/masque le menu
+                customDiv.classList.toggle("hidden");
                 if (arrowImage) {
-                    arrowImage.classList.toggle("rotate-90"); // Fait tourner l'image de flèche de 90 degrés
+                    arrowImage.classList.toggle("rotate-90");
                 }
-                event.stopPropagation(); // Empêche la propagation de l'événement de clic au document
             });
 
             // Fonction pour masquer le menu déroulant si un clic est détecté en dehors de celui-ci
@@ -237,32 +189,35 @@
                 }
             });
 
-            // Fonction pour filtrer les boutons dans le menu déroulant en fonction de l'entrée de recherche
             searchInput.addEventListener("input", function() {
-                const filter = searchInput.value
-                    .toLowerCase(); // Convertit le texte de recherche en minuscules
-                const buttons = customDiv.querySelectorAll(
-                    "button"); // Récupère tous les boutons dans le menu
-                buttons.forEach(function(button) {
-                    // Affiche le bouton s'il correspond au filtre, sinon le masque
-                    button.style.display = button.textContent.toLowerCase().includes(filter) ? "" :
-                        "none";
-                });
-            });
-
-            // Fonction pour mettre à jour le texte du bouton principal avec l'engin sélectionné et masquer le menu
-            enginSelectButtons.forEach(function(button) {
-                button.addEventListener("click", function() {
-                    const selectedEngin = button.textContent; // Récupère le texte du bouton cliqué
-                    document.getElementById("buttonText").textContent =
-                        selectedEngin; // Met à jour le texte du bouton principal
-                    customDiv.classList.add("hidden"); // Masque le menu
-                    if (arrowImage) {
-                        arrowImage.classList.remove(
-                            "rotate-90"); // Remet l'image de flèche à l'état initial
+                const searchTerm = this.value.toLowerCase();
+                enginSelectButtons.forEach(function(button) {
+                    const buttonText = button.innerText.toLowerCase();
+                    if (buttonText.includes(searchTerm)) {
+                        button.style.display = "block";
+                    } else {
+                        button.style.display = "none";
                     }
                 });
             });
+
+            window.addEventListener('click', function(event) {
+                if (!toggleButton.contains(event.target) && !customDiv.contains(event.target)) {
+                    customDiv.classList.add('hidden');
+                }
+            });
+
+            enginSelectButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    const selectedValue = button.value;
+                    const buttonText = button.innerText;
+                    document.getElementById("buttonText").innerText = buttonText;
+                    customDiv.classList.add("hidden");
+                    console.log("ID de l'engin :", selectedValue);
+                    console.log("Engin :", buttonText);
+                });
+            });
+
 
             // Fonction pour réinitialiser la page lorsque le bouton de réinitialisation est cliqué
             resetButton.addEventListener("click", function() {
@@ -307,6 +262,7 @@
 
             // Récupérer les positions associées à l'engin sélectionné
             var positions = {!! json_encode($position_engin) !!};
+            console.log(positions)
 
             var trajetBtn = document.getElementById('trajet-btn');
             var trajetAujourdhuiBtn = document.getElementById('trajet_Aujoudhui-btn');
@@ -325,6 +281,7 @@
                     alert("Veuillez sélectionner un engin.");
                     return;
                 }
+
 
                 // Supprimer les marqueurs précédents et l'itinéraire de la carte
                 markersLayer.clearLayers();
