@@ -29,4 +29,10 @@ class Position extends Model
     {
         return $this->hasOne(Location::class, 'id_position', 'id_loc_engin');
     }
+
+    // Dans le modèle Position.php
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'id_loc_engin');
+    }
 }
