@@ -1,6 +1,6 @@
 <!-- sidenav -->
 <div class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform bg-white shadow-inner sidebar-menu">
-    <a href="/" class="flex items-center pb-4 border-b border-b-gray-800">
+    <a href="/" class="flex items-center pb-4 border-b border-b-gray-800" id="logo-link">
         <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
     </a>
     <ul class="mt-4" id="sidebar-menu">
@@ -8,7 +8,7 @@
         <li class="mb-1 group">
             <a href="/"
                 class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
-                data-link="accueil">
+                data-link="accueil" id="accueil-link">
                 <i class="mr-3 text-lg bx bx-home"></i>
                 <span class="text-sm">Accueil</span>
             </a>
