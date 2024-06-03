@@ -284,8 +284,8 @@
 
             // Récupérer les positions associées à l'engin sélectionné
             var positions = {!! json_encode($position_engin) !!};
-            console.log(positions)
-
+            //console.log(positions)
+            console.table(positions)
             var trajetBtn = document.getElementById('trajet-btn');
             var trajetAujourdhuiBtn = document.getElementById('trajet_Aujoudhui-btn');
 

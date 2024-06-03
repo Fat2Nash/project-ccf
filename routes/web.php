@@ -79,6 +79,13 @@ Route::get('/HistoriqueLocations', function () {
 
 Route::get('/MapsEngins', [EnginController::class, 'index']);
 
+Route::get('/MapsEngins2', [EnginController::class, 'index']);
+
+
+Route::post('/engin-position', [EnginController::class, 'getPosition']);
+Route::get('/positions/{enginId}/range/{startDate}/{endDate}', [EnginController::class, 'getPositionForDateRange']);
+Route::get('/positions/{enginId}/today', [EnginController::class, 'getPositionForToday']);
+
 # ======================
 # Route Kasim
 # ======================

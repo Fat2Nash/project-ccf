@@ -40,5 +40,17 @@ class EnginSeeder extends Seeder
                     'cree_le' => now(),
                     'mis_a_jours_le' => now(),
                 ]);
+                DB::table('engins')->insert([
+                    'categorie' => 'Pelle',
+                    'Num_Machine' => '2',
+                    'marque' => 'Caterpillar',
+                    'modele' => '320',
+                    'description' => 'Pelle hydraulique sur chenilles',
+                    'compteur_heures' => 1500,
+                    'statut' => 'Disponible',
+                    'maintenance' => 1,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
     }
 }

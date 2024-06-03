@@ -11,6 +11,7 @@ class Client extends Model
     use HasFactory;
     protected $table = 'clients';
     protected $primaryKey = 'id_client';
+    public $timestamps = false; // Désactiver la gestion automatique des horodatages
 
     protected $fillable = [
         'nom',
