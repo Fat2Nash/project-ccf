@@ -22,6 +22,6 @@ class LocationController extends Controller
         });
 
         // Passer les positions récupérées à la vue pour les afficher
-        return view('your_view', ['latestPositions' => $position_engin]);
+        return view('your_view', ['latestPositions' => $latestPositions]);
     }
 }

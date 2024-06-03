@@ -33,12 +33,12 @@ return new class extends Migration
             $table->dateTime('DateHeure');
         });
 
-        Schema::create('cycle_engin', function (Blueprint $table) {
-            $table->id('id_cycle');
-            $table->foreignId('id_loc_engin')->references('id_loc_engin')->on('loc_engin');
-            $table->dateTime('HeureMoteurON');
-            $table->dateTime('HeureMoteurOFF');
-        });
+        // Schema::create('cycle_engin', function (Blueprint $table) {
+        //     $table->id('id_cycle');
+        //     $table->foreignId('id_loc_engin')->references('id_loc_engin')->on('loc_engin');
+        //     $table->dateTime('HeureMoteurON');
+        //     $table->dateTime('HeureMoteurOFF');
+        // });
     }
 
     /**
@@ -48,6 +48,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('loc_engin');
         Schema::dropIfExists('position_engin');
-        Schema::dropIfExists('cycle_engin');
+        // Schema::dropIfExists('cycle_engin');
     }
 };

@@ -62,47 +62,38 @@ DB_CONNECTION=mysql # mettre mysql si besoin de mysql
 ## Base de donées
 
 ```bash
-php artisan migrate  |  Créer la BDD 
+php artisan migrate  #  Créer la BDD 
+```
+ou 
+```bash
+php artisan migrate:fresh  # Recréer la  BDD à vide 
 ```
 
 ## Pré-remplir la base de données
 
-```
-php artisan db:seed
+```bash
+php artisan db:seed     # Remplir la BDD avec des données de test
 ```
 
 
 ## Avancée
 
-### Personnelle
-
-![70%](https://progress-bar.dev/70)
-
-- [x] S'authentifier
-- [x] Créer les fiches : 
-   - [x] Client
-   - [x] Engins
-   - [ ] Location
-- [ ] Editer les fiches : 
-   - [ ] Client
-   - [ ] Engins
-   - [ ] Location
-- [ ] Supprimer les fiches : 
-   - [x] Client
-   - [x] Engins
-   - [ ] Location
-- [x] Visualiser les engins disponibles
 
 ### Globale
-![60%](https://progress-bar.dev/60)
+![80%](https://progress-bar.dev/80)
 
 #### Quentin
-- [ ] Stocker les données de localisation/de fonctionnement des engins
+![80%](https://progress-bar.dev/80).
+- [x] Stocker les données de localisation/de fonctionnement des engins
 - [x] Publier les donées de : 
    - [x] Localisation
    - [ ] Fonctionnement
 - [x] Déterminer les informations et les horodater
+- [ ] Gérer les alertes
+  - [ ] boitier ouvert
+  - [x] batterie faible
 #### Erwan
+![70%](https://progress-bar.dev/70)
 - [x] S'authentifier
 - [x] Créer les fiches : 
    - [x] Client
@@ -118,14 +109,16 @@ php artisan db:seed
    - [ ] Location
 - [ ] Visualiser les engins disponibles
 #### Antony
+![90%](https://progress-bar.dev/90)
 - [x] Visualiser les historiques :
    - [x] Par client
    - [x] Par engin
-- [ ] Visualiser les engins sur la carte
+- [x] Visualiser les engins sur la carte
 #### Kasim
+![75%](https://progress-bar.dev/75)
 - [x] Visualiser la liste des engin à :
   - [x] Livrer
   - [x] Récupérer
-- [ ] Gérer les maintenance
+- [x] Gérer les maintenance
 ### Tous
 - [ ] Compatibilité téléphones

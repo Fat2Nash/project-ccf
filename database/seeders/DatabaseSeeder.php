@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             EnginSeeder::class,
             UserSeeder::class,
             LocationSeeder::class,
+            AlerteSeeder::class,
 
         ]);
     }

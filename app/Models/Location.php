@@ -41,10 +41,10 @@ class Location extends Model
     }
 
     // Relation avec la table 'cycle_engin'
-    public function cycleEngin()
-    {
-        return $this->hasOne(Cycle::class, 'id_loc_engin', 'id_loc_engin');
-    }
+    // public function cycleEngin()
+    // {
+    //     return $this->hasOne(Cycle::class, 'id_loc_engin', 'id_loc_engin');
+    // }
 
     // Dans le modèle Location.php
     public function engin()
