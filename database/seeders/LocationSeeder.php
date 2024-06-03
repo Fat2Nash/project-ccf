@@ -70,11 +70,11 @@ class LocationSeeder extends Seeder
             ]);
 
             // Insert cycle data into cycle_engin table
-            DB::table('cycle_engin')->insert([
-                'id_loc_engin' => '1',
-                'HeureMoteurON' => '15:00',
-                'HeureMoteurOFF' => '15:05',
-            ]);
+            // DB::table('cycle_engin')->insert([
+            //     'id_loc_engin' => '1',
+            //     'HeureMoteurON' => '15:00',
+            //     'HeureMoteurOFF' => '15:05',
+            // ]);
 
 
             DB::table('loc_engin')->insert([
@@ -123,11 +123,11 @@ class LocationSeeder extends Seeder
             ]);
 
             // Insert cycle data into cycle_engin table
-            DB::table('cycle_engin')->insert([
-                'id_loc_engin' => '2',
-                'HeureMoteurON' => '11:00',
-                'HeureMoteurOFF' => '13:22',
-            ]);
+            // DB::table('cycle_engin')->insert([
+            //     'id_loc_engin' => '2',
+            //     'HeureMoteurON' => '11:00',
+            //     'HeureMoteurOFF' => '13:22',
+            // ]);
 
         }
     }
