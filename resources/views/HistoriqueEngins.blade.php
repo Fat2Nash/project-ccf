@@ -175,9 +175,9 @@
                                     @endforeach
                                     @php
                                         // Filtrer les locations correspondant au client et à l'engin actuel
-$location = $loc_engin
-    ->where('client_id', $client->id_client)
-    ->where('id_engins', $engin->id_engins)
+                                        $location = $loc_engin
+                                            ->where('client_id', $client->id_client)
+                                            ->where('id_engins', $engin->id_engins)
                                             ->first();
                                     @endphp
                                     @if ($location)
