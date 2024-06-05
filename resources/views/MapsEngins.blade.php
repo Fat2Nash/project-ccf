@@ -207,6 +207,7 @@
             var trajetAujourdhuiBtn = document.getElementById('trajet_Aujoudhui-btn');
 
             trajetBtn.addEventListener('click', function() {
+
                 var startDatePicker = document.getElementById('startDatePicker');
                 var endDatePicker = document.getElementById('endDatePicker');
 
@@ -219,11 +220,6 @@
                     return;
                 }
 
-                // Appeler la fonction pour récupérer les positions de l'engin sélectionné
-                getPositionsByEnginId(selectedEnginId);
-
-                // Supprimer les marqueurs précédents et l'itinéraire de la carte
-                markersLayer.clearLayers();
                 map.eachLayer(function(layer) {
                     if (layer instanceof L.Polyline) {
                         map.removeLayer(layer);
@@ -231,15 +227,16 @@
                 });
 
                 // Filtrer les positions en fonction de l'engin sélectionné et de la plage de dates
-                // Cette partie est remplacée par l'appel à getPositionsByEnginId(selectedEnginId)
                 var filteredPositions = positions.filter(function(position) {
-                    return position.id_loc_engin == selectedEnginId &&
+                    // Trouver l'id_loc_engin correspondant à l'engin sélectionné
+                    var locEnginId = location.find(loc => loc.id_engins == selectedEnginId)?.id_loc_engin;
+                    // Vérifier si l'ID de l'engin de la position correspond à l'id_loc_engin trouvé et si la date est dans la plage spécifiée
+                    return locEnginId == position.id_loc_engin &&
                         new Date(position.DateHeure) >= new Date(startDate) &&
                         new Date(position.DateHeure) <= new Date(endDate);
                 });
 
                 // Créer un tableau de points pour l'itinéraire
-                // Cette partie est remplacée par l'appel à getPositionsByEnginId(selectedEnginId)
                 var latlngs = [];
                 filteredPositions.forEach(function(position) {
                     latlngs.push([position.Longitude, position.Latitude]);
@@ -263,6 +260,7 @@
 
             // Ajoutez un écouteur d'événements pour le clic sur le bouton "Aujourd'hui"
             trajetAujourdhuiBtn.addEventListener('click', function() {
+
                 // Vérifiez si un engin est sélectionné
                 if (!selectedEnginId) {
                     alert("Veuillez sélectionner un engin.");
@@ -279,7 +277,10 @@
 
                 // Filtrer les positions en fonction de l'engin sélectionné
                 var filteredPositions = positions.filter(function(position) {
-                    return position.id_loc_engin == selectedEnginId;
+                   // Trouver l'id_loc_engin correspondant à l'engin sélectionné
+                   var locEnginId = location.find(loc => loc.id_engins == selectedEnginId)?.id_loc_engin;
+                    // Vérifier si l'ID de l'engin de la position correspond à l'id_loc_engin trouvé et si la date est dans la plage spécifiée
+                    return locEnginId == position.id_loc_engin;
                 });
 
                 // Filtrer les positions pour la journée actuelle
@@ -300,37 +301,6 @@
                 // Ajouter des marqueurs pour chaque position sur la carte
                 filteredPositions.forEach(function(position) {
                     var marker = L.marker([position.Longitude, position.Latitude]);
-
-                    // Convertir la date et l'heure en objet Date
-                    var dateHeure = new Date(position.DateHeure);
-
-                    // Ajuster le fuseau horaire (par exemple, en utilisant UTC)
-                    var dateHeureUTC = new Date(dateHeure.getTime() + dateHeure
-                        .getTimezoneOffset() * 60000);
-
-                    // Formater la date et l'heure
-                    var formattedDateHeure = dateHeureUTC
-                        .toLocaleString(); // Vous pouvez ajuster le format selon vos préférences
-
-                    // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
-                    marker.enginInfo = {
-                        marque: selectedEnginId,
-                        dateHeure: formattedDateHeure // Utilisez la date/heure formatée
-                    };
-
-                    // Ajoutez un gestionnaire d'événements pour afficher les informations d'engin lorsque survolé
-                    marker.on('mouseover', function(e) {
-                        var info = e.target.enginInfo;
-                        e.target.bindPopup(
-                            `<b>Marque:</b> ${info.marque}<br><b>Date/Heure:</b> ${info.dateHeure}`
-                        ).openPopup();
-                    });
-
-                    // Ajoutez un gestionnaire d'événements pour fermer la popup lorsque la souris quitte le marqueur
-                    marker.on('mouseout', function(e) {
-                        e.target.closePopup();
-                    });
-
                     markersLayer.addLayer(marker);
                 });
 
@@ -443,10 +413,10 @@
             });
 
             resetButton.addEventListener("click", function() {
+                selectedEnginId = null; // Réinitialiser la variable selectedEnginId à null
                 location.reload();
             });
         });
     </script>
 </body>
-
 </html>
