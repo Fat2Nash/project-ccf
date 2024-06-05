@@ -94,6 +94,8 @@
 
         use App\Models\Position; // Importer le modèle Position
         $position_engin = Position::all(); // Récupérer toutes les positions de la base de données
+
+        $selectedEnginId = null; // Initialize selectedEnginId variable
     @endphp
 
     <div class="ml-[350px] mt-10">
@@ -127,10 +129,12 @@
                 </button>
             </div>
             <div class="w-[350px] max-h-[300px] h-auto overflow-y-auto px-2">
-                @foreach($engins as $engin)
-                <button id="enginSelect" class="block w-full h-10 py-2 text-center button-hover" value="{{ $engin->id_engins }}">
-                    {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}
-                </button>
+                @foreach ($engins as $engin)
+                    <button id="enginSelect" data-id={{ $engin->id_engins }}
+                        class="block w-full h-10 py-2 text-center button-hover">
+                        {{ 'N°' . $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} -
+                        {{ $engin->categorie }}
+                    </button>
                 @endforeach
             </div>
         </div>
@@ -190,26 +194,27 @@
             }).addTo(map);
 
             var markersLayer = L.layerGroup().addTo(map); // LayerGroup pour stocker les marqueurs
+            var enginMarkers = {}; // Structure pour stocker les marqueurs par engin
 
             // Récupérer les positions associées à l'engin sélectionné
             var positions = {!! json_encode($position_engin) !!};
             var engins = {!! json_encode($engins) !!};
             var location = {!! json_encode($loc_engin) !!};
 
+            var selectedEnginId = null; // Variable globale pour stocker l'ID de l'engin sélectionné
+
             var trajetBtn = document.getElementById('trajet-btn');
             var trajetAujourdhuiBtn = document.getElementById('trajet_Aujoudhui-btn');
 
             trajetBtn.addEventListener('click', function() {
-                var enginSelect = document.getElementById('enginSelect');
                 var startDatePicker = document.getElementById('startDatePicker');
                 var endDatePicker = document.getElementById('endDatePicker');
 
-                var enginId = enginSelect.value;
                 var startDate = startDatePicker.value;
                 var endDate = endDatePicker.value;
 
                 // Vérifiez si un engin est sélectionné
-                if (!enginId) {
+                if (!selectedEnginId) {
                     alert("Veuillez sélectionner un engin.");
                     return;
                 }
@@ -224,12 +229,10 @@
 
                 // Filtrer les positions en fonction de l'engin sélectionné et de la plage de dates
                 var filteredPositions = positions.filter(function(position) {
-                    return position.id_loc_engin == enginId &&
+                    return position.id_loc_engin == selectedEnginId &&
                         new Date(position.DateHeure) >= new Date(startDate) &&
                         new Date(position.DateHeure) <= new Date(endDate);
                 });
-
-                console.log("Id de l'engin récuperer :" + enginId);
 
                 // Créer un tableau de points pour l'itinéraire
                 var latlngs = [];
@@ -255,11 +258,8 @@
 
             // Ajoutez un écouteur d'événements pour le clic sur le bouton "Aujourd'hui"
             trajetAujourdhuiBtn.addEventListener('click', function() {
-                var enginSelect = document.getElementById('enginSelect');
-                var enginId = enginSelect.value;
-
                 // Vérifiez si un engin est sélectionné
-                if (!enginId) {
+                if (!selectedEnginId) {
                     alert("Veuillez sélectionner un engin.");
                     return;
                 }
@@ -274,7 +274,7 @@
 
                 // Filtrer les positions en fonction de l'engin sélectionné
                 var filteredPositions = positions.filter(function(position) {
-                    return position.id_loc_engin == enginId;
+                    return position.id_loc_engin == selectedEnginId;
                 });
 
                 // Filtrer les positions pour la journée actuelle
@@ -285,13 +285,6 @@
                 filteredPositions.forEach(function(position) {
                     latlngs.push([position.Longitude, position.Latitude]);
                 });
-
-                // Créer un objet de style pour l'itinéraire
-                var myStyle = {
-                    color: '#3388ff', // Couleur bleue
-                    weight: 5, // Épaisseur du trait
-                    opacity: 0.7 // Opacité du trait
-                };
 
                 var control = L.Routing.control({
                     waypoints: latlngs,
@@ -316,12 +309,7 @@
 
                     // Ajoutez les informations d'engin au marqueur en tant que propriété personnalisée
                     marker.enginInfo = {
-                        marque: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-marque'),
-                        modele: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-modele'),
-                        categorie: enginSelect.options[enginSelect.selectedIndex].getAttribute(
-                            'data-categorie'),
+                        marque: selectedEnginId,
                         dateHeure: formattedDateHeure // Utilisez la date/heure formatée
                     };
 
@@ -329,7 +317,7 @@
                     marker.on('mouseover', function(e) {
                         var info = e.target.enginInfo;
                         e.target.bindPopup(
-                            `<b>Marque:</b> ${info.marque}<br><b>Modèle:</b> ${info.modele}<br><b>Catégorie:</b> ${info.categorie}<br><b>Date/Heure:</b> ${info.dateHeure}`
+                            `<b>Marque:</b> ${info.marque}<br><b>Date/Heure:</b> ${info.dateHeure}`
                         ).openPopup();
                     });
 
@@ -351,14 +339,54 @@
                 var endOfDay = new Date();
                 endOfDay.setHours(23, 59, 59, 999); // Définir l'heure à 23:59:59.999 pour la fin de la journée
 
-                // Filtrer les positions en fonction de la journée actuelle
-                var filteredPositions = positions.filter(function(position) {
-                    var positionDateTime = new Date(position.DateHeure);
-                    return positionDateTime >= today && positionDateTime <= endOfDay;
+                // Filtrer les positions pour obtenir celles de la journée actuelle
+                return positions.filter(function(position) {
+                    var dateHeure = new Date(position.DateHeure);
+                    return dateHeure >= today && dateHeure <= endOfDay;
                 });
-
-                return filteredPositions;
             }
+
+            // Écoutez les événements de clic sur les boutons des engins
+            var enginButtons = document.querySelectorAll("#enginSelect");
+            enginButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    const enginId = this.getAttribute("data-id");
+                    selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
+
+                    // Mettez à jour l'interface utilisateur pour refléter la sélection
+                    console.log("ID de l'engin sélectionné :", selectedEnginId);
+
+                    // Mettre à jour les informations d'engin en fonction de l'ID sélectionné
+                    const selectedEngin = engins.find(engin => engin.id_loc_engin == enginId);
+                    if (selectedEngin) {
+                        const infoElement = document.createElement("div");
+                        infoElement.innerHTML = `
+                            <b>Marque:</b> ${selectedEngin.Marque}<br>
+                            <b>Model:</b> ${selectedEngin.Model}<br>
+                            <b>Date de Mise en Service:</b> ${selectedEngin.DateMiseEnService}<br>
+                            <b>Couleur:</b> ${selectedEngin.Couleur}
+                        `;
+                        const infoContainer = document.getElementById("enginInfo");
+                        infoContainer.innerHTML = "";
+                        infoContainer.appendChild(infoElement);
+                    }
+                });
+            });
+
+            // Supposons que vous avez une fonction pour récupérer les positions en fonction de l'ID de l'engin
+            function getPositionsByEnginId(enginId) {
+                fetch(`/engins/${enginId}/positions`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Traitez les données reçues, par exemple, mettez à jour l'interface utilisateur avec les positions récupérées
+                        console.log(data); // Pour l'instant, affichons juste les données dans la console
+                    })
+                    .catch(error => console.error('Erreur lors de la récupération des positions:', error));
+            }
+
+            // Utilisez cette fonction avec l'ID de l'engin sélectionné
+            selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
+            getPositionsByEnginId(selectedEnginId);
         });
     </script>
 
@@ -406,20 +434,26 @@
                 const filter = searchInput.value.toLowerCase();
                 const buttons = customDiv.querySelectorAll("button");
                 buttons.forEach(function(button) {
-                    button.style.display = button.textContent.toLowerCase().includes(filter) ? "" : "none";
+                    button.style.display = button.textContent.toLowerCase().includes(filter) ? "" :
+                        "none";
                 });
             });
 
             enginSelectButtons.forEach(function(button) {
                 button.addEventListener("click", function() {
-                    const selectedEnginId = button.value; // Récupérer l'ID de l'engin sélectionné
-                    const selectedEnginText = button.textContent; // Récupérer le texte du bouton sélectionné
-                    console.log('ID de l\'engin sélectionné : ' + selectedEnginId); // Afficher l'ID de l'engin sélectionné
-                    document.getElementById("buttonText").textContent = selectedEnginText; // Mettre à jour le texte du bouton principal
+                    const selectedEnginId = button.dataset
+                    .id; // Utilisez dataset.id pour récupérer l'ID de l'engin sélectionné
+                    const selectedEnginText = button
+                    .textContent; // Récupérer le texte du bouton sélectionné
+                    document.getElementById("buttonText").textContent =
+                    selectedEnginText; // Mettre à jour le texte du bouton principal
                     customDiv.classList.add("hidden");
                     if (arrowImage) {
                         arrowImage.classList.remove("rotate-90");
                     }
+
+                    // Mettez à jour la variable selectedEnginId
+                    selectedEnginId = selectedEnginId;
                 });
             });
 
