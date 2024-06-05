@@ -353,6 +353,8 @@
                     const enginId = this.getAttribute("data-id");
                     selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
 
+                    getPositionsByEnginId(selectedEnginId);
+
                     // Mettez à jour l'interface utilisateur pour refléter la sélection
                     console.log("ID de l'engin sélectionné :", selectedEnginId);
 
@@ -383,10 +385,6 @@
                     })
                     .catch(error => console.error('Erreur lors de la récupération des positions:', error));
             }
-
-            // Utilisez cette fonction avec l'ID de l'engin sélectionné
-            selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
-            getPositionsByEnginId(selectedEnginId);
         });
     </script>
 
