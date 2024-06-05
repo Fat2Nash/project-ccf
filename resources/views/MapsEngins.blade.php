@@ -219,6 +219,9 @@
                     return;
                 }
 
+                // Appeler la fonction pour récupérer les positions de l'engin sélectionné
+                getPositionsByEnginId(selectedEnginId);
+
                 // Supprimer les marqueurs précédents et l'itinéraire de la carte
                 markersLayer.clearLayers();
                 map.eachLayer(function(layer) {
@@ -228,6 +231,7 @@
                 });
 
                 // Filtrer les positions en fonction de l'engin sélectionné et de la plage de dates
+                // Cette partie est remplacée par l'appel à getPositionsByEnginId(selectedEnginId)
                 var filteredPositions = positions.filter(function(position) {
                     return position.id_loc_engin == selectedEnginId &&
                         new Date(position.DateHeure) >= new Date(startDate) &&
@@ -235,6 +239,7 @@
                 });
 
                 // Créer un tableau de points pour l'itinéraire
+                // Cette partie est remplacée par l'appel à getPositionsByEnginId(selectedEnginId)
                 var latlngs = [];
                 filteredPositions.forEach(function(position) {
                     latlngs.push([position.Longitude, position.Latitude]);
@@ -357,21 +362,6 @@
 
                     // Mettez à jour l'interface utilisateur pour refléter la sélection
                     console.log("ID de l'engin sélectionné :", selectedEnginId);
-
-                    // Mettre à jour les informations d'engin en fonction de l'ID sélectionné
-                    const selectedEngin = engins.find(engin => engin.id_loc_engin == enginId);
-                    if (selectedEngin) {
-                        const infoElement = document.createElement("div");
-                        infoElement.innerHTML = `
-                            <b>Marque:</b> ${selectedEngin.Marque}<br>
-                            <b>Model:</b> ${selectedEngin.Model}<br>
-                            <b>Date de Mise en Service:</b> ${selectedEngin.DateMiseEnService}<br>
-                            <b>Couleur:</b> ${selectedEngin.Couleur}
-                        `;
-                        const infoContainer = document.getElementById("enginInfo");
-                        infoContainer.innerHTML = "";
-                        infoContainer.appendChild(infoElement);
-                    }
                 });
             });
 
@@ -449,9 +439,6 @@
                     if (arrowImage) {
                         arrowImage.classList.remove("rotate-90");
                     }
-
-                    // Mettez à jour la variable selectedEnginId
-                    selectedEnginId = selectedEnginId;
                 });
             });
 
