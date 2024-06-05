@@ -12,16 +12,9 @@
     <!-- Inclusion de la police Figtree avec les poids 400 et 600 -->
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <!-- Tailwind CSS -->
-    <!-- Inclusion de Tailwind CSS via un CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19"></script>
-
     <!-- Leaflet CSS -->
     <!-- Inclusion de la feuille de style de Leaflet pour les cartes -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
-
-    <!-- Inclusion de Tailwind CSS via CDN (duplication inutile, mais conserve l'ordre de ton code) -->
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Thiriot-Location | {{ Auth::user()->name }}</title>
     <!-- Inclusion des icônes Boxicons -->
@@ -185,6 +178,19 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            function clearMap() {
+                markersLayer.clearLayers(); // Supprimer tous les marqueurs de la carte
+                map.eachLayer(function(layer) {
+                    if (layer instanceof L.Polyline) {
+                        map.removeLayer(layer); // Supprimer toutes les polylignes de la carte
+                    }
+                });
+            }
+            function reset() {
+                console.clear();
+                selectedEnginId = null; // Réinitialiser la variable selectedEnginId à null
+                clearMap(); // Appeler la fonction clearMap pour effacer la carte
+            }
             var map = L.map('map', {
                 attributionControl: false // Désactiver l'affichage des informations d'attribution
             }).setView([48.1814101770421, 6.208779881654873], 13);
@@ -325,10 +331,13 @@
             var enginButtons = document.querySelectorAll("#enginSelect");
             enginButtons.forEach(function(button) {
                 button.addEventListener("click", function() {
+                    reset();
                     const enginId = this.getAttribute("data-id");
+
                     selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
 
                     getPositionsByEnginId(selectedEnginId);
+
 
                     // Mettez à jour l'interface utilisateur pour refléter la sélection
                     console.log("ID de l'engin sélectionné :", selectedEnginId);
@@ -341,7 +350,7 @@
                     .then(response => response.json())
                     .then(data => {
                         // Traitez les données reçues, par exemple, mettez à jour l'interface utilisateur avec les positions récupérées
-                        console.log(data); // Pour l'instant, affichons juste les données dans la console
+                        console.table(data); // Pour l'instant, affichons juste les données dans la console
                     })
                     .catch(error => console.error('Erreur lors de la récupération des positions:', error));
             }
@@ -412,9 +421,10 @@
                 });
             });
 
+
+
             resetButton.addEventListener("click", function() {
-                selectedEnginId = null; // Réinitialiser la variable selectedEnginId à null
-                location.reload();
+                reset();
             });
         });
     </script>
