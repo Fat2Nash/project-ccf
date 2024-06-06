@@ -12,9 +12,16 @@
     <!-- Inclusion de la police Figtree avec les poids 400 et 600 -->
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+    <!-- Tailwind CSS -->
+    <!-- Inclusion de Tailwind CSS via un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19"></script>
+
     <!-- Leaflet CSS -->
     <!-- Inclusion de la feuille de style de Leaflet pour les cartes -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Inclusion de Tailwind CSS via CDN (duplication inutile, mais conserve l'ordre de ton code) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Thiriot-Location | {{ Auth::user()->name }}</title>
     <!-- Inclusion des icônes Boxicons -->
@@ -30,7 +37,7 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <!-- Inclusion de la feuille de style de Leaflet (version 1.2.0) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <!-- Inclusion de la feuille de style de Leaflet Routing Machine -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
 
@@ -171,48 +178,54 @@
     <x-footer />
     <!-- Inclusion du composant de pied de page -->
 
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Script pour la bibliothèque Leaflet -->
+
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <!-- Script pour la bibliothèque de routage Leaflet -->
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            function clearMap() {
-                markersLayer.clearLayers(); // Supprimer tous les marqueurs de la carte
-                map.eachLayer(function(layer) {
-                    if (layer instanceof L.Polyline) {
-                        map.removeLayer(layer); // Supprimer toutes les polylignes de la carte
-                    }
-                });
-            }
-            function reset() {
-                console.clear();
-                selectedEnginId = null; // Réinitialiser la variable selectedEnginId à null
-                clearMap(); // Appeler la fonction clearMap pour effacer la carte
-            }
             var map = L.map('map', {
                 attributionControl: false // Désactiver l'affichage des informations d'attribution
             }).setView([48.1814101770421, 6.208779881654873], 13);
+
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
             }).addTo(map);
 
             var markersLayer = L.layerGroup().addTo(map); // LayerGroup pour stocker les marqueurs
-            var enginMarkers = {}; // Structure pour stocker les marqueurs par engin
 
             // Récupérer les positions associées à l'engin sélectionné
             var positions = {!! json_encode($position_engin) !!};
             var engins = {!! json_encode($engins) !!};
             var location = {!! json_encode($loc_engin) !!};
 
-            var selectedEnginId = null; // Variable globale pour stocker l'ID de l'engin sélectionné
-
             var trajetBtn = document.getElementById('trajet-btn');
             var trajetAujourdhuiBtn = document.getElementById('trajet_Aujoudhui-btn');
 
+            var markers = [];
+            var waypoints = []; // Déclaration des waypoints en dehors de la fonction createMarkers()
+
+            // Ajoutez un écouteur d'événements pour le clic sur le bouton "Trajet"
             trajetBtn.addEventListener('click', function() {
+                createMarkers(selectedEnginId);
+                L.Routing.control({
+
+                }).addTo(map);
+            });
+
+            // Fonction pour créer des marqueurs avec des popups pour chaque engin
+            function createMarkers(selectedEnginId) {
+                // Effacer les marqueurs précédents
+                markersLayer.clearLayers();
+
+                // Supprimer les marqueurs précédents du tableau
+                markers.forEach(function(marker) {
+                    marker.remove();
+                });
+                markers = [];
 
                 var startDatePicker = document.getElementById('startDatePicker');
                 var endDatePicker = document.getElementById('endDatePicker');
@@ -220,141 +233,65 @@
                 var startDate = startDatePicker.value;
                 var endDate = endDatePicker.value;
 
-                // Vérifiez si un engin est sélectionné
-                if (!selectedEnginId) {
-                    alert("Veuillez sélectionner un engin.");
-                    return;
-                }
+                // Déclaration de filteredPositions en dehors de la fonction forEach
+                var filteredPositions = [];
 
-                map.eachLayer(function(layer) {
-                    if (layer instanceof L.Polyline) {
-                        map.removeLayer(layer);
-                    }
-                });
-
-                // Filtrer les positions en fonction de l'engin sélectionné et de la plage de dates
-                var filteredPositions = positions.filter(function(position) {
-                    // Trouver l'id_loc_engin correspondant à l'engin sélectionné
-                    var locEnginId = location.find(loc => loc.id_engins == selectedEnginId)?.id_loc_engin;
-                    // Vérifier si l'ID de l'engin de la position correspond à l'id_loc_engin trouvé et si la date est dans la plage spécifiée
+                // Filtrer les positions uniquement pour l'engin sélectionné
+                var locEnginId = location.find(loc => loc.id_engins == selectedEnginId)?.id_loc_engin;
+                filteredPositions = positions.filter(function(position) {
                     return locEnginId == position.id_loc_engin &&
                         new Date(position.DateHeure) >= new Date(startDate) &&
                         new Date(position.DateHeure) <= new Date(endDate);
                 });
 
-                // Créer un tableau de points pour l'itinéraire
-                var latlngs = [];
+                console.log("Nombre de positions récupérées pour l'engin " + selectedEnginId + ":",
+                    filteredPositions.length); // Affichage du nombre de positions récupérées
+
+                // Création du trajet entre les positions filtrées et ajout des marqueurs
                 filteredPositions.forEach(function(position) {
-                    latlngs.push([position.Longitude, position.Latitude]);
+                    var marker = L.marker([position.Longitude, position.Latitude]).addTo(markersLayer);
+                    marker.bindPopup(
+                        'Numéro de machine: ' + engins.Num_Machine +
+                        '<br>Marque: ' + engins.marque +
+                        '<br>Modèle: ' + engins.modele +
+                        '<br>Catégorie: ' + engins.categorie
+                    );
+                    // Empêcher le déplacement des marqueurs
+                    marker.dragging.disable();
+
+                    // Ajouter le marqueur au tableau des marqueurs
+                    markers.push(marker);
+
+                    // Ajouter la position au tableau des waypoints
+                    waypoints.push(L.latLng(position.Longitude, position.Latitude));
                 });
-
-                var control = L.Routing.control({
-                    waypoints: latlngs,
-                }).addTo(map);
-
-                control.hide();
-
-                // Ajouter des marqueurs pour chaque position sur la carte
-                filteredPositions.forEach(function(position) {
-                    var marker = L.marker([position.Longitude, position.Latitude]);
-                    markersLayer.addLayer(marker);
-                });
-
-                // Centrer la carte sur les marqueurs et ajuster le zoom
-                map.fitBounds(markersLayer.getBounds());
-            });
-
-            // Ajoutez un écouteur d'événements pour le clic sur le bouton "Aujourd'hui"
-            trajetAujourdhuiBtn.addEventListener('click', function() {
-
-                // Vérifiez si un engin est sélectionné
-                if (!selectedEnginId) {
-                    alert("Veuillez sélectionner un engin.");
-                    return;
-                }
-
-                // Supprimer les marqueurs précédents et l'itinéraire de la carte
-                markersLayer.clearLayers();
-                map.eachLayer(function(layer) {
-                    if (layer instanceof L.Polyline) {
-                        map.removeLayer(layer);
-                    }
-                });
-
-                // Filtrer les positions en fonction de l'engin sélectionné
-                var filteredPositions = positions.filter(function(position) {
-                   // Trouver l'id_loc_engin correspondant à l'engin sélectionné
-                   var locEnginId = location.find(loc => loc.id_engins == selectedEnginId)?.id_loc_engin;
-                    // Vérifier si l'ID de l'engin de la position correspond à l'id_loc_engin trouvé et si la date est dans la plage spécifiée
-                    return locEnginId == position.id_loc_engin;
-                });
-
-                // Filtrer les positions pour la journée actuelle
-                filteredPositions = filterPositionsForToday(filteredPositions);
-
-                // Créer un tableau de points pour l'itinéraire
-                var latlngs = [];
-                filteredPositions.forEach(function(position) {
-                    latlngs.push([position.Longitude, position.Latitude]);
-                });
-
-                var control = L.Routing.control({
-                    waypoints: latlngs,
-                }).addTo(map);
-
-                control.hide();
-
-                // Ajouter des marqueurs pour chaque position sur la carte
-                filteredPositions.forEach(function(position) {
-                    var marker = L.marker([position.Longitude, position.Latitude]);
-                    markersLayer.addLayer(marker);
-                });
-
-                // Centrer la carte sur les marqueurs et ajuster le zoom
-                map.fitBounds(markersLayer.getBounds());
-            });
-
-            function filterPositionsForToday(positions) {
-                var today = new Date();
-                today.setHours(0, 0, 0, 0); // Définir l'heure à 00:00:00 pour le début de la journée
-                var endOfDay = new Date();
-                endOfDay.setHours(23, 59, 59, 999); // Définir l'heure à 23:59:59.999 pour la fin de la journée
-
-                // Filtrer les positions pour obtenir celles de la journée actuelle
-                return positions.filter(function(position) {
-                    var dateHeure = new Date(position.DateHeure);
-                    return dateHeure >= today && dateHeure <= endOfDay;
-                });
-            }
-
-            // Écoutez les événements de clic sur les boutons des engins
-            var enginButtons = document.querySelectorAll("#enginSelect");
-            enginButtons.forEach(function(button) {
-                button.addEventListener("click", function() {
-                    reset();
-                    const enginId = this.getAttribute("data-id");
-
-                    selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
-
-                    getPositionsByEnginId(selectedEnginId);
-
-
-                    // Mettez à jour l'interface utilisateur pour refléter la sélection
-                    console.log("ID de l'engin sélectionné :", selectedEnginId);
-                });
-            });
-
-            // Supposons que vous avez une fonction pour récupérer les positions en fonction de l'ID de l'engin
-            function getPositionsByEnginId(enginId) {
-                fetch(`/engins/${enginId}/positions`)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Traitez les données reçues, par exemple, mettez à jour l'interface utilisateur avec les positions récupérées
-                        console.table(data); // Pour l'instant, affichons juste les données dans la console
-                    })
-                    .catch(error => console.error('Erreur lors de la récupération des positions:', error));
             }
         });
+
+        // Écoutez les événements de clic sur les boutons des engins
+        var enginButtons = document.querySelectorAll("#enginSelect");
+        enginButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                const enginId = this.getAttribute("data-id");
+                selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
+
+                getPositionsByEnginId(selectedEnginId);
+
+                // Mettez à jour l'interface utilisateur pour refléter la sélection
+                console.log("ID de l'engin sélectionné :", selectedEnginId);
+            });
+        });
+
+        // Supposons que vous avez une fonction pour récupérer les positions en fonction de l'ID de l'engin
+        function getPositionsByEnginId(enginId) {
+            fetch(`/engins/${enginId}/positions`)
+                .then(response => response.json())
+                .then(data => {
+                    // Traitez les données reçues, par exemple, mettez à jour l'interface utilisateur avec les positions récupérées
+                    console.log(data); // Pour l'instant, affichons juste les données dans la console
+                })
+                .catch(error => console.error('Erreur lors de la récupération des positions:', error));
+        }
     </script>
 
     <script>
@@ -409,11 +346,11 @@
             enginSelectButtons.forEach(function(button) {
                 button.addEventListener("click", function() {
                     const selectedEnginId = button.dataset
-                    .id; // Utilisez dataset.id pour récupérer l'ID de l'engin sélectionné
+                        .id; // Utilisez dataset.id pour récupérer l'ID de l'engin sélectionné
                     const selectedEnginText = button
-                    .textContent; // Récupérer le texte du bouton sélectionné
+                        .textContent; // Récupérer le texte du bouton sélectionné
                     document.getElementById("buttonText").textContent =
-                    selectedEnginText; // Mettre à jour le texte du bouton principal
+                        selectedEnginText; // Mettre à jour le texte du bouton principal
                     customDiv.classList.add("hidden");
                     if (arrowImage) {
                         arrowImage.classList.remove("rotate-90");
@@ -421,12 +358,12 @@
                 });
             });
 
-
-
             resetButton.addEventListener("click", function() {
-                reset();
+                selectedEnginId = null; // Réinitialiser la variable selectedEnginId à null
+                location.reload();
             });
         });
     </script>
 </body>
+
 </html>

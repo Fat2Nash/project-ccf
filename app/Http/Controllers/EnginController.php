@@ -10,18 +10,14 @@ use  \Illuminate\Http\JsonResponse;
 
 class EnginController extends Controller
 {
-    // public function getPositionByEnginId($enginId)
-    // {
-    //     // Requête pour récupérer les positions de l'engin spécifié
-    //     $positions = Position::select('id_position')
-    //         ->join('loc_engin', 'loc_engin.id_loc_engin', '=', 'position_engin.id_loc_engin')
-    //         ->join('engins', 'engins.id_engins', '=', 'loc_engin.id_engins')
-    //         ->where('engins.id_engins', $enginId)
-    //         ->get();
+    public function getEnginInfo($enginId)
+    {
+        // Exécutez la requête SQL pour récupérer les informations sur l'engin
+        $enginInfo = DB::select('SELECT engins.marque, engins.modele, engins.categorie, position_engin.DateHeure FROM engins JOIN loc_engin ON engins.id_engins = loc_engin.id_engins JOIN position_engin ON loc_engin.id_loc_engin = position_engin.id_loc_engin WHERE engins.id_engins = ?', [$enginId]);
 
-    //     // Retourner les positions sous forme de réponse JSON
-    //     return response()->json($positions);
-    // }
+        // Retournez les informations sur l'engin au format JSON
+        return response()->json($enginInfo);
+    }
 
     public function getPositionByEnginId($enginId)
     {

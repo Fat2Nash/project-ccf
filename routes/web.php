@@ -79,6 +79,7 @@ Route::get('/MapsEngins', function () {
 });
 
 Route::get('/engins/{enginId}/positions', [EnginController::class, 'getPositionByEnginId']);
+Route::get('/engins/{enginId}/info', [EnginController::class, 'getEnginInfo']);
 
 # ======================
 # Route Kasim
