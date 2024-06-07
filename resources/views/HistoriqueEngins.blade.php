@@ -66,23 +66,32 @@
                         <!-- Champ de recherche et bouton -->
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                             <div class="flex justify-end items-center">
-                                <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
-                                    <!-- Champ de saisie pour la recherche -->
-                                    <input
-                                        class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                                        type="text" id="searchInput" placeholder="Rechercher...">
-                                    <!-- Bouton de recherche -->
-                                    <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-                                        <svg class="text-orange-500 h-4 w-4 fill-current"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
-                                            x="0px" y="0px" viewBox="0 0 56.966 56.966"
-                                            style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-                                            width="512px" height="512px">
-                                            <path
-                                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                                        </svg>
-                                    </button>
+                                <div class="pt-2 pb-2 flex items-center mx-auto text-gray-600 mr-4">
+                                    <div class="mr-4 flex items-center">
+                                        <h2 class="inline-block mr-2">Filtrer par date :</h2>
+                                        <!-- Sélecteur de date pour filtrer la table -->
+                                        <input type="date" id="dateFilter"
+                                            class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-48">
+                                    </div>
+                                    <div class="flex items-center">
+                                        <h2 class="inline-block mr-2">Recherche :</h2>
+                                        <!-- Champ de saisie pour la recherche -->
+                                        <div class="relative">
+                                            <input
+                                                class="border-2 border-orange-500 bg-transparent h-10 px-5 rounded-lg text-sm focus:outline-none pr-10"
+                                                type="text" id="searchInput" placeholder="Rechercher...">
+                                            <!-- Icône de la loupe -->
+                                            <svg class="text-orange-500 absolute right-3 top-3 h-4 w-4 fill-current pointer-events-none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+                                                x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                                                style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                                                width="512px" height="512px">
+                                                <path
+                                                    d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -99,9 +108,6 @@
 
                     use App\Models\Location; // Importer le modèle Location Engin
                     $loc_engin = Location::all(); // Récupérer toutes les locations de la base de données
-
-                    use App\Models\Cycle; // Importer le modèle cycle Engin
-                    $cycle_engin = Cycle::all(); // Récupérer tous les cycles de la base de données
                 @endphp
 
                 <!-- Conteneur pour le tableau de données -->
@@ -171,13 +177,11 @@
                             <!-- Boucle pour afficher les données -->
                             @foreach ($clients as $client)
                                 @foreach ($engins as $engin)
-                                    @foreach ($cycle_engin as $cycle)
-                                    @endforeach
                                     @php
                                         // Filtrer les locations correspondant au client et à l'engin actuel
-                                        $location = $loc_engin
-                                            ->where('client_id', $client->id_client)
-                                            ->where('id_engins', $engin->id_engins)
+$location = $loc_engin
+    ->where('client_id', $client->id_client)
+    ->where('id_engins', $engin->id_engins)
                                             ->first();
                                     @endphp
                                     @if ($location)
@@ -259,6 +263,8 @@
         const btnNext = document.getElementById('btnNext');
         // Crée une copie des lignes initiales pour les filtrer plus tard
         let filteredRows = rows.slice();
+        // Sélectionne l'élément du sélecteur de date
+        const dateFilter = document.getElementById("dateFilter");
 
         // Fonction pour rendre (afficher) la table en fonction de la page actuelle
         function renderTable() {
@@ -335,6 +341,30 @@
 
         // Appelle la fonction renderTable() une fois que la page est complètement chargée
         document.addEventListener("DOMContentLoaded", function() {
+            renderTable();
+        });
+
+        // Ajoute un écouteur d'événement pour détecter les changements dans le sélecteur de date
+        dateFilter.addEventListener("change", function() {
+            // Récupère la valeur de la date sélectionnée
+            const selectedDate = this.value;
+
+            // Filtre les lignes de la table en fonction de la date sélectionnée
+            filteredRows = rows.filter(row => {
+                // Parcours toutes les cellules de chaque ligne
+                for (let cell of row.cells) {
+                    // Récupère le texte de la cellule et vérifie s'il correspond à la date sélectionnée
+                    if (cell.textContent.trim() === selectedDate) {
+                        return true; // Retourne true si une correspondance est trouvée
+                    }
+                }
+                return false; // Retourne false si aucune correspondance n'est trouvée dans la ligne
+            });
+
+            // Réinitialise la pagination à la première page
+            currentPage = 1;
+
+            // Affiche la table filtrée et paginée
             renderTable();
         });
     </script>

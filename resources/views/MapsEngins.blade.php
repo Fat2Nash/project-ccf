@@ -197,7 +197,6 @@
 
             var markersLayer = L.layerGroup().addTo(map); // LayerGroup pour stocker les marqueurs
 
-            // Récupérer les positions associées à l'engin sélectionné
             var positions = {!! json_encode($position_engin) !!};
             var engins = {!! json_encode($engins) !!};
             var location = {!! json_encode($loc_engin) !!};
@@ -207,21 +206,65 @@
 
             var markers = [];
             var waypoints = []; // Déclaration des waypoints en dehors de la fonction createMarkers()
+            var routingControl; // Déclaration de la variable pour stocker le contrôle de routage
 
-            // Ajoutez un écouteur d'événements pour le clic sur le bouton "Trajet"
             trajetBtn.addEventListener('click', function() {
-                createMarkers(selectedEnginId);
-                L.Routing.control({
+                if (routingControl) {
+                    map.removeControl(routingControl);
+                    routingControl = null;
+                }
 
-                }).addTo(map);
+                var waypoints = createMarkers(selectedEnginId);
+                if (waypoints.length > 0) {
+                    routingControl = L.Routing.control({
+                        waypoints: waypoints,
+                        createMarker: function() {
+                            return null;
+                        },
+                        routeWhileDragging: false,
+                        show: false
+                    }).addTo(map);
+
+                    routingControl.on('waypointschanged', function(e) {
+                        routingControl.setWaypoints(waypoints);
+                    });
+                } else {
+                    alert("Aucune position trouvée pour le trajet.");
+                }
             });
 
-            // Fonction pour créer des marqueurs avec des popups pour chaque engin
+            trajetAujourdhuiBtn.addEventListener('click', function() {
+                if (routingControl) {
+                    map.removeControl(routingControl);
+                    routingControl = null;
+                }
+
+                var waypoints = createMarkersForToday(selectedEnginId);
+                if (waypoints.length > 0) {
+                    routingControl = L.Routing.control({
+                        waypoints: waypoints,
+                        createMarker: function() {
+                            return null;
+                        },
+                        routeWhileDragging: false,
+                        show: false
+                    }).addTo(map);
+
+                    routingControl.on('waypointschanged', function(e) {
+                        routingControl.setWaypoints(waypoints);
+                    });
+                } else {
+                    alert("Aucune position trouvée pour le trajet aujourd'hui.");
+                }
+            });
+
+            function getEnginById(enginId) {
+                return engins.find(engin => engin.id_engins == enginId);
+            }
+
             function createMarkers(selectedEnginId) {
-                // Effacer les marqueurs précédents
                 markersLayer.clearLayers();
 
-                // Supprimer les marqueurs précédents du tableau
                 markers.forEach(function(marker) {
                     marker.remove();
                 });
@@ -233,10 +276,8 @@
                 var startDate = startDatePicker.value;
                 var endDate = endDatePicker.value;
 
-                // Déclaration de filteredPositions en dehors de la fonction forEach
                 var filteredPositions = [];
 
-                // Filtrer les positions uniquement pour l'engin sélectionné
                 var locEnginId = location.find(loc => loc.id_engins == selectedEnginId)?.id_loc_engin;
                 filteredPositions = positions.filter(function(position) {
                     return locEnginId == position.id_loc_engin &&
@@ -245,36 +286,139 @@
                 });
 
                 console.log("Nombre de positions récupérées pour l'engin " + selectedEnginId + ":",
-                    filteredPositions.length); // Affichage du nombre de positions récupérées
+                    filteredPositions.length);
 
-                // Création du trajet entre les positions filtrées et ajout des marqueurs
+                var waypoints = [];
+
+                var selectedEngin = getEnginById(selectedEnginId);
+
+                function formatDate(dateString) {
+                    var date = new Date(dateString);
+                    var year = date.getFullYear();
+                    var month = String(date.getMonth() + 1).padStart(2, '0');
+                    var day = String(date.getDate()).padStart(2, '0');
+                    var hours = String(date.getHours()).padStart(2, '0');
+                    var minutes = String(date.getMinutes()).padStart(2, '0');
+                    var seconds = String(date.getSeconds()).padStart(2, '0');
+                    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+                }
+
                 filteredPositions.forEach(function(position) {
                     var marker = L.marker([position.Longitude, position.Latitude]).addTo(markersLayer);
-                    marker.bindPopup(
-                        'Numéro de machine: ' + engins.Num_Machine +
-                        '<br>Marque: ' + engins.marque +
-                        '<br>Modèle: ' + engins.modele +
-                        '<br>Catégorie: ' + engins.categorie
-                    );
-                    // Empêcher le déplacement des marqueurs
+
+                    var popupContent =
+                        'Numéro de machine: ' + selectedEngin.Num_Machine +
+                        '<br>Marque: ' + selectedEngin.marque +
+                        '<br>Modèle: ' + selectedEngin.modele +
+                        '<br>Catégorie: ' + selectedEngin.categorie +
+                        '<br>Date/Heure de la position: ' + formatDate(position.DateHeure);
+
+                    marker.bindPopup(popupContent);
+
+                    marker.on('mouseover', function(e) {
+                        this.openPopup();
+                    });
+
+                    marker.on('mouseout', function(e) {
+                        this.closePopup();
+                    });
+
                     marker.dragging.disable();
 
-                    // Ajouter le marqueur au tableau des marqueurs
                     markers.push(marker);
-
-                    // Ajouter la position au tableau des waypoints
                     waypoints.push(L.latLng(position.Longitude, position.Latitude));
                 });
+
+                return waypoints;
+            }
+
+            function createMarkersForToday(selectedEnginId) {
+                markersLayer.clearLayers();
+
+                markers.forEach(function(marker) {
+                    marker.remove();
+                });
+                markers = [];
+
+                var locEnginId = location.find(loc => loc.id_engins == selectedEnginId)?.id_loc_engin;
+                var filteredPositions = positions.filter(function(position) {
+                    var today = new Date();
+                    var positionDate = new Date(position.DateHeure);
+                    return locEnginId == position.id_loc_engin &&
+                        positionDate.getDate() == today.getDate() &&
+                        positionDate.getMonth() == today.getMonth() &&
+                        positionDate.getFullYear() == today.getFullYear();
+                });
+
+                console.log("Nombre de positions récupérées pour l'engin " + selectedEnginId + " aujourd'hui:",
+                    filteredPositions.length);
+
+                var waypoints = [];
+
+                var selectedEngin = getEnginById(selectedEnginId);
+
+                function formatDate(dateString) {
+                    var date = new Date(dateString);
+                    var year = date.getFullYear();
+                    var month = String(date.getMonth() + 1).padStart(2, '0');
+                    var day = String(date.getDate()).padStart(2, '0');
+                    var hours = String(date.getHours()).padStart(2, '0');
+                    var minutes = String(date.getMinutes()).padStart(2, '0');
+                    var seconds = String(date.getSeconds()).padStart(2, '0');
+                    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+                }
+
+                filteredPositions.forEach(function(position) {
+                    var marker = L.marker([position.Longitude, position.Latitude]).addTo(markersLayer);
+
+                    var popupContent =
+                        'Numéro de machine: ' + selectedEngin.Num_Machine +
+                        '<br>Marque: ' + selectedEngin.marque +
+                        '<br>Modèle: ' + selectedEngin.modele +
+                        '<br>Catégorie: ' + selectedEngin.categorie +
+                        '<br>Date/Heure de la position: ' + formatDate(position.DateHeure);
+
+                    marker.bindPopup(popupContent);
+
+                    marker.on('mouseover', function(e) {
+                        this.openPopup();
+                    });
+
+                    marker.on('mouseout', function(e) {
+                        this.closePopup();
+                    });
+
+                    marker.dragging.disable();
+
+                    markers.push(marker);
+                    waypoints.push(L.latLng(position.Longitude, position.Latitude));
+                });
+
+                return waypoints;
             }
         });
 
-        // Écoutez les événements de clic sur les boutons des engins
+        // Ajoutez un écouteur d'événements sur le changement de l'engin sélectionné
         var enginButtons = document.querySelectorAll("#enginSelect");
         enginButtons.forEach(function(button) {
             button.addEventListener("click", function() {
                 const enginId = this.getAttribute("data-id");
                 selectedEnginId = enginId; // Mettre à jour l'ID de l'engin sélectionné
 
+                // Supprimer le trajet actuel
+                if (routingControl) {
+                    map.removeControl(routingControl);
+                    routingControl = null;
+                }
+
+                // Vérifier si l'engin a une localisation
+                var locEnginId = location.find(loc => loc.id_engins == enginId)?.id_loc_engin;
+                if (!locEnginId) {
+                    alert("Cet engin n'a pas de localisation.");
+                    return; // Arrêter l'exécution
+                }
+
+                // Obtenir les nouvelles positions pour le nouvel engin sélectionné
                 getPositionsByEnginId(selectedEnginId);
 
                 // Mettez à jour l'interface utilisateur pour refléter la sélection
@@ -282,13 +426,19 @@
             });
         });
 
-        // Supposons que vous avez une fonction pour récupérer les positions en fonction de l'ID de l'engin
+        // Fonction pour obtenir les positions en fonction de l'ID de l'engin
         function getPositionsByEnginId(enginId) {
             fetch(`/engins/${enginId}/positions`)
                 .then(response => response.json())
                 .then(data => {
-                    // Traitez les données reçues, par exemple, mettez à jour l'interface utilisateur avec les positions récupérées
-                    console.log(data); // Pour l'instant, affichons juste les données dans la console
+                    // Traitez les données reçues
+                    positions = data;
+
+                    // Créer les marqueurs pour le trajet d'aujourd'hui
+                    createMarkersForToday(selectedEnginId);
+
+                    // Créer les marqueurs pour le trajet complet
+                    createMarkers(selectedEnginId);
                 })
                 .catch(error => console.error('Erreur lors de la récupération des positions:', error));
         }
