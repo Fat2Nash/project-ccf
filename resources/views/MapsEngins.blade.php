@@ -292,17 +292,15 @@
 
                 var selectedEngin = getEnginById(selectedEnginId);
 
+                // Fonction pour formater la date/heure
                 function formatDate(dateString) {
-                    var date = new Date(dateString);
-                    var year = date.getFullYear();
-                    var month = String(date.getMonth() + 1).padStart(2, '0');
-                    var day = String(date.getDate()).padStart(2, '0');
-                    var hours = String(date.getHours()).padStart(2, '0');
-                    var minutes = String(date.getMinutes()).padStart(2, '0');
-                    var seconds = String(date.getSeconds()).padStart(2, '0');
-                    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+                    // Convertir la chaîne de date en objet Date
+                    const date = new Date(dateString);
+                    var options = { year: 'numeric', month: 'long', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                    return date.toLocaleDateString('fr-FR', options);
                 }
 
+                // Utilisation de la fonction formatDate dans votre code
                 filteredPositions.forEach(function(position) {
                     var marker = L.marker([position.Longitude, position.Latitude]).addTo(markersLayer);
 

@@ -61,7 +61,7 @@
                     <div class="flex flex-wrap items-center">
                         <!-- Titre -->
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-base text-blueGray-700">Historique Engins</h3>
+                            <h2 class="font-semibold text-base text-blueGray-700">Historique Engins</h2>
                         </div>
                         <!-- Champ de recherche et bouton -->
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
@@ -108,6 +108,8 @@
 
                     use App\Models\Location; // Importer le modèle Location Engin
                     $loc_engin = Location::all(); // Récupérer toutes les locations de la base de données
+
+                    use Carbon\Carbon;
                 @endphp
 
                 <!-- Conteneur pour le tableau de données -->
@@ -203,13 +205,11 @@ $location = $loc_engin
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 {{ $engin->categorie }}
                                             </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->Louer_le }}
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ \Carbon\Carbon::parse($location->Louer_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}
                                             </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->Rendu_le }}
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ \Carbon\Carbon::parse($location->Rendu_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}
                                             </td>
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
@@ -221,7 +221,14 @@ $location = $loc_engin
                                             </td>
                                             <td
                                                 class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->Temps_fonct }}
+                                                <?php
+                                                                                // Convertir les secondes en heures et minutes
+                                                                                $secondes = $engin->compteur_heures;
+                                                                                $heures = floor($secondes / 3600);
+                                                                                $minutes = floor(($secondes % 3600) / 60);
+                                                                                ?>
+                                                        {{ $heures }} heures {{ $minutes }} minutes
+                                                    </p>
                                             </td>
                                         </tr>
                                     @endif
@@ -247,6 +254,9 @@ $location = $loc_engin
 
     <!-- Script JavaScript -->
 
+    <!-- Importer jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         // Déclare et initialise la variable pour la page actuelle
         let currentPage = 1;
@@ -265,6 +275,7 @@ $location = $loc_engin
         let filteredRows = rows.slice();
         // Sélectionne l'élément du sélecteur de date
         const dateFilter = document.getElementById("dateFilter");
+        const formattedDate = formatDate(dateFilter);
 
         // Fonction pour rendre (afficher) la table en fonction de la page actuelle
         function renderTable() {
@@ -344,22 +355,35 @@ $location = $loc_engin
             renderTable();
         });
 
+        function formatDate(dateFilter) {
+            var date = new Date(dateFilter);
+            var options = { year: 'numeric', month: 'long', day: '2-digit'};
+            return date.toLocaleDateString('fr-FR', options);
+        }
+
         // Ajoute un écouteur d'événement pour détecter les changements dans le sélecteur de date
         dateFilter.addEventListener("change", function() {
             // Récupère la valeur de la date sélectionnée
             const selectedDate = this.value;
 
-            // Filtre les lignes de la table en fonction de la date sélectionnée
-            filteredRows = rows.filter(row => {
-                // Parcours toutes les cellules de chaque ligne
-                for (let cell of row.cells) {
-                    // Récupère le texte de la cellule et vérifie s'il correspond à la date sélectionnée
-                    if (cell.textContent.trim() === selectedDate) {
-                        return true; // Retourne true si une correspondance est trouvée
-                    }
-                }
-                return false; // Retourne false si aucune correspondance n'est trouvée dans la ligne
-            });
+            // Vérifie si une date est sélectionnée
+            if (selectedDate) {
+                // Convertit la date sélectionnée en format français avec formatDate
+                const formattedDate = formatDate(selectedDate);
+
+                // Filtre les lignes de la table en fonction de la date sélectionnée dans les colonnes "Engin louer" et "Engin rendu"
+                filteredRows = rows.filter(row => {
+                    // Récupère le texte des cellules dans les colonnes "Engin louer" et "Engin rendu"
+                    const louerLe = row.cells[4].textContent.trim(); // Indice 4 pour la colonne "Engin louer"
+                    const renduLe = row.cells[5].textContent.trim(); // Indice 5 pour la colonne "Engin rendu"
+
+                    // Vérifie si l'une des colonnes contient la date sélectionnée
+                    return louerLe.includes(formattedDate) || renduLe.includes(formattedDate);
+                });
+            } else {
+                // Si aucune date n'est sélectionnée, affiche toutes les lignes
+                filteredRows = rows.slice();
+            }
 
             // Réinitialise la pagination à la première page
             currentPage = 1;

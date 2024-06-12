@@ -45,12 +45,12 @@
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
                                             <span href="#"
-                                                class="ml-2 text-m font-medium text-gray-600 truncate">ID</span>
+                                                class="ml-2 text-m font-medium text-gray-600 truncate">Numéro de l'engin</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <span
-                                            class="text-[13px] font-medium text-gray-500">{{ $engin->id_engins }}</span>
+                                            class="text-[13px] font-medium text-gray-500">{{ $engin->Num_Machine }}</span>
                                     </td>
                                 </tr>
                                 <!-- fin ID engin ---------------------------------------->
@@ -265,7 +265,7 @@
                         <select name="liste_engin" id="liste_engin" class="mt-1 p-2 w-full border rounded-md">
                             <option>Choisir un engin</option>
                             @foreach ($engins as $engin)
-                                <option value={{ $engin->id_engins }}>{{ $engin->id_engins }}</option>
+                                <option value={{ $engin->id_engins }}>{{ $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</option>
                             @endforeach
                         </select>
                     </div>
