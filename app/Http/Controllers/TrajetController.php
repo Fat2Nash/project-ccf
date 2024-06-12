@@ -24,4 +24,9 @@ class MapController extends Controller
         // Envoi des données à la vue
         return response()->json($data['routes'][0]['geometry']);
     }
+    public function getNotifications()
+    {
+        $notifications = Alerte::where('status', 'Maintenance à effectuer')->count();
+        return view('your-view', compact('notifications'));
+    }
 }

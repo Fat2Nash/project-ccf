@@ -119,10 +119,7 @@ Route::post('/update_status_alerte', function (Illuminate\Http\Request $request)
     return back()->with('success', 'Statut de l\'alerte mis à jour avec succès.');
 })->name('update_status_alerte');
 
-// Route::get('/', function () {
-//    Mail::to('demomailtrap.com')
-//    ->send(new HelloMail())
-// });
+
 
 Route::post('/update-status', function (Illuminate\Http\Request $request) {
     // Récupérer l'ID de la location et le nouveau statut depuis la requête POST

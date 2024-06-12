@@ -7,15 +7,15 @@
         <span class="font-bold text-gray-400 uppercase">Commun</span>
         <li class="mb-1 group">
             <a href="/"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
-                data-link="accueil" id="accueil-link">
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
+                data-link="accueil">
                 <i class="mr-3 text-lg bx bx-home"></i>
                 <span class="text-sm">Accueil</span>
             </a>
         </li>
         <li class="mb-1 group">
             <a href="/engins-disponibles"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="liste-engins">
                 <i class='mr-3 text-lg bx bx-list-ul'></i>
                 <span class="text-sm">Liste engins</span>
@@ -24,7 +24,7 @@
         <span class="font-bold text-gray-400 uppercase">Mécanicien / Chauffeur</span>
         <li class="mb-1 group">
             <a href="/MapsEngins"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="carte">
                 <i class='mr-3 text-lg bx bx-map-alt'></i>
                 <span class="text-sm">Carte</span>
@@ -43,7 +43,7 @@
         </li>
         <li class="mb-1 group">
             <a href="/maintenances"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="maintenance">
                 <i class='mr-3 text-lg bx bx-wrench'></i>
                 <span class="text-sm">Maintenance</span>
@@ -51,7 +51,7 @@
         </li>
         <li class="mb-1 group">
             <a href="/livraisons"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="livraisons">
                 <i class='mr-3 text-lg bx bx-map-pin'></i>
                 <span class="text-sm">Livraisons</span>
@@ -60,7 +60,7 @@
         <span class="font-bold text-gray-400 uppercase">Responsable</span>
         <li class="mb-1 group">
             <a href="/clients"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="fiches-clients">
                 <i class='mr-3 text-lg bx bx-face'></i>
                 <span class="text-sm">Fiches clients</span>
@@ -68,7 +68,7 @@
         </li>
         <li class="mb-1 group">
             <a href="/engins"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="fiches-engins">
                 <i class='mr-3 text-lg bx bx-hard-hat'></i>
                 <span class="text-sm">Fiches engins</span>
@@ -76,31 +76,24 @@
         </li>
         <li class="mb-1 group">
             <a href="/location-fiche"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="fiches-locations">
                 <i class='mr-3 text-lg bx bx-spreadsheet'></i>
                 <span class="text-sm">Fiches locations</span>
             </a>
         </li>
-        {{-- <li class="mb-1 group">
-            <a href="/engins-disponibles"
-                class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
-                <i class='mr-3 text-lg bx bx-check-square'></i>
-                <span class="text-sm">Engins disponibles</span>
-
-            </a>
-        </li> --}}
         <li class="mb-1 group">
             <a href="/HistoriqueLocations"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="historique-locations">
                 <i class='mr-3 text-lg bx bx-spreadsheet'></i>
                 <span class="text-sm">Historique locations</span>
             </a>
         </li>
         <li class="mb-1 group">
-            <a href="#"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+
+            <a href="/notifications"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="notifications">
                 <i class='mr-3 text-lg bx bx-bell'></i>
                 <span class="text-sm">Notifications</span>
@@ -108,8 +101,9 @@
         </li>
         <span class="font-bold text-gray-400 uppercase">Paramètres</span>
         <li class="mb-1 group">
+
             <a href="/parametres"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="parametres">
                 <i class='mr-3 text-lg bx bx-cog'></i>
                 <span class="text-sm">Paramètres</span>
@@ -151,13 +145,19 @@
     document.addEventListener('DOMContentLoaded', function() {
         const links = document.querySelectorAll('#sidebar-menu a[data-link]');
 
-        // Highlight the active link on page load based on localStorage
-        const activeLink = localStorage.getItem('activeLink');
-        if (activeLink) {
-            const linkElement = document.querySelector(`#sidebar-menu a[data-link="${activeLink}"]`);
-            if (linkElement) {
-                linkElement.classList.add('bg-orange-600', 'text-white');
+        // Highlight the active link on page load based on the current URL
+        const currentPath = window.location.pathname;
+        let activeLink = null;
+
+        links.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentPath) {
+                activeLink = link;
             }
+        });
+
+        if (activeLink) {
+            activeLink.classList.add('bg-orange-600', 'text-white');
         }
 
         links.forEach(link => {
