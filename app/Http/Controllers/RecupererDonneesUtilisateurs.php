@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\Engin;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Location;
 
 class RecupererDonneesUtilisateurs extends Controller
 {
@@ -19,6 +20,14 @@ class RecupererDonneesUtilisateurs extends Controller
     {
         $engins = Engin::all();
         return view('engin', ['engins' => $engins]);
+    }
+
+    public function locations()
+    {
+        $locations = Location::all();
+        $clients = Client::all();
+        $engins = Engin::all();
+        return view('locations', ['locations' => $locations , 'engins' => $engins, 'clients' => $clients]);
     }
 
     public function enginsdispo()
