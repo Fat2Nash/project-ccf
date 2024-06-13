@@ -112,6 +112,7 @@
                     use App\Models\Location; // Importer le modèle Location
                     $loc_engin = Location::all(); // Récupérer tous les locations de la base de données
 
+                    // Importer la bibliothèque Carbon pour une manipulation pratique des dates et heures.
                     use Carbon\Carbon;
                 @endphp
 
@@ -258,6 +259,7 @@
             btnNext.disabled = currentPage === Math.ceil(filteredRows.length / rowsPerPage);
         }
 
+        // Fonction pour passer à la page précédente
         function prevPage() {
             if (currentPage > 1) {
                 currentPage--;
@@ -265,6 +267,7 @@
             }
         }
 
+        // Fonction pour passer à la page suivante
         function nextPage() {
             if (currentPage < Math.ceil(filteredRows.length / rowsPerPage)) {
                 currentPage++;
@@ -284,6 +287,7 @@
             renderTable();
         }
 
+        // Ajoute un écouteur d'événement pour détecter les changements dans la sélection de l'historique
         document.getElementById("selectHistorique").addEventListener("change", function() {
             var selectedOption = this.options[this.selectedIndex];
             if (selectedOption.value !== "") {
@@ -296,6 +300,7 @@
             filterAndPaginateTable();
         });
 
+        // Fonction pour filtrer et paginer la table en fonction de la saisie de recherche
         function filterAndPaginateTable() {
             var searchValue = document.getElementById("searchInput").value.toLowerCase();
             filteredRows = rows.filter(row => {
@@ -313,6 +318,7 @@
             renderTable();
         });
 
+        // Fonction pour formater la date en format français
         function formatDate(dateFilter) {
             var date = new Date(dateFilter);
             var options = { year: 'numeric', month: 'long', day: '2-digit'};

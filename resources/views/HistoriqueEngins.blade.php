@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Titre de la page -->
-    <title>Historique Clients</title>
+    <title>Historique Engins</title>
     <!-- Lien vers la police de caractères externe -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -109,6 +109,7 @@
                     use App\Models\Location; // Importer le modèle Location Engin
                     $loc_engin = Location::all(); // Récupérer toutes les locations de la base de données
 
+                    // Importer la bibliothèque Carbon pour une manipulation pratique des dates et heures.
                     use Carbon\Carbon;
                 @endphp
 
@@ -119,7 +120,8 @@
                             <!-- En-têtes de colonne -->
                             <tr>
                                 <th
-                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100
+                                        py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     Machine N°
                                     <button class="sort-button" onclick="sortTable(1)">↑</button>
                                     <button class="sort-button" onclick="sortTable(1, false)">↓</button>
@@ -181,55 +183,38 @@
                                 @foreach ($engins as $engin)
                                     @php
                                         // Filtrer les locations correspondant au client et à l'engin actuel
-$location = $loc_engin
-    ->where('client_id', $client->id_client)
-    ->where('id_engins', $engin->id_engins)
+                                        $location = $loc_engin
+                                            ->where('client_id', $client->id_client)
+                                            ->where('id_engins', $engin->id_engins)
                                             ->first();
                                     @endphp
                                     @if ($location)
                                         <tr>
                                             <!-- Données à afficher dans chaque colonne -->
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->Num_Machine }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->marque }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->modele }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->categorie }}
-                                            </td>
                                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ \Carbon\Carbon::parse($location->Louer_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}
-                                            </td>
+                                                {{ $engin->Num_Machine }}</td>
                                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ \Carbon\Carbon::parse($location->Rendu_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->adresse }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->ville }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->marque }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->modele }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->categorie }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ \Carbon\Carbon::parse($location->Louer_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ \Carbon\Carbon::parse($location->Rendu_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $location->adresse }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $location->ville }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                                                 <?php
-                                                                                // Convertir les secondes en heures et minutes
-                                                                                $secondes = $engin->compteur_heures;
-                                                                                $heures = floor($secondes / 3600);
-                                                                                $minutes = floor(($secondes % 3600) / 60);
-                                                                                ?>
-                                                        {{ $heures }} heures {{ $minutes }} minutes
-                                                    </p>
-                                            </td>
+                                                // Convertir les secondes en heures et minutes
+                                                $secondes = $engin->compteur_heures;
+                                                $heures = floor($secondes / 3600);
+                                                $minutes = floor(($secondes % 3600) / 60);
+                                                ?>
+                                                {{ $heures }} heures {{ $minutes }} minutes </td>
                                         </tr>
                                     @endif
                                 @endforeach
@@ -237,26 +222,26 @@ $location = $loc_engin
                         </tbody>
                     </table>
                 </div>
-                <!-- Pagination -->
+                <!-- Div pour les boutons de pagination -->
                 <div class="flex justify-between items-center px-4 py-3">
                     <button id="btnPrev" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded"
                         onclick="prevPage()">Previous</button>
+                    <!-- Bouton pour la page précédente -->
                     <span id="pageIndicator" class="font-semibold text-gray-600 flex justify-center items-center">Page
                         1 of X</span>
+                    <!-- Indicateur de page -->
                     <button id="btnNext" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded"
                         onclick="nextPage()">Next</button>
+                    <!-- Bouton pour la page suivante -->
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- Pied de page -->
     <x-footer />
 
     <!-- Script JavaScript -->
-
-    <!-- Importer jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
         // Déclare et initialise la variable pour la page actuelle
         let currentPage = 1;
@@ -355,9 +340,14 @@ $location = $loc_engin
             renderTable();
         });
 
+        // Fonction pour formater la date en format français
         function formatDate(dateFilter) {
             var date = new Date(dateFilter);
-            var options = { year: 'numeric', month: 'long', day: '2-digit'};
+            var options = {
+                year: 'numeric',
+                month: 'long',
+                day: '2-digit'
+            };
             return date.toLocaleDateString('fr-FR', options);
         }
 
@@ -374,8 +364,10 @@ $location = $loc_engin
                 // Filtre les lignes de la table en fonction de la date sélectionnée dans les colonnes "Engin louer" et "Engin rendu"
                 filteredRows = rows.filter(row => {
                     // Récupère le texte des cellules dans les colonnes "Engin louer" et "Engin rendu"
-                    const louerLe = row.cells[4].textContent.trim(); // Indice 4 pour la colonne "Engin louer"
-                    const renduLe = row.cells[5].textContent.trim(); // Indice 5 pour la colonne "Engin rendu"
+                    const louerLe = row.cells[4].textContent
+                .trim(); // Indice 4 pour la colonne "Engin louer"
+                    const renduLe = row.cells[5].textContent
+                .trim(); // Indice 5 pour la colonne "Engin rendu"
 
                     // Vérifie si l'une des colonnes contient la date sélectionnée
                     return louerLe.includes(formattedDate) || renduLe.includes(formattedDate);
