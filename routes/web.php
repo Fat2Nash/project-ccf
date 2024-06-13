@@ -13,6 +13,7 @@ Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
 
 Route::get('supprimer_client/{id}', [supprimer_fiche::class, 'supprimerclient']);
 Route::get('supprimer_engin/{id}', [supprimer_fiche::class, 'supprimerengin']);
+Route::get('supprimer_location/{id}', [supprimer_fiche::class, 'supprimerloc']);
 
 Route::get('/engins-disponibles', [RecupererDonneesUtilisateurs::class, 'enginsdispo'])
     ->middleware(['auth', 'verified'])
@@ -22,6 +23,11 @@ Route::get('/clients', [RecupererDonneesUtilisateurs::class, 'client'])
     ->middleware(['auth', 'verified'])
     ->name('client');
 
+    Route::get('/locations', [RecupererDonneesUtilisateurs::class, 'locations'])
+    ->middleware(['auth', 'verified'])
+    ->name('locations');
+
+
 Route::get('/engins', [RecupererDonneesUtilisateurs::class, 'engin'])
     ->middleware(['auth', 'verified'])
     ->name('engin');
@@ -29,6 +35,11 @@ Route::get('/engins', [RecupererDonneesUtilisateurs::class, 'engin'])
 Route::get('/parametres', [RecupererDonneesUtilisateurs::class, 'parametres'])
     ->middleware(['auth', 'verified'])
     ->name('parametres');
+
+Route::get('/parametres', [RecupererDonneesUtilisateurs::class, 'parametres'])
+    ->middleware(['auth', 'verified'])
+    ->name('parametres');
+
 
 Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouterclient']);
 Route::post('/nouvel_engin', [ajouterdonnees::class, 'ajouterengin']);
