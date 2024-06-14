@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Titre de la page -->
-    <title>Historique Clients</title>
+    <title>Historique Engins</title>
     <!-- Lien vers la police de caractères externe -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -61,28 +61,37 @@
                     <div class="flex flex-wrap items-center">
                         <!-- Titre -->
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-base text-blueGray-700">Historique Engins</h3>
+                            <h2 class="font-semibold text-base text-blueGray-700">Historique Engins</h2>
                         </div>
                         <!-- Champ de recherche et bouton -->
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                             <div class="flex justify-end items-center">
-                                <div class="pt-2 pb-2 relative mx-auto text-gray-600 mr-4">
-                                    <!-- Champ de saisie pour la recherche -->
-                                    <input
-                                        class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
-                                        type="text" id="searchInput" placeholder="Rechercher...">
-                                    <!-- Bouton de recherche -->
-                                    <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
-                                        <svg class="text-orange-500 h-4 w-4 fill-current"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
-                                            x="0px" y="0px" viewBox="0 0 56.966 56.966"
-                                            style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-                                            width="512px" height="512px">
-                                            <path
-                                                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                                        </svg>
-                                    </button>
+                                <div class="pt-2 pb-2 flex items-center mx-auto text-gray-600 mr-4">
+                                    <div class="mr-4 flex items-center">
+                                        <h2 class="inline-block mr-2">Filtrer par date :</h2>
+                                        <!-- Sélecteur de date pour filtrer la table -->
+                                        <input type="date" id="dateFilter"
+                                            class="border-2 border-orange-500 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-48">
+                                    </div>
+                                    <div class="flex items-center">
+                                        <h2 class="inline-block mr-2">Recherche :</h2>
+                                        <!-- Champ de saisie pour la recherche -->
+                                        <div class="relative">
+                                            <input
+                                                class="border-2 border-orange-500 bg-transparent h-10 px-5 rounded-lg text-sm focus:outline-none pr-10"
+                                                type="text" id="searchInput" placeholder="Rechercher...">
+                                            <!-- Icône de la loupe -->
+                                            <svg class="text-orange-500 absolute right-3 top-3 h-4 w-4 fill-current pointer-events-none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1"
+                                                x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                                                style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                                                width="512px" height="512px">
+                                                <path
+                                                    d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -100,8 +109,8 @@
                     use App\Models\Location; // Importer le modèle Location Engin
                     $loc_engin = Location::all(); // Récupérer toutes les locations de la base de données
 
-                    use App\Models\Cycle; // Importer le modèle cycle Engin
-                    $cycle_engin = Cycle::all(); // Récupérer tous les cycles de la base de données
+                    // Importer la bibliothèque Carbon pour une manipulation pratique des dates et heures.
+                    use Carbon\Carbon;
                 @endphp
 
                 <!-- Conteneur pour le tableau de données -->
@@ -111,7 +120,8 @@
                             <!-- En-têtes de colonne -->
                             <tr>
                                 <th
-                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100
+                                        py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
                                     Machine N°
                                     <button class="sort-button" onclick="sortTable(1)">↑</button>
                                     <button class="sort-button" onclick="sortTable(1, false)">↓</button>
@@ -171,54 +181,40 @@
                             <!-- Boucle pour afficher les données -->
                             @foreach ($clients as $client)
                                 @foreach ($engins as $engin)
-                                    @foreach ($cycle_engin as $cycle)
-                                    @endforeach
                                     @php
                                         // Filtrer les locations correspondant au client et à l'engin actuel
-$location = $loc_engin
-    ->where('client_id', $client->id_client)
-    ->where('id_engins', $engin->id_engins)
+                                        $location = $loc_engin
+                                            ->where('client_id', $client->id_client)
+                                            ->where('id_engins', $engin->id_engins)
                                             ->first();
                                     @endphp
                                     @if ($location)
                                         <tr>
                                             <!-- Données à afficher dans chaque colonne -->
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->Num_Machine }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->marque }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->modele }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->categorie }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->Louer_le }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->Rendu_le }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->adresse }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->ville }}
-                                            </td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $location->Temps_fonct }}
-                                            </td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->Num_Machine }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->marque }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->modele }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $engin->categorie }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ \Carbon\Carbon::parse($location->Louer_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ \Carbon\Carbon::parse($location->Rendu_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $location->adresse }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                {{ $location->ville }}</td>
+                                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                                <?php
+                                                // Convertir les secondes en heures et minutes
+                                                $secondes = $engin->compteur_heures;
+                                                $heures = floor($secondes / 3600);
+                                                $minutes = floor(($secondes % 3600) / 60);
+                                                ?>
+                                                {{ $heures }} heures {{ $minutes }} minutes </td>
                                         </tr>
                                     @endif
                                 @endforeach
@@ -226,23 +222,26 @@ $location = $loc_engin
                         </tbody>
                     </table>
                 </div>
-                <!-- Pagination -->
+                <!-- Div pour les boutons de pagination -->
                 <div class="flex justify-between items-center px-4 py-3">
                     <button id="btnPrev" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded"
                         onclick="prevPage()">Previous</button>
+                    <!-- Bouton pour la page précédente -->
                     <span id="pageIndicator" class="font-semibold text-gray-600 flex justify-center items-center">Page
                         1 of X</span>
+                    <!-- Indicateur de page -->
                     <button id="btnNext" class="px-4 py-2 border border-orange-500 bg-white text-orange-500 rounded"
                         onclick="nextPage()">Next</button>
+                    <!-- Bouton pour la page suivante -->
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- Pied de page -->
     <x-footer />
 
     <!-- Script JavaScript -->
-
     <script>
         // Déclare et initialise la variable pour la page actuelle
         let currentPage = 1;
@@ -259,6 +258,9 @@ $location = $loc_engin
         const btnNext = document.getElementById('btnNext');
         // Crée une copie des lignes initiales pour les filtrer plus tard
         let filteredRows = rows.slice();
+        // Sélectionne l'élément du sélecteur de date
+        const dateFilter = document.getElementById("dateFilter");
+        const formattedDate = formatDate(dateFilter);
 
         // Fonction pour rendre (afficher) la table en fonction de la page actuelle
         function renderTable() {
@@ -335,6 +337,50 @@ $location = $loc_engin
 
         // Appelle la fonction renderTable() une fois que la page est complètement chargée
         document.addEventListener("DOMContentLoaded", function() {
+            renderTable();
+        });
+
+        // Fonction pour formater la date en format français
+        function formatDate(dateFilter) {
+            var date = new Date(dateFilter);
+            var options = {
+                year: 'numeric',
+                month: 'long',
+                day: '2-digit'
+            };
+            return date.toLocaleDateString('fr-FR', options);
+        }
+
+        // Ajoute un écouteur d'événement pour détecter les changements dans le sélecteur de date
+        dateFilter.addEventListener("change", function() {
+            // Récupère la valeur de la date sélectionnée
+            const selectedDate = this.value;
+
+            // Vérifie si une date est sélectionnée
+            if (selectedDate) {
+                // Convertit la date sélectionnée en format français avec formatDate
+                const formattedDate = formatDate(selectedDate);
+
+                // Filtre les lignes de la table en fonction de la date sélectionnée dans les colonnes "Engin louer" et "Engin rendu"
+                filteredRows = rows.filter(row => {
+                    // Récupère le texte des cellules dans les colonnes "Engin louer" et "Engin rendu"
+                    const louerLe = row.cells[4].textContent
+                .trim(); // Indice 4 pour la colonne "Engin louer"
+                    const renduLe = row.cells[5].textContent
+                .trim(); // Indice 5 pour la colonne "Engin rendu"
+
+                    // Vérifie si l'une des colonnes contient la date sélectionnée
+                    return louerLe.includes(formattedDate) || renduLe.includes(formattedDate);
+                });
+            } else {
+                // Si aucune date n'est sélectionnée, affiche toutes les lignes
+                filteredRows = rows.slice();
+            }
+
+            // Réinitialise la pagination à la première page
+            currentPage = 1;
+
+            // Affiche la table filtrée et paginée
             renderTable();
         });
     </script>

@@ -74,14 +74,12 @@ Route::get('/HistoriqueLocations', function () {
     return view('HistoriqueLocations');
 });
 
-Route::get('/MapsEngins', [EnginController::class, 'index']);
+Route::get('/MapsEngins', function () {
+    return view('MapsEngins');
+});
 
-Route::get('/MapsEngins2', [EnginController::class, 'index']);
-
-
-Route::post('/engin-position', [EnginController::class, 'getPosition']);
-Route::get('/positions/{enginId}/range/{startDate}/{endDate}', [EnginController::class, 'getPositionForDateRange']);
-Route::get('/positions/{enginId}/today', [EnginController::class, 'getPositionForToday']);
+Route::get('/engins/{enginId}/positions', [EnginController::class, 'getPositionByEnginId']);
+Route::get('/engins/{enginId}/info', [EnginController::class, 'getEnginInfo']);
 
 # ======================
 # Route Kasim

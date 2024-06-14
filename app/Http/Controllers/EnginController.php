@@ -10,50 +10,24 @@ use  \Illuminate\Http\JsonResponse;
 
 class EnginController extends Controller
 {
-    public function index()
+    public function getEnginInfo($enginId)
     {
-        // Récupérer tous les engins
-        $engins = Engin::all();
+        // Exécutez la requête SQL pour récupérer les informations sur l'engin
+        $enginInfo = DB::select('SELECT engins.marque, engins.modele, engins.categorie, position_engin.DateHeure FROM engins JOIN loc_engin ON engins.id_engins = loc_engin.id_engins JOIN position_engin ON loc_engin.id_loc_engin = position_engin.id_loc_engin WHERE engins.id_engins = ?', [$enginId]);
 
-        // Récupérer les locations associées à chaque engin
-        $loc_engins = Location::with('engin')->get();
-
-        // Récupérer les positions associées à chaque location
-        $position_engin = Position::all();
-
-        // Passer les données à la vue
-        return view('MapsEngins', compact('engins', 'loc_engins', 'position_engin'));
+        // Retournez les informations sur l'engin au format JSON
+        return response()->json($enginInfo);
     }
 
-    public function getPosition(Request $request)
+    public function getPositionByEnginId($enginId)
     {
-        $enginId = $request->input('id');
-
-        $positions = Position::where('id_loc_engin', $enginId)->get();
-
-        return response()->json([
-            'success' => true,
-            'engin_id' => $enginId,
-            'positions' => $positions,
-        ]);
-    }
-
-    public function getPositionForDateRange($enginId, $startDate, $endDate)
-    {
-        $positions = Position::where('id_loc_engin', $enginId)
-            ->whereBetween('created_at', [$startDate, $endDate])
+        // Requête pour récupérer les positions de l'engin spécifié
+        $positions = Position::select('position_engin.id_position', 'position_engin.Latitude', 'position_engin.Longitude', 'position_engin.DateHeure')
+            ->join('loc_engin', 'loc_engin.id_loc_engin', '=', 'position_engin.id_loc_engin')
+            ->join('engins', 'engins.id_engins', '=', 'loc_engin.id_engins')
+            ->where('engins.id_engins', $enginId)
             ->get();
-
-        return response()->json($positions);
-    }
-
-    public function getPositionForToday($enginId)
-    {
-        $today = Carbon::today();
-        $positions = Position::where('id_loc_engin', $enginId)
-            ->whereDate('created_at', $today)
-            ->get();
-
+        // Retourner les positions sous forme de réponse JSON
         return response()->json($positions);
     }
 }

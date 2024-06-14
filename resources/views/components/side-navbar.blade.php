@@ -83,6 +83,41 @@
             </a>
         </li>
         <li class="mb-1 group">
+            <a href="/engins-disponibles"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                data-link="liste-engins">
+                <i class='mr-3 text-lg bx bx-list-ul'></i>
+                <span class="text-sm">Liste engins</span>
+            </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="/MapsEngins"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                data-link="carte">
+                <i class='mr-3 text-lg bx bx-map-alt'></i>
+                <span class="text-sm">Carte</span>
+                <i class="ml-auto ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="hidden mt-2 pl-7">
+                <li class="mb-4">
+                    <a href="#"
+                        class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">All</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#"
+                        class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Categories</a>
+                </li>
+            </ul>
+        </li>
+        {{-- <li class="mb-1 group">
+            <a href="/engins-disponibles"
+                class="flex font-semibold items-center py-2 px-4 text-gray-900 hover:bg-orange-600 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                <i class='mr-3 text-lg bx bx-check-square'></i>
+                <span class="text-sm">Engins disponibles</span>
+
+            </a>
+        </li> --}}
+        <li class="mb-1 group">
             <a href="/HistoriqueLocations"
                 class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                 data-link="historique-locations">

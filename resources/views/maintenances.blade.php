@@ -109,7 +109,7 @@
 
                                                     @endphp
                                                     <p class="font-medium text-gray-800">
-                                                        N° {{ $maintenance->id_engin }}
+                                                        N° {{ $engin->Num_Machine }}
                                                     </p>
                                                     <p class="text-gray-800 ">{{ $engin->categorie }} /
                                                         {{ $engin->marque }}
