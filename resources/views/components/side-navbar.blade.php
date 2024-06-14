@@ -13,34 +13,7 @@
                 <span class="text-sm">Accueil</span>
             </a>
         </li>
-        <li class="mb-1 group">
-            <a href="/engins-disponibles"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
-                data-link="liste-engins">
-                <i class='mr-3 text-lg bx bx-list-ul'></i>
-                <span class="text-sm">Liste engins</span>
-            </a>
-        </li>
         <span class="font-bold text-gray-400 uppercase">Mécanicien / Chauffeur</span>
-        <li class="mb-1 group">
-            <a href="/MapsEngins"
-                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
-                data-link="carte">
-                <i class='mr-3 text-lg bx bx-map-alt'></i>
-                <span class="text-sm">Carte</span>
-                <i class="ml-auto ri-arrow-right-s-line"></i>
-            </a>
-            <ul class="hidden mt-2 pl-7">
-                <li class="mb-4">
-                    <a href="#"
-                        class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">All</a>
-                </li>
-                <li class="mb-4">
-                    <a href="#"
-                        class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Categories</a>
-                </li>
-            </ul>
-        </li>
         <li class="mb-1 group">
             <a href="/maintenances"
                 class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
@@ -81,6 +54,33 @@
                 <i class='mr-3 text-lg bx bx-spreadsheet'></i>
                 <span class="text-sm">Fiches locations</span>
             </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="/engins-disponibles"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                data-link="liste-engins">
+                <i class='mr-3 text-lg bx bx-list-ul'></i>
+                <span class="text-sm">Liste engins</span>
+            </a>
+        </li>
+        <li class="mb-1 group">
+            <a href="/MapsEngins"
+                class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-600 hover:text-gray-100"
+                data-link="carte">
+                <i class='mr-3 text-lg bx bx-map-alt'></i>
+                <span class="text-sm">Carte</span>
+                <i class="ml-auto ri-arrow-right-s-line"></i>
+            </a>
+            <ul class="hidden mt-2 pl-7">
+                <li class="mb-4">
+                    <a href="#"
+                        class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">All</a>
+                </li>
+                <li class="mb-4">
+                    <a href="#"
+                        class="text-gray-900 text-sm flex items-center hover:text-orange-600 before:contents-[''] before:w-1 before:h-1 before:rounded-full before:bg-gray-300 before:mr-3">Categories</a>
+                </li>
+            </ul>
         </li>
         {{-- <li class="mb-1 group">
             <a href="/engins-disponibles"
