@@ -118,7 +118,7 @@
             </button>
         </div>
         <div id="customDiv"
-            class="absolute justify-center items-center text-black border-black bg-white border-2 flex flex-col ml-[185px] hidden"
+            class="absolute justify-center items-center text-black border-black bg-white border-2 flex flex-col ml-[177px] hidden"
             style="width: 360px; z-index: 999;">
             <!-- Conteneur pour les options de sélection d'engin, caché par défaut -->
             <div class="relative pt-2 pb-2 mr-4 text-black" style="width: 350px;">
