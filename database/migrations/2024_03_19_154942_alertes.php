@@ -23,6 +23,7 @@ return new class extends Migration
             $table->id('id_alerte');
             $table->foreignId('id_engin')->references('id_engins')->on('engins');
             $table->foreignId('id_typeAlerte')->references('id_typeAlerte')->on('typealerte');
+            $table->string('status')->nullable();
             $table->dateTime('date_alerte');
         });
 

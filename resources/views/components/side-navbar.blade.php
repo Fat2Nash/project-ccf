@@ -81,7 +81,7 @@
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href="/location-fiche"
+                <a href="/locations"
                     class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                     data-link="fiches-locations">
                     <i class='mr-3 text-lg bx bx-spreadsheet'></i>
