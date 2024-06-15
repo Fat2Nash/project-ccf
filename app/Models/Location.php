@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
+    public $timestamps=false;
     // Nom de la table associée au modèle
     protected $table = 'loc_engin';
     protected $primaryKey = 'id_loc_engin';

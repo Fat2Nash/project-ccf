@@ -143,7 +143,7 @@
 
                         <div x-show="isOpen"
                             class="fixed  left-1/2 transform -translate-x-[256px] -translate-y-1/2 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-50">
-                            <form action="/nouveau_client" method="post">
+                            <form action="/nouvelle_location" method="post">
                                 @csrf
                                 <div class="relative flex items-center py-5">
                                     <div class="flex-grow border-t border-gray-600"></div>
@@ -155,7 +155,7 @@
                                     <label>Identité : </label><select name="id_client" type="select"
                                         placeholder="DUPONT Tony">
                                         @foreach ($clients as $client)
-                                            <option value="{{ $client->client_id }}">{{ $client->nom }}
+                                            <option value="{{ $client->id_client }}">{{ $client->nom }}
                                                 {{ $client->prenom }}</option>
                                         @endforeach
                                     </select>

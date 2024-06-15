@@ -70,7 +70,7 @@
                                                         </p>
                                                     </div>
                                                 </td>
-                                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <td class="px-4 py-4 text-sm whitespace-nowrap ">
                                                     <div>
                                                         <p class="text-gray-700">{{ $engin->description }}</p>
                                                     </div>
