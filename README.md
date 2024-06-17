@@ -80,45 +80,44 @@ php artisan db:seed     # Remplir la BDD avec des données de test
 
 
 ### Globale
-![80%](https://progress-bar.dev/80)
+![98%](https://progress-bar.dev/98)
 
 #### Quentin
-![80%](https://progress-bar.dev/80).
+![100%](https://progress-bar.dev/100).
 - [x] Stocker les données de localisation/de fonctionnement des engins
 - [x] Publier les donées de : 
    - [x] Localisation
-   - [ ] Fonctionnement
+   - [x] Fonctionnement
 - [x] Déterminer les informations et les horodater
-- [ ] Gérer les alertes
-  - [ ] boitier ouvert
-  - [x] batterie faible
-#### Erwan
-![70%](https://progress-bar.dev/70)
+- [x] Gérer les alertes
+  - [x] Baisse tension batterie
+  
+  #### Erwan
+![90%](https://progress-bar.dev/90)
 - [x] S'authentifier
 - [x] Créer les fiches : 
    - [x] Client
    - [x] Engins
-   - [ ] Location
+   - [x] Location
 - [ ] Editer les fiches : 
    - [ ] Client
    - [ ] Engins
    - [ ] Location
-- [ ] Supprimer les fiches : 
+- [x] Supprimer les fiches : 
    - [x] Client
    - [x] Engins
-   - [ ] Location
-- [ ] Visualiser les engins disponibles
-#### Antony
-![90%](https://progress-bar.dev/90)
+   - [x] Location
+- [x] Visualiser les engins disponibles
+- [x] Rôles et autorisations
+ #### Antony
+![100%](https://progress-bar.dev/100)
 - [x] Visualiser les historiques :
    - [x] Par client
    - [x] Par engin
 - [x] Visualiser les engins sur la carte
 #### Kasim
-![75%](https://progress-bar.dev/75)
+![95%](https://progress-bar.dev/95)
 - [x] Visualiser la liste des engin à :
   - [x] Livrer
   - [x] Récupérer
 - [x] Gérer les maintenance
-### Tous
-- [ ] Compatibilité téléphones
