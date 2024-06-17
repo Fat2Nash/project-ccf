@@ -78,6 +78,35 @@
         #customDiv .overflow-y-auto::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+
+        /* Media queries pour la réactivité */
+        @media (min-width: 768px) {
+            section.relative>div {
+                width: 50vw;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            section.relative>div {
+                width: 60vw;
+                height: 400px;
+                margin-left: 20%
+            }
+        }
+
+        @media (min-width: 1280px) {
+            section.relative>div {
+                width: 60vw;
+                height: 500px;
+            }
+        }
+
+        /* Styles pour l'élément avec l'id "map" */
+        #map {
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 
@@ -199,8 +228,7 @@
     </div>
 
     <section class="relative flex items-center justify-center mt-2 mb-5">
-        <div
-            class="bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 w-full md:w-[80vw] lg:w-[70vw] xl:w-[60vw] h-[500px] md:h-[500px] lg:h-[500px] xl:h-[450px] mt-4">
+        <div class="absolute top-0 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 w-[1200px] h-[500px] mt-4">
             <div id="map" class="w-full h-full"></div>
         </div>
     </section>
