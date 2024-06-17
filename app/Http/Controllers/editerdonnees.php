@@ -28,7 +28,7 @@ $client = Client::where('id_client', $id)->first();
     $client->pays = $request->input('pays');
     $client->telephone = $request->input('telephone');
     $client->notes = $request->input('notes');
-    
+
     // Sauvegarder les modifications
     $client->save();
 

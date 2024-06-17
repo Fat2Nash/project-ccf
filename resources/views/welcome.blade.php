@@ -155,7 +155,7 @@
     <!-- end sidenav -->
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
-        <x-side-navbar />
+
 
         <!-- Content -->
         <div class="p-6">
@@ -294,9 +294,6 @@
                     <div class="items-start justify-between mb-4">
 
                         <div>
-<<<<<<< Updated upstream
-                            <div id="map" class="w-full h-full"></div>
-=======
                         <div id="map" class="w-full h-full"></div>      <script>
         // Attend que le DOM soit entièrement chargé pour exécuter le code
         document.addEventListener('DOMContentLoaded', function() {
@@ -425,7 +422,6 @@
         });
     </script>
 
->>>>>>> Stashed changes
                         </div>
                     </div>
                 </div>
