@@ -36,7 +36,7 @@ public function ajouterengin(Request $request)
     $engin->modele = $request->input('modele');
     $engin->categorie = $request->input('categorie');
     $engin->description = $request->input('description');
-    $engin->compteur_heures = 0;
+    $engin->compteur_heures = $request->input('temps');
     $engin->statut = $request->input('statut');
     $engin->maintenance = 0;
     $engin->cree_le = now();
