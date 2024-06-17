@@ -224,7 +224,6 @@
 
     </main>
 
-
     <script>
         // Attend que le DOM soit entièrement chargé pour exécuter le code
         document.addEventListener('DOMContentLoaded', function() {
@@ -232,7 +231,7 @@
             // Initialisation de la carte Leaflet avec un centre géographique et un niveau de zoom
             var map = L.map('map', {
                 attributionControl: false // Désactiver l'affichage des informations d'attribution
-            }).setView([48.1814101770421, 6.208779881654873], 13);
+            }).setView([48.1814101770421, 6.208779881654873], 13.5);
 
             // Ajout d'une couche de tuiles OpenStreetMap à la carte
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -248,18 +247,34 @@
             var engins = {!! json_encode($engins) !!};
             var locations = {!! json_encode($loc_engin) !!};
 
-            // Fonction pour formater la date/heure à partir d'une chaîne de date
+            // Fonction pour formater la date/heure à partir d'une chaîne de date en UTC
             function formatDate(dateString) {
                 const date = new Date(dateString);
+
+                // Ajout du décalage horaire pour convertir en heure française
+                const offset = date.getTimezoneOffset(); // Décalage UTC en minutes
+                date.setMinutes(date.getMinutes() + offset); // Convertir en UTC
+                date.setHours(date.getHours()); // Soustraire 1 heure pour CET (heure standard)
+
+                // Vérifier si l'heure d'été est en vigueur et ajuster si nécessaire
+                const january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+                const july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+                const isDST = Math.max(january, july) !== offset;
+
+                if (isDST) {
+                    date.setHours(date.getHours()); // Ajouter 1 heure pour CEST (heure d'été)
+                }
+
+                // Formatage de la date en format français
                 var options = {
                     year: 'numeric',
                     month: 'long',
                     day: '2-digit',
                     hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
+                    minute: '2-digit'
                 };
-                return date.toLocaleDateString('fr-FR', options); // Formatage de la date en format français
+
+                return date.toLocaleString('fr-FR', options);
             }
 
             // Fonction pour filtrer les dernières positions de chaque engin
@@ -271,16 +286,16 @@
                     // Trouver l'engin correspondant à cet emplacement
                     var engin = engins.find(e => e.id_engins === location.id_engins);
 
-                    if (engin) {
+                    // Vérifier si l'engin est "Loué"
+                    if (engin && engin.statut === "Loué") {
                         // Filtrer les positions de l'engin actuel
-                        var enginPositions = positions.filter(pos => pos.id_loc_engin === location
-                            .id_loc_engin);
+                        var enginPositions = positions.filter(pos => pos.id_loc_engin === location.id_loc_engin);
 
                         // Vérifier si des positions ont été trouvées
                         if (enginPositions.length > 0) {
                             // Trouver la dernière position (ici par exemple, la plus récente en fonction d'un critère temporel)
                             var lastPosition = enginPositions.reduce((acc, curr) => {
-                                return acc.date > curr.date ? acc : curr;
+                                return new Date(acc.DateHeure) > new Date(curr.DateHeure) ? acc : curr;
                             });
 
                             // Ajouter la dernière position de cet engin à notre tableau
@@ -311,7 +326,11 @@
                     var marker = L.marker([lng, lat]);
 
                     // Trouver l'engin correspondant à cette position
-                    var engin = engins.find(e => e.id_engins);
+                    var engin = engins.find(e => {
+                        // Trouver la location correspondant à la position
+                        var location = locations.find(l => l.id_loc_engin === position.id_loc_engin);
+                        return location && e.id_engins === location.id_engins;
+                    });
 
                     // Affichage de l'engin trouvé pour débogage
                     console.log("Engin trouvé:", engin);
@@ -337,12 +356,12 @@
                         marker.on('mouseout', function(e) {
                             this.closePopup();
                         });
+
+                        // Ajouter le marqueur à la couche de marqueurs
+                        marker.addTo(markersLayer);
                     } else {
                         console.warn('Aucun engin trouvé pour la position:', position);
                     }
-
-                    // Ajouter le marqueur à la couche de marqueurs
-                    marker.addTo(markersLayer);
                 } else {
                     console.warn('Coordonnées invalides pour la position:', position);
                 }
@@ -352,6 +371,7 @@
             map.addLayer(markersLayer);
         });
     </script>
+
 
 </body>
 
