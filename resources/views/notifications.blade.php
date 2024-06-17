@@ -20,7 +20,7 @@
 
     @php
         use App\Models\Alerte;
-        use App\Models\TypeAlerte;
+        use App\Models\typealerte;
 
         // Filtrer les alertes avec le statut "Maintenance à effectuer"
         $alertes = Alerte::where('status', 'Maintenance à effectuer')->get();
