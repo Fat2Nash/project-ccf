@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ajouterdonnees;
 use App\Http\Controllers\RecupererDonneesUtilisateurs;
 use App\Http\Controllers\supprimer_fiche;
+use App\Http\Controllers\editerdonnees;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -34,6 +35,12 @@ Route::middleware('auth')->group(function () {
 Route::get('supprimer_client/{id}', [supprimer_fiche::class, 'supprimerclient']);
 Route::get('supprimer_engin/{id}', [supprimer_fiche::class, 'supprimerengin']);
 Route::get('supprimer_location/{id}', [supprimer_fiche::class, 'supprimerloc']);
+
+Route::get('edit_client/{id}', [editerdonnees::class, 'editer_client']);
+Route::post('update_client/{id}', [editerdonnees::class,'update_client']);
+Route::get('edit_engin/{id}', [editerdonnees::class, 'editer_engin']);
+Route::post('update_engin/{id}', [editerdonnees::class,'update_engin']);
+
 
 Route::get('/engins-disponibles', [RecupererDonneesUtilisateurs::class, 'enginsdispo'])
     ->middleware(['auth', 'verified'])

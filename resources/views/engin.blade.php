@@ -49,7 +49,7 @@
                                             <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
                                                 <div>
                                                     <h2 class="font-medium text-gray-800 ">{{ $engin -> modele}}</h2>
-                                                    <p class="text-sm font-normal text-gray-600 ">{{ $engin -> marque}}</p>
+                                                    <p class="text-sm font-normal text-gray-600 ">{{ $engin -> marque}} (N° : {{ $engin -> Num_Machine}})</p>
                                                 </div>
                                             </td>
 
@@ -87,8 +87,8 @@
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
 
-                                            <button title="Modifier l'engin">
-                                                    <i class='bx bx-pencil'></i></button>
+                                            <a title="Modifier l'engin" href="/edit_engin/{{ $engin -> id_engins}}">
+                                                    <i class='bx bx-pencil'></i></a>
                                                 <a title="Supprimer l'engin" class="cursor-pointer" href="/supprimer_engin/{{ $engin -> id_engins}}"><i class='bx bx-trash text-red-500'></i> </a>
                                             </td>
                                         </tr>
@@ -110,9 +110,8 @@
                         Page <span class="font-medium text-gray-700 ">1 </span>sur<span class="font-medium text-gray-700 "> 10</span>
                     </div>
 
-
                     <div x-data="{ isOpen: false }">
-                        <button @click="isOpen = !isOpen" class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
+                        <button @click="isOpen = true" class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
@@ -120,74 +119,142 @@
                         </button>
 
                         <!-- Overlay to darken the background -->
-                        <div x-show="isOpen" class="overlay" @click="isOpen = false"></div>
+                        <div x-show="isOpen" @click="isOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
 
-                        <div x-show="isOpen" class="fixed w-[50rem] left-1/2 transform -translate-x-[256px] -translate-y-1/2 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 z-50">
-                            <form action="/nouvel_engin" method="post"> 
-                                @csrf
-                                <div class="relative flex items-center py-5 ">
-                                    <div class="flex-grow border-t border-gray-600"></div>
-                                    <span class="flex-shrink mx-4 text-gray-600">Nouvelle fiche engin</span>
-                                    <div class="flex-grow border-t border-gray-600"></div>
+                        <!-- Form Modal -->
+                        <div x-show="isOpen" class="fixed inset-0 z-50 overflow-auto flex items-center justify-center">
+                            <div class="bg-white w-full lg:w-8/12 p-6 rounded-lg shadow-lg">
+                                <div class="flex justify-between items-center border-b pb-2">
+                                    <h6 class="text-gray-700 text-xl font-bold">
+                                        Fiche nouvel engin
+                                    </h6>
+                                    <button @click="isOpen = false" class="text-red-500 hover:text-red-700">
+                                        Annuler
+                                    </button>
                                 </div>
-                                <div class="container items-center p-2">
-                                    
-                                    <label>Marque : </label><input name="marque" type="text" placeholder="Kubota">
-                                    <label>Modèle : </label><input name="modele" type="text" placeholder="kx060-5">
-                                    <label>Description : </label><input name="description" type="text" placeholder="bla bla">
+                                <div class="mt-4">
+                                    <form action="/nouvel_engin" method="post">
+                                        @csrf
+						<h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold uppercase">
+							Machine
+						</h6>
+						<div class="flex flex-wrap">
+							<div class="w-full lg:w-6/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Marque
+									</label>
+									<input type="text" name="marque" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Caterpillar">
+								</div>
+							</div>
+							<div class="w-full lg:w-6/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Modèle
+									</label>
+									<input type="text" name="modele" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="320">
+								</div>
+							</div>
+							<div class="w-full lg:w-6/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Numéro de machine
+									</label>
+									<input type="number" name="numero" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="4">
+								</div>
+							</div>
+							<div class="w-full lg:w-6/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Catégorie
+									</label>
+									<input type="text" name="categorie" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Pelle">
+								</div>
+							</div>
+						</div>
+						<hr class="mt-6 border-b-1 border-gray-300">
+						<h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold uppercase">
+							Information
+						</h6>
+						<div class="flex flex-wrap">
+							<div class="w-full lg:w-4/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Statut
+									</label>
+									<select name="statut" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option placeholder="Loué">Loué</option>
+                                        <option placeholder="Disponible">Disponible</option>
+                                        <option placeholder="Indisponible">Indisponible</option>
+                                    </select>
+								</div>
+							</div>
+							<div class="w-full lg:w-4/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Nombre de maintenances
+									</label>
+									<p class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >0</p>
+								</div>
+							</div>
+							<div class="w-full lg:w-4/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Nombre d'heures
+									</label>
+									<p class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+										0
+									</p>
+								</div>
+							</div>
+						</div>
+						<hr class="mt-6 border-b-1 border-gray-300">
+						<h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold uppercase">
+							Autre
+						</h6>
+						<div class="flex flex-wrap">
+							<div class="w-full lg:w-12/12 px-4">
+								<div class="relative w-full mb-3">
+									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									Description
+									</label>
+									<textarea name="description" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4">Pelle hydraulique sur chenilles</textarea>
+								</div>
+							</div>
+							<button type="submit" class="ml-auto mt-2 bg-orange-500 cursor-pointer items-center justify-center text-white hover:bg-orange-600 font-bold uppercase text-xs pr-4 pl-2 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 flex">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+								</svg>
+								Valider la fiche
+							</button>
+						</div>
+					</form>
                                 </div>
-                                <label>Catégorie : </label><select name="categorie">
-                                    <option>Test</option>
-                                </select>
-                                <label>Nombre d'heures : </label><input name="nb_heures" type="text" placeholder="157:55">
-                                <label>Maintenance : </label><select name="maintenance">
-                                    <option value="1">Oui</option>
-                                    <option value="0">Non</option>
-                                </select>
-                                <label>Statut : </label><select name="statut" type="text">
-                                    <option>Loué</option>
-                                    <option>Disponible</option>
-                                    <option>Autre</option>
-                                </select>
-
-                                <button type="submit" class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    Ajouter la fiche</button>
-                            </form>
-
-                            <button @click="isOpen = false" class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-red-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-red-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rotate-45">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Annuler</button>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
-                        <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                            </svg>
+                <div class="flex items-center mt-4 gap-x-4 sm:mt-0">
+                    <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        </svg>
+                        <span>
+                            Précédent
+                        </span>
+                    </a>
 
-                            <span>
-                                Précédent
-                            </span>
-                        </a>
-
-                        <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
-                            <span>
-                                Suivant
-                            </span>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                            </svg>
-                        </a>
-                    </div>
+                    <a href="#" class="flex items-center justify-center w-1/2 px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md sm:w-auto gap-x-2 ">
+                        <span>
+                            Suivant
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+                    </a>
                 </div>
             </section>
         </div>
-
     </main>
+</body>
