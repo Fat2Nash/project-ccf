@@ -16,7 +16,7 @@
     @php
         use App\Models\Maintenance; // Importer le modèle Maintenance
 
-        $maintenances = Maintenance::all(); // Récupérer toutes les données des maintenances
+        $maintenances = Maintenance::orderBy('id_maintenance', 'desc')->get(); // Récupérer toutes les données des maintenances triées par id_maintenance, les plus récentes en haut
 
     @endphp
 
