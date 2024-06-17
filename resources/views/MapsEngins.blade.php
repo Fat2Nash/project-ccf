@@ -134,8 +134,7 @@
                         viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
                         xml:space="preserve" width="512px" height="512px">
                         <!-- Icône SVG de recherche -->
-                        <path
-                            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786
+                        <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786
                             c0-12.682-10.318-23-23-23s-23,10.318-23,23s10.318,23,23,23c4.761,0,9.298-1.436
                             ,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92c0.779,0,1.518-0.297,
                             2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,
@@ -200,12 +199,9 @@
     </div>
 
     <section class="relative flex items-center justify-center mt-2 mb-5">
-        <!-- Section pour afficher la carte -->
         <div
-            class="overflow-hidden rounded-lg border border-gray-200 shadow-md overflow-y-auto h-[502px] w-[1280px] mt-5">
-            <!-- Conteneur pour la carte avec défilement vertical -->
-            <div id="map" class="h-[500px]"></div>
-            <!-- Div pour la carte -->
+            class="bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 w-full md:w-[80vw] lg:w-[70vw] xl:w-[60vw] h-[500px] md:h-[500px] lg:h-[500px] xl:h-[450px] mt-4">
+            <div id="map" class="w-full h-full"></div>
         </div>
     </section>
 
@@ -225,7 +221,7 @@
             // Initialisation de la carte Leaflet avec un centre géographique et un niveau de zoom
             var map = L.map('map', {
                 attributionControl: false // Désactiver l'affichage des informations d'attribution
-            }).setView([48.1814101770421, 6.208779881654873], 13);
+            }).setView([48.1814101770421, 6.208779881654873], 12);
 
             // Ajout d'une couche de tuiles OpenStreetMap à la carte
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -446,7 +442,7 @@
                 filteredPositions.forEach(function(position) {
                     var marker = L.marker([position.Longitude, position.Latitude]).addTo(
                         markersLayer
-                        ); // Crée un marqueur à partir des coordonnées et l'ajoute à la couche de marqueurs.
+                    ); // Crée un marqueur à partir des coordonnées et l'ajoute à la couche de marqueurs.
 
                     // Contenu du popup pour chaque marqueur avec les détails de l'engin et la date/heure de la position.
                     var popupContent =
@@ -496,7 +492,7 @@
                 if (!locEnginId) {
                     alert(
                         "Cet engin n'a pas de localisation."
-                        ); // Affiche une alerte si l'engin n'a pas de localisation.
+                    ); // Affiche une alerte si l'engin n'a pas de localisation.
                     return; // Arrête l'exécution de la fonction.
                 }
 
@@ -531,16 +527,16 @@
         // Définit la date maximale pour le sélecteur de date de début
         var startDatePicker = document.getElementById('startDatePicker');
         var today = new Date().toISOString().split('T')[
-        0]; // Obtient la date actuelle au format ISO et extrait la partie date (YYYY-MM-DD)
+            0]; // Obtient la date actuelle au format ISO et extrait la partie date (YYYY-MM-DD)
         startDatePicker.setAttribute('max',
-        today); // Définit l'attribut 'max' du sélecteur de date de début à la date actuelle
+            today); // Définit l'attribut 'max' du sélecteur de date de début à la date actuelle
     </script>
 
     <script>
         // Définit la date maximale pour le sélecteur de date de fin
         var endDatePicker = document.getElementById('endDatePicker');
         var today = new Date().toISOString().split('T')[
-        0]; // Obtient à nouveau la date actuelle au format ISO et extrait la partie date (YYYY-MM-DD)
+            0]; // Obtient à nouveau la date actuelle au format ISO et extrait la partie date (YYYY-MM-DD)
         endDatePicker.setAttribute('max', today); // Définit l'attribut 'max' du sélecteur de date de fin à la date actuelle
     </script>
 
@@ -552,20 +548,20 @@
             const searchInput = document.getElementById("searchInput"); // Récupère l'entrée de recherche
             const resetButton = document.getElementById("reset-btn"); // Récupère le bouton de réinitialisation
             const enginSelectButtons = customDiv.querySelectorAll(
-            "#enginSelect"); // Récupère tous les boutons de sélection d'engin dans la division personnalisée
+                "#enginSelect"); // Récupère tous les boutons de sélection d'engin dans la division personnalisée
             const arrowImage = document.querySelector(
-            "#toggleButton img"); // Récupère l'image de la flèche dans le bouton de bascule
+                "#toggleButton img"); // Récupère l'image de la flèche dans le bouton de bascule
 
             // Ajoute un écouteur d'événements au clic sur le bouton de bascule
             toggleButton.addEventListener("click", function(event) {
                 customDiv.classList.toggle(
-                "hidden"); // Bascule l'état de la classe 'hidden' de la division personnalisée
+                    "hidden"); // Bascule l'état de la classe 'hidden' de la division personnalisée
                 if (arrowImage) {
                     arrowImage.classList.toggle(
-                    "rotate-90"); // Fait pivoter l'image de la flèche si elle existe
+                        "rotate-90"); // Fait pivoter l'image de la flèche si elle existe
                 }
                 event
-            .stopPropagation(); // Arrête la propagation de l'événement pour éviter que l'écouteur de clic global ne se déclenche
+                    .stopPropagation(); // Arrête la propagation de l'événement pour éviter que l'écouteur de clic global ne se déclenche
             });
 
             // Ajoute un écouteur d'événements de clic global
@@ -573,10 +569,10 @@
                 // Cache la division personnalisée si le clic n'est pas à l'intérieur de celle-ci ni sur le bouton de bascule
                 if (!customDiv.contains(event.target) && !toggleButton.contains(event.target)) {
                     customDiv.classList.add(
-                    "hidden"); // Ajoute la classe 'hidden' à la division personnalisée pour la masquer
+                        "hidden"); // Ajoute la classe 'hidden' à la division personnalisée pour la masquer
                     if (arrowImage) {
                         arrowImage.classList.remove(
-                        "rotate-90"); // Réinitialise la rotation de l'image de la flèche si elle existe
+                            "rotate-90"); // Réinitialise la rotation de l'image de la flèche si elle existe
                     }
                 }
             });
@@ -584,9 +580,9 @@
             // Ajoute un écouteur d'événements à l'entrée de recherche pour filtrer les boutons d'engin
             searchInput.addEventListener("input", function() {
                 const filter = searchInput.value
-            .toLowerCase(); // Récupère la valeur de l'entrée de recherche en minuscules
+                    .toLowerCase(); // Récupère la valeur de l'entrée de recherche en minuscules
                 const buttons = customDiv.querySelectorAll(
-                "button"); // Sélectionne tous les boutons dans la division personnalisée
+                    "button"); // Sélectionne tous les boutons dans la division personnalisée
                 buttons.forEach(function(button) {
                     // Affiche ou cache les boutons selon qu'ils correspondent ou non au filtre de recherche
                     button.style.display = button.textContent.toLowerCase().includes(filter) ? "" :
@@ -598,16 +594,17 @@
             enginSelectButtons.forEach(function(button) {
                 button.addEventListener("click", function() {
                     const selectedEnginId = button.dataset
-                    .id; // Récupère l'ID de l'engin sélectionné à partir des données de l'attribut 'data-id'
+                        .id; // Récupère l'ID de l'engin sélectionné à partir des données de l'attribut 'data-id'
                     const selectedEnginText = button
-                    .textContent; // Récupère le texte du bouton sélectionné
+                        .textContent; // Récupère le texte du bouton sélectionné
                     document.getElementById("buttonText").textContent =
-                    selectedEnginText; // Met à jour le texte du bouton principal avec le texte du bouton sélectionné
+                        selectedEnginText; // Met à jour le texte du bouton principal avec le texte du bouton sélectionné
                     customDiv.classList.add(
-                    "hidden"); // Cache la division personnalisée après la sélection
+                        "hidden"); // Cache la division personnalisée après la sélection
                     if (arrowImage) {
                         arrowImage.classList.remove(
-                        "rotate-90"); // Réinitialise la rotation de l'image de la flèche si elle existe
+                            "rotate-90"
+                        ); // Réinitialise la rotation de l'image de la flèche si elle existe
                     }
                 });
             });
