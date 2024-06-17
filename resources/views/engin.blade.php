@@ -144,7 +144,7 @@
 									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
 									Marque
 									</label>
-									<input type="text" name="marque" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Caterpillar">
+									<input required type="text" name="marque" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Caterpillar">
 								</div>
 							</div>
 							<div class="w-full lg:w-6/12 px-4">
@@ -152,7 +152,7 @@
 									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
 									Modèle
 									</label>
-									<input type="text" name="modele" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="320">
+									<input required type="text" name="modele" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="320">
 								</div>
 							</div>
 							<div class="w-full lg:w-6/12 px-4">
@@ -160,7 +160,7 @@
 									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
 									Numéro de machine
 									</label>
-									<input type="number" name="numero" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="4">
+									<input required type="number" name="numero" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="4">
 								</div>
 							</div>
 							<div class="w-full lg:w-6/12 px-4">
@@ -168,7 +168,7 @@
 									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
 									Catégorie
 									</label>
-									<input type="text" name="categorie" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Pelle">
+									<input required type="text" name="categorie" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Pelle">
 								</div>
 							</div>
 						</div>
@@ -200,9 +200,9 @@
 							<div class="w-full lg:w-4/12 px-4">
 								<div class="relative w-full mb-3">
 									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
-									Nombre d'heures (en secondes)
+									Nombre d'heures
 									</label>
-									<input type="number" name=temps" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+									<input required type="text" name="temps" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="HH:MM"/>
 								</div>
 							</div>
 						</div>
