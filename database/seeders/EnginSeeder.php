@@ -16,36 +16,39 @@ class EnginSeeder extends Seeder
                 // Créez un utilisateur de test
                 DB::table('engins')->insert([
                     'categorie' => 'Pelle',
+                    'Num_Machine' => '1',
                     'marque' => 'Caterpillar',
                     'modele' => '320',
                     'description' => 'Pelle hydraulique sur chenilles',
-                    'compteur_heures' => 15000,
-                    'statut' => 'Disponible',
-                    'maintenance' => 0,
-                    'cree_le' => now(),
-                    'mis_a_jours_le' => now(),
-                ]);
-                // Créez un utilisateur de test
-                DB::table('engins')->insert([
-                    'categorie' => 'Mini Pelle',
-                    'marque' => 'Caterpillar',
-                    'modele' => '123',
-                    'description' => 'Mini pelle hydraulique sur chenilles',
-                    'compteur_heures' => 5000,
+                    'compteur_heures' => 1500,
                     'statut' => 'Loué',
                     'maintenance' => 0,
                     'cree_le' => now(),
                     'mis_a_jours_le' => now(),
                 ]);
+
                 // Créez un utilisateur de test
                 DB::table('engins')->insert([
-                    'categorie' => 'Pelteuse',
+                    'categorie' => 'Mini Pelle',
+                    'Num_Machine' => '1',
                     'marque' => 'Caterpillar',
-                    'modele' => '943',
-                    'description' => 'pelteuse 15 tonnes',
-                    'compteur_heures' => 10000,
-                    'statut' => 'Autre',
+                    'modele' => '123',
+                    'description' => 'Mini pelle hydraulique sur chenilles',
+                    'compteur_heures' => 500,
+                    'statut' => 'Loué',
                     'maintenance' => 0,
+                    'cree_le' => now(),
+                    'mis_a_jours_le' => now(),
+                ]);
+                DB::table('engins')->insert([
+                    'categorie' => 'Pelle',
+                    'Num_Machine' => '2',
+                    'marque' => 'Caterpillar',
+                    'modele' => '320',
+                    'description' => 'Pelle hydraulique sur chenilles',
+                    'compteur_heures' => 1500,
+                    'statut' => 'Disponible',
+                    'maintenance' => 1,
                     'cree_le' => now(),
                     'mis_a_jours_le' => now(),
                 ]);

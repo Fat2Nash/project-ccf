@@ -16,9 +16,9 @@ class ClientSeeder extends Seeder
     {
         // Créez un utilisateur de test
         DB::table('clients')->insert([
-            'nom' => 'LeBricoleur',
-            'prenom' => 'Bob',
-            'mail' => 'boblebrocileur@gmail.com',
+            'nom' => 'Lexploratrice',
+            'prenom' => 'Dora',
+            'mail' => 'dora.exploratrice@gmail.com',
             'adresse' => '1 rue de la Paix',
             'code_postal' => '75000',
             'ville' => 'Paris',
@@ -28,5 +28,17 @@ class ClientSeeder extends Seeder
             'cree_le' => now(),
         ]);
 
+        DB::table('clients')->insert([
+            'nom' => 'Lellouche',
+            'prenom' => 'Estelle',
+            'mail' => 'estelle.chameroy@gmail.com',
+            'adresse' => '1 rue du vin',
+            'code_postal' => '88000',
+            'ville' => 'Epinal',
+            'pays' => 'France',
+            'telephone' => '+33 6 22 32 58 88',
+            'notes' => 'Client fidèle depuis 2010',
+            'cree_le' => now(),
+        ]);
     }
 }

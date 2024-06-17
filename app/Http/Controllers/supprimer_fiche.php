@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Engin;
-use App\Models\Location;
 
 
 class supprimer_fiche extends Controller
@@ -19,12 +18,6 @@ class supprimer_fiche extends Controller
     { {
             Engin::where('id_engins', $id)->delete();
             return redirect('/engins');
-        }
-    }
-    public function supprimerloc($id)
-    { {
-            Location::where('id_loc_engin', $id)->delete();
-            return redirect('/locations');
         }
     }
 }

@@ -27,6 +27,12 @@ class Position extends Model
     // Relation avec la table 'position_engin'
     public function LocationEngin()
     {
-        return $this->hasOne(LocationEngin::class, 'id_position', 'id_loc_engin');
+        return $this->hasOne(Location::class, 'id_position', 'id_loc_engin');
+    }
+
+    // Dans le modèle Position.php
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'id_loc_engin');
     }
 }

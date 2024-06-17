@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Engin extends Model
 {
     public $timestamps=false;
@@ -14,6 +15,7 @@ class Engin extends Model
 
     // Attributs que vous pouvez remplir massivement
     protected $fillable = [
+        'Num_Machine',
         'categorie',
         'marque',
         'modele',
@@ -32,8 +34,6 @@ class Engin extends Model
 
     public function LocationEngin()
     {
-        return $this->hasOne(LocationEngin::class, 'id_engins', 'id_loc_engin' );
+        return $this->hasOne(Location::class, 'id_engins', 'id_loc_engin' );
     }
 }
-
-
