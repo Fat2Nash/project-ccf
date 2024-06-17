@@ -42,12 +42,10 @@ class RecupererDonneesUtilisateurs extends Controller
         $loue = Engin::where('statut', 'Loué')->get();
         $dispo = Engin::where('statut', 'Disponible')->get();
         $autre = Engin::whereNotIn('statut', ['Disponible', 'Loué'])->get();
-        $maintenance = Engin::where('maintenance', '1')->get();
         return view('welcome', [
             'loue' => $loue,
             'dispo' => $dispo,
             'autre' => $autre,
-            'maintenance' => $maintenance,
             'total' => $total
         ]);
     }
