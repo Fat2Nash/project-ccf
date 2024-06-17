@@ -6,6 +6,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Engin;
+use App\Models\Location;
 
 
 class ajouterdonnees extends Controller
@@ -51,5 +52,23 @@ public function ajouterengin(Request $request)
     $engin->save();
 
     return redirect()->route('engin');
+}
+
+public function ajouterlocation2(Request $request)
+{
+    $location = new Location();
+    $location->client_id = $request->input('id_client');
+    $location->adresse = $request->input('adresse');
+    $location->ville = $request->input('ville');
+    $location->code_postal = $request->input('code_postal');
+    $location->pays = $request->input('pays');
+    $location->id_engins = $request->input('id_engin');
+    $location->Temps_fonct = 0;
+    $location->Louer_le = $request->input('emprunt');
+    $location->Rendu_le = $request->input('retour');
+    $location->Status = "ok";
+    $location->save();
+
+    return redirect()->route('locations');
 }
 }

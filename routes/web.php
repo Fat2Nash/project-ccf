@@ -70,7 +70,7 @@ Route::get('/parametres', [RecupererDonneesUtilisateurs::class, 'parametres'])
 
 Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouterclient']);
 Route::post('/nouvel_engin', [ajouterdonnees::class, 'ajouterengin']);
-Route::post('/nouvelle_location', [ajouterdonnees::class, 'ajouterlocation']);
+Route::post('/nouvelle_location', [ajouterdonnees::class, 'ajouterlocation2']);
 
 
 # ======================
