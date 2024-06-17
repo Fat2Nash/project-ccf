@@ -12,7 +12,7 @@
 
 Afin de pouvoir pleinement utiliser le projet, il y a quelques prérequis : 
 * Composer : [Installer Composer](https://getcomposer.org/) <br/>
-Pour vérifier la bonne installation de Comoser : 
+Pour vérifier la bonne installation de Composer : 
   ```sh
   composer
   ```
