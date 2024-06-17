@@ -11,8 +11,19 @@
 </head>
 
 <body class="text-gray-800 font-inter">
+<<<<<<< Updated upstream
 
 
+=======
+    @php
+        use App\Models\Maintenance; // Importer le modèle Maintenance
+
+        // Récupérer les 5 dernières maintenances
+        $maintenances = Maintenance::latest('date_maintenance')->take(5)->get();
+    @endphp
+
+
+>>>>>>> Stashed changes
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
         <x-side-navbar />
@@ -123,7 +134,24 @@
                     </div>
                     <div class="overflow-hidden">
                         <table class="w-full min-w-[540px]">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                        Maintenance
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                        Numéro Engin
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap min-w-140-px">
+                                        Date
+                                    </th>
+                                </tr>
+                            </thead>
                             <tbody>
+<<<<<<< Updated upstream
                                 <tr>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
@@ -156,6 +184,32 @@
                                     </td>
 
                                 </tr>
+=======
+                                {{-- Ajouts de la section des derniere maintenance d'engin --}}
+                                @foreach ($maintenances as $maintenance)
+                                    <tr>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <div class="flex items-center">
+                                                <a href="#"
+                                                    class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                                    N°{{ $maintenance->id_maintenance }}
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <span class="text-[13px] font-medium text-gray-400">
+                                                {{ $maintenance->engin->description }}
+                                                N°{{ $maintenance->engin->Num_Machine }}
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <span class="text-[13px] font-medium text-gray-400">
+                                                {{ \Carbon\Carbon::parse($maintenance->date_maintenance)->format('d-m-Y H:i') }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+>>>>>>> Stashed changes
                             </tbody>
                         </table>
                     </div>
@@ -194,10 +248,13 @@
                                 <tr>
                                     <th
                                         class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
-                                        Type</th>
+                                        Type
+                                    </th>
                                     <th
                                         class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                                        Location</th>
+                                        Location
+                                    </th>
+
                                 </tr>
                             </thead>
                             <tbody>

@@ -12,34 +12,35 @@
 
 <body class="text-gray-800 font-inter">
 
-
     @php
         use App\Models\Maintenance; // Importer le modèle Maintenance
 
-        $maintenances = Maintenance::all(); // Récupérer toutes les données des maintenances
-
+        $maintenances = Maintenance::orderBy('date_maintenance', 'desc')->get(); // Récupérer toutes les maintenances triées par date décroissante
     @endphp
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
         <x-side-navbar />
-        <div class="m-5"><!-- component -->
+        <div class="m-5">
             <section class="container px-4 mx-auto">
 
                 <div class="flex flex-col mt-6">
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div class="overflow-hidden border border-gray-200 md:rounded-lg">
-
                                 <div class="flex items-center justify-between mb-6">
+<<<<<<< Updated upstream
                                     <h2 class="font-semibold text-4xl"> Suivie Maintenance</h2>
                                     {{-- ---bouton nouvelle maintenance --------------------------------------------------------------- --}}
+=======
+                                    <h2 class="text-4xl font-semibold">Suivie Maintenance</h2>
+>>>>>>> Stashed changes
                                     <a href="/nouvelle-maintenance">
                                         <button
                                             class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
-
                                             <span>Nouvelle Maintenance</span>
                                         </button>
                                     </a>
+<<<<<<< Updated upstream
                                     {{-- ---bouton nouvelle maintenance --------------------------------------------------------------- --}}
 
                                     {{-- ---RECHERCHE  --------------------------------------------------------------- --}}
@@ -61,48 +62,43 @@
                                     </button>
 
                                     {{-- ---RECHERCHE  --------------------------------------------------------------- --}}
+=======
+>>>>>>> Stashed changes
                                 </div>
 
-                                <table class="min-w-full divide-y divide-gray-200 ">
-                                    <thead class="bg-gray-50 ">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
                                                 N° Maintenance
                                             </th>
-
                                             <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
                                                 Engin
                                             </th>
-
                                             <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
                                                 Date
                                             </th>
-
                                             <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
                                                 Mécanicien
                                             </th>
-
                                             <th scope="col"
-                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
+                                                class="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500">
                                                 Détails
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200 ">
-                                        <tr>
-                                            @foreach ($maintenances as $maintenance)
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        @foreach ($maintenances as $maintenance)
+                                            <tr>
                                                 <td class="px-4 py-4 text-sm font-medium whitespace-nowrap">
-
-                                                    <p class="font-medium text-gray-800 ">
+                                                    <p class="font-medium text-gray-800">
                                                         {{ $maintenance->id_maintenance }}
                                                     </p>
-
                                                 </td>
-
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                     @php
                                                         $engin = $maintenance->engin;
@@ -110,40 +106,47 @@
                                                     <p class="text-gray-800 font-medium">
                                                         N° {{ $maintenance->id_engin }}
                                                     </p>
+<<<<<<< Updated upstream
                                                     <p class=" text-gray-800 ">{{ $engin->categorie }} /
                                                         {{ $engin->marque }}
                                                     </p>
 
+=======
+                                                    <p class="text-gray-800">{{ $engin->categorie }} /
+                                                        {{ $engin->marque }}</p>
+>>>>>>> Stashed changes
                                                 </td>
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
-
-                                                    <p class="text-gray-800 ">
+                                                    <p class="text-gray-800">
                                                         {{ $maintenance->date_maintenance }}
                                                     </p>
-
                                                 </td>
                                                 @php
                                                     $user = $maintenance->user;
                                                 @endphp
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                    <p class="text-gray-800 ">
+                                                    <p class="text-gray-800">
                                                         {{ $user->nom }} {{ $user->prenom }}
                                                     </p>
                                                 </td>
-
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                     <a href="/maintenances/{{ $maintenance->id_maintenance }}">
                                                         <button
+<<<<<<< Updated upstream
                                                             class="flex justify-center w-1/2 px-5 py-2 text-sm text-white transition-colors duration-200
                                                              bg-orange-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-orange-600">
 
                                                             <span>Détails</span>
+=======
+                                                            class="px-4 py-2 text-sm text-white bg-orange-500 rounded-lg hover:bg-orange-600">
+                                                            Détails
+>>>>>>> Stashed changes
                                                         </button>
-
                                                     </a>
                                                 </td>
-                                        </tr>
+                                            </tr>
                                         @endforeach
+<<<<<<< Updated upstream
                                         <script document.getElementById("selectHistorique").addEventListener("change", function() { var
                                             selectedOption=this.options[this.selectedIndex]; if (selectedOption.value !=="" ) {
                                             window.location.href=selectedOption.value; } }); // Écoute des événements de saisie dans le champ de recherche
@@ -175,14 +178,19 @@
                                             });
                                         </script>
 
+=======
+>>>>>>> Stashed changes
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{-- ------------------------------------------------------------------------------------------------------------ --}}
+
             </section>
         </div>
-
     </main>
+
+</body>
+
+</html>

@@ -35,12 +35,10 @@
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
 
                 <!--------------------------------------- 1ere case Infos Engin  ---------------------------------------------------------------------->
-                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="font-medium">Infos de l'engin</div>
-                    </div>
-
-                    <table class="w-full min-w-[540px]">
+                <!-- Infos de l'engin -->
+                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md">
+                    <div class="font-medium mb-4">Infos de l'engin</div>
+                    <table class="w-full">
                         <tbody>
 
                             @php
@@ -48,8 +46,9 @@
                             @endphp
 
 
-                            <!-- Debut ID Engin ---------------------------------------->
+
                             <tr>
+<<<<<<< Updated upstream
                                 <td class="px-4 py-2 border-b border-b-gray-50">
                                     <div class="flex items-center">
                                         <span href="#"
@@ -59,139 +58,95 @@
                                 <td class="px-4 py-2 border-b border-b-gray-50">
                                     <span class="text-[13px] font-medium text-gray-500">{{ $engin->id_engins }}</span>
                                 </td>
+=======
+                                <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    Numéro de l'engin</td>
+                                <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    {{ $engin->Num_Machine }}</td>
+>>>>>>> Stashed changes
                             </tr>
-                            <!-- fin ID engin ---------------------------------------->
-
-                            <!-- Debut Categorie engin --------------------------->
                             <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <span class="ml-2 text-m font-medium text-gray-600 truncate">Categorie</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span class="text-[13px]  font-medium text-gray-500">{{ $engin->categorie }}</span>
-                                </td>
+                                <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    Catégorie</td>
+                                <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    {{ $engin->categorie }}</td>
                             </tr>
-
-
-                            <!-- fin Categorie engin ----------------------------------->
-
-
-                            <!-- Debut Marque engin ------------------------------>
                             <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <span class="ml-2 text-m font-medium text-gray-600 truncate">Marque</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-500">{{ $engin->marque }}</span>
-                                </td>
+                                <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    Marque</td>
+                                <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    {{ $engin->marque }}</td>
                             </tr>
-                            <!-- Fin Marque engin ------------------------->
-
-                            <!-- Debut Modele engin ----------------------------->
                             <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <span class="ml-2 text-m font-medium text-gray-600 truncate">Modele</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-500">{{ $engin->modele }}</span>
-                                </td>
+                                <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    Modèle</td>
+                                <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    {{ $engin->modele }}</td>
                             </tr>
-                            <!-- fin Modele engin --------------------------->
-
-                            <!-- Debut compteur heure ----------------------------------->
                             <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <span class="ml-2 text-m font-medium text-gray-600 truncate">compteur
-                                            heure</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span
-                                        class="text-[13px] font-medium text-gray-500">{{ $engin->compteur_heures }}</span>
-                                </td>
+                                <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    Compteur heure</td>
+                                <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    {{ $engin->compteur_heures }}</td>
                             </tr>
-                            <!-- fin compteur heure ---------------------------------->
-
-                            <!-- Debut description Engin ---------------------------------------->
                             <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <span href="#"
-                                            class="ml-2 text-m font-medium text-gray-600 truncate">Description</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-gray-500">{{ $engin->description }}</span>
-                                </td>
+                                <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    Description</td>
+                                <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    {{ $engin->description }}</td>
                             </tr>
-                            <!-- fin Description engin ---------------------------------------->
-
                         </tbody>
                     </table>
                 </div>
                 <!------ Fin 1er Case Infos ENGIN ------------------------------------------------------------------------------------>
 
                 <!------ Debut 2eme Case historique maintenance ------------------------------------------------------------------------------------>
-                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
-                    <div class="flex items-start justify-between mb-4">
-                        <div class="font-medium">Historique de maintenance</div>
-                    </div>
-                    <div class="overflow-auto max-h-[200px]">
-                        <!--  overflow-auto pour  le défilement -->
-                        <table class="w-full min-w-[540px]">
+                <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md">
+                    <div class="font-medium mb-4">Historique de maintenance</div>
+                    <div class="overflow-x-auto max-h-[200px]">
+                        <table class="w-full table-auto">
                             <thead>
+<<<<<<< Updated upstream
                                 <tr>
                                     <th class="px-4 py-2 text-left   ">ID </th>
                                     <th class="px-4 py-2 text-left  ">Mécanicien</th>
                                     <th class="px-4 py-2 text-left  ">Date Maintenance</th>
                                     <th class="px-4 py-2">Détails</th>
+=======
+                                <tr class="bg-gray-100">
+                                    <th class="px-4 py-2 text-left">N°Maintenance</th>
+                                    <th class="px-4 py-2 text-left">Mécanicien</th>
+                                    <th class="px-4 py-2 text-left">Date Maintenance</th>
+                                    <th class="px-4 py-2 text-center">Détails</th>
+>>>>>>> Stashed changes
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Debut Historique  -->
                                 @foreach ($historiqueMaintenance as $historique)
                                     <tr>
-                                        <td class="px-4 py-2 ">
-                                            <div class="flex justify-start">
-                                                {{ $historique->id_maintenance }}
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-2 ">
-                                            <div class="flex justify-start">{{ $historique->user->nom }}
-                                                {{ $historique->user->prenom }}
-                                            </div>
-                                        </td>
-                                        <td class="px-4 py-2">
-                                            <div class="flex justify-start text-gray-500">
-                                                {{ $historique->date_maintenance }}
-                                            </div>
-                                        </td>
-                                        <td class="flex justify-center px-4 py-2">
+                                        <td class="px-4 py-2">{{ $historique->id_maintenance }}</td>
+                                        <td class="px-4 py-2">{{ $historique->user->nom }}
+                                            {{ $historique->user->prenom }}</td>
+                                        <td class="px-4 py-2 text-gray-500">{{ $historique->date_maintenance }}</td>
+                                        <td class="px-4 py-2 text-center">
                                             <a href="/maintenances/{{ $historique->id_maintenance }}">
                                                 <button
                                                     {{ $historique->id_maintenance == $idMaintenance ? 'disabled' : '' }}
                                                     class="px-4 py-2 text-sm text-white transition-colors duration-200 rounded-lg
-                                                    {{ $historique->id_maintenance == $idMaintenance
-                                                        ? 'bg-gray-500 hover:bg-gray-600'
-                                                        : 'bg-orange-500 hover:bg-orange-600' }} ">
+                                                {{ $historique->id_maintenance == $idMaintenance ? 'bg-gray-500 hover:bg-gray-600' : 'bg-orange-500 hover:bg-orange-600' }} ">
                                                     Détails
                                                 </button>
                                             </a>
                                         </td>
                                     </tr>
                                 @endforeach
-                                <!-- Fin Historique Maintenance-->
                             </tbody>
                         </table>
                     </div>
                 </div>
+
+                <!-- Fin Historique Maintenance-->
+
                 <!------ Fin 2eme Case HISTORIQUE ENGIN ------------------------------------------------------------------------------------>
 
             </div>
@@ -238,24 +193,10 @@
                 </div>
             </div>
             <!--------------------------------------- Fin  Case Défauts   ---------------------------------------------------------------------->
-
         </div>
         </div>
 
         <div class="p-6  mb-6">
-
-
-
-            <!------ Fin  Case Remarque Defaut ------------------------------------------------------------------------------------>
-
-
-
-
-
-
-
-
-
 
         </div>
         <x-footer />
