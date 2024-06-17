@@ -15,13 +15,14 @@ class AlerteSeeder extends Seeder
     {
         //
         DB::table('typealerte')->insert([
+            'nom_alerte' => 'maintenance',
+            'description' => 'Maintenance Systematique de l\'engin',
+        ]);
+        DB::table('typealerte')->insert([
             'nom_alerte' => 'Tension batterie',
             'description' => 'Alerte en cas de tension de batterie faible',
         ]);
 
-        DB::table('typealerte')->insert([
-            'nom_alerte' => 'Boitier ouvert',
-            'description' => 'Alerte en cas de boitier ouvert',
-        ]);
+
     }
 }
