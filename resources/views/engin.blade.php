@@ -200,11 +200,9 @@
 							<div class="w-full lg:w-4/12 px-4">
 								<div class="relative w-full mb-3">
 									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
-									Nombre d'heures
+									Nombre d'heures (en secondes)
 									</label>
-									<p class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-										0
-									</p>
+									<input type="number" name=temps" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
 								</div>
 							</div>
 						</div>
