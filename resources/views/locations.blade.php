@@ -100,8 +100,8 @@
                                                 </td>
                                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
 
-                                                    <button title="Modifier l'engin">
-                                                        <i class='bx bx-pencil'></i></button>
+                                                    <a href="/edit_loc/{{ $location->id_loc_engin }}" title="Modifier l'engin">
+                                                        <i class='bx bx-pencil'></i></a>
                                                     <a title="Supprimer l'engin" class="cursor-pointer"
                                                         href="/supprimer_location/{{ $location->id_loc_engin }}"><i
                                                             class='bx bx-trash text-red-500'></i> </a>

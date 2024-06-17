@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Engin;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class editerdonnees extends Controller
@@ -57,5 +58,36 @@ class editerdonnees extends Controller
         $engin->save();
 
         return redirect("/engins");
+    }
+
+    public function editer_loc($id)
+    {
+
+        
+        $location = Location::where("id_loc_engin", $id)->get();
+        $clients = Client::all();
+        $engins = Engin::all();
+        return view('editLocation', ['location' => $location[0] , 'engins' => $engins, 'clients' => $clients]);
+    
+    }
+
+    public function update_loc(Request $request, $id)
+    {
+        $loc = Location::where("id_loc_engin", $id)->first();
+
+        $loc->client_id = $request->input("client");
+        $loc->id_engins = $request->input("engin");
+        $loc->adresse = $request->input("adresse");
+        $loc->ville = $request->input("ville");
+        $loc->code_postal = $request->input("code_postal");
+        $loc->pays = $request->input("pays");
+        $loc->Louer_le = $request->input('debut');
+        $loc->Rendu_le = $request->input('rendu');
+        
+        
+        // Sauvegarder les modifications
+        $loc->save();
+
+        return redirect("/locations");
     }
 }

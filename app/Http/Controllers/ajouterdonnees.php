@@ -54,7 +54,7 @@ public function ajouterengin(Request $request)
     return redirect()->route('engin');
 }
 
-public function ajouterlocation2(Request $request)
+public function ajouterlocation(Request $request)
 {
     $location = new Location();
     $location->client_id = $request->input('id_client');

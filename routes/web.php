@@ -40,7 +40,8 @@ Route::get('edit_client/{id}', [editerdonnees::class, 'editer_client']);
 Route::post('update_client/{id}', [editerdonnees::class,'update_client']);
 Route::get('edit_engin/{id}', [editerdonnees::class, 'editer_engin']);
 Route::post('update_engin/{id}', [editerdonnees::class,'update_engin']);
-
+Route::get('edit_loc/{id}', [editerdonnees::class, 'editer_loc']);
+Route::post('update_loc/{id}', [editerdonnees::class,'update_loc']);
 
 Route::get('/engins-disponibles', [RecupererDonneesUtilisateurs::class, 'enginsdispo'])
     ->middleware(['auth', 'verified'])
@@ -70,7 +71,7 @@ Route::get('/parametres', [RecupererDonneesUtilisateurs::class, 'parametres'])
 
 Route::post('/nouveau_client', [ajouterdonnees::class, 'ajouterclient']);
 Route::post('/nouvel_engin', [ajouterdonnees::class, 'ajouterengin']);
-Route::post('/nouvelle_location', [ajouterdonnees::class, 'ajouterlocation2']);
+Route::post('/nouvelle_location', [ajouterdonnees::class, 'ajouterlocation']);
 
 
 # ======================
