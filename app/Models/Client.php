@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Location; // Add this line to import the LocationEngin class
 
 class Client extends Model
 {
-    public $timestamps = false;
     use HasFactory;
     protected $table = 'clients';
     protected $primaryKey = 'id_client';
+    public $timestamps = false; // Désactiver la gestion automatique des horodatages
 
     protected $fillable = [
         'nom',
@@ -28,4 +29,10 @@ class Client extends Model
     protected $casts = [
         'cree_le' => 'datetime',
     ];
+
+    public function LocationEngin()
+    {
+        return $this->hasOne(Location::class, 'id_client', 'id_loc_engin');
+    }
 }
+

@@ -17,24 +17,22 @@ class UserSeeder extends Seeder
             'nom' => 'Admin',
             'prenom' => 'Admin',
             'email' => 'admin@example.com',
+            'password' => Hash::make('azertyuiop'),
+            'role' => 'Administrateur',
         ]);
         User::create([
             'nom' => 'Bob',
             'prenom' => 'LeBricoleur',
             'email' => 'bob.lebricoleur@gmail.com',
             'password' => Hash::make('azertyuiop'),
+            'role' => 'Mecanitien/Chauffeur'
         ]);
         User::create([
             'nom' => 'Yanik',
             'prenom' => 'Kasim',
             'email' => 'kastroooper@gmail.com',
             'password' => Hash::make('azertyuiop'),
-        ]);
-        User::create([
-            'nom' => 'Windels',
-            'prenom' => 'Antony',
-            'email' => 'windels.antony@yahoo.com',
-            'password' => Hash::make('azertyuiop'),
+            'role' => 'Responsable',
         ]);
     }
 }

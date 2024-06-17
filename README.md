@@ -12,7 +12,7 @@
 
 Afin de pouvoir pleinement utiliser le projet, il y a quelques prérequis : 
 * Composer : [Installer Composer](https://getcomposer.org/) <br/>
-Pour vérifier la bonne installation de Comoser : 
+Pour vérifier la bonne installation de Composer : 
   ```sh
   composer
   ```
@@ -62,70 +62,62 @@ DB_CONNECTION=mysql # mettre mysql si besoin de mysql
 ## Base de donées
 
 ```bash
-php artisan migrate  |  Créer la BDD 
+php artisan migrate  #  Créer la BDD 
+```
+ou 
+```bash
+php artisan migrate:fresh  # Recréer la  BDD à vide 
 ```
 
 ## Pré-remplir la base de données
 
-```
-php artisan db:seed
+```bash
+php artisan db:seed     # Remplir la BDD avec des données de test
 ```
 
 
 ## Avancée
 
-### Personnelle
-
-![50%](https://progress-bar.dev/50)
-
-- [x] S'authentifier
-- [x] Créer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
-- [ ] Editer les fiches : 
- - [ ] Client
- - [ ] Engins
- - [ ] Location
-- Supprimer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
-- [x] Visualiser les engins disponibles
 
 ### Globale
-![40%](https://progress-bar.dev/40)
+![98%](https://progress-bar.dev/98)
 
 #### Quentin
-- [ ] Stocker les données de localisation/de fonctionnement des engins
+![100%](https://progress-bar.dev/100).
+- [x] Stocker les données de localisation/de fonctionnement des engins
 - [x] Publier les donées de : 
- - [x] Localisation
- - [ ] Fonctionnement
+   - [x] Localisation
+   - [x] Fonctionnement
 - [x] Déterminer les informations et les horodater
-#### Erwan
+- [x] Gérer les alertes
+  - [x] Baisse tension batterie
+  
+  #### Erwan
+![90%](https://progress-bar.dev/90)
 - [x] S'authentifier
 - [x] Créer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
+   - [x] Client
+   - [x] Engins
+   - [x] Location
 - [ ] Editer les fiches : 
- - [ ] Client
- - [ ] Engins
- - [ ] Location
-- Supprimer les fiches : 
- - [x] Client
- - [x] Engins
- - [ ] Location
-- [ ] Visualiser les engins disponibles
-#### Antony
+   - [ ] Client
+   - [ ] Engins
+   - [ ] Location
+- [x] Supprimer les fiches : 
+   - [x] Client
+   - [x] Engins
+   - [x] Location
+- [x] Visualiser les engins disponibles
+- [x] Rôles et autorisations
+ #### Antony
+![100%](https://progress-bar.dev/100)
 - [x] Visualiser les historiques :
-  - [x] Par client
-  - [x] Par engin
-- [ ] Visualiser les engins sur la carte
+   - [x] Par client
+   - [x] Par engin
+- [x] Visualiser les engins sur la carte
 #### Kasim
+![95%](https://progress-bar.dev/95)
 - [x] Visualiser la liste des engin à :
   - [x] Livrer
   - [x] Récupérer
-- [ ] Gérer les maintenance
-### Tous
-- [ ] Compatibilité téléphones
+- [x] Gérer les maintenance

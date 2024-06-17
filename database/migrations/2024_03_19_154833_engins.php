@@ -14,6 +14,7 @@ return new class extends Migration
         //
         Schema::create('engins', function (Blueprint $table) {
             $table->id('id_engins');
+            $table->string('Num_Machine');
             $table->string('categorie');
             $table->string('marque');
             $table->string('modele');
