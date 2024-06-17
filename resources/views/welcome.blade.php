@@ -11,10 +11,6 @@
 </head>
 
 <body class="text-gray-800 font-inter">
-<<<<<<< Updated upstream
-
-
-=======
     @php
         use App\Models\Maintenance; // Importer le modèle Maintenance
 
@@ -23,7 +19,6 @@
     @endphp
 
 
->>>>>>> Stashed changes
 
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
         <x-side-navbar />
@@ -151,40 +146,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-<<<<<<< Updated upstream
-                                <tr>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
-                                                1</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
-                                                7</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">11 h 37</span>
-                                    </td>
-
-                                </tr>
-=======
                                 {{-- Ajouts de la section des derniere maintenance d'engin --}}
                                 @foreach ($maintenances as $maintenance)
                                     <tr>
@@ -209,7 +170,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
->>>>>>> Stashed changes
                             </tbody>
                         </table>
                     </div>

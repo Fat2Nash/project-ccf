@@ -34,58 +34,45 @@
 
                     <!--------------------------------------- 1ere case Infos Engin  ---------------------------------------------------------------------->
                     <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md">
-                        <div class="font-medium mb-4">Infos de l'engin</div>
+                        <div class="mb-4 font-medium">Infos de l'engin</div>
                         <table class="w-full">
                             <tbody>
 
 
                                 <tr>
-<<<<<<< Updated upstream
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <span href="#"
-                                                class="ml-2 text-m font-medium text-gray-600 truncate">ID</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span
-                                            class="text-[13px] font-medium text-gray-500">{{ $engin->id_engins }}</span>
-                                    </td>
-=======
-                                    <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    <td class="px-4 py-2 font-medium text-gray-600 border-b border-gray-200">
                                         Numéro de l'engin</td>
-                                    <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    <td class="px-4 py-2 text-gray-500 border-b border-gray-200">
                                         {{ $engin->Num_Machine }}</td>
->>>>>>> Stashed changes
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    <td class="px-4 py-2 font-medium text-gray-600 border-b border-gray-200">
                                         Catégorie</td>
-                                    <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    <td class="px-4 py-2 text-gray-500 border-b border-gray-200">
                                         {{ $engin->categorie }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    <td class="px-4 py-2 font-medium text-gray-600 border-b border-gray-200">
                                         Marque</td>
-                                    <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    <td class="px-4 py-2 text-gray-500 border-b border-gray-200">
                                         {{ $engin->marque }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    <td class="px-4 py-2 font-medium text-gray-600 border-b border-gray-200">
                                         Modèle</td>
-                                    <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    <td class="px-4 py-2 text-gray-500 border-b border-gray-200">
                                         {{ $engin->modele }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    <td class="px-4 py-2 font-medium text-gray-600 border-b border-gray-200">
                                         Compteur heure</td>
-                                    <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    <td class="px-4 py-2 text-gray-500 border-b border-gray-200">
                                         {{ $engin->compteur_heures }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-4 py-2 border-b border-gray-200 font-medium text-gray-600">
+                                    <td class="px-4 py-2 font-medium text-gray-600 border-b border-gray-200">
                                         Description</td>
-                                    <td class="px-4 py-2 border-b border-gray-200 text-gray-500">
+                                    <td class="px-4 py-2 text-gray-500 border-b border-gray-200">
                                         {{ $engin->description }}</td>
                                 </tr>
                             </tbody>
@@ -129,7 +116,7 @@
                                             <td class="flex justify-center px-4 py-2">
                                                 <a href="/maintenances/{{ $historique->id_maintenance }}">
                                                     <button
-                                                        class="px-4 py-2 text-sm text-white transition-colors duration-200 rounded-lg bg-orange-500 hover:bg-orange-600 ">
+                                                        class="px-4 py-2 text-sm text-white transition-colors duration-200 bg-orange-500 rounded-lg hover:bg-orange-600 ">
                                                         Détails
                                                     </button>
                                                 </a>
@@ -144,13 +131,13 @@
                 </div>
             </div>
 
-            <div class="p-6 shadow-black/5 mb-6">
+            <div class="p-6 mb-6 shadow-black/5">
                 <form action="{{ route('creer_maintenance') }}" method="POST">
                     @csrf
                     <input id="id_engin" name="id_engin" type="hidden" value="{{ $parametreIdEngin }}" />
 
                     <!--- Debut Case maintenance systématique  ---->
-                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                    <div class="p-6 mb-6 bg-white border rounded-md shadow-md">
                         <div class="flex items-start justify-between mb-4">
                             <div class="font-medium">Maintenance systématique </div>
                         </div>
@@ -166,7 +153,7 @@
 
 
                     <!--- Debut Case Remarque ---->
-                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                    <div class="p-6 mb-6 bg-white border rounded-md shadow-md">
                         <div class="flex items-start justify-between mb-4">
                             <div class="font-medium">Remarque</div>
                         </div>
@@ -178,7 +165,7 @@
 
 
                     <!--- Debut Case Defaut ---->
-                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                    <div class="p-6 mb-6 bg-white border rounded-md shadow-md">
                         <div class="flex items-start justify-between mb-4">
                             <div class="font-medium">Défaut</div>
                         </div>
@@ -190,7 +177,7 @@
                     <!------ Fin  Case Remarque Defaut ------------------------------------------------------------------------------------>
 
                     <!------ Debut case date/valider ------------------------------------------------------------------------------------>
-                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                    <div class="p-6 mb-6 bg-white border rounded-md shadow-md">
                         <div class="flex items-start justify-between mb-4">
                             <div class="font-medium">Choisir une date et une heure :</div>
                         </div>
@@ -202,12 +189,12 @@
                     <!------ Fin case date/valider ------------------------------------------------------------------------------------>
 
                     <!------ Debut case mecanicien ------------------------------------------------------------------------------------>
-                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                    <div class="p-6 mb-6 bg-white border rounded-md shadow-md">
                         <div class="flex items-start justify-between mb-4">
                             <div class="font-medium">Choisir mécanicien :</div>
                         </div>
                         <div class="px-4 py-2">
-                            <select id="mecanicien" name="mecanicien" class="mt-1 p-2 w-full border rounded-md"
+                            <select id="mecanicien" name="mecanicien" class="w-full p-2 mt-1 border rounded-md"
                                 required>
                                 @foreach ($users as $user)
                                     <option value={{ $user->id }}>{{ $user->nom }} {{ $user->prenom }}
@@ -219,34 +206,30 @@
                     <!------ Fin case mecanicien ------------------------------------------------------------------------------------>
 
                     <!------ Debut case valider ------------------------------------------------------------------------------------>
-                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                    <div class="p-6 mb-6 bg-white border rounded-md shadow-md">
                         <div class="flex items-start justify-between mb-4">
                             <div class="font-medium">Validation :</div>
                         </div>
                         <button type="submit"
-                            class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Valider</button>
+                            class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Valider</button>
                     </div>
                     <!------ Fin case valider ------------------------------------------------------------------------------------>
 
                 </form>
             </div>
         @else
-            <div class="p-6 shadow-black/5 mb-6">
-                <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+            <div class="p-6 mb-6 shadow-black/5">
+                <div class="p-6 mb-6 bg-white border rounded-md shadow-md">
                     <div class="flex items-start justify-between mb-4">
                         <h2 class="font-medium">Choisir l'engin:</h2>
                     </div>
 
                     <div class="mb-4">
-                        <select name="liste_engin" id="liste_engin" class="mt-1 p-2 w-full border rounded-md">
+                        <select name="liste_engin" id="liste_engin" class="w-full p-2 mt-1 border rounded-md">
                             <option>Choisir un engin</option>
                             @foreach ($engins as $engin)
-<<<<<<< Updated upstream
-                                <option value={{ $engin->id_engins }}>{{ $engin->id_engins }}</option>
-=======
                                 <option value={{ $engin->id_engins }}>{{ $engin->Num_Machine }} -
                                     {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</option>
->>>>>>> Stashed changes
                             @endforeach
                         </select>
                     </div>
