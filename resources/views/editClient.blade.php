@@ -18,7 +18,7 @@
             <div class="rounded-t  mb-0 px-6 py-6 border-b-2 border-black">
                 <div class="flex ">
                     <h6 class="text-gray-700 text-xl font-bold">
-                        Fiche client <span class="uppercase">({{$client[0] -> nom}} {{$client[0] -> prenom}})</span>
+                        Fiche client <span class="uppercase">({{$client -> nom}} {{$client -> prenom}})</span>
                     </h6>
                     <a href="/clients" class="mr-2 ml-auto bg-red-500 cursor-pointer items-center justify-center text-white hover:bg-red-600 font-bold uppercase text-xs pr-4 pl-2 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 flex" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <form action="/update_client/{{$client[0] -> id_client}}" method="post">
+                <form action="/update_client/{{$client -> id_client}}" method="post">
                     @csrf
                     <h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold uppercase">
                         Identité
@@ -40,7 +40,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Nom
                                 </label>
-                                <input type="text" name="nom" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client[0] -> nom}}">
+                                <input type="text" name="nom" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client -> nom}}">
                             </div>
                         </div>
                         <div class="w-full lg:w-6/12 px-4">
@@ -48,7 +48,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Prénom
                                 </label>
-                                <input type="text" name="prenom" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client[0] -> prenom}}">
+                                <input type="text" name="prenom" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client -> prenom}}">
                             </div>
                         </div>
                         <div class="w-full lg:w-6/12 px-4">
@@ -56,7 +56,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Email
                                 </label>
-                                <input type="email" name="mail" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client[0] -> mail}}">
+                                <input type="email" name="mail" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client -> mail}}">
                             </div>
                         </div>
                         <div class="w-full lg:w-6/12 px-4">
@@ -64,7 +64,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Téléphone
                                 </label>
-                                <input type="text" name="telephone" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{ $client[0] -> telephone }}">
+                                <input type="text" name="telephone" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{ $client -> telephone }}">
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Adresse
                                 </label>
-                                <input type="text" name="adresse" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client[0] -> adresse}}">
+                                <input type="text" name="adresse" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client -> adresse}}">
                             </div>
                         </div>
                         <div class="w-full lg:w-4/12 px-4">
@@ -88,7 +88,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Ville
                                 </label>
-                                <input type="text" name="ville" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client[0] -> ville}}">
+                                <input type="text" name="ville" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client -> ville}}">
                             </div>
                         </div>
                         <div class="w-full lg:w-4/12 px-4">
@@ -96,7 +96,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Code postal
                                 </label>
-                                <input type="text" name="code_postal" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client[0] -> code_postal}}">
+                                <input type="text" name="code_postal" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client -> code_postal}}">
                             </div>
                         </div>
                         <div class="w-full lg:w-4/12 px-4">
@@ -104,7 +104,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Pays
                                 </label>
-                                <input type="text" name="pays" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client[0] -> pays}}">
+                                <input type="text" name="pays" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" value="{{$client -> pays}}">
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                                 <label class="block uppercase text-gray-600 text-xs font-bold mb-2">
                                     Notes
                                 </label>
-                                <textarea name="notes" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4">{{$client[0] -> notes}}</textarea>
+                                <textarea name="notes" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4">{{$client -> notes}}</textarea>
                             </div>
                         </div>
                         <button type="submit" class="ml-auto mt-2 bg-orange-500 cursor-pointer items-center justify-center text-white hover:bg-orange-600 font-bold uppercase text-xs pr-4 pl-2 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 flex">

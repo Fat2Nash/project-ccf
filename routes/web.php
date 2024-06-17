@@ -37,8 +37,10 @@ Route::get('supprimer_engin/{id}', [supprimer_fiche::class, 'supprimerengin']);
 Route::get('supprimer_location/{id}', [supprimer_fiche::class, 'supprimerloc']);
 
 Route::get('edit_client/{id}', [editerdonnees::class, 'editer_client']);
+Route::post('update_client/{id}', [editerdonnees::class,'update_client']);
+Route::get('edit_engin/{id}', [editerdonnees::class, 'editer_engin']);
+Route::post('update_engin/{id}', [editerdonnees::class,'update_engin']);
 
-Route::post('update_client/{id}', [editerdonnees::class,'update']);
 
 Route::get('/engins-disponibles', [RecupererDonneesUtilisateurs::class, 'enginsdispo'])
     ->middleware(['auth', 'verified'])
