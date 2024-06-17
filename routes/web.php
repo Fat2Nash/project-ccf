@@ -139,6 +139,7 @@ Route::post('/creer-maintenance', function (Illuminate\Http\Request $request) {
     $defauts = $request->input('defaut');
     $date_maintenance = $request->input('date_heure_maintenance');
     $id_mecaniciens = $request->input('mecanicien');
+    $maintenance_systematique = $request->has('maintenance_systematique'); // Vérifie si la checkbox est cochée
 
     // Enregistrer la maintenance dans la bdd
     $maintenance = new App\Models\Maintenance();
@@ -148,6 +149,22 @@ Route::post('/creer-maintenance', function (Illuminate\Http\Request $request) {
     $maintenance->date_maintenance = $date_maintenance;
     $maintenance->id_mecaniciens = $id_mecaniciens;
     $maintenance->save();
+
+    // incrémenter la valeur "maintenance" de 1 de la table "engins"
+    if ($maintenance_systematique) {
+        // Récupérer l'id de l'engin
+        $engin = App\Models\Engin::find($id_engin);
+
+        // si l'engin existe incrémenter  maintenance
+        if ($engin) {
+            $engin->increment('maintenance');
+        }
+
+        // repasser l'engin en 'Disponible' une fois la maintenance effectuer
+        if ($engin->statut != "Loué") {
+            $engin->update(['statut'=>'Disponible']);
+        }
+    }
 
     // Rediriger vers la liste des maintenances
     return redirect('/maintenances');

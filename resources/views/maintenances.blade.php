@@ -29,7 +29,6 @@
                     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div class="overflow-hidden border border-gray-200 md:rounded-lg">
-
                                 <div class="flex items-center justify-between mb-6">
                                     <h2 class="text-4xl font-semibold"> Suivie Maintenance</h2>
                                     {{-- ---bouton nouvelle maintenance --------------------------------------------------------------- --}}

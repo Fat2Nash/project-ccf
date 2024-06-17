@@ -1,3 +1,16 @@
+@php
+    use App\Models\Alerte;
+
+    // Vérifiez si le champ 'status' est égal à "Maintenance à effectuer"
+    $AlerteMaintenance = Alerte::where('status', 'Maintenance à effectuer')->exists();
+
+    // Récupérer le nombre d'alertes de maintenance
+$notificationCount = Alerte::where('status', 'Maintenance à effectuer')->count();
+
+// Exemple de données utilisateur, à remplacer par les données réelles de votre application
+$userName = 'Nom Utilisateur';
+$userEmail = 'email@exemple.com';
+@endphp
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -64,21 +77,6 @@
 </head>
 
 <body class="text-gray-800 font-inter">
-
-    @php
-        use App\Models\Alerte;
-
-        // Vérifiez si le champ 'status' est égal à "Maintenance à effectuer"
-        $AlerteMaintenance = Alerte::where('status', 'Maintenance à effectuer')->exists();
-
-        // Récupérer le nombre d'alertes de maintenance
-$notificationCount = Alerte::where('status', 'Maintenance à effectuer')->count();
-
-// Exemple de données utilisateur, à remplacer par les données réelles de votre application
-$userName = 'Nom Utilisateur';
-$userEmail = 'email@exemple.com';
-    @endphp
-
     <!-- sidenav -->
     <div
         class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform bg-white shadow-inner transform -translate-x-full md:translate-x-0 sidebar-menu">
@@ -116,12 +114,14 @@ $userEmail = 'email@exemple.com';
                 <a href="/notifications"
                     class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                     data-link="notifications">
-                    <i class='mr-3 text-lg bx bx-bell'></i>
+                    <div class="relative">
+                        <i class='mr-3 text-lg bx bx-bell'></i>
+                        @if ($notificationCount > 0)
+                            <span
+                                class="absolute top-0 right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-orange-800 rounded-full transform translate-x-1/2 -translate-y-1/2">{{ $notificationCount }}</span>
+                        @endif
+                    </div>
                     <span class="text-sm">Notifications</span>
-                    @if ($notificationCount > 0)
-                        <span
-                            class="ml-auto text-xs bg-red-500 text-white rounded-full px-2 py-1">{{ $notificationCount }}</span>
-                    @endif
                 </a>
             </li>
             <span class="font-bold text-gray-400 uppercase">Responsable</span>
@@ -211,15 +211,26 @@ $userEmail = 'email@exemple.com';
 
     <!-- navbar -->
     <div class="sticky top-0 left-0 z-30 flex items-center px-6 py-2 bg-white shadow-md shadow-black/5">
-        <button type="button" class="text-lg font-semibold text-gray-900 sidebar-toggle">
-            <i class="ri-menu-line"></i>
-        </button>
-        <ul class="flex items-center ml-auto">
-            <li class="ml-3">
+        <div class="flex items-center">
+            <!-- Sidebar toggle button for mobile -->
+            <button type="button" class="text-lg font-semibold text-gray-900 sidebar-toggle md:hidden">
+                <i class="bx bx-menu text-2xl" style="color: black;"></i>
+            </button>
+
+            <!-- Logo -->
+            <a href="/" class="flex items-center ml-4 md:hidden" id="logo-link">
+                <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
+            </a>
+        </div>
+        <ul class="hidden items-center ml-auto md:flex">
+            <li class="ml-3 ">
+                <p class="flex items-center ">
                 <div class="p-2 text-left md:block">
-                    <h2 class="text-sm font-semibold text-gray-800">{{ $userName }}</h2>
-                    <p class="text-xs text-gray-500">{{ $userEmail }}</p>
+                    <h2 class="text-sm font-semibold text-gray-800">{{ Auth::user()->prenom }}
+                        {{ Auth::user()->nom }}</h2>
+                    <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
                 </div>
+                </p>
             </li>
         </ul>
     </div>

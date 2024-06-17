@@ -46,6 +46,7 @@ Schedule::call(function () {
                 $nouvelleAlerte->status = "Maintenance à effectuer";
                 $nouvelleAlerte->save();
 
+                // TODO: Récupérer Adresse Email dynamique
                 Mail::to('kasimyanik742@gmail.com')
                     ->send(new AlerteMaintenance());
             }
