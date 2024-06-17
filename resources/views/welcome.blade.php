@@ -25,16 +25,6 @@
 
 <body class="text-gray-800 font-inter">
 
-@php
-    use App\Models\Engin; // Importer le modèle Engin
-    $engins = Engin::all(); // Récupérer tous les clients de la base de données
-
-    use App\Models\Location; // Importer le modèle Location
-    $loc_engin = Location::all(); // Récupérer toutes les locations de la base de données
-
-    use App\Models\Position; // Importer le modèle Position
-    $position_engin = Position::all(); // Récupérer toutes les positions de la base de données
-@endphp
     <!--sidenav -->
     <div class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform bg-white sidebar-menu">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
