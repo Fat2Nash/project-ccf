@@ -7,13 +7,8 @@ use App\Http\Controllers\supprimer_fiche;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\HelloMail;
-<<<<<<< Updated upstream
 use App\Http\Controllers\TestController;
 
-=======
-use App\Http\Controllers\EnginController;
-use App\Models\Engin;
->>>>>>> Stashed changes
 
 Route::get('/', [RecupererDonneesUtilisateurs::class, 'stats'])
     ->middleware(['auth', 'verified'])
