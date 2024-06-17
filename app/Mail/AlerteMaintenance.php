@@ -5,11 +5,12 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class HelloMail extends Mailable
+class AlerteMaintenance extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -27,7 +28,8 @@ class HelloMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Hello Mail',
+            from: new Address('noreply@thiriotlocation.fr', 'Thiriot Location'),
+            subject: 'Alerte Maintenance',
         );
     }
 
@@ -37,7 +39,7 @@ class HelloMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.hello',
+            view: 'emails.alerte_maintenance',
         );
     }
 
