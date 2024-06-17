@@ -79,7 +79,7 @@ $userEmail = 'email@exemple.com';
 <body class="text-gray-800 font-inter">
 
     @php
-        use App\Models\Alerte;
+        // use App\Models\Alerte;
 
         // Vérifiez si le champ 'status' est égal à "Maintenance à effectuer"
         $AlerteMaintenance = Alerte::where('status', 'Maintenance à effectuer')->exists();
@@ -91,7 +91,7 @@ $userEmail = 'email@exemple.com';
 
     <!-- sidenav -->
     <div
-        class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform bg-white shadow-inner transform -translate-x-full md:translate-x-0 sidebar-menu">
+        class="fixed top-0 left-0 z-50 w-64 h-full p-4 transition-transform transform -translate-x-full bg-white shadow-inner md:translate-x-0 sidebar-menu">
         <a href="/" class="flex items-center pb-4 border-b border-b-gray-800" id="logo-link">
             <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
         </a>
@@ -131,7 +131,7 @@ $userEmail = 'email@exemple.com';
                         <i class='mr-3 text-lg bx bx-bell'></i>
                         @if ($notificationCount > 0)
                             <span
-                                class="absolute top-0 right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-orange-800 rounded-full transform translate-x-1/2 -translate-y-1/2">{{ $notificationCount }}</span>
+                                class="absolute top-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-orange-800 rounded-full right-2">{{ $notificationCount }}</span>
                         @endif
                     </div>
                     <span class="text-sm">Notifications</span>
@@ -223,7 +223,7 @@ $userEmail = 'email@exemple.com';
             </li>
         </ul>
     </div>
-    <div class="fixed top-0 left-0 z-40 w-full h-full bg-black/50 md:hidden sidebar-overlay hidden"></div>
+    <div class="fixed top-0 left-0 z-40 hidden w-full h-full bg-black/50 md:hidden sidebar-overlay"></div>
     <!-- end sidenav -->
 
     <!-- navbar -->
@@ -231,7 +231,7 @@ $userEmail = 'email@exemple.com';
         <div class="flex items-center">
             <!-- Sidebar toggle button for mobile -->
             <button type="button" class="text-lg font-semibold text-gray-900 sidebar-toggle md:hidden">
-                <i class="bx bx-menu text-2xl" style="color: black;"></i>
+                <i class="text-2xl bx bx-menu" style="color: black;"></i>
             </button>
 
             <!-- Logo -->
@@ -239,7 +239,7 @@ $userEmail = 'email@exemple.com';
                 <img src="https://thiriot-locations.com/charte/logo.png" alt="logo" />
             </a>
         </div>
-        <ul class="hidden items-center ml-auto md:flex">
+        <ul class="items-center hidden ml-auto md:flex">
             <li class="ml-3 ">
                 <p class="flex items-center ">
                 <div class="p-2 text-left md:block">
