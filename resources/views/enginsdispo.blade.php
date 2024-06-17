@@ -91,11 +91,10 @@
                                                     </div>
                                                 </td>
                                                 <td class="px-4 py-4 text-xl whitespace-nowrap">
-                                                    <button title="Modifier l'engin">
-                                                        <i class='bx bx-pencil'></i></button>
-                                                    <button title="Supprimer l'engin"><i
-                                                            class='text-red-500 bx bx-trash'></i>
-                                                    </button>
+                                                    <a title="Modifier l'engin" href="/edit_engin/{{ $engin -> id_engins}}">
+                                                        <i class='bx bx-pencil'></i></a>
+                                                    <a title="Supprimer l'engin" class="cursor-pointer" href="/supprimer_engin/{{ $engin -> id_engins}}"><i class='bx bx-trash text-red-500'></i> </a>
+                                                </td>
                                                 </td>
                                                 <!-- Vous pouvez accéder aux autres attributs du produit de la même manière -->
                                         @endforeach

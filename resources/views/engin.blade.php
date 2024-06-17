@@ -89,7 +89,7 @@
 
                                             <a title="Modifier l'engin" href="/edit_engin/{{ $engin -> id_engins}}">
                                                     <i class='bx bx-pencil'></i></a>
-                                                <a title="Supprimer l'engin" class="cursor-pointer" href="/supprimer_engin/{{ $engin -> id_engins}}"><i class='bx bx-trash text-red-500'></i> </a>
+                                                <a title="Supprimer l'engin" class="cursor-pointer" href="/supprimer_engin/{{ $engin -> id_engins}}"><i class='text-red-500 bx bx-trash'></i> </a>
                                             </td>
                                         </tr>
 
@@ -119,13 +119,13 @@
                         </button>
 
                         <!-- Overlay to darken the background -->
-                        <div x-show="isOpen" @click="isOpen = false" class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+                        <div x-show="isOpen" @click="isOpen = false" class="fixed inset-0 z-40 bg-black bg-opacity-50"></div>
 
                         <!-- Form Modal -->
-                        <div x-show="isOpen" class="fixed inset-0 z-50 overflow-auto flex items-center justify-center">
-                            <div class="bg-white w-full lg:w-8/12 p-6 rounded-lg shadow-lg">
-                                <div class="flex justify-between items-center border-b pb-2">
-                                    <h6 class="text-gray-700 text-xl font-bold">
+                        <div x-show="isOpen" class="fixed inset-0 z-50 flex items-center justify-center overflow-auto">
+                            <div class="w-full p-6 bg-white rounded-lg shadow-lg lg:w-8/12">
+                                <div class="flex items-center justify-between pb-2 border-b">
+                                    <h6 class="text-xl font-bold text-gray-700">
                                         Fiche nouvel engin
                                     </h6>
                                     <button @click="isOpen = false" class="text-red-500 hover:text-red-700">
@@ -135,93 +135,91 @@
                                 <div class="mt-4">
                                     <form action="/nouvel_engin" method="post">
                                         @csrf
-						<h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold uppercase">
+						<h6 class="mt-3 mb-6 text-sm font-bold text-gray-400 uppercase">
 							Machine
 						</h6>
 						<div class="flex flex-wrap">
-							<div class="w-full lg:w-6/12 px-4">
+							<div class="w-full px-4 lg:w-6/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Marque
 									</label>
-									<input type="text" name="marque" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Caterpillar">
+									<input type="text" name="marque" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" placeholder="Caterpillar">
 								</div>
 							</div>
-							<div class="w-full lg:w-6/12 px-4">
+							<div class="w-full px-4 lg:w-6/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Modèle
 									</label>
-									<input type="text" name="modele" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="320">
+									<input type="text" name="modele" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" placeholder="320">
 								</div>
 							</div>
-							<div class="w-full lg:w-6/12 px-4">
+							<div class="w-full px-4 lg:w-6/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Numéro de machine
 									</label>
-									<input type="number" name="numero" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="4">
+									<input type="number" name="numero" min="1" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" placeholder="4">
 								</div>
 							</div>
-							<div class="w-full lg:w-6/12 px-4">
+							<div class="w-full px-4 lg:w-6/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Catégorie
 									</label>
-									<input type="text" name="categorie" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" placeholder="Pelle">
+									<input type="text" name="categorie" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" placeholder="Pelle">
 								</div>
 							</div>
 						</div>
-						<hr class="mt-6 border-b-1 border-gray-300">
-						<h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold uppercase">
+						<hr class="mt-6 border-gray-300 border-b-1">
+						<h6 class="mt-3 mb-6 text-sm font-bold text-gray-400 uppercase">
 							Information
 						</h6>
 						<div class="flex flex-wrap">
-							<div class="w-full lg:w-4/12 px-4">
+							<div class="w-full px-4 lg:w-4/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Statut
 									</label>
-									<select name="statut" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+									<select name="statut" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring">
                                         <option placeholder="Loué">Loué</option>
                                         <option placeholder="Disponible">Disponible</option>
                                         <option placeholder="Indisponible">Indisponible</option>
                                     </select>
 								</div>
 							</div>
-							<div class="w-full lg:w-4/12 px-4">
+							<div class="w-full px-4 lg:w-4/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Nombre de maintenances
 									</label>
-									<p class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" >0</p>
+									<p class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" >0</p>
 								</div>
 							</div>
-							<div class="w-full lg:w-4/12 px-4">
+							<div class="w-full px-4 lg:w-4/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
-									Nombre d'heures
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
+									Nombre d'heures (heure:minute)
 									</label>
-									<p class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-										0
-									</p>
+									<input type="text" name="temps" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" />
 								</div>
 							</div>
 						</div>
-						<hr class="mt-6 border-b-1 border-gray-300">
-						<h6 class="text-gray-400 text-sm mt-3 mb-6 font-bold uppercase">
+						<hr class="mt-6 border-gray-300 border-b-1">
+						<h6 class="mt-3 mb-6 text-sm font-bold text-gray-400 uppercase">
 							Autre
 						</h6>
 						<div class="flex flex-wrap">
-							<div class="w-full lg:w-12/12 px-4">
+							<div class="w-full px-4 lg:w-12/12">
 								<div class="relative w-full mb-3">
-									<label class="block uppercase text-gray-600 text-xs font-bold mb-2">
+									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Description
 									</label>
-									<textarea name="description" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="4">Pelle hydraulique sur chenilles</textarea>
+									<textarea name="description" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" rows="4">Pelle hydraulique sur chenilles</textarea>
 								</div>
 							</div>
-							<button type="submit" class="ml-auto mt-2 bg-orange-500 cursor-pointer items-center justify-center text-white hover:bg-orange-600 font-bold uppercase text-xs pr-4 pl-2 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150 flex">
+							<button type="submit" class="flex items-center justify-center py-2 pl-2 pr-4 mt-2 ml-auto text-xs font-bold text-white uppercase transition-all duration-150 ease-linear bg-orange-500 rounded shadow outline-none cursor-pointer hover:bg-orange-600 hover:shadow-md focus:outline-none">
 								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
 									<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
 								</svg>

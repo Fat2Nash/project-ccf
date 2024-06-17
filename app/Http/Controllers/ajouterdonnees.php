@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Engin;
 
+
 class ajouterdonnees extends Controller
 {
     public function ajouterclient(Request $request)
@@ -36,7 +37,10 @@ public function ajouterengin(Request $request)
     $engin->modele = $request->input('modele');
     $engin->categorie = $request->input('categorie');
     $engin->description = $request->input('description');
-    $engin->compteur_heures = 0;
+    //Convertir les heures de fonctionnnement (format HH:MM en secondes)
+    list($heure, $minutes) = explode(':', $request->input('temps'));
+    $engin->compteur_heures = $heure*3600+$minutes*60;
+    // $engin->compteur_heures = $request->input('temps');
     $engin->statut = $request->input('statut');
     $engin->maintenance = 0;
     $engin->cree_le = now();
