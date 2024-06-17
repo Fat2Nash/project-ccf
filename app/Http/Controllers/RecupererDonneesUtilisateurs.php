@@ -48,6 +48,8 @@ class RecupererDonneesUtilisateurs extends Controller
             'autre' => $autre,
             'total' => $total
         ]);
+
+        
     }
 
     public function parametres()

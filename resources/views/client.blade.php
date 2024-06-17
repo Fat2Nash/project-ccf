@@ -72,8 +72,8 @@
                                             </td>
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
 
-                                            <button title="Modifier l'engin">
-                                                    <i class='bx bx-pencil'></i></button>
+                                            <a title="Modifier l'engin" href="/edit_client/{{ $client -> id_client}}">
+                                                    <i class='bx bx-pencil'></i></a>
                                                 <a title="Supprimer l'engin" class="cursor-pointer" href="/supprimer_client/{{ $client -> id_client}}"><i class='bx bx-trash text-red-500'></i> </a>
                                             </td>
                                         </tr>
