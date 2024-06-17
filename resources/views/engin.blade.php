@@ -160,7 +160,7 @@
 									<label class="block mb-2 text-xs font-bold text-gray-600 uppercase">
 									Numéro de machine
 									</label>
-									<input required type="number" name="numero" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" placeholder="4">
+									<input required type="number" name="numero" min="1" class="w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-300 transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring" placeholder="4">
 								</div>
 							</div>
 							<div class="w-full px-4 lg:w-6/12">
