@@ -34,11 +34,5 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role' => 'Responsable',
         ]);
-        User::create([
-            'nom' => 'Windels',
-            'prenom' => 'Antony',
-            'email' => 'windels.antony@yahoo.com',
-            'password' => Hash::make('azertyuiop'),
-        ]);
     }
 }

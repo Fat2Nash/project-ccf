@@ -30,7 +30,7 @@ class EnginSeeder extends Seeder
                 // Créez un utilisateur de test
                 DB::table('engins')->insert([
                     'categorie' => 'Mini Pelle',
-                    'Num_Machine' => '1',
+                    'Num_Machine' => '2',
                     'marque' => 'Caterpillar',
                     'modele' => '123',
                     'description' => 'Mini pelle hydraulique sur chenilles',
@@ -42,7 +42,7 @@ class EnginSeeder extends Seeder
                 ]);
                 DB::table('engins')->insert([
                     'categorie' => 'Pelle',
-                    'Num_Machine' => '2',
+                    'Num_Machine' => '3',
                     'marque' => 'Caterpillar',
                     'modele' => '320',
                     'description' => 'Pelle hydraulique sur chenilles',
