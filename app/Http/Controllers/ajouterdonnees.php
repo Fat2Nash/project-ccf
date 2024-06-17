@@ -33,16 +33,13 @@ public function ajouterengin(Request $request)
     $engin = new Engin();
     $engin->marque = $request->input('marque');
     $engin->modele = $request->input('modele');
-    $engin->Num_Machine = $request->input('numero');
-    $engin->modele = $request->input('modele');
     $engin->categorie = $request->input('categorie');
     $engin->description = $request->input('description');
     //Convertir les heures de fonctionnnement (format HH:MM en secondes)
-    list($heure, $minutes) = explode(':', $request->input('temps'));
+    list($heure, $minutes) = explode(':', $request->input('nb_heures'));
     $engin->compteur_heures = $heure*3600+$minutes*60;
-    // $engin->compteur_heures = $request->input('temps');
     $engin->statut = $request->input('statut');
-    $engin->maintenance = 0;
+    $engin->maintenance = $request->input('maintenance');
     $engin->cree_le = now();
     $engin->mis_a_jours_le = now();
     $engin->save();
