@@ -25,7 +25,7 @@ Schedule::call(function () {
     // Période de temps entre chaque maintenance (en heures)
     $periodMaintenance = 300;
     // constante qui stock le nombre de seconde par heure
-    // car le compteur sur la bdd est en seconde 
+    // car le compteur sur la bdd est en seconde.
     $secondeParHeure = 3600;
 
     foreach ($engins as $engin) {
