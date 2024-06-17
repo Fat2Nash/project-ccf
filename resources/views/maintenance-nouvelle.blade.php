@@ -45,7 +45,8 @@
                                     <td class="px-4 py-2 border-b border-b-gray-50">
                                         <div class="flex items-center">
                                             <span href="#"
-                                                class="ml-2 text-m font-medium text-gray-600 truncate">Numéro de l'engin</span>
+                                                class="ml-2 text-m font-medium text-gray-600 truncate">Numéro de
+                                                l'engin</span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-2 border-b border-b-gray-50">
@@ -190,6 +191,21 @@
                     @csrf
                     <input id="id_engin" name="id_engin" type="hidden" value="{{ $parametreIdEngin }}" />
 
+                    <!--- Debut Case maintenance systématique  ---->
+                    <div class="p-6 border bg-white rounded-md shadow-md mb-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="font-medium">Maintenance systématique </div>
+                        </div>
+                        <div class="px-4 py-2">
+                            <label for="maintenance_systematique" class="flex items-center">
+                                <input type="checkbox" id="maintenance_systematique" name="maintenance_systematique"
+                                    class="mr-2">
+                                Cocher cette case si c'est une maintenance systématique
+                            </label>
+                        </div>
+                    </div>
+                    <!--- Fin Case maintenance systématique ---->
+
                     <!--- Debut Case Remarque ---->
                     <div class="p-6 border bg-white rounded-md shadow-md mb-6">
                         <div class="flex items-start justify-between mb-4">
@@ -265,7 +281,8 @@
                         <select name="liste_engin" id="liste_engin" class="mt-1 p-2 w-full border rounded-md">
                             <option>Choisir un engin</option>
                             @foreach ($engins as $engin)
-                                <option value={{ $engin->id_engins }}>{{ $engin->Num_Machine }} - {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</option>
+                                <option value={{ $engin->id_engins }}>{{ $engin->Num_Machine }} -
+                                    {{ $engin->marque }} - {{ $engin->modele }} - {{ $engin->categorie }}</option>
                             @endforeach
                         </select>
                     </div>

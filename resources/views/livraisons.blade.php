@@ -1,3 +1,17 @@
+{{-- recuperer parametre web aller chercher bdd avec l'ID en parametre et stocker dans var --}}
+@php
+    use App\Models\Engin; // Importer le modèle Engin
+    use App\Models\Location; // Importer le modèle Location
+
+    $engins = Engin::all(); // Récupérer tout les engins
+    $Locations = Location::all(); // Récupérer toutes les données de locations
+
+    $parametreIdLocation = Request::route('id');
+    if ($parametreIdLocation) {
+        $locationSelectionner = App\Models\Location::find($parametreIdLocation);
+        $enginSelectionner = App\Models\Engin::find($locationSelectionner->id_engins);
+    }
+@endphp
 <html lang="fr">
 
 <head>
@@ -11,21 +25,6 @@
 </head>
 
 <body class="text-gray-800 font-inter">
-
-    {{-- recuperer parametre web aller chercher bdd avec l'ID en parametre et stocker dans var --}}
-    @php
-        use App\Models\Engin; // Importer le modèle Engin
-        use App\Models\Location; // Importer le modèle Location
-        $engins = Engin::all(); // Récupérer tout les engins
-        $Locations = Location::all(); // Récupérer toutes les données de locations
-
-        $parametreIdLocation = Request::route('id');
-        if ($parametreIdLocation) {
-            $locationSelectionner = App\Models\Location::find($parametreIdLocation);
-            $enginSelectionner = App\Models\Engin::find($locationSelectionner->id_engins);
-        }
-    @endphp
-
     <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
         <x-side-navbar />
 

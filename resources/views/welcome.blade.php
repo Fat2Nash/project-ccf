@@ -1,3 +1,8 @@
+@php
+    use App\Models\Maintenance; // Importer le modèle Maintenance
+    // Récupérer les 5 dernières maintenances
+    $maintenances = Maintenance::latest('date_maintenance')->take(5)->get();
+@endphp
 <html lang="fr">
 
 <head>
@@ -111,8 +116,7 @@
                                                 <span
                                                     class="mr-2">{{ round((count($autre) / count($total)) * 100) }}%</span>
                                                 <div class="relative w-full">
-                                                    <div
-                                                        class="flex h-2 overflow-hidden text-xs bg-orange-200 rounded">
+                                                    <div class="flex h-2 overflow-hidden text-xs bg-orange-200 rounded">
                                                         <div style="width: <?php echo (count($autre) / count($total)) * 100; ?>%"
                                                             class="flex flex-col justify-center text-center text-white bg-orange-500 shadow-none whitespace-nowrap">
                                                         </div>
@@ -126,38 +130,61 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5">
                     <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Dernières maintenances</div>
                     </div>
-                    <div class="overflow-hidden">
+                    <div class="overflow-x-auto">
                         <table class="w-full min-w-[540px]">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                        Maintenance
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
+                                        Numéro Engin
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap min-w-140-px">
+                                        Date
+                                    </th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {{-- Ajouts de la section des derniere maintenance d'engin --}}
-                                {{-- @foreach ($maintenances as $maintenance) --}}
-                                <tr>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <div class="flex items-center">
-                                            <a href="#"
-                                                class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Engin
-                                                1</a>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">02-02-2024</span>
-                                    </td>
-                                    <td class="px-4 py-2 border-b border-b-gray-50">
-                                        <span class="text-[13px] font-medium text-gray-400">17 h 45</span>
-                                    </td>
-
-                                </tr>
-                                {{-- @endforeach --}}
+                                @foreach ($maintenances as $maintenance)
+                                    <tr>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <div class="flex items-center">
+                                                <a href="#"
+                                                    class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">
+                                                    N°{{ $maintenance->id_maintenance }}
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <span class="text-[13px] font-medium text-gray-400">
+                                                {{ $maintenance->engin->description }}
+                                                N°{{ $maintenance->engin->Num_Machine }}
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-2 border-b border-b-gray-50">
+                                            <span class="text-[13px] font-medium text-gray-400">
+                                                {{ \Carbon\Carbon::parse($maintenance->date_maintenance)->format('d-m-Y H:i') }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+
             <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
                     <div class="items-start justify-between mb-4">
@@ -167,6 +194,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5 ">
                     <div class="flex items-start justify-between mb-4">
                         <div class="font-medium">Alertes</div>
