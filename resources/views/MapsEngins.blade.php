@@ -228,7 +228,8 @@
     </div>
 
     <section class="relative flex items-center justify-center mt-2 mb-5">
-        <div class="absolute top-0 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 w-[1200px] h-[500px] mt-4">
+        <div
+            class="absolute top-0 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 w-[1200px] h-[500px] mt-4">
             <div id="map" class="w-full h-full"></div>
         </div>
     </section>
@@ -374,21 +375,21 @@
 
                 // Fonction pour formater la date/heure à partir d'une chaîne de date en UTC
                 function formatDate(dateString) {
-                        const date = new Date(dateString);
+                    const date = new Date(dateString);
 
-                        // Ajout du décalage horaire pour convertir en heure française
-                        const offset = date.getTimezoneOffset(); // Décalage UTC en minutes
-                        date.setMinutes(date.getMinutes() + offset); // Convertir en UTC
-                        date.setHours(date.getHours()); // Soustraire 1 heure pour CET (heure standard)
+                    // Ajout du décalage horaire pour convertir en heure française
+                    const offset = date.getTimezoneOffset(); // Décalage UTC en minutes
+                    date.setMinutes(date.getMinutes() + offset); // Convertir en UTC
+                    date.setHours(date.getHours()); // Soustraire 1 heure pour CET (heure standard)
 
-                        // Vérifier si l'heure d'été est en vigueur et ajuster si nécessaire
-                        const january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
-                        const july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
-                        const isDST = Math.max(january, july) !== offset;
+                    // Vérifier si l'heure d'été est en vigueur et ajuster si nécessaire
+                    const january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+                    const july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+                    const isDST = Math.max(january, july) !== offset;
 
-                        if (isDST) {
-                            date.setHours(date.getHours()); // Ajouter 1 heure pour CEST (heure d'été)
-                        }
+                    if (isDST) {
+                        date.setHours(date.getHours()); // Ajouter 1 heure pour CEST (heure d'été)
+                    }
 
                     var options = {
                         year: 'numeric',
