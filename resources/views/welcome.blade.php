@@ -186,9 +186,9 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-2">
+        <div class="h-56">
             <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md shadow-black/5 lg:col-span-1">
-                <div class="items-start justify-between mb-4">
+                <div class="items-start justify-between">
 
                     <div>
                         <div id="map" class="w-full h-full"></div>
@@ -333,58 +333,8 @@
                                 map.addLayer(markersLayer);
                             });
                         </script>
-
                     </div>
-                </div>
-            </div>
-
-            <div class="p-6 bg-white border border-gray-100 rounded-md shadow-md h-80 shadow-black/5 ">
-                <div class="flex items-start justify-between mb-4">
-                    <div class="font-medium">Alertes</div>
-
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full min-w-[460px]">
-                        <thead>
-                            <tr>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
-                                    Type</th>
-                                <th
-                                    class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">
-                                    Location</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <a href="#"
-                                            class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
-                                            ouvert</a>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-red-500">21</span>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <div class="flex items-center">
-                                        <a href="#"
-                                            class="ml-2 text-sm font-medium text-gray-600 truncate hover:text-orange-600">Boitier
-                                            débranché</a>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-2 border-b border-b-gray-50">
-                                    <span class="text-[13px] font-medium text-rose-500">12</span>
-                                </td>
-
-                            </tr>
-
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
             </div>
         </div>
