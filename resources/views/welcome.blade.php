@@ -146,7 +146,7 @@
                                 </th>
                                 <th
                                     class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap">
-                                    Numéro Engin
+                                    Engin
                                 </th>
                                 <th
                                     class="px-4 py-3 text-xs font-semibold text-left text-gray-500 uppercase align-middle bg-gray-100 border border-l-0 border-r-0 border-gray-200 border-solid whitespace-nowrap min-w-140-px">
@@ -502,7 +502,7 @@
                 var engin = engins.find(e => {
                     // Trouver la location correspondant à la position
                     var location = locations.find(l => l.id_loc_engin === position
-                    .id_loc_engin);
+                        .id_loc_engin);
                     return location && e.id_engins === location.id_engins;
                 });
 

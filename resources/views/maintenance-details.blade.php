@@ -53,7 +53,8 @@
                                 <td class="px-4 py-2 border-b border-b-gray-50">
                                     <div class="flex items-center">
                                         <span href="#"
-                                            class="ml-2 text-m font-medium text-gray-600 truncate">Numéro de l'engin</span>
+                                            class="ml-2 text-m font-medium text-gray-600 truncate">Numéro de
+                                            l'engin</span>
                                     </div>
                                 </td>
                                 <td class="px-4 py-2 border-b border-b-gray-50">
@@ -148,7 +149,8 @@
                         <table class="w-full min-w-[540px]">
                             <thead>
                                 <tr>
-                                    <th class="px-4 py-2 text-left   ">Numéro de l'engin </th>
+                                    <th class="px-4 py-2 text-left   ">N°
+                                        Maintenance </th>
                                     <th class="px-4 py-2 text-left  ">Mécanicien</th>
                                     <th class="px-4 py-2 text-left  ">Date Maintenance</th>
                                     <th class="px-4 py-2">Détails</th>
