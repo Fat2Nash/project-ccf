@@ -168,51 +168,48 @@
                         </thead>
                         <!-- Fin de l'entête de la table -->
                         <tbody>
-                            <!-- Corps de la table -->
-                            @foreach ($clients as $client)
-                                <!-- Boucle sur la collection de clients -->
-                                @foreach ($engins as $engin)
-                                    <!-- Boucle sur la collection d'engins -->
-                                    @php
-                                        // Recherche de la location correspondante
-                                        $location = $loc_engin
-                                            ->where('client_id', $client->id_client)
-                                            ->where('id_engins', $engin->id_engins)
-                                            ->first();
-                                    @endphp
-                                    <!-- Utilisation de la directive PHP pour trouver la location correspondante -->
-                                    @if ($location)
-                                        <!-- Vérification de l'existence de la location -->
-                                        <tr>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $client->nom }}</td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $client->prenom }}</td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->Num_Machine }}</td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->marque }}</td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->modele }}</td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ $engin->categorie }}</td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ \Carbon\Carbon::parse($location->Louer_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}</td>
-                                            <td
-                                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                                {{ \Carbon\Carbon::parse($location->Rendu_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}</td>
-                                        </tr>
-                                    @endif
-                                @endforeach
+                            <!-- Boucle sur toutes les locations -->
+                            @foreach ($loc_engin as $location)
+                                <!-- Récupération du client et de l'engin correspondants à la location -->
+                                @php
+                                    $client = $clients->where('id_client', $location->client_id)->first();
+                                    $engin = $engins->where('id_engins', $location->id_engins)->first();
+                                @endphp
+                                <!-- Vérification de l'existence du client et de l'engin -->
+                                @if ($client && $engin)
+                                    <!-- Affichage des informations dans les colonnes de la table -->
+                                    <tr>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ $client->nom }}</td>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ $client->prenom }}</td>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ $engin->Num_Machine }}</td>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ $engin->marque }}</td>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ $engin->modele }}</td>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ $engin->categorie }}</td>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ \Carbon\Carbon::parse($location->Louer_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}
+                                        </td>
+                                        <td
+                                            class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                                            {{ \Carbon\Carbon::parse($location->Rendu_le)->locale('fr')->isoFormat('DD MMMM YYYY HH:mm') }}
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
                 <div class="flex justify-between items-center px-4 py-3">
@@ -321,7 +318,26 @@
         // Fonction pour formater la date en format français
         function formatDate(dateFilter) {
             var date = new Date(dateFilter);
-            var options = { year: 'numeric', month: 'long', day: '2-digit'};
+
+            // Ajout du décalage horaire pour convertir en heure française
+            const offset = date.getTimezoneOffset(); // Décalage UTC en minutes
+            date.setMinutes(date.getMinutes() + offset); // Convertir en UTC
+            date.setHours(date.getHours()); // Soustraire 1 heure pour CET (heure standard)
+
+            // Vérifier si l'heure d'été est en vigueur et ajuster si nécessaire
+            const january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+            const july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+            const isDST = Math.max(january, july) !== offset;
+
+            if (isDST) {
+                date.setHours(date.getHours()); // Ajouter 1 heure pour CEST (heure d'été)
+            }
+
+            var options = {
+                year: 'numeric',
+                month: 'long',
+                day: '2-digit'
+            };
             return date.toLocaleDateString('fr-FR', options);
         }
 
@@ -338,8 +354,10 @@
                 // Filtre les lignes de la table en fonction de la date sélectionnée dans les colonnes "Engin louer" et "Engin rendu"
                 filteredRows = rows.filter(row => {
                     // Récupère le texte des cellules dans les colonnes "Engin louer" et "Engin rendu"
-                    const louerLe = row.cells[6].textContent.trim(); // Indice 4 pour la colonne "Engin louer"
-                    const renduLe = row.cells[7].textContent.trim(); // Indice 5 pour la colonne "Engin rendu"
+                    const louerLe = row.cells[6].textContent
+                .trim(); // Indice 4 pour la colonne "Engin louer"
+                    const renduLe = row.cells[7].textContent
+                .trim(); // Indice 5 pour la colonne "Engin rendu"
 
                     // Vérifie si l'une des colonnes contient la date sélectionnée
                     return louerLe.includes(formattedDate) || renduLe.includes(formattedDate);

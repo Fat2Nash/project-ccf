@@ -469,6 +469,21 @@
                 // Fonction pour formater la date/heure à partir d'une chaîne de date.
                 function formatDate(dateString) {
                     var date = new Date(dateString);
+
+                    // Ajout du décalage horaire pour convertir en heure française
+                    const offset = date.getTimezoneOffset(); // Décalage UTC en minutes
+                    date.setMinutes(date.getMinutes() + offset); // Convertir en UTC
+                    date.setHours(date.getHours()); // Soustraire 1 heure pour CET (heure standard)
+
+                    // Vérifier si l'heure d'été est en vigueur et ajuster si nécessaire
+                    const january = new Date(date.getFullYear(), 0, 1).getTimezoneOffset();
+                    const july = new Date(date.getFullYear(), 6, 1).getTimezoneOffset();
+                    const isDST = Math.max(january, july) !== offset;
+
+                    if (isDST) {
+                        date.setHours(date.getHours()); // Ajouter 1 heure pour CEST (heure d'été)
+                    }
+
                     var year = date.getFullYear();
                     var month = String(date.getMonth() + 1).padStart(2,
                         '0'); // Ajoute un zéro en début de mois si nécessaire.
