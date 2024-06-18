@@ -15,6 +15,10 @@
     <!-- Tailwind CSS -->
     <!-- Inclusion de Tailwind CSS via un CDN -->
     <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19"></script>
+    <!-- Inclusion de Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inclusion de Alpine.js pour la gestion des interactions -->
+    <script src="//unpkg.com/alpinejs"></script>
 
     <!-- Leaflet CSS -->
     <!-- Inclusion de la feuille de style de Leaflet pour les cartes -->

@@ -7,6 +7,10 @@
 		<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <!-- Inclusion de Tailwind CSS via CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Inclusion de Alpine.js pour la gestion des interactions -->
+        <script src="//unpkg.com/alpinejs"></script>
 		@vite(['resources/css/app.css', 'resources/js/app.js'])
 	</head>
 	<main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
@@ -103,7 +107,7 @@
 											$heures = floor($secondes / 3600);
 											$minutes = floor(($secondes % 3600) / 60);
 											?>
-										{{ $heures }} heures {{ $minutes }} minutes 
+										{{ $heures }} heures {{ $minutes }} minutes
 									</p>
 								</div>
 							</div>

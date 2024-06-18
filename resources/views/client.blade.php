@@ -7,6 +7,10 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Inclusion de Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inclusion de Alpine.js pour la gestion des interactions -->
+    <script src="//unpkg.com/alpinejs"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="text-gray-800 font-inter">

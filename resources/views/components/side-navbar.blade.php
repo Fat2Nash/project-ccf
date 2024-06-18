@@ -203,7 +203,7 @@ $userEmail = 'email@exemple.com';
             @if($user->role == 'Administrateur')
             <span class="font-bold text-gray-400 uppercase">Paramètres</span>
             <li class="mb-1 group">
-                <a href="/parametres"
+                <a href="/profile"
                     class="flex items-center px-4 py-2 font-semibold text-gray-900 rounded-md hover:bg-orange-500 hover:text-gray-100"
                     data-link="parametres">
                     <i class='mr-3 text-lg bx bx-cog'></i>
