@@ -24,7 +24,7 @@ Pour vérifier la bonne installation de NodeJS :
 
 ### Installation
 
-1. Cloner le projet
+1. Cloner le projet (remplacer ```your_username_``` et ```Project-Name``` par vos informations)"
 ```sh
 git clone https://github.com/your_username_/Project-Name.git
 ```
@@ -41,11 +41,13 @@ npm install
 ```
 4. Créer une clé d'application 
 ```bash
+cp .env.example .env # Créer le fichier .env
+
 php artisan key:generate
 ```
 5. Créer le fichier ```.env``` à partir du fichier ```.env.example``` et ajuster si besoin :
 ```env
-DB_CONNECTION=mysql # mettre mysql si besoin de mysql 
+DB_CONNECTION=sqlite # mettre mysql si besoin de mysql 
   
 # DB_HOST=127.0.0.1 ##mettre l'ip du serveur SQL
   
@@ -66,7 +68,7 @@ php artisan migrate  #  Créer la BDD
 ```
 ou 
 ```bash
-php artisan migrate:fresh  # Recréer la  BDD à vide 
+php artisan migrate:fresh  # Recréer la  BDD à vide  si existante
 ```
 
 ## Pré-remplir la base de données
@@ -74,13 +76,21 @@ php artisan migrate:fresh  # Recréer la  BDD à vide
 ```bash
 php artisan db:seed     # Remplir la BDD avec des données de test
 ```
+## Lancer le serveur
+
+```bash
+php artisan serve
+
+npm run dev
+```
+
 
 
 ## Avancée
 
 
 ### Globale
-![98%](https://progress-bar.dev/98)
+![100%](https://progress-bar.dev/100)
 
 #### Quentin
 ![100%](https://progress-bar.dev/100).
@@ -93,7 +103,7 @@ php artisan db:seed     # Remplir la BDD avec des données de test
   - [x] Baisse tension batterie
   
   #### Erwan
-![90%](https://progress-bar.dev/90)
+![100%](https://progress-bar.dev/100)
 - [x] S'authentifier
 - [x] Créer les fiches : 
    - [x] Client
