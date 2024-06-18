@@ -83,6 +83,24 @@ php artisan serve
 
 npm run dev
 ```
+## utilisateur par défaut sur le site
+
+### Utilisateur Admin
+
+- [x] Email : admin@example.com
+- [x] Mot de passe : azertyuiop
+
+### Utilisateur Responsable
+
+- [x] Email : leresponsable.bob@gmail.com
+- [x] Mot de passe : azertyuiop
+
+### Utilisateur Mecanicien Chauffeur 
+
+- [x] Email : bob.lebricoleur@gmail.com
+- [x] Mot de passe : azertyuiop
+
+
 
 
 

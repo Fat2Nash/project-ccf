@@ -28,9 +28,9 @@ class UserSeeder extends Seeder
             'role' => 'Mecanitien/Chauffeur'
         ]);
         User::create([
-            'nom' => 'Yanik',
-            'prenom' => 'Kasim',
-            'email' => 'kastroooper@gmail.com',
+            'nom' => 'LeResponsable',
+            'prenom' => 'Bob',
+            'email' => 'leresponsable.bob@gmail.com',
             'password' => Hash::make('azertyuiop'),
             'role' => 'Responsable',
         ]);
